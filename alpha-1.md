@@ -9,6 +9,7 @@ We've also built fully working serialization (torch.save / torch.load) with feat
 At this point, you can play around with things and get a feel of the new design.
 
 There's an MNIST example at https://github.com/pytorch/examples
+
 A concern raised about pytorch was that Python is a slow language.
 
 It turns out that the MNIST example runs in exactly the same amount of time / epoch in both pytorch and (lua)Torch, and we haven't yet done any optimizations in the code in pytorch yet.
