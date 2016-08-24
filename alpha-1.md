@@ -13,6 +13,7 @@ There's an MNIST example at https://github.com/pytorch/examples
 A concern raised about pytorch was that Python is a slow language.
 
 It turns out that the MNIST example runs in exactly the same amount of time / epoch in both pytorch and (lua)Torch, and we haven't yet done any optimizations in the code in pytorch yet.
+
 Another notable thing is that pytorch uses 1500MB of system memory vs (lua)Torch's 2300MB. This is before we've added any in-place optimizations into pytorch. The design of the new nn allows us to add seamless memory optimizations without needing the user to mark things as in-place or out-of-place which will bring us more seamless memory savings in pytorch. 
 
 More verbosely:
