@@ -24,7 +24,7 @@ Python has what is called [Global Interpreter Lock](https://wiki.python.org/moin
 Hence, the most pythonic way to use multiple CPU cores is [multiprocessing](http://docs.python.org/2/library/multiprocessing.html)
 
 We made PyTorch to seamlessly integrate with python multiprocessing.  
-This involved solving some very complex technical problems to make this an air-tight solution, and more can be read [in this in-depth technical discussion](http://github.com/pytorch/pytorch/wiki/Multiprocessing-Technical-Notes).
+This involved solving some complex technical problems to make this an air-tight solution, and more can be read [in this in-depth technical discussion](http://github.com/pytorch/pytorch/wiki/Multiprocessing-Technical-Notes).
 
 What this means for you as the end-user is that you can simply use multiprocessing in this way:
 
