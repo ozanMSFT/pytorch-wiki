@@ -63,9 +63,9 @@ There is another problem that we have not touched upon, which is:
 what happens to this shared memory if the process gets a `SIGKILL`.
 
 `A` lot of users often call the command `killall [processname]` or `kill -9 [processname]`. It is the only command they know to kill a process, and they use it all the time :)  
-This sends a SIGKILL signal to the process.
-When a process gets a SIGKILL as opposed to a SIGINT, it is not given a chance to cleanup after itself.  
-This is a problem because, if we do not call shm_unlink on the shared memory SHM, it will remain occupied until you restart your computer of manually run the command: `rm -f /dev/shm/torch_shmfile_1`
+This sends a `SIGKILL` signal to the process.
+When a process gets a `SIGKILL` as opposed to a `SIGINT`, it is not given a chance to cleanup after itself.  
+This is a problem because, if we do not call `shm_unlink` on the shared memory `SHM`, it will remain occupied until you restart your computer of manually run the command: `rm -f /dev/shm/torch_shmfile_1`
 So, if the Tensor is of 8GB memory, then we essentially have leaked this 8GB of memory to never be used by any process again until the system restarts. This is horrible.
 
 Hence, we have a new problem to solve, which is: how do we ensure that we cleanup safely, even if processes `A`, `B`, `C` are given a `SIGKILL` and die abruptly.
