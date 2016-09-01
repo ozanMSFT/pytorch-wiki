@@ -5,7 +5,7 @@ We've
 * built seamless support for multiprocessing with Tensor sharing
 * changed the API of the optim engine
 * added a complete Hook system for nn and autograd
-* added a few more neural network modules to nn
+* added in-place ops and more neural network modules to nn
 
 ## Multiprocessing with Tensor sharing
 
@@ -124,7 +124,7 @@ model.conv2.register_backward_hook(inspect_backward)
 
 We would definitely look forward to comments about the Hook system. Let us know what you think.
 
-### Added a few more neural network modules to nn
+### Added in-place ops and more neural network modules to nn
 * As part of porting fb.resnet.torch, we've added AveragePool2d and fixed BatchNorm2d
 
 ##Plans for alpha-3
