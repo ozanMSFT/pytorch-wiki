@@ -46,21 +46,24 @@ def fill_pool(tensor):
 # Example 1: Using multiple persistent processes and a Queue
 # process.py
 
+import torch
 import torch.multiprocessing as multiprocessing
 from loaders import fill
 
 # torch.multiprocessing.Queue automatically moves Tensor data to shared memory
 # So the main process and worker share the data
 queue = multiprocessing.Queue()
+buffers = [torch.Tensor(2, 2) for i in range(4)]
+for b in buffers:
+  queue.put(b)
 processes = [multiprocessing.Process(target=fill, args=(queue,)).start() for i in range(10)]
-for i in range(100):
-  queue.put(torch.Tensor(2, 2))
 ```
 
 ```python
 # Example 2: Using a process pool
 # pool.py
 
+import torch
 from torch.multiprocessing import Pool
 from loaders import fill_pool
 
