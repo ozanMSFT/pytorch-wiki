@@ -25,7 +25,7 @@ Let's say process `A` wants to share memory `[M, M+D]`, i.e. starting at `M` wit
 3. Then, process `A` copies over memory `[M, M+D]` to `[SHM, SHM+D]`.
 4. Then, process `A` swaps all pointer references of `M` to be `SHM`. There is no straight forward way to do this in general. 
 
-For (4), Torch has a Tensor / Storage abstraction. We can simply swap the data pointer inside the Storage and all Tensors referring to this Storage do not notice anything changing.
+For (5), Torch has a Tensor / Storage abstraction. We can simply swap the data pointer inside the Storage and all Tensors referring to this Storage do not notice anything changing.
 
 Now, `A` communicates the file path of the shared memory along with the size to `B`, i.e. `("/dev/shm/torch_shmfile_1", D)`.
 
