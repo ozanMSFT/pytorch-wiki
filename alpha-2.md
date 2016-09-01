@@ -5,7 +5,7 @@ We've
 * built seamless support for multiprocessing with Tensor sharing
 * changed the API of the optim engine
 * added a complete Hook system for nn and autograd
-* added in-place ops and more neural network modules to nn
+* added in-place ops to autograd and more neural network modules to nn
 
 ## Multiprocessing with Tensor sharing
 
@@ -127,8 +127,30 @@ model.conv2.register_backward_hook(inspect_backward)
 
 We would definitely look forward to comments about the Hook system. Let us know what you think.
 
-### Added in-place ops and more neural network modules to nn
+### Added in-place ops to autograd and more neural network modules to nn
 * As part of porting fb.resnet.torch, we've added AveragePool2d and fixed BatchNorm2d
+* Now, autograd fully supports in-place operations, with in-place variables immediately marked as dirty.
+To illustrate this, let's look at a small example
+
+```python
+x = Variable(torch.ones(5, 5))
+y = Variable(torch.ones(5, 5) * 4)
+
+z = x * y
+q = z * y
+r = z + y
+z.add_(y)
+# z is a the last expression, so this should succeed
+z.backward(torch.ones(5, 5))
+
+# r doesn't use the z in it's backward, so it should succeed
+r.backward(torch.ones(5, 5))
+
+# however, q needs z in it's backward, but z has now been marked as dirty (because it was used in an in-place operation)
+# this line will hence raise an error
+q.backward(torch.ones(5, 5))
+```
+
 
 ##Plans for alpha-3
 
