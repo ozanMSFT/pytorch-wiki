@@ -12,7 +12,7 @@ git remote add -f -t master --no-tags $THREPO $THURL
 git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
 git checkout master
-git subtree add --squash -P torch/lib/$THREPO temporary-split-branch
+git subtree add -P torch/lib/$THREPO temporary-split-branch
 git branch -D temporary-split-branch
 ```
 
@@ -21,7 +21,7 @@ git branch -D temporary-split-branch
 git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
 git checkout master
-git subtree merge --squash -P torch/lib/$THREPO temporary-split-branch
+git subtree merge -P torch/lib/$THREPO temporary-split-branch
 # Now fix any conflicts if you'd modified torch/lib/$THREPO.
 git branch -D temporary-split-branch
 ```
