@@ -89,7 +89,7 @@ Since the daemon removed `A` as it's parent process, it does not die immediately
 As soon as the daemon process is launched, it opens a socket connection with process `A`.  
 When the socket connection dies, the daemon knows that `A` has died abruptly (possibly by a `SIGKILL`) and cleans up afterwards.  
 
-After considering both the solutions thoroughly, we have implemented Solution 2 to solve this `SIGKILL` / cleanup problem.
+After considering both the solutions thoroughly, we have implemented both Solution 1 and Solution 2 to solve this `SIGKILL` / cleanup problem, and they can be switched at runtime. By default, you are set to Solution 1
 
 
 
