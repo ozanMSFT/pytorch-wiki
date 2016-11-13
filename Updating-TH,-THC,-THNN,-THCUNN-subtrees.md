@@ -1,8 +1,18 @@
 Commands to update the subtrees
 
 ```bash
+# select one of these
+export THURL="https://github.com/torch/torch7"
+export THREPO="TH"
+
 export THURL="https://github.com/torch/cutorch"
 export THREPO="THC"
+
+export THURL="https://github.com/torch/nn"
+export THREPO="THNN"
+
+export THURL="https://github.com/torch/cunn"
+export THREPO="THCUNN"
 ```
 
 ## Do this the first time:
