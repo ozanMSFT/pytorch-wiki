@@ -28,6 +28,7 @@ git branch -D temporary-split-branch
 
 ## In future, you can merge in additional changes as follows:
 ```bash
+git branch -D temporary-split-branch
 git fetch    $THREPO
 git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
