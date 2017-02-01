@@ -2,3 +2,4 @@
 
 * `Variable.sort` and `Variable.topk` now return indices too
 * `Optimizer.state_dict` now has semantics matching `Module.state_dict`
+* `normal` and `log_normal` standard deviation argument unified as `std`
