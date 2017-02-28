@@ -28,18 +28,42 @@ git branch -D temporary-split-branch
 
 ## In future, you can merge in additional changes as follows:
 ```bash
+export THREPO="TH"
 git branch -D temporary-split-branch
 git fetch    $THREPO
 git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
 git checkout master
-git subtree merge -P torch/lib/$THREPO temporary-split-branch
-# Now fix any conflicts if you'd modified torch/lib/$THREPO.
+git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
+
+export THREPO="THC"
 git branch -D temporary-split-branch
+git fetch    $THREPO
+git checkout $THREPO/master
+git subtree split -P lib/$THREPO -b temporary-split-branch
+git checkout master
+git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
+
+export THREPO="THNN"
+git branch -D temporary-split-branch
+git fetch    $THREPO
+git checkout $THREPO/master
+git subtree split -P lib/$THREPO -b temporary-split-branch
+git checkout master
+git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
+
+export THREPO="THCUNN"
+git branch -D temporary-split-branch
+git fetch    $THREPO
+git checkout $THREPO/master
+git subtree split -P lib/$THREPO -b temporary-split-branch
+git checkout master
+git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
 ```
 
 ## Cleanup
 ```bash
+git branch -D temporary-split-branch
 unset THREPO
 unset THURL
 ```
