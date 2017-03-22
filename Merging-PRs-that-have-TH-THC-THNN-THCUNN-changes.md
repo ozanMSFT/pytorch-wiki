@@ -1,7 +1,14 @@
-locally checkout the PR.
-Then do:
+1. locally checkout the PR.
+2. Then push TH/THC/THNN/THCUNN changes to upstream subtrees
+3. remove those changes from local commit
+4. sync from upstream
 
-Push TH Changes
+
+## 1. Locally checkout the PR
+
+## 2. Then push TH/THC/THNN/THCUNN changes to upstream subtrees
+
+### 2.1 Push TH Changes
 
 ```bash
 git format-patch HEAD^ torch/lib/TH --stdout >tmp.patch
@@ -14,7 +21,7 @@ git push
 popd
 ```
 
-Push THC Changes
+### 2.2 Push THC Changes
 
 ```bash
 git format-patch HEAD^ torch/lib/THC --stdout >tmp.patch
@@ -27,7 +34,7 @@ git push
 popd
 ```
 
-Push THNN Changes
+### 2.3 Push THNN Changes
 
 ```bash
 git format-patch HEAD^ torch/lib/THNN --stdout >tmp.patch
@@ -40,7 +47,7 @@ git push
 popd
 ```
 
-Push THCUNN Changes
+### 2.4 Push THCUNN Changes
 
 ```bash
 git format-patch HEAD^ torch/lib/THCUNN --stdout >tmp.patch
@@ -52,3 +59,15 @@ git am -p 2 tmp.patch
 git push
 popd
 ```
+
+## 3. remove those changes from local commit
+
+```bash
+git diff-tree --no-commit-id --name-only -r HEAD \
+| grep "torch/lib/THNN/\|torch/lib/THCUNN/\|torch/lib/TH/\|torch/lib/THC/" \
+| xargs git rm
+
+git commit --amend
+```
+
+
