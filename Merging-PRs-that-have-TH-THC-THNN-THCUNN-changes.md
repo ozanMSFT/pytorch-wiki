@@ -70,4 +70,4 @@ git diff-tree --no-commit-id --name-only -r HEAD \
 git commit --amend
 ```
 
-
+4. sync from upstream
