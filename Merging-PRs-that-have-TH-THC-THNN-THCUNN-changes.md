@@ -65,7 +65,7 @@ popd
 ```bash
 git diff-tree --no-commit-id --name-only -r HEAD \
 | grep "torch/lib/THNN/\|torch/lib/THCUNN/\|torch/lib/TH/\|torch/lib/THC/" \
-| xargs git checkout HEAD^
+| xargs -I {} bash -c "git checkout HEAD^ {} || git rm -f {}"
 
 git commit --amend
 ```
