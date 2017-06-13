@@ -28,7 +28,7 @@ git branch -D temporary-split-branch
 
 ## In future, you can merge in additional changes as follows:
 ```bash
-export GBRANCH="master"
+export GBRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 export THREPO="TH"
 git branch -D temporary-split-branch
