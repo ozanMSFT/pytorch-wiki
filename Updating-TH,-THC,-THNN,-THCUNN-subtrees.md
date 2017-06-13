@@ -28,8 +28,8 @@ git branch -D temporary-split-branch
 
 ## In future, you can merge in additional changes as follows:
 ```bash
-export GBRANCH=$(git rev-parse --abbrev-ref HEAD)
 
+export GBRANCH=$(git rev-parse --abbrev-ref HEAD)
 export THREPO="TH"
 git branch -D temporary-split-branch
 git fetch    $THREPO
@@ -37,7 +37,9 @@ git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
 git checkout $GBRANCH
 git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
+unset GBRANCH
 
+export GBRANCH=$(git rev-parse --abbrev-ref HEAD)
 export THREPO="THC"
 git branch -D temporary-split-branch
 git fetch    $THREPO
@@ -45,7 +47,9 @@ git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
 git checkout $GBRANCH
 git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
+unset GBRANCH
 
+export GBRANCH=$(git rev-parse --abbrev-ref HEAD)
 export THREPO="THNN"
 git branch -D temporary-split-branch
 git fetch    $THREPO
@@ -53,7 +57,9 @@ git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
 git checkout $GBRANCH
 git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
+unset GBRANCH
 
+export GBRANCH=$(git rev-parse --abbrev-ref HEAD)
 export THREPO="THCUNN"
 git branch -D temporary-split-branch
 git fetch    $THREPO
@@ -61,6 +67,7 @@ git checkout $THREPO/master
 git subtree split -P lib/$THREPO -b temporary-split-branch
 git checkout $GBRANCH
 git subtree merge -P torch/lib/$THREPO temporary-split-branch -m "Merge commit '`git rev-parse temporary-split-branch`'"
+unset GBRANCH
 ```
 
 ## Cleanup
