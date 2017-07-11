@@ -13,10 +13,14 @@ export THREPO="THNN"
 
 export THURL="https://github.com/torch/cunn"
 export THREPO="THCUNN"
+
+export THURL="https://github.com/zdevito/ATen"
+export THREPO="ATen"
 ```
 
 ## Do this the first time:
 ```bash
+git branch -D temporary-split-branch
 git rm -rf torch/lib/$THREPO && git commit -m "removing $THREPO subtree"
 git remote add -f -t master --no-tags $THREPO $THURL
 git checkout $THREPO/master
