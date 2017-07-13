@@ -24,7 +24,8 @@ export THREPO="ATen"
 git remote add -f -t master --no-tags $THREPO $THURL
 ```
 
-## Do this the first time:
+## Do this the first time you add a subtree to pytorch
+Usually if you are just updating the subtree you dont need to do this
 ```bash
 git branch -D temporary-split-branch
 git rm -rf torch/lib/$THREPO && git commit -m "removing $THREPO subtree"
