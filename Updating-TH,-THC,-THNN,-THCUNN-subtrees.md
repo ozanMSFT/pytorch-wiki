@@ -1,5 +1,6 @@
 Commands to update the subtrees
 
+## Do this once in your local git copy
 ```bash
 # select one of these
 export THURL="https://github.com/torch/torch7"
