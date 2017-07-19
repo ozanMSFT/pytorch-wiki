@@ -68,7 +68,8 @@ rm -rf /tmp/ATen
 git clone https://github.com/zdevito/ATen /tmp/ATen
 mv tmp.patch /tmp/ATen/
 pushd /tmp/ATen
-git am -p 2 tmp.patch
+perl -pi -w -e 's/torch\/lib/src/g;' tmp.patch
+git am tmp.patch
 git push
 popd
 ```
