@@ -60,6 +60,19 @@ git push
 popd
 ```
 
+### 2.4 Push ATen Changes
+
+```bash
+git format-patch HEAD^ torch/lib/ATen --stdout >tmp.patch
+rm -rf /tmp/ATen
+git clone https://github.com/zdevito/ATen /tmp/ATen
+mv tmp.patch /tmp/ATen/
+pushd /tmp/ATen
+git am -p 2 tmp.patch
+git push
+popd
+```
+
 ## 3. remove those changes from local commit
 
 ```bash
