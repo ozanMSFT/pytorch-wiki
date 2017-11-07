@@ -1,13 +1,14 @@
 - examples/*
 - tutorials/*
+- https://github.com/uber/pyro
 - https://github.com/locuslab/optnet
 - https://github.com/bamos/block
 - https://github.com/bamos/densenet.pytorch
 - https://github.com/ikostrikov/pytorch-a3c
-- https://github.com/ikostrikov/pytorch-a2c-ppo-acktr
+
 - https://github.com/Shawn1993/cnn-text-classification-pytorch
 - https://github.com/longcw/yolo2-pytorch
-- https://github.com/uber/pyro
+
 - https://github.com/timomernick/pytorch-capsule
 - https://github.com/ptrblck/prog_gans_pytorch_inference
 - https://github.com/salesforce/pytorch-qrnn
