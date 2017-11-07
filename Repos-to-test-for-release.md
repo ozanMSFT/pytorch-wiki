@@ -21,7 +21,7 @@
 - https://github.com/taolei87/sru
 - https://jeankossaifi.github.io/tensorly/tensorly_with_pytorch_backend.html
 - https://github.com/allenai/allennlp
-- fast.ai github
+- https://github.com/fastai/fastai
 - https://github.com/facebookresearch/loop
 - https://github.com/salesforce/awd-lstm-lm
 - https://github.com/sjain-stanford/deep-route
