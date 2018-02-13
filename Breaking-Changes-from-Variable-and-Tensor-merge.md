@@ -15,3 +15,12 @@ print(type(x)) # now torch.autograd.variable.Variable, previously torch.DoubleTe
 print(x.type())  # OK: 'torch.DoubleTensor'
 print(isinstance(x, torch.DoubleTensor))  # OK: True
 ```
+
+* Reductions (e.g. `sum()`) may overflow on Tensors with small ranges (such as ByteTensor):
+
+```python
+>>> x = torch.ByteTensor([100, 100, 100])
+>>> x.sum()  # was 300
+44
+[torch.ByteTensor of size ()]
+```
