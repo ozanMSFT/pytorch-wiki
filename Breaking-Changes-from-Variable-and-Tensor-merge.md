@@ -12,4 +12,6 @@ print(v)  # now variable(2), previously 1
 ```python
 x = torch.DoubleTensor([1, 1, 1])
 print(type(x)) # now torch.autograd.variable.Variable, previously torch.DoubleTensor
+print(x.type())  # OK: 'torch.DoubleTensor'
+print(isinstance(x, torch.DoubleTensor))  # OK: True
 ```
