@@ -1,3 +1,5 @@
+The Tensor and Variable classes had slightly different semantics. There are some breaking changes from combining the two classes.
+
 * Indexing a one-dim Tensor returns a zero-dim Tensor instead of a Python number. For example,
 
 ```python
