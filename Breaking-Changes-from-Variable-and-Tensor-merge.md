@@ -31,3 +31,6 @@ True
 44
 [torch.ByteTensor of size ()]
 ```
+
+Minor:
+* masked_scatter(...) and masked_fill(...) follow in place broadcasting rules.
