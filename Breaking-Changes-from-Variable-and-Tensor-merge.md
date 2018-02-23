@@ -32,6 +32,15 @@ True
 [torch.ByteTensor of size ()]
 ```
 
+* Tensor.copy_() always obeys broadcasting rules. Tensor assignment (`x[idx] = value`) also follows broadcasting rules more closely:
+
+```python
+>>> x = torch.randn(3, 3)
+>>> y = torch.randn(9)
+>>> x.copy_(y, broadcast=False) # ERROR
+>>> x.copy_(y.view_as(x))  # OK
+```
+
 Minor:
 * `masked_scatter(...)` and `masked_fill(...)` follow in place broadcasting rules.
 * `matmul` no longer has an `out` parameter.
