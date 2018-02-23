@@ -43,6 +43,7 @@ True
 
 Minor:
 * `matmul` no longer has an `out` parameter.
+* Functions that construct tensors based on sizes now interpret empty tuples/sizes differently; previous a empty tuple was treated to mean the size of an empty tensor, now an empty tuple is treated to mean the size of a scalar (0-dimensional tensor).
 
 New Issues:
 * `masked_scatter(...)` and `masked_fill(...)` follow in place broadcasting rules.
