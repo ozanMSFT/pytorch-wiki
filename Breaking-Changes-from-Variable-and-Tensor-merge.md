@@ -42,5 +42,7 @@ True
 ```
 
 Minor:
-* `masked_scatter(...)` and `masked_fill(...)` follow in place broadcasting rules.
 * `matmul` no longer has an `out` parameter.
+
+New Issues:
+* `masked_scatter(...)` and `masked_fill(...)` follow in place broadcasting rules.
