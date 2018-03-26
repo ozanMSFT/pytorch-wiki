@@ -47,3 +47,15 @@ Minor:
 
 New Issues:
 * `masked_scatter(...)` and `masked_fill(...)` follow in place broadcasting rules.
+
+## Possible Issues
+
+* If you have code that accumulates losses across iterations (e.g. to compute an
+average at the end of an epoch), such as `total_loss += loss` where `loss` is
+your per-iteration loss, you may find increased memory usage in your program.
+This is because `loss` probably used to be a Python float (such as when it is
+the result of `.sum()`), while it is now a zero-dim Tensor. `total_loss` is
+thus accumulating `Tensor`s and their gradient history, which may keep around
+large autograd graphs for much longer than necessary. To fix this, be sure to
+convert the per-iteration loss to a Python number as soon as possible, for
+example with `total_loss += float(loss)`.
