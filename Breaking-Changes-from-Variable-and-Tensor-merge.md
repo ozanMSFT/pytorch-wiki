@@ -23,15 +23,6 @@ The Tensor and Variable classes had slightly different semantics. There are some
 True
 ```
 
-* Reductions (e.g. `sum()`) may overflow on Tensors with small ranges (such as ByteTensor):
-
-```python
->>> x = torch.ByteTensor([100, 100, 100])
->>> x.sum()  # was 300
-44
-[torch.ByteTensor of size ()]
-```
-
 * Tensor.copy_() always obeys broadcasting rules. Tensor assignment (`x[idx] = value`) also follows broadcasting rules more closely:
 
 ```python
