@@ -16,7 +16,7 @@ The Tensor and Variable classes had slightly different semantics. There are some
 ```python
 >>> x = torch.DoubleTensor([1, 1, 1])
 >>> print(type(x)) # was torch.DoubleTensor
-<class 'torch.autograd.variable.Variable'>
+<class 'torch.Tensor'>
 >>> print(x.type())  # OK: 'torch.DoubleTensor'
 'torch.DoubleTensor'
 >>> print(isinstance(x, torch.DoubleTensor))  # OK: True
