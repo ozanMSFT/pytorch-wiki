@@ -1,5 +1,3 @@
-# PyTorch IR
-
 *This document presents the IR as of October 17th 2018. Future changes like mutability might render parts of this document outdated.*
 
 PyTorch uses an SSA-based IR, which is built of multiple entities:
