@@ -1,4 +1,4 @@
-*This document presents the IR as of October 17th 2018. Future changes like mutability might render parts of this document outdated.*
+*This document presents the IR as of October 17th 2018. Changes like mutability have rendered parts of this document slightly outdated.*
 
 PyTorch uses an SSA-based IR, which is built of multiple entities:
 - `Graph` is generally the outermost container for the program representation. At the moment all programs are mostly pure (modulo special operators like `prim::Print` or `prim::PythonOp`), but this will change in the future.
