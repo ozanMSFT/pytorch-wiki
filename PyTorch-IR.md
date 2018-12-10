@@ -239,7 +239,7 @@ RegisterOperators reg({
 
 ## Graph specialization
 
-Certain optimization require certain knowledge about the data types and devices of tensors appearing in user programs. To support this, we have a `GraphExecutor`, which is like a wrapper around an interpreterr, that additionally checks what kind of inputs were given, and caches execution plans for `Graph`s specialized to their details. For example `Tensor` inputs to `Graph`s get assigned `TensorType`s (dtype, ndim, device, gradient status), and we later attempt to propagate that statically (using `torch/csrc/jit/passes/shape_analysis.cpp`).
+Certain optimization require certain knowledge about the data types and devices of tensors appearing in user programs. To support this, we have a `GraphExecutor`, which is like a wrapper around an interpreter, that additionally checks what kind of inputs were given, and caches execution plans for `Graph`s specialized to their details. For example `Tensor` inputs to `Graph`s get assigned `TensorType`s (dtype, ndim, device, gradient status), and we later attempt to propagate that statically (using `torch/csrc/jit/passes/shape_analysis.cpp`).
 
 This has the drawback that every call to a JITed function has to go through this matching of arguments to specialized graphs, which e.g. causes a 0.5% slowdown for CNNs (which don't even get any optimization benefits at the moment). In the future we might consider ditching the specialization in favor of more JIT-like techniques (gathering statistics about run time values like tensor sizes, and making optimizations in later stages).
 
