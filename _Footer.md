@@ -1,1 +1,1 @@
-Pytorch presented to you with love by Adam, Soumith and Sam
+Pytorch presented to you with love by the PyTorch Team of contributors
