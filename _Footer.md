@@ -1,1 +1,1 @@
-Pytorch presented to you with love by the PyTorch Team of contributors
+PyTorch presented to you with love by the PyTorch Team of contributors
