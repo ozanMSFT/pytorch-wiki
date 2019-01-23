@@ -4,3 +4,4 @@ Welcome to the pytorch wiki!
 * [Some Technical notes are here](Technical-Notes)
 * [Maintainer Notes](Maintainer-Notes)
 * [Software Architecture for c10](Software-Architecture-for-c10)
+* [PyTorch JIT IR format](PyTorch-IR)
