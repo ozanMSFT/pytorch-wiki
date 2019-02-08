@@ -1,0 +1,3 @@
+This diagram illustrates potential dataflows of an AI application written PyTorch, highlighting the data sources and artifacts produced, as well as APIs used to interact with the underlying system. User-written Python files are highlighted as gray, while interfaces/APIs they interact with are blue. Details of the diagram are described by bullets in the text below.
+
+Since PyTorch codebase also includes the Caffe2 library, interactions with this library are illustrated as well. There is ongoing merge going between the two libraries, with goal of sharing code and exposing benefits of both through PyTorch. We recommend that new users rely only on the PyTorch interfaces (near the top of the diagram), as these will the supported APIs going forward.
