@@ -6,3 +6,4 @@ Welcome to the pytorch wiki!
 * [Software Architecture for c10](Software-Architecture-for-c10)
 * [PyTorch JIT IR format](PyTorch-IR)
 * [Bot commands](Bot-commands)
+* [Maintainer notes](Maintainer-notes)
