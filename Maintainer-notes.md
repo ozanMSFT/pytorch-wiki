@@ -2,7 +2,7 @@
 
 Historically, we were unable to give direct merge access to non-Facebook employees, because every landed pull request also updates our copy of PyTorch in Facebook (which, understandably, requires you to be a Facebook employee).
 
-Therefore, we are introducing the following alternate mechanism to allow you to merge pull requests: **to merge a pull request, comment on the PR “@pytorchbot merge this please”**.
+Therefore, we are introducing the following alternate mechanism to allow you to merge pull requests: **to merge a pull request, comment on the PR “@pytorchbot merge this please”**. A helpful bookmarklet to make this command for you is: `javascript:(function(){document.getElementById("new_comment_field").value = "@pytorchbot merge this please"; document.getElementsByClassName('js-new-comment-form')[0].submit();})()`
 
 You can use this comment on your own PRs (if they have been accepted by someone else) or other people's PRs. Adding this label will ping an oncall at Facebook, who will merge this pull request on your behalf, with only cursory review (as needed by Facebook). During business hours, we hope that the turnaround time for merges will be within a few hours (which is similar to the turnaround time Facebook employees have.)
 
