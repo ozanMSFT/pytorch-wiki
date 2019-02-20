@@ -1,5 +1,3 @@
-# Maintainer notes
-
 **This mechanism is currently under beta testing. Right now, it's just @ezyang keeping tabs on the notifications and merging.**
 
 Historically, we were unable to give direct merge access to non-Facebook employees, because every landed pull request also updates our copy of PyTorch in Facebook (which, understandably, requires you to be a Facebook employee).
