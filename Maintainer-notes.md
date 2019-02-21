@@ -15,4 +15,4 @@ Here's what you need to know about merging to PyTorch master:
     2. **bc-breaking** label can be used to identify an issue or pull request that can only be resolved in a backwards compatibility breaking way. This can be used to get more wider awareness of the change in question.
     3. **high priority** label is used to identify high priority issues that we should investigate ASAP.
     4. We use **[WIP]** in the title of pull requests to indicate that they are not to be reviewed. If you see a PR that is missing this, feel free to add the tag (and let the author of the PR know that they can remove the tag when their PR is ready.)
-
+4. Part of being a maintainer is reviewing code.  If you are looking for generalized advice in this aspect, consider taking a look at [Code review values](Code-review-values)
