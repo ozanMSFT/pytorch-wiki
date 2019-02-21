@@ -11,6 +11,7 @@ Welcome to the PyTorch developer's wiki!
 * [Multiprocessing Technical Notes](Multiprocessing-Technical-Notes)
 * [Software Architecture for c10](Software-Architecture-for-c10)
 * [PyTorch JIT IR format](PyTorch-IR) (slightly out of date now)
+* [TH to ATen porting guide](TH-to-ATen-porting-guide)
 
 ## Workflow docs
 
