@@ -9,7 +9,7 @@ Welcome to the PyTorch developer's wiki!
 * [PyTorch Data Flow and Interface Diagram](PyTorch-Data-Flow-and-Interface-Diagram)
 * [Multiprocessing Technical Notes](Multiprocessing-Technical-Notes)
 * [Software Architecture for c10](Software-Architecture-for-c10)
-* [PyTorch JIT IR format](PyTorch-IR)
+* [PyTorch JIT IR format](PyTorch-IR) (slightly out of date now)
 
 ## Workflow docs
 
