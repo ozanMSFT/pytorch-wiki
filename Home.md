@@ -3,6 +3,7 @@ Welcome to the PyTorch developer's wiki!
 ## Users docs
 
 * [Release notes](https://github.com/pytorch/pytorch/releases)
+* [Breaking Changes from Variable and Tensor merge](Breaking-Changes-from-Variable-and-Tensor-merge) (from 0.4 release)
 
 ## Developer docs
 
