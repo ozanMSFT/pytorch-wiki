@@ -1,17 +1,17 @@
 Welcome to the PyTorch developer's wiki!
 
-# Users docs
+## Users docs
 
 * [Release notes](https://github.com/pytorch/pytorch/releases)
 
-# Developer docs
+## Developer docs
 
 * [PyTorch Data Flow and Interface Diagram](PyTorch-Data-Flow-and-Interface-Diagram)
 * [Some Technical notes are here](Technical-Notes)
 * [Software Architecture for c10](Software-Architecture-for-c10)
 * [PyTorch JIT IR format](PyTorch-IR)
 
-# Workflow
+## Workflow docs
 
 * [Bot commands](Bot-commands)
 * [Maintainer notes](Maintainer-notes)
