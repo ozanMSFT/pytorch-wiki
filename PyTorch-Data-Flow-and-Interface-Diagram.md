@@ -4,7 +4,7 @@ This diagram illustrates potential dataflows of an AI application written PyTorc
 
 Since PyTorch codebase also includes the Caffe2 library, interactions with this library are illustrated as well. There is ongoing merge going between the two libraries, with goal of sharing code and exposing benefits of both through PyTorch. We recommend that new users rely only on the PyTorch interfaces (near the top of the diagram), as these will the supported APIs going forward.
 
-# PyTorch
+## PyTorch
 
 In PyTorch, model development can be done in one Python file that is first used for prototyping, and later augmented with TorchScript tags or traced for optimization. Inference can also be done directly on trained data, or later on in C++ as described under “C++ Inference”. 
 
@@ -28,7 +28,7 @@ Here is the description of related steps and components as seen on the diagram:
 
 * **Torch C++ Front End Model Creation and Tensors** - You can create models directly through C++ Front End, by including torch.h and using its classes such as torch::nn::Module, torch::optim::SGD, etc; you can also use the tensor library directly by including <ATen/Aten.h>. This is described in https://pytorch.org/cppdocs/frontend.html and https://pytorch.org/cppdocs/.
 
-# Caffe2
+## Caffe2
 
 Caffe2 (https://caffe2.ai/) is a separate ML library that work by building an op graph. Some of its functionality is currently being merged into PyTorch, so we are describing it here in case you use it to interface with older code.
 
@@ -50,7 +50,7 @@ Caffe2 (https://caffe2.ai/) is a separate ML library that work by building an op
 
 * **Caffe2 C++ Inference** - Inference runs the net, typically getting in a tensor map of inputs (labeled by name) and producing tensor output. Net is often split into init_net, which is ran once, and predict_net, ran on every request. caffe2::Predictor or similar helper classes can be used to manager this process.
  
-# ONNX
+## ONNX
 
 ONNX stands for “Open neural network exchange format” (https://onnx.ai/) used for saving models; it is developed in collaboration with Microsoft, AWS and other partners. The .onnx format supports a subset of operators from PyTorch / Caffe2, and can be used to export PyTorch models for execution in Caffe2.
 
