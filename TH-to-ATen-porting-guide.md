@@ -6,6 +6,18 @@ You're here because you are working on a task involving porting legacy TH code i
 
 * **Check that the code is live.** Some functions in THNN are dead. An easy check is to make sure the function shows up in the documentation (temporal = 1d, spatial = 2d, volumetric = 3d).
 
+## The general recipe
+
+Let us take `max_unpool1d` as an example.  max_unpool1d, max_unpool2d, and max_unpool3d are neural network functions that are currently implemented in our legacy THNN (CPU) / THCUNN (CUDA) libraries.  It is generally better if these live in our new library ATen, since it is more feature complete and reduces cognitive overhead. Here is the documentation for one of these functions: https://pytorch.org/docs/master/nn.html?highlight=adaptive#torch.nn.MaxUnpool1d You can find how the function is binded to ATen in nn.yaml (https://github.com/pytorch/pytorch/blob/b30c803662d4c980588b087beebf98982b3b653c/aten/src/ATen/nn.yaml#L185-L195) and how its frontend API is defined in native_functions.yaml (https://github.com/pytorch/pytorch/blob/b30c803662d4c980588b087beebf98982b3b653c/aten/src/ATen/native/native_functions.yaml#L3334-L3356).  
+
+The goal here is to remove the entry in nn.yaml, so the implementation is done complete in ATen.  There are a few reasonable steps you could take to do this (these could all be separate PRs):
+* Implement a CPU-only replacement.  You can still dispatch to THCUNN for the CUDA implementation by specifying backend-specific dispatch in native_functions.yaml (search for "dispatch:" for examples).  The implementation of RoiPooling (https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/RoiPooling.cpp) can give you some inspiration here.
+* Implement a CUDA-only replacement.  As before, the CUDA implementation of RoiPooling (https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/cuda/RoiPooling.cu) can give you some inspiration.
+* Implement a CPU-only replacement for the backwards functions (these are suffixed with _backward and _backward_out).
+* Implement a CUDA-only replacement for the backwards functions
+
+NOTE: no new tests should have to be written.  If you want to test manually, run "python test/test_nn.py" and look for tests related to max unpooling, but the PR will run all the tests for you in any case. 
+
 ## Good PRs to refer to
 
 A diff is worth a thousand words. Here are some existing ports which you can use to get some basic orientation:
