@@ -4,7 +4,7 @@
 @pytorchbot retest this please
 ```
 
-(WARNING: currently broken) This will trigger a rerun of tests on a PR
+This will trigger a rerun of failed tests on a PR. (WARNING: Currently this triggers rerun of ALL Jenkins tests, not just failed ones.)
 
 ```
 @pytorchbot rebase this please
