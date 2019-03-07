@@ -13,6 +13,7 @@ Welcome to the PyTorch developer's wiki!
 * [Software Architecture for c10](Software-Architecture-for-c10)
 * [PyTorch JIT IR format](PyTorch-IR) (slightly out of date now)
 * [TH to ATen porting guide](TH-to-ATen-porting-guide)
+* [Writing Python in C++ (a manifesto)](Writing-Python-in-cpp-(a-manifesto))
 
 ## Workflow docs
 
