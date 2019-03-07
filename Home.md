@@ -4,6 +4,7 @@ Welcome to the PyTorch developer's wiki!
 
 * [Release notes](https://github.com/pytorch/pytorch/releases)
 * [Breaking Changes from Variable and Tensor merge](Breaking-Changes-from-Variable-and-Tensor-merge) (from 0.4 release)
+* [PyTorch 1.0 Tensor API changes](PyTorch-1.0-Tensor-API-changes) (from 1.0 release, plus some stuff on master)
 
 ## Developer docs
 
