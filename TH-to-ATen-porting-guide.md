@@ -1,5 +1,3 @@
-# TH to ATen porting guide
-
 You're here because you are working on a task involving porting legacy TH code into ATen. This document provides some useful resources for going about doing ports.
 
 ## Preliminaries
