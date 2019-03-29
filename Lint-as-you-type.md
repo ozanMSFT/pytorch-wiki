@@ -33,7 +33,9 @@ ALE populates the vim “quickfix” list, so you can move between errors using 
 
 Note that this will globally turn on flake8 for all Python files you edit in vim. If you want to work on other Python projects, you will want to make sure these variables only apply when you edit files inside PyTorch. See "Appendix: Per-directory configuration in Vim" for more guidance about how to set this up.
 
+## Lint on commit
 
+See https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#pre-commit-tidylinting-hook
 
 
 
