@@ -10,7 +10,7 @@ This will trigger a rerun of failed tests on a PR. (WARNING: Currently this trig
 @pytorchbot rebase this please
 ```
 
-Requests pytorchbot to come and merge the PR with master. This causes tests to rerun, which is helpful if you need to take a fix from master.
+Requests pytorchbot to come and merge the PR with master. This causes tests to rerun, which is helpful if you need to take a fix from master.  **WARNING: This does NOT work with ghstack diffs. Rebase those locally.**
 
 ## Commands available to maintainers only
 
