@@ -152,3 +152,14 @@ General guidance: maybe someone has ported something similar before! You can use
 
 * `#pragma omp`. This parallelizes CPU loops, with a huge impact on performance. Don't forget to preserve these when you move loops over!
 
+## Caveats for [native_functions.yaml](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/native_functions.yaml) 
+
+* The argument order in [native_functions.yaml](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/native_functions.yaml) does not match the order in [NativeFunctions.h](https://github.com/pytorch/pytorch/blob/master/torch/include/ATen/NativeFunctions.h). Example:
+
+    1) Signature:
+         `adaptive_max_pool2d(Tensor self, int[2] output_size, *, Tensor(a!) out, Tensor(b!) indices) -> (Tensor(a!), Tensor(b!))`
+
+    2) Function prototype:
+         `std::tuple<Tensor &,Tensor &> adaptive_max_pool2d_out_cpu(Tensor & out, Tensor & indices, const Tensor & self, IntArrayRef output_size);`
+
+ * Argument names matter, the convention is to use `out` for output arguments. See: https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/README.md)
