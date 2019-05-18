@@ -83,7 +83,7 @@ class Trainer {
 
 As you can see from the question marks, there are immediate problems. What is the “type” of an untyped bag of arguments? What exactly is the type of forward on model_? How did we know that it was going to return exactly two tensors as outputs? Surely not all Modules behave like that? And what if you're going to subclass Trainer?
 
-We could endlessly litigate this situation every time it comes up, or we can appeal to the principle of *writing Python in C++* and accept that a *dynamic type* solves are problem:
+We could endlessly litigate this situation every time it comes up, or we can appeal to the principle of *writing Python in C++* and accept that a *dynamic type* solves our problem:
 
 ```
 class Trainer {
