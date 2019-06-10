@@ -2,7 +2,7 @@ You're here because you are working on a task involving porting legacy TH code i
 
 ## Preliminaries
 
-* **Check that the code is live.** Some functions in THNN are dead. An easy check is to make sure the function shows up in the documentation (temporal = 1d, spatial = 2d, volumetric = 3d).
+* **Check that the code is live.** Some functions in THNN are dead. An easy check is to make sure the function shows up in the documentation (temporal = 1d, spatial = 2d, volumetric = 3d).  A more thorough check is to stick a purposeful exception in the kernel in question, and then push your change to a PR to let CI run on it. If CI is all green even after you broke the code, it's a pretty strong indication it's dead.
 
 ## The general recipe
 
