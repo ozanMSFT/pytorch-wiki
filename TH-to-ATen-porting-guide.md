@@ -122,10 +122,6 @@ General guidance: maybe someone has ported something similar before! You can use
 * The `Acctype` template type can be translate from `scalar_t` by `at::acc_type<scalar_t, /*is_cuda=*/[true, false]>.`
 * `THCCeilDiv(m, n)` ==> `(m + n - 1) / n # ceiling division.`
 
-## Things that are important to preserve
-
-* `#pragma omp`. This parallelizes CPU loops, with a huge impact on performance. Don't forget to preserve these when you move loops over!
-
 ## Caveats for `native_functions.yaml`
 
 * The argument order in [native_functions.yaml](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/native_functions.yaml) does not match the order in the generated file `torch/include/ATen/NativeFunctions.h`. Example:
@@ -137,3 +133,54 @@ General guidance: maybe someone has ported something similar before! You can use
          `std::tuple<Tensor &,Tensor &> adaptive_max_pool2d_out_cpu(Tensor & out, Tensor & indices, const Tensor & self, IntArrayRef output_size);`
 
  * Argument names matter, the convention is to use `out` for output arguments. See: https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/README.md
+
+## What's the deal buffers and forward/non-forward functions?
+
+The way forward and non-forward in THNN bindings works is that some THNN functions take extra "buffers", which are scratch space used by the kernels and then reused by the backwards. `_thnn_conv_transpose2d` is an example of a function that has buffers: if you look at its nn.yaml declaration it says:
+
+```
+- name: _thnn_conv_transpose2d(Tensor self, Tensor weight, IntArrayRef[2] kernel_size, Tensor? bias={}, IntArrayRef[2] stride=1, IntArrayRef[2] padding=0, IntArrayRef[2] output_padding=0, IntArrayRef[2] dilation=1)
+  cname: SpatialFullDilatedConvolution
+  buffers: [columns, ones]
+```
+
+That is the "publicly visible" function signature. If you, however, compare the C++ signatures of the forward and non-forward variants (I picked these out of `TypeExtendedInterface.h`, a generated file), you'll see:
+
+```
+  virtual std::tuple<Tensor,Tensor,Tensor> _thnn_conv_transpose2d_forward(const Tensor & self, const Tensor & weight, IntArrayRef kernel_size, const Tensor & bias, IntArrayRef stride, IntArrayRef padding, IntArrayRef output_padding, IntArrayRef dilation) const = 0;
+  virtual Tensor thnn_conv_transpose2d(const Tensor & self, const Tensor & weight, IntArrayRef kernel_size, const Tensor & bias, IntArrayRef stride, IntArrayRef padding, IntArrayRef output_padding, IntArrayRef dilation) const = 0;
+```
+
+The forward version returns three Tensors; the first is the normal result, but the latter two are the columns and ones buffers. `thnn_conv_transpose2d` wraps `_forward` so that only the result is returned. In derivatives.yaml, we only define a derivative on the `_forward` variant (and in fact, we must, because the backwards formula requires the columns/ones buffer).
+
+If we treat the kernel as a black box, the discussion stops here.  But what do ones and columns mean, really? It turns out, we don't *really* rely on the previous data in an interesting way, these buffers are just scratch space used by the kernels. Here is the initialization of `columns` in `SpatialDilatedConvolution_accGradParameters` which dominates all uses of `columns`:
+
+```
+      // Extract columns:
+      THNN_(im2col)(
+        input_n->data<scalar_t>(),
+        nInputPlane, inputHeight, inputWidth,
+        outputHeight, outputWidth,
+        kH, kW, padH, padW, dH, dW,
+        dilationH, dilationW,
+        columns->data<scalar_t>()
+      );
+```
+
+And here is the (possibly dominating) initialization of `ones`:
+
+```
+      // Do GEMV (note: this is a bit confusing because gemv assumes column-major matrices)
+      // Define a buffer of ones, for bias accumulation
+      if (ones->dim() != 2 || ones->size(0)*ones->size(1) < outputHeight*outputWidth) {
+        // Resize plane and fill with ones...
+        THTensor_(resize2d)(ones, outputHeight, outputWidth);
+        THTensor_(fill)(ones, 1);
+      }
+```
+
+The passing around of columns and ones might seem a bit strange. Why go through all that trouble, just to share these buffers?  To answer this question, you need to know a little bit of history about LuaTorch, from whence these kernels come. In LuaTorch, we didn't have a CUDA caching allocator; memory allocations were very expensive. To amortize the cost of allocating temporary buffers, LuaTorch would frequently do an allocation once in forwards, and keep that memory around to reuse in backwards.
+
+This consideration is no longer an issue in PyTorch, since we have a caching allocator, which means that allocating memory on the fly is cheap. So in an ideal world, we wouldn't have these columns/ones buffers at all, in which case you also don't need the forward or non-forward variants either.
+
+In any case, if this is making your head hurt, I recommend doing a slavish first, and then refactoring the code to remove the buffers afterwards.
