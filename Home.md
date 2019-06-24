@@ -21,3 +21,4 @@ Welcome to the PyTorch developer's wiki!
 * [Maintainer notes](Maintainer-notes)
 * [Code review values](Code-review-values)
 * [Lint as you type](Lint-as-you-type)
+* [Pull request review etiquette](Pull-request-review-etiquette)
