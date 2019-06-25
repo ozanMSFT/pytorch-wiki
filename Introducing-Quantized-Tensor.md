@@ -1,4 +1,3 @@
-# Introducing Quantized Tensor
 TLDR: Quantized Tensor is here. In this note I’ll introduce some core concepts for quantized Tensor and list the current user facing API in Python. This means now you can play with the quantized Tensor in PyTorch, write quantized operators and quantized Modules. Support for developing full quantized models either through post training quantization or quantization aware training will come soon.
 
 ## What is a Quantized Tensor?
