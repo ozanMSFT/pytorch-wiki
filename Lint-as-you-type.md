@@ -9,7 +9,7 @@ If you work at Facebook; check out [this page](https://our.internmc.facebook.com
 At the high level, we need to install flake8 with all of the plugins as expected by CI, and then configure your editor to use it.  The correct instructions for how to replicate CI flake8 canonically live in https://github.com/pytorch/pytorch/blob/master/.travis.yml; as of March 27, you can install a correctly configured flake8 in your environment with:
 
 ```
-pip install flake8 flake8-mypy flake8-comprehensions flake8-pyi mccabe pycodestyle pyflakes git+https://github.com/PyCQA/flake8-bugbear.git@d9444713a51a9fb6ee8cd2d88fca85e9ff0c2d58
+pip install flake8 flake8-mypy flake8-bugbear flake8-comprehensions flake8-pyi mccabe pycodestyle pyflakes
 ```
 
 These plugins require Python 3. If you use pip3 to install, invoke flake8 with flake8-3.
