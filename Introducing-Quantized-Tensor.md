@@ -14,7 +14,7 @@ I'll use Python API as an example, C++ APIs are similar.
 
 **CREATING A QUANTIZED TENSOR**
 
-```
+```python
 Right now we support three ways of creating a quantized Tensor:
 # 1. Get a quantized Tensor by quantizing unquantized float Tensors
 r = torch.ones([10], dtype=torch.float)
@@ -48,7 +48,7 @@ With current API, we'll have to specialize the function for each quantization sc
 
 **OPERATIONS ON QUANTIZED TENSOR**
 
-```
+```python
 # Dequantize
 r = q.dequantize()
 
@@ -83,7 +83,7 @@ import tempfileNamedTemporaryFile() as f:
 ```
 
 **INSPECTING A QUANTIZED TENSOR**
-```
+```python
 # Check size of Tensor
 q.numel(), q.sizes(), ...
 
