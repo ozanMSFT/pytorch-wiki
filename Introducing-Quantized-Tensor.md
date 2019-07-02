@@ -14,8 +14,10 @@ I'll use Python API as an example, C++ APIs are similar.
 
 **CREATING A QUANTIZED TENSOR**
 
-```python
+
 Right now we support three ways of creating a quantized Tensor:
+
+```python
 # 1. Get a quantized Tensor by quantizing unquantized float Tensors
 r = torch.ones([10], dtype=torch.float)
 scale, zero_point = 1, 2
