@@ -1,5 +1,3 @@
-# Life of A Tensor
-
 In this section, we look at the timeline of simple tensor. 
 The content is extracted from a live presentation.
 It reflects the PyTorch callstacks as a snapshot on July 10, 2019. 
