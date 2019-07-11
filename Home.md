@@ -15,6 +15,7 @@ Welcome to the PyTorch developer's wiki!
 * [TH to ATen porting guide](TH-to-ATen-porting-guide)
 * [Writing Python in C++ (a manifesto)](Writing-Python-in-cpp-(a-manifesto))
 * [Introducing Quantized Tensor](Introducing-Quantized-Tensor)
+* [Life of a Tensor](Life-of-A-Tensor)
 
 ## Workflow docs
 
