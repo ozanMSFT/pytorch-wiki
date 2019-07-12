@@ -16,13 +16,15 @@ As the first step, we are naively introducing `TensorIterator` to replace `CPU_t
 
 [[images/tensor_iterator/change0.png]] 
 
+**Update: `binary_kernel` recently was replaced by more universal `cpu_kernel`, they have exact same API.**
+
 code: https://github.com/pytorch/pytorch/pull/21025/commits/c5593192e1f21dd5eb1062dbacfdf7431ab1d47f
 
 In compare to TH_APPLY_* and CPU_tensor_apply* and  solutions, TensorIterator usage is separated by two steps.
 1) Defining iterator configuration with the TensorIterator::Builder. Under the hood, builder calculates tensors shapes and types to find the most performant way to traverse them (https://github.com/pytorch/pytorch/blob/dee11a92c1f1c423020b965837432924289e0417/aten/src/ATen/native/TensorIterator.h#L285)
 2) Loop implementation.
-There are multiple different kernels in Loops.h depending on the number of inputs (binary_kernel; unary_kernel), the ability to do parallel calculations, vectorized version availability (binary_kernel_vec), type of operation (vectorized_inner_reduction).
-In our case, we have one output and two inputs, in this type of scenario we can use binary_kernel.
+There are multiple different kernels in Loops.h depending on the number of inputs, they dispatch automatically by `cpu_kernel`, the ability to do parallel calculations, vectorized version availability (cpu_kernel_vec), type of operation (vectorized_inner_reduction).
+In our case, we have one output and two inputs, in this type of scenario we can use cpu_kernel.
 TensorIterator automatically picks the best way to traverse tensors (such as taking into account contiguous layout) as well as using parallelization for bigger tensors.
 
 As a result, we have a 24x performance gain.
@@ -119,7 +121,7 @@ In [*4*]: timeit torch.lerp(x,y,0.5)
 440 µs ± 2.13 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
-## Vectorization with the binary_kernel_vec
+## Vectorization with the cpu_kernel_vec
 
 In many cases, we can also benefit from the explicit vectorization (provided by Vec256 library). TensorIterator provides the easy way to do it by using _vec loops.
 
@@ -127,4 +129,4 @@ In many cases, we can also benefit from the explicit vectorization (provided by 
 
 code: https://github.com/pytorch/pytorch/pull/21025/commits/83a23e745e839e8db81cf58ee00a5755d7332a43
 
-We are doing so by replacing the binary_kernel with the binary_kernel_vec. At this particular case, weight_val check was omitted (to simplify example code), and performance benchmark show no significant gain.
+We are doing so by replacing the cpu_kernel with the cpu_kernel_vec. At this particular case, weight_val check was omitted (to simplify example code), and performance benchmark show no significant gain.
