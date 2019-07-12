@@ -16,6 +16,7 @@ Welcome to the PyTorch developer's wiki!
 * [Writing Python in C++ (a manifesto)](Writing-Python-in-cpp-(a-manifesto))
 * [Introducing Quantized Tensor](Introducing-Quantized-Tensor)
 * [Life of a Tensor](Life-of-A-Tensor)
+* [How to use `TensorIterator`](How-to-use-TensorIterator)
 
 ## Workflow docs
 
