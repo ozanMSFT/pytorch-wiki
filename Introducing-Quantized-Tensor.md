@@ -108,15 +108,13 @@ q.item()
 
 # printing
 print(q)
-# tensor(is_quantized=True, qscheme=per_tensor_affine,
-# float_values=tensor([1.]),
-# int_repr=tensor([3]), size=(1,), dtype=torch.qint8)
+# tensor(([1.]), size=(1,), dtype=torch.qint8, 
+#     qscheme=per_tensor_affine, scale=1.0, zero_point=0)
 
 # indexing
 print(q[0]) # q[0] is a quantized Tensor with one value
-# tensor(is_quantized=True, qscheme=per_tensor_affine,
-# float_values=tensor([1.]),
-# int_repr=tensor([3]), size=(1,), dtype=torch.qint8)
+# tensor([1.]), size=(1,), dtype=torch.qint8,
+#     qscheme=per_tensor_affine, scale=1.0, zero_point=0)
 ```
 
 For more up to date examples about Tensor API please refer to tests in ﻿https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py﻿
