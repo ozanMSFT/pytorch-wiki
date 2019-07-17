@@ -130,8 +130,8 @@ We also have quantized modules that wraps these kernel implementations which liv
 - Native functions for Quantized Tensor: ﻿https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized﻿
 - Quantized CPU ops: ﻿https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized/cpu﻿
 Tests: ﻿https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py﻿
-- Quantized Modules:﻿ ﻿﻿https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules﻿ (WIP)
-- Quantization Utilities: ﻿https://github.com/pytorch/pytorch/tree/master/torch/nn/quantization ﻿(WIP) 
+- Quantized Modules:﻿ ﻿﻿https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules﻿
+- Quantization Utilities: ﻿https://github.com/pytorch/pytorch/tree/master/torch/nn/quantization
 ## What's Next
 - Exposing Quantizer in Python Frontend
   - Right now we don't have a common API for creating a quantized Tensor for different quantization schemes, instead we have a set of APIs we need to write for each quantization scheme. This feature needs some infra support from the JIT team, we'll implement it when that is ready.
