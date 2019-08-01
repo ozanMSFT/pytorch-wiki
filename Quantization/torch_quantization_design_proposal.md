@@ -1,4 +1,3 @@
-# PyTorch Eager mode quantization design document
 
 We plan to support quantization in pytorch  - enabling fast inference and reduced memory requirements.  Quantization in PyTorch supports 8 bit integer tensors that can save 75% of the model size and memory bandwidth. We are rolling out quantization support for x86 CPUs and plan to expand to support a broader range of platforms, including mobile in later releases.  We will start with support for quantization in eager mode, with enhanced integration with jit being planned for future releases.
 
@@ -14,15 +13,15 @@ Users have the option to quantize their models using three methods:
 
 ### Quantized representation
 
-The quantization scheme that is currently supported is **per tensor**** asymmetric linear quantization**. That means that all the values within the tensor are scaled the same way and that the minimum and the maximum of the input data is mapped linearly to the minimum and the maximum of the quantized data type such that zero is represented with no quantization error. 
+The quantization scheme that is currently supported is **per tensor**** asymmetric linear quantization**, which means that all the values within the tensor are scaled the same way and that the minimum and the maximum of the input data is mapped linearly to the minimum and the maximum of the quantized data type such that zero is represented with no quantization error. We plan to add support for **per channel** linear quantization for weights for specific modules going forward.
 
 The mapping is performed by converting the floating point tensors using
 [Image: math-image-quantization.png]
 
 Note that for operators, we restrict support to:
 
-1. 8 bit, symmetric quantization for weights (zero_point = 0, data_type = qint8)
-2. 8 bit, asymmetric quantization for activations (data_type = quint8)
+1. 8 bit weights (data_type = qint8)
+2. 8 bit activations (data_type = quint8)
 3. 32 bit, symmetric quantization for bias (zero_point = 0, data_type = qint32)
 
 ### Quantized Tensor
@@ -58,6 +57,8 @@ For a more comprehensive introduction to quantized Tensor please refer to the [G
 
 Quantized tensors support a subset of torch Tensor operations, with support for more operations being added. Quantized tensor support is being added to existing methods in an API compatible manner. For example, torch.max() would work for both quantized and float tensors.  Quantized tensors are supported by the following operations:
 
+<center>
+
 |Tensor operations	|
 |---	|
 |torch.min	|
@@ -70,6 +71,8 @@ Quantized tensors support a subset of torch Tensor operations, with support for 
 |permute	|
 |contiguous	|
 |view	|
+
+</center>
 
 ```
 # Example tensor operations
@@ -95,7 +98,7 @@ torch.add(a,b, out = c)
 c = torch.ops.quantized.add(a, b, scale = 0.5, zero-point = 32)
 ```
 
-### Quantized ModuleS 
+### Quantized Modules 
 
 **TORCH.NN.QUANTIZED**
 The primary API for users wanting to use quantized computation would be torch.nn.quantized.
@@ -196,7 +199,8 @@ We introduce torch.quantization which consists of tools for eager mode quantizat
 
  This name-space contains utilities for simplifying eager mode quantization. The figure below provides an overview:
 
-[Image: ../images/torch-quantization-block-diagram.jpg]
+![torch quantization](https://github.com/pytorch/pytorch/wiki/images/torch-quantization-block-diagram.jpg)
+
 Model quantization in eager mode consists of the following steps:
 
 1. Modify model definition (init and forward methods):
@@ -231,6 +235,7 @@ Model quantization in eager mode consists of the following steps:
 We provide both single line APIs for convenience and more modular APIs for full user control in all cases.  To simplify quantization we provide reference implementations of both Observers and FakeQuantization modules.
 
 [Observers](https://github.com/pytorch/pytorch/blob/master/torch/quantization/observer.py): Modules that do not modify activations, but collect statistics.  Have an API that provides quantization parameters for the tensor being observed.
+
 [FakeQuantizationModule](https://github.com/pytorch/pytorch/blob/master/torch/quantization/fake_quantize.py): Module that modifies a float tensor to model quantization and returns a float tensor with the same size as the input.  Since fake quantization is used in training, this module also supports back propagation. In addition, FakeQuant modules also have an API to provide the quantization parameters of the tensor being quantized.
 
 Note that one can customize both observers and fake-quant modules to easily experiment with different quantization schemes.
