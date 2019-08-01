@@ -16,7 +16,9 @@ Users have the option to quantize their models using three methods:
 The quantization scheme that is currently supported is **per tensor**** asymmetric linear quantization**, which means that all the values within the tensor are scaled the same way and that the minimum and the maximum of the input data is mapped linearly to the minimum and the maximum of the quantized data type such that zero is represented with no quantization error. We plan to add support for **per channel** linear quantization for weights for specific modules going forward.
 
 The mapping is performed by converting the floating point tensors using
-[Image: math-image-quantization.png]
+
+<img src="https://github.com/pytorch/pytorch/wiki/images/math-quantizer-equation.png" alt="quantizer equation" width="400"/>
+
 
 Note that for operators, we restrict support to:
 
@@ -53,6 +55,7 @@ Quantized tensor (bytes) 10353
 ```
 
 For a more comprehensive introduction to quantized Tensor please refer to the [GitHub wiki](https://github.com/pytorch/pytorch/wiki/Introducing-Quantized-Tensor).
+
 **Tensor operations:**
 
 Quantized tensors support a subset of torch Tensor operations, with support for more operations being added. Quantized tensor support is being added to existing methods in an API compatible manner. For example, torch.max() would work for both quantized and float tensors.  Quantized tensors are supported by the following operations:
@@ -101,7 +104,7 @@ c = torch.ops.quantized.add(a, b, scale = 0.5, zero-point = 32)
 ### Quantized Modules 
 
 **TORCH.NN.QUANTIZED**
-The primary API for users wanting to use quantized computation would be torch.nn.quantized.
+
 We are developing torch.nn.quantized as a namespace for quantized modules. Quantized modules closely parallel their floating point counterparts and follow the following rules:
 
 1. Identical module instantiation API
@@ -162,11 +165,10 @@ Quantized functionals supported are:
 ### torch.nn.qat
 
 Quantization aware training models quantization during training of both weights and activations. This is done by inserting fake quantization operations. For modules that do not have weights, inserting fake-quant operation corresponds to applying a fakequant module at the output of the corresponding floating point module. However, for modules that have weights, we are developing torch.nn.qat to provide quantization aware training ready modules:
+We are currently adding support for:
 
-
-**torch.nn.qat**
- Conv2d
- Linear
+ * Conv2d
+ * Linear
 
 ### 
 
@@ -175,7 +177,7 @@ Quantization aware training models quantization during training of both weights 
  Since quantization is sensitive to operator fusion, i.e: we can get better quantization accuracy if we quantize activations after operators are fused, we also support fused operations as modules under torch.nn._intrinsic name-space. 
 Note that this name-space is experimental and modules here will be replaced as jit integration occurs.
 
-torch.nn._intrinsic.quantized:
+**torch.nn._intrinsic.quantized**
 
 *  Conv2dRelu
 *  LinearRelu
@@ -183,7 +185,7 @@ torch.nn._intrinsic.quantized:
 
 For quantization aware training, it is non-trivial to combine batch norm and conv layers and we provide intrinsic modules for this purpose, in addition to providing intrinsic modules that match _intrinsic.quantized modules:
 
-torch.nn._intrinsic.qat
+**torch.nn._intrinsic.qat**
 
 *  ConvBn2d
 *  ConvBnRelu2d
@@ -198,8 +200,7 @@ We introduce torch.quantization which consists of tools for eager mode quantizat
 2. Allow for easy customization of quantization. 
 
  This name-space contains utilities for simplifying eager mode quantization. The figure below provides an overview:
-
-![torch quantization](https://github.com/pytorch/pytorch/wiki/images/torch-quantization-block-diagram.jpg)
+<img src="https://github.com/pytorch/pytorch/wiki/images/torch-quantization-block-diagram.jpg" alt="torch quantization" width="1000"/>
 
 Model quantization in eager mode consists of the following steps:
 
