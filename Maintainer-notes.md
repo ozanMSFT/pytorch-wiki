@@ -1,5 +1,3 @@
-**This mechanism is currently under beta testing. Right now, it's just @ezyang keeping tabs on the notifications and merging.**
-
 Historically, we were unable to give direct merge access to non-Facebook employees, because every landed pull request also updates our copy of PyTorch in Facebook (which, understandably, requires you to be a Facebook employee).
 
 Therefore, we are introducing the following alternate mechanism to allow you to merge pull requests: **to merge a pull request, comment on the PR “@pytorchbot merge this please”**. A helpful bookmarklet to make this command for you is: `javascript:(function(){document.getElementById("new_comment_field").value = "@pytorchbot merge this please"; document.getElementsByClassName('js-new-comment-form')[0].submit();})()`
