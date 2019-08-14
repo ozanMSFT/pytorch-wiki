@@ -258,7 +258,9 @@ Quantized modules:
 * Modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
 * Examples/tests:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/test/test_nn_quantized.py](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
 
-Dynamic quantized modules: (In preparation)
+Dynamic quantized modules:
+* Modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/dynamic/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/dynamic/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/dynamic)
+* Examples/tests:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/test/test_nn_quantized.py](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
  
 Quantization 
 * QAT modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/qat/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
