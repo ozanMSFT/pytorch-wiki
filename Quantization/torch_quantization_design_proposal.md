@@ -249,26 +249,26 @@ In the longer term, we are working on closer integration of quantization with ji
 ## Code Location
 
 Quantized tensors and kernels:
-Core Data Structures for Quantized Tensor: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/quantized
-Native functions for Quantized Tensor: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized
-Quantized CPU ops: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized/cpu
-Tests for quantized tensors: [https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py](https://github.com/pytorch/pytorch/blob/master/test/test_torch.py#L2961)
+* Core Data Structures for Quantized Tensor: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/quantized
+* Native functions for Quantized Tensor: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized
+* Quantized CPU ops: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized/cpu
+* Tests for quantized tensors: [https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py](https://github.com/pytorch/pytorch/blob/master/test/test_torch.py#L2961)
 
 Quantized modules:
-modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
-Examples/tests:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/test/test_nn_quantized.py](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
+* Modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
+* Examples/tests:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/test/test_nn_quantized.py](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
 
 Dynamic quantized modules: (In preparation)
  
 Quantization 
-QAT modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/qat/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
-Examples/tests: : [https://github.com/pytorch/pytorch/blob/master/test/test_qat.py](https://github.com/pytorch/pytorch/blob/master/test/test_quantization.py)
+* QAT modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/qat/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
+* Examples/tests: : [https://github.com/pytorch/pytorch/blob/master/test/test_qat.py](https://github.com/pytorch/pytorch/blob/master/test/test_quantization.py)
 
 Intrinsic Modules:
-Floating point intrinsic modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/_intrinsic/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
-Quantized intrinsic modules: [](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/_intrinsic/quantized/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
-intrinsic modules for quantization aware training: [](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/_intrinsic/qat/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
+* Floating point intrinsic modules:[](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/_intrinsic/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
+* Quantized intrinsic modules: [](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/_intrinsic/quantized/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
+* intrinsic modules for quantization aware training: [](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized/modules)[https://github.com/pytorch/pytorch/tree/master/torch/nn/_intrinsic/qat/modules](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantized)
 
 Quantization
-Quantization toolchain: [https://github.com/pytorch/pytorch/tree/master/torch/quantization](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantization)(WIP)
-Examples/tests: https://github.com/pytorch/pytorch/blob/master/test/test_quantization.py
+* Quantization toolchain: [https://github.com/pytorch/pytorch/tree/master/torch/quantization](https://github.com/pytorch/pytorch/tree/master/torch/nn/quantization)(WIP)
+* Examples/tests: https://github.com/pytorch/pytorch/blob/master/test/test_quantization.py
