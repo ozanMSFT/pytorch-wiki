@@ -145,4 +145,5 @@ Tests: ﻿https://github.com/pytorch/pytorch/blob/master/test/test_quantized_ten
   - We will add more quantized operators and modules as we on-boarding more models to use quantization.
 
 ## Related Documents
-Quantization master design doc: ﻿https://github.com/pytorch/pytorch/issues/18318
+- Quantization master design doc: ﻿https://github.com/pytorch/pytorch/issues/18318
+- PyTorch Quantization Design Proposal: https://github.com/pytorch/pytorch/wiki/torch_quantization_design_proposal
