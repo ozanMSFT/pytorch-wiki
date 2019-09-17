@@ -1,41 +1,16 @@
-Decorator `@torchtest.test_all_device_types()` allows to run test multiple times with all available device types.
+PyTorch's test framework lets you write tests that can run on all available device types. These "device generic" tests are a great way to ensure operations run properly no matter what hardware PyTorch is using.
 
-For example:
+To write a device generic test you have to do three things:
 
-```python
-class _TestTorchMixin(torchtest):
+1. Your test should accept two arguments, self and device. The latter will be a string designating a device, like 'cpu,' 'cuda,' or 'xla.' 
+2. Decorate your test as appropriate, possibly using the CPU and CUDA-specific decorators defined in test/common_device_type.py.
+3. Your test should be in a device generic test class, like `TestTorchDeviceType` in test_torch.py, `instantiate_device_type_tests` must be called with this class. The scope passed to `instantiate_device_type_tests` should be `globals()`.
 
-    # .....
-     
-    @torchtest.test_all_device_types()
-    def test_zeros_like(self, device):
-    '''
-       device is str type 'cpu', 'cuda'
-    '''
-        expected = torch.zeros((100, 100,), device=device)
-        # ...
+When the test suite is run it will instantiate a device-specific version of the device generic test class. `TestTorchDeviceType` becomes `TestTorchDeviceTypeCPU` and `TestTorchDeviceTypeCUDA`, for example. Its tests are added to each of these classes and have the device type appended to their name. `test_diagonal`, for example, becomes `test_diagonal_cpu` and `test_diagonal_cuda`, respectively. These tests are called with the appropriate device type string when run.
 
-```
+These tests can be run directly, `python test_torch.py TestTorchDeviceTypeCPU.test_diagonal_cpu`, or filtered using pytest. The command `pytest test_torch.py -k 'test_diagonal'` will run both `test_diagonal_cpu` and `test_diagonal_cuda`. 
 
-Will execute two tests:
-
-```
-test_zeros_like (__main__.TestTorch) ... skipped 'Look at test_zeros_like_cpu, test_zeros_like_cuda results.'
-test_zeros_like_cpu (__main__.TestTorch) ... ok
-test_zeros_like_cuda (__main__.TestTorch) ... ok
-```
-
-It also allows to run each test individually:
-
-```
-$> python test/test_torch.py --verbose -k test_zeros_like_cpu
-test_zeros_like_cpu (__main__.TestTorch) ... ok
-```
-
-Or as a group:
-```
-python test/test_torch.py --verbose -k test_zeros_like
-```
+See `TestTorchDeviceType` in test_torch.py for examples.
 
 Please do not use older methods such as:
 
@@ -102,3 +77,4 @@ Please do not use older methods such as:
 
 	Casting is slower, also it is hard to read such code.
 
+5) Decorator `@torchtest.test_all_device_types()`, which would only instantiate CPU and CUDA variants of a test.
