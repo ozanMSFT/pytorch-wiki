@@ -24,6 +24,7 @@ is translated to
 TestTorchDeviceTypeCPU(TestCase):
 def test_diagonal_cpu(self, device='cpu'):
 ...
+
 TestTorchDeviceTypeCUDA(TestCase):
 def test_diagonal_cuda(self, device='cuda'):
 ...
