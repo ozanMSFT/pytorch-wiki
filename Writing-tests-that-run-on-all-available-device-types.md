@@ -11,7 +11,7 @@ To write a device generic test you have to do three things:
 For example, the following Python
 
 ```python
-TestTorchDeviceType(TestCase):
+class TestTorchDeviceType(TestCase):
 def test_diagonal(self, device):
 ...
 
@@ -21,11 +21,11 @@ instantiate_device_type_tests(TestTorchDeviceType, globals())
 is translated to
 
 ```python
-TestTorchDeviceTypeCPU(TestCase):
+class TestTorchDeviceTypeCPU(TestCase):
 def test_diagonal_cpu(self, device='cpu'):
 ...
 
-TestTorchDeviceTypeCUDA(TestCase):
+class TestTorchDeviceTypeCUDA(TestCase):
 def test_diagonal_cuda(self, device='cuda'):
 ...
 ```
