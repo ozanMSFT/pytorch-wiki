@@ -6,16 +6,14 @@ To write a device generic test you have to do three things:
 
 1. Your test should accept two arguments, self and device. The latter will be a string designating a device, like 'cpu,' 'cuda,' or 'xla.' 
 2. Decorate your test as appropriate, possibly using the CPU and CUDA-specific decorators defined in test/common_device_type.py.
-3. Your test should be in a device generic test class, like `TestTorchDeviceType` in test_torch.py, `instantiate_device_type_tests` must be called with this class. The scope passed to `instantiate_device_type_tests` should be `globals()`.
+3. Your test should be in a device generic test class, like `TestTorchDeviceType` in test_torch.py. 
 
 For example, the following Python
 
 ```python
 class TestTorchDeviceType(TestCase):
   def test_diagonal(self, device):
-...
-
-instantiate_device_type_tests(TestTorchDeviceType, globals())
+    ...
 ```
 
 is translated to
@@ -23,11 +21,11 @@ is translated to
 ```python
 class TestTorchDeviceTypeCPU(TestCase):
   def test_diagonal_cpu(self, device='cpu'):
-...
+    ...
 
 class TestTorchDeviceTypeCUDA(TestCase):
   def test_diagonal_cuda(self, device='cuda'):
-...
+    ...
 ```
 
 These tests can be run directly, `python test_torch.py TestTorchDeviceTypeCPU.test_diagonal_cpu`, or filtered using pytest. The command `pytest test_torch.py -k 'test_diagonal'` will run both `test_diagonal_cpu` and `test_diagonal_cuda`. 
