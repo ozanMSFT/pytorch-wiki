@@ -17,7 +17,7 @@ Welcome to the PyTorch developer's wiki!
 * [Introducing Quantized Tensor](Introducing-Quantized-Tensor)
 * [Life of a Tensor](Life-of-A-Tensor)
 * [How to use `TensorIterator`](How-to-use-TensorIterator)
-* [Writing per device tests](Writing-per-device-tests)
+* [Writing tests that run on all available device types](Writing-tests-that-run-on-all-available-device-types)
 
 ## Workflow docs
 
