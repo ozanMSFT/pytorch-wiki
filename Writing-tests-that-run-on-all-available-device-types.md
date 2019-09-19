@@ -12,7 +12,7 @@ For example, the following Python
 
 ```python
 class TestTorchDeviceType(TestCase):
-def test_diagonal(self, device):
+  def test_diagonal(self, device):
 ...
 
 instantiate_device_type_tests(TestTorchDeviceType, globals())
@@ -22,11 +22,11 @@ is translated to
 
 ```python
 class TestTorchDeviceTypeCPU(TestCase):
-def test_diagonal_cpu(self, device='cpu'):
+  def test_diagonal_cpu(self, device='cpu'):
 ...
 
 class TestTorchDeviceTypeCUDA(TestCase):
-def test_diagonal_cuda(self, device='cuda'):
+  def test_diagonal_cuda(self, device='cuda'):
 ...
 ```
 
