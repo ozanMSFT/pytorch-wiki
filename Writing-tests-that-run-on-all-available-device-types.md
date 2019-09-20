@@ -59,8 +59,8 @@ These tests can be run just like device generic tests without dtypes.
 
 ```python
 @skipCPUIfNoLapack  # Skips CPU variants of the test if LAPACK is not installed
-@skipCPUIfNoMkl     # Skips CPU variants of the test if the MKL is not installed
-@skipCUDAIfNoMagma  # Skips CUDA variants of the test if the MAGMA is not installed
+@skipCPUIfNoMkl     # Skips CPU variants of the test if MKL is not installed
+@skipCUDAIfNoMagma  # Skips CUDA variants of the test if MAGMA is not installed
 @skipCUDAIfRocm     # Skips CUDA variants of the test if ROCm is being used
 @dtypesIfCPU(...)   # Overrides dtypes for CPU test variants
 @dtypesIfCUDA(...)  # Overrides dtypes for CUDA test variants
