@@ -104,7 +104,8 @@ q.q_scale()
 q.q_zero_point()
 
 # get the underlying integer representation of the quantized Tensor
-# int_repr() returns a Tensor of data type uint8_t
+# int_repr() returns a Tensor of the corresponding data type of the quantized data type
+# e.g.for quint8 Tensor it returns a uint8 Tensor while preserving the MemoryFormat when possible
 q.int_repr()
 
 # If a quantized Tensor is a scalar we can print the value:
