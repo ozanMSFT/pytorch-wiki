@@ -135,8 +135,9 @@ We also have quantized modules that wraps these kernel implementations which liv
 ## Code Location
 - [Core Data Structures for Quantized Tensor](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/quantized)
 - [Native Functions for Quantized Tensor](https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized)
-- [Quantized CPU Ops](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/quantized/cpu﻿)
-- [Tests](﻿https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py﻿)
+- [Quantized CPU Ops](https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized/cpu﻿)
+- [Python Tests](﻿https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py)
+- [CPP Tests](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/test/quantized_test.cpp)
 - [Quantized Modules](﻿﻿https://github.com/pytorch/pytorch/blob/master/torch/nn/quantized/modules﻿)
 - [Quantization Utilities](﻿https://github.com/pytorch/pytorch/blob/master/torch/nn/quantization)
 ## What's Next
