@@ -133,13 +133,14 @@ We are also working on quantized operators like quantized QRelu, QAdd, QCat, QLi
 We also have quantized modules that wraps these kernel implementations which live in torch.nn.quantized namespace and will be used in model development. We will provide utility functions to replace torch.nn.Module to torch.nn.quantized.Module but users are free to use them directly as well. We will try to match APIs of quantized module with the its counterpart in torch.nn.Module as much as possible.
 
 ## Code Location
-- [Core Data Structures for Quantized Tensor](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/quantized)
-- [Native Functions for Quantized Tensor](https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized)
-- [Quantized CPU Ops](https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized/cpu﻿)
-- [Python Tests](﻿https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py)
-- [CPP Tests](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/test/quantized_test.cpp)
-- [Quantized Modules](﻿﻿https://github.com/pytorch/pytorch/blob/master/torch/nn/quantized/modules﻿)
-- [Quantization Utilities](﻿https://github.com/pytorch/pytorch/blob/master/torch/nn/quantization)
+- Core Data Structures for Quantized Tensor:https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/quantized
+- Native Functions for Quantized Tensor: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized
+- Quantized CPU Ops: https://github.com/pytorch/pytorch/tree/master/aten/src/ATen/native/quantized/cpu﻿
+- Python Tests: ﻿https://github.com/pytorch/pytorch/blob/master/test/test_quantized_tensor.py
+- CPP Tests: https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/test/quantized_test.cpp
+- Quantized Modules: ﻿﻿https://github.com/pytorch/pytorch/blob/master/torch/nn/quantized/modules﻿
+- Quantization Utilities: ﻿https://github.com/pytorch/pytorch/blob/master/torch/nn/quantization
+
 ## What's Next
 - Exposing Quantizer in Python Frontend
   - Right now we don't have a common API for creating a quantized Tensor for different quantization schemes, instead we have a set of APIs we need to write for each quantization scheme. This feature needs some infra support from the JIT team, we'll implement it when that is ready.
