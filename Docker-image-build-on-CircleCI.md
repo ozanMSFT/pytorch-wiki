@@ -1,5 +1,3 @@
-# Docker image build on CircleCI
-
 For those who used to work with the docker image build process, we’ve migrated docker image build job from Jenkins to CircleCI. 
 
 ## Current config
