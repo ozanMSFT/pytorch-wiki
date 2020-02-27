@@ -44,10 +44,10 @@ testX(self, device, dtype)
 This will instantiate variants of testX for each available device type and each specified dtype...
 
 ```python
-testX_cpu_half(self, 'cpu', torch.half)
-testX_cpu_float(self, 'cpu', torch.float)
-testX_cpu_double(self, 'cpu', torch.double)
-testX_cuda_half(self, 'cuda', torch.half)
+testX_cpu_float16(self, 'cpu', torch.half)
+testX_cpu_float32(self, 'cpu', torch.float)
+testX_cpu_float64(self, 'cpu', torch.double)
+testX_cuda_float16(self, 'cuda', torch.half)
 ...
 ```
 
