@@ -5,6 +5,7 @@ Welcome to the PyTorch developer's wiki!
 * [Release notes](https://github.com/pytorch/pytorch/releases)
 * [Breaking Changes from Variable and Tensor merge](Breaking-Changes-from-Variable-and-Tensor-merge) (from 0.4 release)
 * [Tensor API changes for Caffe2 developers](Tensor-API-changes-for-Caffe2-developers) (from 1.0 release, plus some stuff on master)
+* [Autograd and Fork](Autograd-and-Fork)
 
 ## Developer docs
 
