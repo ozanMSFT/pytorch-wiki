@@ -139,7 +139,7 @@ switch (memory_format) {
   default:
     TORCH_CHECK(
         false,
-        "Unsupported memory format. Supports only ChannelsLast, Contiguous");
+        "Unsupported memory format. Supports only ChannelsLast");
 }
 // ...
 ```
