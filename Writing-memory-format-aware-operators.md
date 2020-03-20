@@ -61,7 +61,7 @@ Keeping the memory format of the output is essential. However, some performant a
 ```cpp
 Tensor self_or_new_memory_format(Tensor& self, MemoryFormat memory_format) {
     if (self.is_contiguous(memory_format)) {
-    return self;
+        return self;
     }
     return at::empty_like(self, self.options(), memory_format);
 }
