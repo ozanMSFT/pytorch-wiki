@@ -19,6 +19,7 @@ Welcome to the PyTorch developer's wiki!
 * [Life of a Tensor](Life-of-A-Tensor)
 * [How to use `TensorIterator`](How-to-use-TensorIterator)
 * [Writing tests that run on all available device types](Writing-tests-that-run-on-all-available-device-types)
+* [Writing memory format aware operators](Writing-memory-format-aware-operators)
 
 ## Workflow docs
 
