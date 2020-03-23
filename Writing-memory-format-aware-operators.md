@@ -45,7 +45,7 @@ switch (memory_format) {
 // ...
 ```
 
-Important to learn that `suggest_memory_format` is not similar to `input_tensor.is_contiguous(...)`, see (TODO add link)
+Important to learn that `suggest_memory_format` is not similar to `input_tensor.is_contiguous(...)`, see [function comments](https://github.com/pytorch/pytorch/pull/35165/files).
 
 More memory format handling required when you are writing `_out` operator implementation.
 
