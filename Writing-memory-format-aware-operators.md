@@ -123,7 +123,7 @@ if (!output.is_same(temporary_output_tensor)) {
 // ...
 ```
 
-Or you can do hard exit with unsupported memory format message.
+Or you can do hard exit with unsupported memory format message (this is least preferred way, and we consider such operators incomplete).
 
 ```cpp
 // ...
