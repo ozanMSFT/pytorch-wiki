@@ -23,6 +23,7 @@
 * `char`
 * `clone`
 * `contiguous`
+* `copy_`
 * `digamma`
 * `digamma_`
 * `div`
@@ -38,6 +39,7 @@
 * `floor`
 * `floor_`
 * `full_like`
+* `gt`
 * `half`
 * `int`
 * `isnan`
@@ -50,8 +52,10 @@
 * `log2`
 * `log2_`
 * `long`
+* `lt`
 * `mul`
 * `mul_`
+* `ne`
 * `neg`
 * `neg_`
 * `ones_like`
@@ -60,6 +64,8 @@
 * `randint_like`
 * `rand_like`
 * `randn_like`
+* `relu`
+* `relu_`
 * `resize_`
 * `resize_as_`
 * `round`
@@ -81,10 +87,9 @@
 * `trunc`
 * `trunc_`
 * `type`
+* `zero_`
 * `zeros_like`
-
-
-## GPU operators 
+## GPU operators
 * `abs`
 * `abs_`
 * `acos`
@@ -112,6 +117,7 @@
 * `contiguous`
 * `conv2d`
 * `conv_transpose2d`
+* `copy_`
 * `cpu`
 * `cuda`
 * `cudnn_convolution`
@@ -132,6 +138,7 @@
 * `floor`
 * `floor_`
 * `full_like`
+* `gt`
 * `half`
 * `int`
 * `isnan`
@@ -144,9 +151,11 @@
 * `log2`
 * `log2_`
 * `long`
+* `lt`
 * `max_pool2d`
 * `mul`
 * `mul_`
+* `ne`
 * `neg`
 * `neg_`
 * `ones_like`
@@ -155,6 +164,8 @@
 * `randint_like`
 * `rand_like`
 * `randn_like`
+* `relu`
+* `relu_`
 * `requires_grad_`
 * `resize_`
 * `resize_as_`
@@ -177,4 +188,5 @@
 * `trunc`
 * `trunc_`
 * `type`
+* `zero_`
 * `zeros_like`
