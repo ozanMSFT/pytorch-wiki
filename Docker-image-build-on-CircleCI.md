@@ -74,3 +74,16 @@ def upload_to_ecr(b):
 pool = multiprocessing.Pool(processes=args.j)
 pool.map(upload_to_ecr, builds)
 ```
+
+### How to add a new base docker image? 
+Note this instruction provides guidance to add a new **base** docker image. If you could reuse one of available docker images listed in https://github.com/pytorch/pytorch/blob/master/.circleci/docker/build.sh#L37, please do so and not adding new ones.
+
+- Add an entry in https://github.com/pytorch/pytorch/blob/master/.circleci/docker/build.sh#L37 and make changes to Dockerfiles accordingly. 
+- Test your image by building it locally.
+- Add a repo in AWS ECR to hold your image. It requires access to PyTorch's AWS account to do this step.
+- Trigger a new build process as described in [this section](How-to-trigger-new-build-process-if-I-don’t-want-to-wait-for-a-week?)
+- Remove https://github.com/pytorch/pytorch/blob/master/.circleci/verbatim-sources/workflows-ecr-gc.yml#L2-L8 so that docker_hub_index_job can be run on your PR. http://docker.pytorch.org/ will then display images pushed into the newly created repo.
+- **WAIT UNTIL ALL BUILD JOBS TO FINISH** and make sure all new images have been uploaded. Save the tag of the new images.
+- Run regenerated.sh with the new tag and update your PR.
+
+See an example PR https://github.com/pytorch/pytorch/pull/36187
