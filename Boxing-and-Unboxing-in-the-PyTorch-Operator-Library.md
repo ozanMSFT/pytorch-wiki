@@ -53,7 +53,7 @@ Having both paradigms also means we need to build a bridge. This is where “box
 
 The following diagram shows a high level overview of how this pieces interconnect.
 
-![Boxing/Unboxing Architecture Overview](/pytorch/pytorch/wiki/images/Boxing-and-Unboxing-in-the-PyTorch-Operator-Library.svg)
+![Boxing/Unboxing Architecture Overview](/pytorch/pytorch/wiki/images/Boxing-and-Unboxing-in-the-PyTorch-Operator-Library-2.svg)
 
 1. The boxed op calling API takes an operator name and a stack of IValues and calls that operator. It is used from the mobile lite interpreter, when a caffe2 model calls a PyTorch op, and when backends like lazy or AMP re-dispatch an operator. Starting with [https://github.com/pytorch/pytorch/pull/36838](https://github.com/pytorch/pytorch/pull/36838), it is also used by JIT to call ops.
 2. Given a stack of IValues, boxed dispatch iterates over the IValues that are arguments for the current operator call, finds the Tensor arguments, constructs the dispatch key from those arguments, and finds the operator implementation function pointer that should be called for this dispatch key.
