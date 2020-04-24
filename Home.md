@@ -29,3 +29,4 @@ Welcome to the PyTorch developer's wiki!
 * [Lint as you type](Lint-as-you-type)
 * [Pull request review etiquette](Pull-request-review-etiquette)
 * [Docker image build on CircleCI](Docker-image-build-on-CircleCI)
+* [Debugging with Remote Desktop on CircleCI](Debugging-with-Remote-Desktop-on-CircleCI)
