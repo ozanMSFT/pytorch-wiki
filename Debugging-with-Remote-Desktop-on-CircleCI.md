@@ -1,4 +1,4 @@
-By default, you can connect CircleCI Windows machines only with SSH.  However, in some cases, you may want a full Remote Desktop session so you can edit files, view the stack trace, etc.  This wiki page tells you how to connect to these instances via remote desktop.
+By default, you can connect CircleCI Windows machines only with SSH.  However, in some cases, you may want a full Remote Desktop session so you can edit files, view the stack trace, etc.  This wiki page tells you how to connect to these instances via remote desktop.  This wiki page tells you how to do so.  Credit to @peterjc123 for these instructions.
 
 1. Use port forwarding in SSH
 
