@@ -6,7 +6,7 @@ By default, you can connect CircleCI Windows machines only with SSH.  However, i
 
 2. Log on to the machine
 
-    Type in the last command in CMD/Powershell and press enter.
+    Type in the last command in your shell (e.g CMD, Powershell on Windows or Bash on Unix) and press enter.
 
 3. Add a rule for local port forwarding on the remote VM
 
