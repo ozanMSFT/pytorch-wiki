@@ -28,6 +28,7 @@ What can you do with RDP?
     Vim is already installed. You can open a file by right clicking on it and then open it with Vim. Alternatively, if you want to use Visual Studio Code, then right click on Windows logo from the bottom-left corner of your desktop and select "Windows PowerShell (Admin)". In the newly opened windows, type in `choco install -y vscode`. After the installation completes, you can right click and open it with VSCode.
 
 2. Restore build/test environment in PyTorch jobs
+
     We have written down script for your to restore the build/test environment when needed. right click on Windows logo from the bottom-left corner of your desktop and select "Windows PowerShell (Admin)". In the newly opened windows, use `start cmd` to start a new Command Prompt window and then type in the following commands to restore the environment.
 
     ```powershell
