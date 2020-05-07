@@ -20,6 +20,7 @@ Welcome to the PyTorch developer's wiki!
 * [How to use `TensorIterator`](How-to-use-TensorIterator)
 * [Writing tests that run on all available device types](Writing-tests-that-run-on-all-available-device-types)
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
+* [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
 
 ## Workflow docs
 
