@@ -92,7 +92,7 @@ appear, try `rm -rf .mypy_cache` and try again._
 
 Once the above works, pick a task by checking it off here, and adding your GitHub username behind it. Once the task is complete (PR is merged and the `ignore` has been removed from `mypy.ini`), please remove the task from this page.
 
-Stub files to be moved to inline annotations:
+Stub files to be moved to inline annotations (when you move the types inline, that will "turn on type checking"; if the file is not ignored already, add it to the `ignore` in `mypy.ini`, and fix the type errors in a separate PR):
 
 - [ ] `torch/__init__.pyi`
 - [ ] `torch/autograd/__init__.pyi`
