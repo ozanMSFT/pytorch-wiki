@@ -95,7 +95,7 @@ Once the above works, pick a task by checking it off here, and adding your GitHu
 Stub files to be moved to inline annotations (when you move the types inline, that will "turn on type checking"; if the file is not ignored already, add it to the `ignore` in `mypy.ini`, and fix the type errors in a separate PR):
 
 - [ ] `torch/__init__.pyi`
-- [ ] `torch/autograd/__init__.pyi`
+- [X] `torch/autograd/__init__.pyi`
 - [ ] `torch/autograd/grad_mode.pyi`
 - [ ] `torch/cuda/__init__.pyi`
 - [ ] `torch/nn/__init__.pyi`
