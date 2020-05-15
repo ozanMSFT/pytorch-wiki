@@ -29,9 +29,20 @@ What can you do with RDP?
 
 2. Restore build/test environment in PyTorch jobs
 
-    We have written down script for your to restore the build/test environment when needed. right click on Windows logo from the bottom-left corner of your desktop and select "Windows PowerShell (Admin)". In the newly opened windows, use `start cmd` to start a new Command Prompt window and then type in the following commands to restore the environment.
+    We have written down script for your to restore the build/test environment when needed. Usually, there should be a shortcut called `Restore PyTorch Environment` on the Desktop. Double click on it to open a Command Prompt with admin rights. If the shortcut is not generated, you may activate the environment manually. Right click on Windows logo from the bottom-left corner of your desktop and select "Windows PowerShell (Admin)". In the newly opened windows, use `start cmd` to start a new Command Prompt window and then type in the following commands to restore the environment.
 
     ```powershell
     # for build / test jobs
     call C:\Users\circleci\project\build\win_tmp\ci_scripts\pytorch_env_restore.bat
     ```
+
+3. Trigger a rebuild in PyTorch jobs
+
+    Based on the previous step, you can retry the build using any one set of the commands below.
+    - ```cmd
+      set REBUILD=1
+      sh .jenkins/pytorch/win-build.sh
+      ```
+    - ```cmd
+      python setup.py install --cmake
+      ```
