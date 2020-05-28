@@ -6,7 +6,7 @@ Mypy is an optional static typechecker that works with Python 3.
 To use it, install the following dependencies:
 
 ```bash
-# Install dependencies
+# Install dependencies (note: use pip - conda mypy likely won't work, see https://github.com/pytorch/pytorch/issues/39192)
 pip install mypy mypy-extensions
 
 # Run type checker in the pytorch/ directory (after `setup.py develop`)
