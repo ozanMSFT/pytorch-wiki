@@ -13,7 +13,7 @@ and you can find existing images (both permanent and weekly) at [http://docker.p
 
 ### How to trigger new build process if I don’t want to wait for a week?
 
-remove https://github.com/pytorch/pytorch/blob/a54dc87e8ebf7634d3fb2f32dd32b73c1a4d095f/.circleci/verbatim-sources/workflows-docker-builder.yml#L2-L8 , so your PR can/will trigger build job. **REMEMBER** to run [regenerate.sh](https://github.com/pytorch/pytorch/blob/master/.circleci/regenerate.sh) when you’re inside .circle directory after you update the file 
+Comment out or remove https://github.com/pytorch/pytorch/blob/cb9029df9db397f66da234d21b5ddafd6be6e602/.circleci/generate_config_yml.py#L120-L126, so your PR can/will trigger build job. **REMEMBER** to run [regenerate.sh](https://github.com/pytorch/pytorch/blob/master/.circleci/regenerate.sh) when you’re inside .circle directory after you update the file.
 
 ### Where to find tags for newly created/pushed images?
 
