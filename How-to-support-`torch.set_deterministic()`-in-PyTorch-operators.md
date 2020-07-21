@@ -56,7 +56,7 @@ def test_some_operator_alert_nondeterministic(self, device):
 
 # Currently unsupported functions
 
-Right now, some PyTorch operators are nondeterministic and they do not raise an error. They should be fixed, and this section can be used to track them.
+Right now, some PyTorch operators are nondeterministic and they do not raise an error. They should be fixed, and this section can be used to track them. If you know of anything that should be added to this list, please feel free to add it or let us know that we should add it.
 
 - [ ] CUDA operations that use `gpuAtomicAdd` ([PR #41538](https://github.com/pytorch/pytorch/pull/41538))
 - [ ] CuBLAS operations if CUDA >= 10.2 and `CUBLAS_WORKSPACE_CONFIG` is not set appropriately ([PR #41377](https://github.com/pytorch/pytorch/pull/41377))
