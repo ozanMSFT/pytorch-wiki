@@ -12,7 +12,7 @@ This is the ideal case. The operation should use `at::globalContext().determinis
 
 Example:
 
-```
+```cpp
 Tensor some_operator(const Tensor& t) {
     if (at::globalContext().deterministic()) {
         return some_operator_impl_deterministic(t);
@@ -30,7 +30,7 @@ Sometimes a deterministic implementation is not possible or just not written yet
 
 Example:
 
-```
+```cpp
 Tensor some_operator(const Tensor& t) {
     // This is nondeterministic because <reason>
     at::globalContext().alertNotDeterministic("some_operator");
@@ -44,7 +44,7 @@ When a deterministic implementation is added to an operator, it would be nice to
 
 `torch.testing._internal.common_device_type.expectedAlertNondeterministic` (soon to be added in [PR #41538](https://github.com/pytorch/pytorch/pull/41538)) is a decorator used to automatically turn on the deterministic flag and check that a given function raises an error with `at::Context::alertNotDeterministic()`. Here is a basic example of a test in `test/test_torch.py` using this decorator:
 
-```
+```python
 from torch.testing._internal.common_device_type import expectedAlertNondeterministic
 
 @expectedAlertNondeterministic('some_operator')
