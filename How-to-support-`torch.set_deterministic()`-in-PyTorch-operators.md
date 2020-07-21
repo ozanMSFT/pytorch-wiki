@@ -1,4 +1,4 @@
-Some of PyTorch's operations use nondeterministic algorithms that can produce nondeterministic results. However, some PyTorch users want reproducibility, so we've provided `torch.set_deterministic()`. This guide will show how to add support for this setting in any PyTorch operation.
+Some of PyTorch's operations use nondeterministic algorithms that can produce nondeterministic results. However, some PyTorch users want reproducibility, so we've provided `torch.set_deterministic()`. This guide will show how to add support for this setting in any PyTorch operation that is nondeterministic by default.
 
 Note: You can read about more of the user-facing reproducibility APIs [here](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/randomness.rst).
 
