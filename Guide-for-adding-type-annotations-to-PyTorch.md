@@ -52,8 +52,9 @@ files =
 
 ## How to go about improving type annotations
 
-For bugs and larger issues with the current state of type annotations, see [issues for `typing`](https://github.com/pytorch/pytorch/issues?q=is%3Aopen+is%3Aissue+label%3A%22module%3A+typing%22). 
-The tracking issue for making code using PyTorch type-checkable is https://github.com/pytorch/pytorch/issues/16574. Below many smaller tasks are listed that need doing.
+For issues with the current state of type annotations as well as TODO items grouped by module, see [issues for `typing`](https://github.com/pytorch/pytorch/issues?q=is%3Aopen+is%3Aissue+label%3A%22module%3A+typing%22). 
+
+The tracking issue for making code using PyTorch type-checkable is https://github.com/pytorch/pytorch/issues/16574. 
 
 
 ### Setting up and checking mypy works
@@ -90,192 +91,12 @@ appear, try `rm -rf .mypy_cache` and try again._
 
 ### Picking a task
 
-Once the above works, pick a task by checking it off here, and adding your GitHub username behind it. Once the task is complete (PR is merged and the `ignore` has been removed from `mypy.ini`), please remove the task from this page.
+Once the above works, pick a task by assigning yourself to the relevant issue.
 
-Stub files to be moved to inline annotations (when you move the types inline, that will "turn on type checking"; if the file is not ignored already, add it to the `ignore` in `mypy.ini`, and fix the type errors in a separate PR):
-
-- [ ] `torch/_C/_VariableFunctions.pyi`
-- [ ] `torch/_C/__init__.pyi`
-- [ ] `torch/_C/_cudnn.pyi`
-- [ ] `torch/_C/_nn.pyi`
-- [ ] `torch/_C/_onnx.pyi`
-- [ ] `torch/autograd/grad_mode.pyi`
-- [ ] `torch/nn/__init__.pyi`
-- [ ] `torch/nn/functional.pyi`
-- [ ] `torch/nn/parallel/__init__.pyi`
-- [ ] `torch/nn/parallel/common_types.pyi`
-- [ ] `torch/nn/parallel/data_parallel.pyi`
-- [ ] `torch/nn/parallel/distributed.pyi`
-- [ ] `torch/nn/parallel/parallel_apply.pyi`
-- [ ] `torch/nn/parallel/replicate.pyi`
-- [ ] `torch/nn/parallel/scatter_gather.pyi`
-- [ ] `torch/nn/parameter.pyi`
-- [ ] `torch/nn/utils/__init__.pyi`
-- [ ] `torch/nn/utils/clip_grad.pyi`
-- [ ] `torch/nn/utils/convert_parameters.pyi`
-- [ ] `torch/nn/utils/rnn.pyi`
-- [ ] `torch/nn/utils/spectral_norm.pyi`
-- [ ] `torch/nn/utils/weight_norm.pyi`
-- [ ] `torch/optim/__init__.pyi`
-- [ ] `torch/optim/adadelta.pyi`
-- [ ] `torch/optim/adagrad.pyi`
-- [ ] `torch/optim/adam.pyi`
-- [ ] `torch/optim/adamax.pyi`
-- [ ] `torch/optim/adamw.pyi`
-- [ ] `torch/optim/asgd.pyi`
-- [ ] `torch/optim/lbfgs.pyi`
-- [ ] `torch/optim/lr_scheduler.pyi`
-- [ ] `torch/optim/optimizer.pyi`
-- [ ] `torch/optim/rmsprop.pyi`
-- [ ] `torch/optim/rprop.pyi`
-- [ ] `torch/optim/sgd.pyi`
-- [ ] `torch/optim/sparse_adam.pyi`
-- [ ] `torch/optim/swa_utils.pyi`
-- [ ] `torch/utils/__init__.pyi`
-- [ ] `torch/utils/data/__init__.pyi`
-- [ ] `torch/utils/data/distributed.pyi`
-- [ ] `torch/utils/hooks.pyi`
+Stub files need to be moved to inline annotations. When you move the types inline, that will "turn on type checking"; if the file is not ignored already, add it to the `ignore` in `mypy.ini`, and fix the type errors in a separate PR
 
 
-Files with ignored errors:
-
-- [ ] `caffe2.contrib.aten.docs.sample`
-- [ ] `caffe2.contrib.gloo.gloo_test`
-- [ ] `caffe2.contrib.nccl.nccl_ops_test`
-- [ ] `caffe2.contrib.playground.*`
-- [ ] `caffe2.contrib.prof.cuda_profile_ops_test`
-- [ ] `caffe2.contrib.tensorboard.tensorboard_exporter`
-- [ ] `caffe2.contrib.tensorboard.tensorboard_exporter_test`
-- [ ] `caffe2.contrib.warpctc.ctc_ops_test`
-- [ ] `caffe2.core.nomnigraph.op_gen`
-- [ ] `caffe2.distributed.store_ops_test_util`
-- [ ] `caffe2.experiments.python.SparseTransformer`
-- [ ] `caffe2.experiments.python.convnet_benchmarks`
-- [ ] `caffe2.experiments.python.device_reduce_sum_bench`
-- [ ] `caffe2.proto.*`
-- [ ] `caffe2.python.*`
-- [ ] `caffe2.quantization.server.*`
-- [ ] `torch._appdirs`
-- [ ] `torch._classes`
-- [ ] `torch._jit_internal`
-- [ ] `torch._lobpcg`
-- [ ] `torch._overrides`
-- [ ] `torch._six`
-- [ ] `torch._tensor_str`
-- [ ] `torch._utils`
-- [ ] `torch.autograd`
-- [ ] `torch.autograd._functions.tensor`
-- [ ] `torch.autograd.anomaly_mode`
-- [ ] `torch.autograd.function`
-- [ ] `torch.autograd.functional`
-- [ ] `torch.autograd.gradcheck`
-- [ ] `torch.autograd.profiler`
-- [ ] `torch.autograd.variable`
-- [ ] `torch.backends.cuda`
-- [ ] `torch.backends.quantized`
-- [ ] `torch.contrib._tensorboard_vis`
-- [ ] `torch.cuda`
-- [ ] `torch.cuda.amp.*`
-- [ ] `torch.cuda.comm`
-- [ ] `torch.cuda.memory`
-- [ ] `torch.cuda.nccl`
-- [ ] `torch.cuda.nvtx`
-- [ ] `torch.distributed.*`
-- [ ] `torch.distributions.*`
-- [ ] `torch.functional.*`
-- [ ] `torch.futures.*`
-- [ ] `torch.hub`
-- [ ] `torch.jit.*`
-- [ ] `torch.multiprocessing`
-- [ ] `torch.multiprocessing.pool`
-- [ ] `torch.multiprocessing.queue`
-- [ ] `torch.multiprocessing.reductions`
-- [ ] `torch.multiprocessing.spawn`
-- [ ] `torch.nn.cpp`
-- [ ] `torch.nn.functional`
-- [ ] `torch.nn.intrinsic.qat.modules.conv_fused`
-- [ ] `torch.nn.intrinsic.quantized.modules.bn_relu`
-- [ ] `torch.nn.intrinsic.quantized.modules.conv_relu`
-- [ ] `torch.nn.intrinsic.quantized.modules.linear_relu`
-- [ ] `torch.nn.modules.activation`
-- [ ] `torch.nn.modules.batchnorm`
-- [ ] `torch.nn.modules.container`
-- [ ] `torch.nn.modules.conv`
-- [ ] `torch.nn.modules.fold`
-- [ ] `torch.nn.modules.instancenorm`
-- [ ] `torch.nn.modules.linear`
-- [ ] `torch.nn.modules.loss`
-- [ ] `torch.nn.modules.module`
-- [ ] `torch.nn.modules.normalization`
-- [ ] `torch.nn.modules.padding`
-- [ ] `torch.nn.modules.pooling`
-- [ ] `torch.nn.modules.rnn`
-- [ ] `torch.nn.modules.sparse`
-- [ ] `torch.nn.modules.upsampling`
-- [ ] `torch.nn.parallel._functions`
-- [ ] `torch.nn.parallel.comm`
-- [ ] `torch.nn.qat.modules.activations`
-- [ ] `torch.nn.qat.modules.conv`
-- [ ] `torch.nn.quantized.dynamic.modules.linear`
-- [ ] `torch.nn.quantized.dynamic.modules.rnn`
-- [ ] `torch.nn.quantized.functional`
-- [ ] `torch.nn.quantized.modules`
-- [ ] `torch.nn.quantized.modules.activation`
-- [ ] `torch.nn.quantized.modules.batchnorm`
-- [ ] `torch.nn.quantized.modules.conv`
-- [ ] `torch.nn.quantized.modules.functional_modules`
-- [ ] `torch.nn.quantized.modules.linear`
-- [ ] `torch.nn.quantized.modules.normalization`
-- [ ] `torch.nn.quantized.modules.utils`
-- [ ] `torch.nn.utils.memory_format`
-- [ ] `torch.nn.utils.prune`
-- [ ] `torch.onnx.operators`
-- [ ] `torch.onnx.symbolic_caffe2`
-- [ ] `torch.onnx.symbolic_helper`
-- [ ] `torch.onnx.symbolic_opset11`
-- [ ] `torch.onnx.symbolic_opset8`
-- [ ] `torch.onnx.symbolic_opset9`
-- [ ] `torch.onnx.symbolic_registry`
-- [ ] `torch.onnx.utils`
-- [ ] `torch.quantization._numeric_suite`
-- [ ] `torch.quantization.default_mappings`
-- [ ] `torch.quantization.fake_quantize`
-- [ ] `torch.quantization.fuse_modules`
-- [ ] `torch.quantization.observer`
-- [ ] `torch.quantization.quantize_jit`
-- [ ] `torch.quantization.stubs`
-- [ ] `torch.quasirandom`
-- [ ] `torch.random`
-- [ ] `torch.sparse`
-- [ ] `torch.storage`
-- [ ] `torch.tensor`
-- [ ] `torch.testing._internal.*`
-- [ ] `torch.utils`
-- [ ] `torch.utils.bottleneck.__main__`
-- [ ] `torch.utils.bundled_inputs`
-- [ ] `torch.utils.checkpoint`
-- [ ] `torch.utils.collect_env`
-- [ ] `torch.utils.cpp_extension`
-- [ ] `torch.utils.data`
-- [ ] `torch.utils.data._utils.collate`
-- [ ] `torch.utils.data._utils.signal_handling`
-- [ ] `torch.utils.data._utils.worker`
-- [ ] `torch.utils.data.distributed`
-- [ ] `torch.utils.hipify.hipify_python`
-- [ ] `torch.utils.mkldnn`
-- [ ] `torch.utils.mobile_optimizer`
-- [ ] `torch.utils.show_pickle`
-- [ ] `torch.utils.tensorboard.*`
-
-
-Files with missing stub files:
-
-- [ ] `torch._C._jit_tree_views`
-- [ ] `torch.for_onnx.onnx`
-
-
-
-### Scripts to regenerate the above task list
+### Script to give an overview of remaining tasks
 
 ```
 import os
