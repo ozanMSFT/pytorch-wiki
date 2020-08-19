@@ -70,9 +70,9 @@ pool.map(upload_to_ecr, builds)
 ```
 
 ### How to add a new base docker image? 
-Note this instruction provides guidance to add a new **base** docker image. If you could reuse one of available docker images listed in https://github.com/pytorch/pytorch/blob/master/.circleci/docker/build.sh#L37, please do so and not adding new ones.
+Note this instruction provides guidance to add a new **base** docker image. If you could reuse one of available docker images listed in https://github.com/pytorch/pytorch/blob/master/.circleci/docker/build.sh#L80, please do so and not adding new ones.
 
-- Add an entry in https://github.com/pytorch/pytorch/blob/master/.circleci/docker/build.sh#L37 and make changes to Dockerfiles accordingly. 
+- Add an entry in https://github.com/pytorch/pytorch/blob/master/.circleci/docker/build.sh#L80 and make changes to Dockerfiles accordingly. 
 - Test your image by building it locally.
 - Add a repo in AWS ECR to hold your image. It requires access to PyTorch's AWS account to do this step.
 - Trigger a new build process as described above.
