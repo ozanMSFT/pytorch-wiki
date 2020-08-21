@@ -84,6 +84,8 @@ torch/utils/data/_utils/signal_handling.py:39: error: Cannot find implementation
 Found 14 errors in 14 files (checked 969 source files)
 ```
 
+Stub files (i.e. `.pyi` files), if they exist for the `.py` files you're working on, need to be moved to inline annotations first. When you move the types inline, that will "turn on type checking"; if the file is not ignored already and running mypy shows new errors, add an `ignore_errors=True` entry for it in `mypy.ini`, and fix the type errors in a _separate_ PR.
+
 _Note that mypy caching can be flaky, in particular removing
 `ignore_missing_imports` has a caching bug
 (https://github.com/python/mypy/issues/7777). If you don't see any errors
@@ -92,8 +94,6 @@ appear, try `rm -rf .mypy_cache` and try again._
 ### Picking a task
 
 Once the above works, pick a task by assigning yourself to the relevant issue.
-
-Stub files need to be moved to inline annotations. When you move the types inline, that will "turn on type checking"; if the file is not ignored already and running mypy shows new errors, add an `ignore_errors=True` entry for it in `mypy.ini`, and fix the type errors in a _separate_ PR.
 
 
 ### Script to give an overview of remaining tasks
