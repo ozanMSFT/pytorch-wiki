@@ -93,7 +93,7 @@ appear, try `rm -rf .mypy_cache` and try again._
 
 Once the above works, pick a task by assigning yourself to the relevant issue.
 
-Stub files need to be moved to inline annotations. When you move the types inline, that will "turn on type checking"; if the file is not ignored already, add it to the `ignore` in `mypy.ini`, and fix the type errors in a separate PR
+Stub files need to be moved to inline annotations. When you move the types inline, that will "turn on type checking"; if the file is not ignored already and running mypy shows new errors, add an `ignore_errors=True` entry for it in `mypy.ini`, and fix the type errors in a _separate_ PR.
 
 
 ### Script to give an overview of remaining tasks
