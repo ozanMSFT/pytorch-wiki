@@ -74,13 +74,15 @@ If you need to install it, run `choco install windbg`
 
 2. Change a directory into `project`
 
-cd `project`
+```
+cd project
+```
 
 3. Run a crashing test with `cdb -o <program> <args>` 
 
 `"C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\cdb.exe" -o python test/test_jit.py`
 
-4. Type `g` (the equivalent of `gdb`'s `r(un)`)) and then `k` to display a stacktrace when PyTorch crashes
+4. Type `g` (the equivalent of `gdb`'s `r(un)`) and then `k` to display a stacktrace when PyTorch crashes
 
 #### Most basic commands:
 
