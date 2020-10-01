@@ -30,6 +30,7 @@ Welcome to the PyTorch developer's wiki!
 * [Tensor Indexing API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_indexing.rst)
 * [Installing C++ Distributions of PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/installing.rst)
 * [Torch Library API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/library.rst)
+* [libtorch](https://github.com/pytorch/pytorch/blob/master/docs/libtorch.rst)
 * [FAQ](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/faq.rst)
 
 ## Workflow docs
