@@ -28,6 +28,8 @@ Welcome to the PyTorch developer's wiki!
 * [Tensor basics](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_basics.rst)
 * [Tensor Creation API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_creation.rst)
 * [Tensor Indexing API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_indexing.rst)
+* [Installing C++ Distributions of PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/installing.rst)
+* [Torch Library API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/library.rst)
 * [FAQ](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/faq.rst)
 
 ## Workflow docs
