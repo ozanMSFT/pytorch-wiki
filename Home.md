@@ -21,9 +21,14 @@ Welcome to the PyTorch developer's wiki!
 * [Writing tests that run on all available device types](Writing-tests-that-run-on-all-available-device-types)
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
+
+### C++ API
 * [The C++ Frontend](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/frontend.rst)
 * [PyTorch C++ API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/index.rst)
-
+* [Tensor basics](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_basics.rst)
+* [Tensor Creation API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_creation.rst)
+* [Tensor Indexing API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_indexing.rst)
+* [FAQ](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/faq.rst)
 
 ## Workflow docs
 
