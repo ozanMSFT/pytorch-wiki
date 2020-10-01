@@ -1,3 +1,5 @@
+## Debugging Windows with Remote Desktop
+
 By default, you can connect CircleCI Windows machines only with SSH.  However, in some cases, you may want a full Remote Desktop session so you can edit files, view the stack trace, etc.  This wiki page tells you how to connect to these instances via remote desktop.  Credit to @peterjc123 for these instructions.
 
 1. Use port forwarding in SSH
@@ -46,3 +48,49 @@ What can you do with RDP?
     - ```cmd
       python setup.py install --cmake
       ```
+
+## Debugging Windows with CDB
+
+`cdb.exe` is a command-line debugger on Windows that is installed as a part of **Debugging Tools for Windows**.
+`cdb.exe` is quite handy for 
+* getting stacktraces for crashes
+* looking at the assembly code `$pc`. 
+
+Unfortunately, given that our windows are running release builds of PyTorch, you won't be able to inspect C++ symbols and view the source code. Alternatively you could try rebuilding PyTorch (see **3. Trigger a rebuild in PyTorch jobs** above)
+
+### Installation:
+
+Check if `windbg` is already installed in `C:\Program Files (x86)\Windows Kits\10\Debuggers\x64`.
+If you need to install it, run `choco install windbg`
+
+### Debugging:
+
+1. Call `pytorch_env_restore.bat` to get a conda environment with PyTorch already installed
+
+    ```powershell
+    # for build / test jobs
+    call C:\Users\circleci\project\build\win_tmp\ci_scripts\pytorch_env_restore.bat
+    ```
+
+2. Change a directory into `project`
+
+cd `project`
+
+3. Run a crashing test with `cdb -o <program> <args>` 
+
+`"C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\cdb.exe" -o python test/test_jit.py`
+
+4. Type `g` (the equivalent of `gdb`'s `r(un)`)) and then `k` to display a stacktrace when PyTorch crashes
+
+#### Most basic commands:
+
+| command | description           |
+| ------- | --------------------- |
+| g       | the same as gdb's run |
+| k       | show stacktrace       |
+| dv      | displays a local variable if symbols are available |
+
+
+### Links:
+
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugging-using-cdb-and-ntsd
