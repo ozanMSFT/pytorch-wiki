@@ -43,3 +43,8 @@ Welcome to the PyTorch developer's wiki!
 * [Docker image build on CircleCI](Docker-image-build-on-CircleCI)
 * [Debugging with Remote Desktop on CircleCI](Debugging-with-Remote-Desktop-on-CircleCI)
 * [Structure of CI](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
+
+## Community
+
+*[PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
+*[PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
