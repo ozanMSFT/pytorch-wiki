@@ -42,10 +42,15 @@ Welcome to the PyTorch developer's wiki!
 * [Named Tensors](https://github.com/pytorch/pytorch/blob/master/docs/source/named_tensor.rst)
 * [Named Tensors operator coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/name_inference.rst)
 * [ONNX](https://github.com/pytorch/pytorch/blob/master/docs/source/onnx.rst)
+* [Android](https://github.com/pytorch/pytorch/blob/master/android/README.md)
+* [Howto: Writing PyTorch & Caffe2 Operators](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/core/op_registration/README.md)
+* [CUDA IPC Refcounting implementation explained](https://github.com/pytorch/pytorch/blob/master/torch/multiprocessing/cuda_multiprocessing.md)
+
 
 ### Quantization
 * [Introduction to Quantization](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization.rst)
 * [Quantization Operation coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization-support.rst)
+* [Implementing native quantized ops](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/quantized/README.md)
 
 ### TorchScript 
 * [TorchScript](https://github.com/pytorch/pytorch/blob/master/docs/source/jit.rst)
@@ -58,6 +63,7 @@ Welcome to the PyTorch developer's wiki!
 * [Remote Reference Protocol](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/rref.rst)
 * [Distributed Data Parallel](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
 * [Distributed communication package](https://github.com/pytorch/pytorch/blob/master/docs/source/distributed.rst)
+* [Contributing to PyTorch Distributed](https://github.com/pytorch/pytorch/blob/master/torch/distributed/CONTRIBUTING.md)
 
 ### C++
 * [PyTorch with C++](https://github.com/pytorch/pytorch/blob/master/docs/source/cpp_index.rst)
@@ -82,7 +88,17 @@ Welcome to the PyTorch developer's wiki!
 * [Debugging with Remote Desktop on CircleCI](Debugging-with-Remote-Desktop-on-CircleCI)
 * [Structure of CI](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
 
+### Benchmarks
+* [Distributed Data Parallel Benchmark](https://github.com/pytorch/pytorch/blob/master/benchmarks/distributed/ddp/README.md)
+* [Fast RNN benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/fastrnns/README.md)
+* [PyTorch/Caffe2 Operator Micro-benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/operator_benchmark/README.md)
+* [__torch_function__ micro-benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/overrides_benchmark/README.md)
+* [Benchmarking tool for the autograd AP](https://github.com/pytorch/pytorch/blob/master/benchmarks/functional_autograd_benchmark/README.md)
+* [Modular Benchmarking Components](https://github.com/pytorch/pytorch/blob/master/torch/utils/benchmark/README.md)
+
+
 ## Community
 * [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
+* [Contributing](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
 * [PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
 * [PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
