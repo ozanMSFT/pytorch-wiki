@@ -46,6 +46,8 @@ Welcome to the PyTorch developer's wiki!
 * [Howto: Writing PyTorch & Caffe2 Operators](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/core/op_registration/README.md)
 * [CUDA IPC Refcounting implementation explained](https://github.com/pytorch/pytorch/blob/master/torch/multiprocessing/cuda_multiprocessing.md)
 * [Autograd](https://github.com/pytorch/pytorch/blob/master/torch/csrc/autograd/README.md)
+* [Code Coverage Tool for Pytorch](https://github.com/pytorch/pytorch/blob/master/tools/code_coverage/README.md)
+* [How to write tests using FileCheck](https://github.com/pytorch/pytorch/blob/master/test/HowToWriteTestsUsingFileCheck.md)
 
 ### Quantization
 * [Introduction to Quantization](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization.rst)
@@ -81,6 +83,10 @@ Welcome to the PyTorch developer's wiki!
 * [Installing C++ Distributions of PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/installing.rst)
 * [Torch Library API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/library.rst)
 * [libtorch](https://github.com/pytorch/pytorch/blob/master/docs/libtorch.rst)
+* [C++ / Python API parity tracker](https://github.com/pytorch/pytorch/blob/master/test/cpp_api_parity/parity-tracker.md)
+* [TensorExpr C++ Tests](https://github.com/pytorch/pytorch/blob/master/test/cpp/tensorexpr/README.md)
+* [JIT C++ Tests](https://github.com/pytorch/pytorch/blob/master/test/cpp/jit/README.md)
+* [C++ Frontend Tests](https://github.com/pytorch/pytorch/blob/master/test/cpp/api/README.md)
 * [FAQ](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/faq.rst)
 
 ### Benchmarks
