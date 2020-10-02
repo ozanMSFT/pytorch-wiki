@@ -65,7 +65,10 @@ Welcome to the PyTorch developer's wiki!
 * [Caffe2 implementation of Open Neural Network Exchange (ONNX)](https://github.com/pytorch/pytorch/blob/master/caffe2/python/onnx/README.md)
 * [nomnigraph](https://github.com/pytorch/pytorch/blob/master/caffe2/core/nomnigraph/README.md)
 * [Caffe2 & TensorRT integration](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/tensorrt/README.md)
-
+* [Playground for Caffe2 Models](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/playground/README.md)
+* [How to run FakeLowP vs Glow tests](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/fakelowp/test/README.md)
+* [Using ONNX and ATen to export models from PyTorch to Caffe2](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/aten/docs/pytorch_to_caffe2.md)
+* [An ATen operator for Caffe2](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/aten/README.md)
 
 ### Quantization
 * [Introduction to Quantization](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization.rst)
