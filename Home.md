@@ -29,7 +29,6 @@ Welcome to the PyTorch developer's wiki!
 * [Broadcasting semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/broadcasting.rst)
 * [CPU threading and TorchScript inference](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/cpu_threading_torchscript_inference.rst)
 * [CUDA semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/cuda.rst)
-* [Extending PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
 * [Frequently Asked Questions](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/faq.rst)
 * [Extending PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/extending.rst)
 * [Features for large-scale deployments](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/large_scale_deployments.rst)
@@ -39,12 +38,10 @@ Welcome to the PyTorch developer's wiki!
 * [Windows FAQ](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/windows.rst)
 * [Python Language Reference Coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_python_reference.rst)
 * [Complex Numbers](https://github.com/pytorch/pytorch/blob/master/docs/source/complex_numbers.rst)
-* [Named Tensors](https://github.com/pytorch/pytorch/blob/master/docs/source/named_tensor.rst)
-* [Named Tensors operator coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/name_inference.rst)
 * [ONNX](https://github.com/pytorch/pytorch/blob/master/docs/source/onnx.rst)
 * [Android](https://github.com/pytorch/pytorch/blob/master/android/README.md)
 * [iOS](https://github.com/pytorch/pytorch/blob/master/ios/README.md)
-* [Howto: Writing PyTorch & Caffe2 Operators](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/core/op_registration/README.md)
+* [How-to: Writing PyTorch & Caffe2 Operators](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/core/op_registration/README.md)
 * [CUDA IPC Refcounting implementation explained](https://github.com/pytorch/pytorch/blob/master/torch/multiprocessing/cuda_multiprocessing.md)
 * [Autograd](https://github.com/pytorch/pytorch/blob/master/torch/csrc/autograd/README.md)
 * [Code Coverage Tool for Pytorch](https://github.com/pytorch/pytorch/blob/master/tools/code_coverage/README.md)
@@ -56,6 +53,10 @@ Welcome to the PyTorch developer's wiki!
 * [Observers](https://github.com/pytorch/pytorch/blob/master/caffe2/observers/README.md)
 * [Snapdragon NPE Support](https://github.com/pytorch/pytorch/blob/master/caffe2/mobile/contrib/snpe/README.md)
 * [Using TensorBoard in ifbpy](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/tensorboard/tensorboard.md)
+
+### Named Tensors
+* [Named Tensors](https://github.com/pytorch/pytorch/blob/master/docs/source/named_tensor.rst)
+* [Named Tensors operator coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/name_inference.rst)
 
 ### Caffe2
 * [Caffe2](https://github.com/pytorch/pytorch/blob/master/caffe2/README.md)
