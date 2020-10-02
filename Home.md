@@ -83,6 +83,6 @@ Welcome to the PyTorch developer's wiki!
 * [Structure of CI](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
 
 ## Community
-
-*[PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
-*[PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
+* [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
+* [PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
+* [PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
