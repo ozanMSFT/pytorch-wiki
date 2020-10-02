@@ -77,6 +77,14 @@ Welcome to the PyTorch developer's wiki!
 * [libtorch](https://github.com/pytorch/pytorch/blob/master/docs/libtorch.rst)
 * [FAQ](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/faq.rst)
 
+### Benchmarks
+* [Distributed Data Parallel Benchmark](https://github.com/pytorch/pytorch/blob/master/benchmarks/distributed/ddp/README.md)
+* [Fast RNN benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/fastrnns/README.md)
+* [PyTorch/Caffe2 Operator Micro-benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/operator_benchmark/README.md)
+* [__torch_function__ micro-benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/overrides_benchmark/README.md)
+* [Benchmarking tool for the autograd AP](https://github.com/pytorch/pytorch/blob/master/benchmarks/functional_autograd_benchmark/README.md)
+* [Modular Benchmarking Components](https://github.com/pytorch/pytorch/blob/master/torch/utils/benchmark/README.md)
+
 ## Workflow docs
 
 * [Bot commands](Bot-commands)
@@ -87,15 +95,6 @@ Welcome to the PyTorch developer's wiki!
 * [Docker image build on CircleCI](Docker-image-build-on-CircleCI)
 * [Debugging with Remote Desktop on CircleCI](Debugging-with-Remote-Desktop-on-CircleCI)
 * [Structure of CI](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
-
-### Benchmarks
-* [Distributed Data Parallel Benchmark](https://github.com/pytorch/pytorch/blob/master/benchmarks/distributed/ddp/README.md)
-* [Fast RNN benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/fastrnns/README.md)
-* [PyTorch/Caffe2 Operator Micro-benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/operator_benchmark/README.md)
-* [__torch_function__ micro-benchmarks](https://github.com/pytorch/pytorch/blob/master/benchmarks/overrides_benchmark/README.md)
-* [Benchmarking tool for the autograd AP](https://github.com/pytorch/pytorch/blob/master/benchmarks/functional_autograd_benchmark/README.md)
-* [Modular Benchmarking Components](https://github.com/pytorch/pytorch/blob/master/torch/utils/benchmark/README.md)
-
 
 ## Community
 * [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
