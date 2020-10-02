@@ -29,7 +29,6 @@ Welcome to the PyTorch developer's wiki!
 * [Broadcasting semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/broadcasting.rst)
 * [CPU threading and TorchScript inference](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/cpu_threading_torchscript_inference.rst)
 * [CUDA semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/cuda.rst)
-* [Distributed Data Parallel](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
 * [Extending PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
 * [Frequently Asked Questions](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/faq.rst)
 * [Extending PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/extending.rst)
@@ -53,6 +52,10 @@ Welcome to the PyTorch developer's wiki!
 * [Distributed RPC Framework](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc.rst)
 * [Distributed Autograd Design](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/distributed_autograd.rst)
 * [Remote Reference Protocol](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/rref.rst)
+
+### Distributed
+* [Distributed Data Parallel](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
+* [Distributed communication package](https://github.com/pytorch/pytorch/blob/master/docs/source/distributed.rst)
 
 ### C++
 * [PyTorch with C++](https://github.com/pytorch/pytorch/blob/master/docs/source/cpp_index.rst)
