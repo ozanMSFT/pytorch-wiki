@@ -38,6 +38,9 @@ Welcome to the PyTorch developer's wiki!
 * [Serialization semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/serialization.rst)
 * [Windows FAQ](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/windows.rst)
 
+### Distributed RPC framework 
+* [Distributed Autograd Design](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/distributed_autograd.rst)
+* [Remote Reference Protocol](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/rref.rst)
 
 ### C++ API
 * [The C++ Frontend](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/frontend.rst)
