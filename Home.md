@@ -43,11 +43,29 @@ Welcome to the PyTorch developer's wiki!
 * [Named Tensors operator coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/name_inference.rst)
 * [ONNX](https://github.com/pytorch/pytorch/blob/master/docs/source/onnx.rst)
 * [Android](https://github.com/pytorch/pytorch/blob/master/android/README.md)
+* [iOS](https://github.com/pytorch/pytorch/blob/master/ios/README.md)
 * [Howto: Writing PyTorch & Caffe2 Operators](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/core/op_registration/README.md)
 * [CUDA IPC Refcounting implementation explained](https://github.com/pytorch/pytorch/blob/master/torch/multiprocessing/cuda_multiprocessing.md)
 * [Autograd](https://github.com/pytorch/pytorch/blob/master/torch/csrc/autograd/README.md)
 * [Code Coverage Tool for Pytorch](https://github.com/pytorch/pytorch/blob/master/tools/code_coverage/README.md)
 * [How to write tests using FileCheck](https://github.com/pytorch/pytorch/blob/master/test/HowToWriteTestsUsingFileCheck.md)
+* [PyTorch Release Scripts](https://github.com/pytorch/pytorch/blob/master/scripts/release/README.md)
+* [Docker images for Jenkins](https://github.com/pytorch/pytorch/blob/master/docker/caffe2/jenkins/README.md)
+* [Serialized operator test framework](https://github.com/pytorch/pytorch/blob/master/caffe2/python/serialized_test/README.md)
+* [ONNX op coverage](https://github.com/pytorch/pytorch/blob/master/caffe2/python/onnx/ONNXOpCoverage.md)
+* [Observers](https://github.com/pytorch/pytorch/blob/master/caffe2/observers/README.md)
+* [Snapdragon NPE Support](https://github.com/pytorch/pytorch/blob/master/caffe2/mobile/contrib/snpe/README.md)
+* [Using TensorBoard in ifbpy](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/tensorboard/tensorboard.md)
+
+### Caffe2
+* [Caffe2](https://github.com/pytorch/pytorch/blob/master/caffe2/README.md)
+* [Building Caffe2](https://github.com/pytorch/pytorch/blob/master/docs/caffe2/installation.md)
+* [Doxygen Notes](https://github.com/pytorch/pytorch/blob/master/docs/caffe2/DOXYGEN.md)
+* [Docker & Caffe2](https://github.com/pytorch/pytorch/blob/master/docker/caffe2/readme.md)
+* [Caffe2 implementation of Open Neural Network Exchange (ONNX)](https://github.com/pytorch/pytorch/blob/master/caffe2/python/onnx/README.md)
+* [nomnigraph](https://github.com/pytorch/pytorch/blob/master/caffe2/core/nomnigraph/README.md)
+* [Caffe2 & TensorRT integration](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/tensorrt/README.md)
+
 
 ### Quantization
 * [Introduction to Quantization](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization.rst)
