@@ -43,9 +43,14 @@ Welcome to the PyTorch developer's wiki!
 * [Named Tensors](https://github.com/pytorch/pytorch/blob/master/docs/source/named_tensor.rst)
 * [Named Tensors operator coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/name_inference.rst)
 * [Quantization Operation coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization-support.rst)
+
+### TorchScript 
 * [TorchScript](https://github.com/pytorch/pytorch/blob/master/docs/source/jit.rst)
+* [TorchScript Language Reference](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_language_reference.rst)
+* [TorchScript Unsupported Pytorch Constructs](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_unsupported.rst)
 
 ### Distributed RPC framework 
+* [Distributed RPC Framework](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc.rst)
 * [Distributed Autograd Design](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/distributed_autograd.rst)
 * [Remote Reference Protocol](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/rref.rst)
 
