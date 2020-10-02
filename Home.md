@@ -48,12 +48,10 @@ Welcome to the PyTorch developer's wiki!
 * [TorchScript Language Reference](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_language_reference.rst)
 * [TorchScript Unsupported Pytorch Constructs](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_unsupported.rst)
 
-### Distributed RPC framework 
+### Distributed 
 * [Distributed RPC Framework](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc.rst)
 * [Distributed Autograd Design](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/distributed_autograd.rst)
 * [Remote Reference Protocol](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/rref.rst)
-
-### Distributed
 * [Distributed Data Parallel](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
 * [Distributed communication package](https://github.com/pytorch/pytorch/blob/master/docs/source/distributed.rst)
 
