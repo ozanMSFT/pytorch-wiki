@@ -22,6 +22,23 @@ Welcome to the PyTorch developer's wiki!
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
 
+### Notes
+* [Automatic Mixed Precision examples](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/amp_examples.rst)
+* [Autograd mechanics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/autograd.rst)
+* [Broadcasting semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/broadcasting.rst)
+* [CPU threading and TorchScript inference](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/cpu_threading_torchscript_inference.rst)
+* [CUDA semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/cuda.rst)
+* [Distributed Data Parallel](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
+* [Extending PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/ddp.rst)
+* [Frequently Asked Questions](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/faq.rst)
+* [Extending PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/extending.rst)
+* [Features for large-scale deployments](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/large_scale_deployments.rst)
+* [Multiprocessing best practices](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/multiprocessing.rst)
+* [Reproducibility](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/randomness.rst)
+* [Serialization semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/serialization.rst)
+* [Windows FAQ](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/windows.rst)
+
+
 ### C++ API
 * [The C++ Frontend](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/frontend.rst)
 * [PyTorch C++ API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/index.rst)
