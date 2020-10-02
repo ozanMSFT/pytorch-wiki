@@ -42,7 +42,8 @@ Welcome to the PyTorch developer's wiki!
 * [Distributed Autograd Design](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/distributed_autograd.rst)
 * [Remote Reference Protocol](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/rref.rst)
 
-### C++ API
+### C++
+* [PyTorch with C++](https://github.com/pytorch/pytorch/blob/master/docs/source/cpp_index.rst)
 * [The C++ Frontend](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/frontend.rst)
 * [PyTorch C++ API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/index.rst)
 * [Tensor basics](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_basics.rst)
