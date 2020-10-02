@@ -23,6 +23,7 @@ Welcome to the PyTorch developer's wiki!
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
 
 ### Notes
+* [Automatic Mixed Precision package](https://github.com/pytorch/pytorch/blob/master/docs/source/amp.rst)
 * [Automatic Mixed Precision examples](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/amp_examples.rst)
 * [Autograd mechanics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/autograd.rst)
 * [Broadcasting semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/broadcasting.rst)
@@ -37,6 +38,12 @@ Welcome to the PyTorch developer's wiki!
 * [Reproducibility](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/randomness.rst)
 * [Serialization semantics](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/serialization.rst)
 * [Windows FAQ](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/windows.rst)
+* [Python Language Reference Coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_python_reference.rst)
+* [Complex Numbers](https://github.com/pytorch/pytorch/blob/master/docs/source/complex_numbers.rst)
+* [Named Tensors](https://github.com/pytorch/pytorch/blob/master/docs/source/named_tensor.rst)
+* [Named Tensors operator coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/name_inference.rst)
+* [Quantization Operation coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization-support.rst)
+* [TorchScript](https://github.com/pytorch/pytorch/blob/master/docs/source/jit.rst)
 
 ### Distributed RPC framework 
 * [Distributed Autograd Design](https://github.com/pytorch/pytorch/blob/master/docs/source/rpc/distributed_autograd.rst)
