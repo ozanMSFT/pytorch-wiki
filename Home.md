@@ -45,14 +45,20 @@ Welcome to the PyTorch developer's wiki!
 * [Android](https://github.com/pytorch/pytorch/blob/master/android/README.md)
 * [Howto: Writing PyTorch & Caffe2 Operators](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/core/op_registration/README.md)
 * [CUDA IPC Refcounting implementation explained](https://github.com/pytorch/pytorch/blob/master/torch/multiprocessing/cuda_multiprocessing.md)
-
+* [Autograd](https://github.com/pytorch/pytorch/blob/master/torch/csrc/autograd/README.md)
 
 ### Quantization
 * [Introduction to Quantization](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization.rst)
 * [Quantization Operation coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization-support.rst)
 * [Implementing native quantized ops](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/quantized/README.md)
 
-### TorchScript 
+### JIT/TorchScript 
+* [JIT Technical Overview](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/OVERVIEW.md)
+* [Current workflow](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/tensorexpr/DesignOverview.md)
+* [Static Runtime](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/runtime/static/README.md)
+* [TorchScript serialization](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/docs/serialization.md) 
+* [PyTorch Fuser](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/codegen/fuser/README.md)
+* [Implementation reference for the CUDA PyTorch JIT Fuser](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/codegen/cuda/docs/main_page.md)
 * [TorchScript](https://github.com/pytorch/pytorch/blob/master/docs/source/jit.rst)
 * [TorchScript Language Reference](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_language_reference.rst)
 * [TorchScript Unsupported Pytorch Constructs](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_unsupported.rst)
