@@ -21,7 +21,7 @@ By default, you can connect CircleCI Windows machines only with SSH.  However, i
 
 5. Test connection locally
 
-    Open `mstsc` or any clients that supports RDP connection, login with `circleci` and the password you set. And you should be all set.
+    Open `mstsc` or any clients that supports RDP connection. Since we've setup port forwarding, connect to `localhost:[local port]` (if you were copy-pasting the instructions above, that is `localhost:8000`. Login with `circleci` and the password you set. And you should be all set.
 
 What can you do with RDP?
 
