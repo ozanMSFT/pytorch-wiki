@@ -11,5 +11,5 @@ set -e
 git clang-format
 EOF
 
-chmod 755 .git/hooks/precommit
+chmod 755 .git/hooks/pre-commit
 ```
