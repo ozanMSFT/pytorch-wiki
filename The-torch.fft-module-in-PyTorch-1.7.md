@@ -179,7 +179,7 @@ else:
 
 Users will have to import the torch.fft module when using the library with PyTorch 1.7, but in PyTorch 1.8 and later the library will work without the user importing the module. Both approaches will work with all versions of PyTorch.
 
-Using the old torch.fft function
+## Using the old torch.fft function
 
 If a user imports the torch.fft module then the torch.fft() function’s name will be clobbered. Libraries that want to continue using the deprecated torch.fft() function in PyTorch 1.7 should use the method torch.Tensor.fft() instead:
 
