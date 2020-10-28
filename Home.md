@@ -21,6 +21,7 @@ Welcome to the PyTorch developer's wiki!
 * [Writing tests that run on all available device types](Writing-tests-that-run-on-all-available-device-types)
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
+* [The torch.fft module in PyTorch 1.7](The-torch.fft-module-in-PyTorch-1.7)
 
 ### Notes
 * [Automatic Mixed Precision package](https://github.com/pytorch/pytorch/blob/master/docs/source/amp.rst)
