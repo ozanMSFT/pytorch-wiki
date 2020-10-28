@@ -126,7 +126,7 @@ If the original call was torch.fft(t, 1) then the updated call would be torch.ff
 
 Libraries that want to use PyTorch’s new FFT functionality should update to use [complex tensors](https://pytorch.org/docs/stable/complex_numbers.html) or, since complex tensors are still in beta, use the [view_as_complex](https://pytorch.org/docs/1.7.0/generated/torch.view_as_complex.html) function to transform float tensors into complex inputs and the [view_as_real](https://pytorch.org/docs/1.7.0/generated/torch.view_as_real.html) function to transform complex outputs into float tensors. They must also be careful not to import the torch.fft module in PyTorch 1.7, since the import affects user code, and to be aware that the torch.fft() function may not be available (since a user may have imported the torch.fft module and clobbered it). The rest of this section discusses how libraries can deal with these issues.
 
-Using the new torch.fft module with importing it
+## Using the new torch.fft module without importing it
 
 Libraries that want to use the torch.fft functionality should not import it. Instead, they can use one of two approaches:
 
