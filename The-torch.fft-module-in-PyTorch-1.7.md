@@ -6,7 +6,7 @@ In PyTorch 1.8 the torch.fft module will be imported by default and the current 
 
 Using functions in the torch.fft module in PyTorch 1.7 requires importing it:
 
-```
+```python
 import torch.fft
 
 t = torch.arange(4)
@@ -16,7 +16,7 @@ torch.fft.fft(t)
 
 Doing so will clobber the existing torch.fft() function name.
 
-```
+```python
 import torch
 
 t = torch.randn(4, 3, 2)
@@ -29,7 +29,7 @@ torch.fft(t, 2)
 
 The [torch.Tensor.fft()](https://pytorch.org/docs/1.7.0/tensors.html?highlight=torch%20tensor%20fft#torch.Tensor.fft) method can continue to be used as usual, however:
 
-```
+```python
 import torch
 t = torch.randn(4, 3, 2)
 fft_result = torch.fft(t, 2)
@@ -57,7 +57,7 @@ Updating PyTorch programs using the four deprecated FFT functions requires:
 
 For example,
 
-```
+```python
 import torch
 
 # Program snippet using the deprecated torch.fft
@@ -80,7 +80,7 @@ print(complex_fft_result)
 
 Here a call to torch.fft requires an update to use a complex tensor. In this case the transform is one dimensional and torch.fft.fft() is used, but higher dimensional transforms require a call to torch.fft.fftn():
 
-```
+```python
 import torch
 # Program snippet using the deprecated torch.fft
 t = torch.randn(4, 3, 2)
@@ -102,7 +102,7 @@ print(complex_fft_result)
 
 While the deprecated functions take a signal_ndim argument, the new torch.fft module functions accept a dim argument that specifies the dimensions to transform. To translate from one to the other, if signal_ndim=x then dim should be a tuple with the last x dimensions of the complex input. For example:
 
-```
+```python
 t = torch.randn((4, 4, 4, 2))
 fft_result = torch.fft(t, 3)
 # Produces a tensor with shape (4, 4, 4, 2) and dtype float32
@@ -135,7 +135,7 @@ Libraries that want to use the torch.fft functionality should not import it. Ins
 
 For example, if the new functionality is only used when torch.fft is available:
 
-```
+```python
 import sys
 
 if "torch.fft" not in sys.modules:
@@ -146,7 +146,7 @@ else:
 
 This approach will work in all versions of PyTorch. In PyTorch 1.7, however, the first code path will throw deprecation warnings. These warnings can be caught and then filtered:
 
-```
+```python
 import sys
 import warnings
 
@@ -159,7 +159,7 @@ else:
 
 Alternatively, libraries can require the module be loaded on versions of PyTorch where it’s available:
 
-```
+```python
 import sys
 import warnings
 
@@ -183,7 +183,7 @@ Users will have to import the torch.fft module when using the library with PyTor
 
 If a user imports the torch.fft module then the torch.fft() function’s name will be clobbered. Libraries that want to continue using the deprecated torch.fft() function in PyTorch 1.7 should use the method torch.Tensor.fft() instead:
 
-```
+```python
 t = torch.randn(4, 3, 2)
 
 # may not work in PyTorch 1.7 and will not work in PyTorch 1.8
