@@ -57,15 +57,15 @@ Similarly for `q_scale` and `q_zero_point`, we should have a single quantize fun
 
 ```python
 # Dequantize
-dequantized_tensor = q_made_per_tensor.dequantize()
+dequantized_tensor = q.dequantize()
 
 # Quantized Tensor supports slicing like usual Tensors do
-s = q_made_per_tensor[2] # a quantized Tensor of with same scale and zero_point 
+s = q[2] # a quantized Tensor of with same scale and zero_point 
                          # that contains the values of the 2nd row of the original quantized Tensor
                          # same as q_made_per_tensor[2, :]
 
 # Assignment
-q_made_per_tensor[0] = 3.5 # quantize 3.5 and store the int value in quantized Tensor
+q[0] = 3.5 # quantize 3.5 and store the int value in quantized Tensor
 
 # Copy
 # we can copy from a quantized Tensor of the same size and dtype 
