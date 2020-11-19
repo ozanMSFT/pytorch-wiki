@@ -15,6 +15,7 @@ These plugins require Python 3. If you use pip3 to install, invoke flake8 with f
 These instructions were written and tested with [standard VS Code](https://code.visualstudio.com/Download), version 1.51.1.
 
 1. Be sure that you have the [Python extension for VS Code](https://code.visualstudio.com/docs/python/python-tutorial#_install-visual-studio-code-and-the-python-extension) installed.
+1. Set your VS Code workspace to your PyTorch clone directory.
 1. [Set your Python environment](https://code.visualstudio.com/docs/python/environments#_select-and-activate-an-environment) to the one you are using for PyTorch development (usually a `conda` environment) by running the **Python: Select Interpreter** command (which can also be accessed by clicking on the name of the Python version shown in the bar at the bottom of your VS Code window).
 1. [Enable Flake8 linting](https://code.visualstudio.com/docs/python/linting#_enable-linters) by running the **Python: Select Linter** command and choosing "flake8".
 
