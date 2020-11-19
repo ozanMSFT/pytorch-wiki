@@ -10,6 +10,23 @@ At the high level, we need to install flake8 with all of the plugins as expected
 
 These plugins require Python 3. If you use pip3 to install, invoke flake8 with flake8-3.
 
+## VS Code
+
+These instructions were written and tested with [standard VS Code](https://code.visualstudio.com/Download), version 1.15.1.
+
+1. Be sure that you have the [Python extension for VS Code](https://code.visualstudio.com/docs/python/python-tutorial#_install-visual-studio-code-and-the-python-extension) installed.
+1. [Set your Python environment](https://code.visualstudio.com/docs/python/environments#_select-and-activate-an-environment) to the one you are using for PyTorch development (usually a `conda` environment) by running the **Python: Select Interpreter** command (which can also be accessed by clicking on the name of the Python version shown in the bar at the bottom of your VS Code window).
+1. [Enable Flake8 linting](https://code.visualstudio.com/docs/python/linting#_enable-linters) by running the **Python: Select Linter** command and choosing "flake8".
+
+After doing the above setup, you should see something similar to this in `.vscode/settings.json` in your local PyTorch clone:
+```json
+{
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.pythonPath": "/Users/username/miniconda3/envs/pytorch/bin/python"
+}
+```
+If that is the case (rather than, e.g., these settings being set globally), then you should now see PyTorch-specific Flake8 lint results in-editor in VS Code when you edit a Python file in PyTorch, with Python files outside PyTorch being unaffected.
 
 ## Vim: use ALE
 
