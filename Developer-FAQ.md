@@ -2,7 +2,7 @@
 
 ### My PR hasn't been reviewed in awhile, what should I do? 
 
-You are permitted to ping reviewers by ccing them in a comment if they have not responding to you in 2 full working days. For example, if you request a review on Friday, you can ping your reviewers on Wednesday of the next week. 
+You can and should ping reviewers by ccing them in a comment if they haven't responded to a review request in 2 full working days. For example, if you request a review on Friday, you can ping your reviewers on Wednesday of the next week. 
 
 ### If I'm editing the documentation, how do I see the formatted doc?
 
