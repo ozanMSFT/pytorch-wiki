@@ -14,6 +14,10 @@ If you've submitted a PR, click the "Details" link next to the pytorch_python_do
 
 Push your changes to a pytorch/pytorch branch named ci-all/<your name here>. That will trigger all the test builds, not just the ones that typically run.
 
+### My PR was rejected for being "too small" &mdash; what gives!?
+
+Each PR takes costly machine and developer time. "Small" PRs that may correct a spelling error or making a tiny grammar change are simply not worth the cost.
+
 ## Warnings
 
 ### When should I TORCH_WARN vs. TORCH_WARN_ONCE?
