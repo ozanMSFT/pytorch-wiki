@@ -9,6 +9,7 @@ Welcome to the PyTorch developer's wiki!
 
 ## Developer docs
 
+* [Developer FAQ](Developer-FAQ)
 * [PyTorch Data Flow and Interface Diagram](PyTorch-Data-Flow-and-Interface-Diagram)
 * [Multiprocessing Technical Notes](Multiprocessing-Technical-Notes)
 * [Software Architecture for c10](Software-Architecture-for-c10)
