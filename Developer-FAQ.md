@@ -24,7 +24,7 @@ Each PR takes costly machine and developer time. "Small" PRs that may correct a 
 
 PyTorch offers both [TORCH_WARN](https://github.com/pytorch/pytorch/blob/4f538a2ba48afeb2a2a1f3b6e01b1ec461d4a5ed/c10/util/Exception.h#L391) and [TORCH_WARN_ONCE](https://github.com/pytorch/pytorch/blob/4f538a2ba48afeb2a2a1f3b6e01b1ec461d4a5ed/c10/util/Exception.h#L402). The latter, as the name suggests, will cause a warning to be triggered one time, while TORCH_WARN will throw a warning every time.
 
-Generally you should use TORCH_WARN_ONCE. Warning the user every time a behavior occurs is often onerous, especially if the warning occurs in a network's training loop. TORCH_WARN is appropriate only if the warning may occur in contexts so different that a user could not infer the the warning would be triggered after reading the first warning. Let's look at a few examples that clarify this principle. 
+Generally you should use TORCH_WARN_ONCE. Warning the user every time a behavior occurs is often onerous, especially if the warning occurs in a network's training loop. TORCH_WARN is appropriate only if the warning may occur in contexts so different that a user could not infer that the warning would be triggered after reading the first warning. Let's look at a few examples that clarify this principle. 
 
 
 `TORCH_WARN_ONCE("Casting complex values to real discards the imaginary part");`
