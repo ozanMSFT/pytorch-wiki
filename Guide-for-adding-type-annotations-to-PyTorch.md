@@ -44,10 +44,11 @@ check_untyped_defs = True
 
 files =
     torch,
-    caffe2,
     test,
     aten/src/ATen/function_wrapper.py
 ```
+
+Note that adding annotations to `caffe2/` is low-prio (it's a lot of work, and there's not much value in it), we recommend focusing on other tasks.
 
 
 ## How to go about improving type annotations
