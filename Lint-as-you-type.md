@@ -6,9 +6,15 @@ If you work at Facebook; check out [this page](https://our.internmc.facebook.com
 
 ## Setting up flake8
 
-At the high level, we need to install flake8 with all of the plugins as expected by CI, and then configure your editor to use it.  The correct instructions for how to replicate CI flake8 canonically live in https://github.com/pytorch/pytorch/blob/master/.github/workflows/lint.yml#L69
+We first need to install flake8 with all of the plugins as expected by CI:
 
-These plugins require Python 3. If you use pip3 to install, invoke flake8 with flake8-3.
+```sh
+pip install -r requirements-flake8.txt
+```
+
+(These plugins require Python 3. If you use pip3 to install, invoke flake8 with flake8-3.)
+
+Then configure your editor to use it; see below.
 
 ## VS Code
 
