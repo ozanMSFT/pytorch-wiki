@@ -24,6 +24,10 @@ Each PR takes costly machine and developer time. "Small" PRs that may correct a 
 
 No. PyTorch treats NaNs like Python does: there is only one floating point NaN and a complex number is NaN if either its real part is NaN, its imaginary part is NaN, or both parts are NaN. 
 
+### Why doesn't PyTorch let me compare complex numbers like NumPy?
+
+Complex numbers are not part of any totally ordered field, so comparisons between them are ambiguous. PyTorch follows Python3 in disallowing these comparisons. NumPy intends to update its behavior to match Python3 in the future, too. See the NumPy issue [here](https://github.com/numpy/numpy/issues/15981). 
+
 ## Warnings
 
 ### When should I TORCH_WARN vs. TORCH_WARN_ONCE?
