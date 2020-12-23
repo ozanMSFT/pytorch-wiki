@@ -1,9 +1,3 @@
-## PyTorch Numerics
-
-### Does PyTorch distinguish between different types of NaN like C++ does?
-
-No. PyTorch treats NaNs like Python does: there is only one floating point NaN and a complex number is NaN if either its real part is NaN, its imaginary part is NaN, or both parts are NaN. 
-
 ## PRs
 
 ### My PR hasn't been reviewed in awhile, what should I do? 
@@ -23,6 +17,12 @@ Push your changes to a pytorch/pytorch branch named ci-all/<your name here>. Tha
 ### My PR was rejected for being "too small" &mdash; what gives!?
 
 Each PR takes costly machine and developer time. "Small" PRs that may correct a spelling error or making a tiny grammar change are simply not worth the cost.
+
+## PyTorch Numerics
+
+### Does PyTorch distinguish between different types of NaN like C++ does?
+
+No. PyTorch treats NaNs like Python does: there is only one floating point NaN and a complex number is NaN if either its real part is NaN, its imaginary part is NaN, or both parts are NaN. 
 
 ## Warnings
 
