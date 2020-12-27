@@ -1,3 +1,13 @@
+## Numerics
+
+### Does PyTorch distinguish between different types of NaN like C++ does?
+
+No. PyTorch treats NaNs like Python does: there is only one floating point NaN and a complex number is NaN if either its real part is NaN, its imaginary part is NaN, or both parts are NaN. 
+
+### Why doesn't PyTorch let me compare complex numbers like NumPy?
+
+Complex numbers are not part of any totally ordered field, so comparisons between them are ambiguous. PyTorch follows Python3 in disallowing these comparisons. NumPy intends to update its behavior to match Python3 in the future, too. See the NumPy issue [here](https://github.com/numpy/numpy/issues/15981). 
+
 ## PRs
 
 ### My PR hasn't been reviewed in awhile, what should I do? 
@@ -18,15 +28,18 @@ Push your changes to a pytorch/pytorch branch named ci-all/<your name here>. Tha
 
 Each PR takes costly machine and developer time. "Small" PRs that may correct a spelling error or making a tiny grammar change are simply not worth the cost.
 
-## PyTorch Numerics
+## UX
 
-### Does PyTorch distinguish between different types of NaN like C++ does?
+### How does out= work in PyTorch?
 
-No. PyTorch treats NaNs like Python does: there is only one floating point NaN and a complex number is NaN if either its real part is NaN, its imaginary part is NaN, or both parts are NaN. 
+When a user passes one or more tensors to out= the contract is as follows:
 
-### Why doesn't PyTorch let me compare complex numbers like NumPy?
+- if an out tensor has no elements it may be resized
+- passing out= tensors is numerically equivalent to performing the operation and "safe" copying its results to the (possibly resized if empty) out tensors
 
-Complex numbers are not part of any totally ordered field, so comparisons between them are ambiguous. PyTorch follows Python3 in disallowing these comparisons. NumPy intends to update its behavior to match Python3 in the future, too. See the NumPy issue [here](https://github.com/numpy/numpy/issues/15981). 
+A "safe" copy is different from PyTorch's regular copy because it requires the to tensor's device be the same as from tensor's, and, for computations that have a "computation type" (like those participating in type promotion) the copy cannot be to a lower "type kind." PyTorch has four type kinds: boolean, integer, float, and complex, in that order. So, for example, an operation like add will throw a runtime error if given float inputs but an integer out= tensor.
+
+Note that while the numerics of out= are that the operation is performed and then its results are "safe" copied, behind the scenes operations may reuse the storage of out= tensors and fuse the copy for efficiency. Many operations, like add, perform these optimizations. 
 
 ## Warnings
 
