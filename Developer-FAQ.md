@@ -51,8 +51,6 @@ Reshaping operations in PyTorch manipulate a tensor's shape without modifying it
 
 PyTorch aggressively prefers returning self when possible, then a view, then making a copy of the input data. This can be confusing, since operations like `reshape()` can sometimes produce a view and sometimes produce a tensor that doesn't share storage with its input, and these results have different write semantics. PyTorch has decided, however, to bias towards performance and memory use in these cases. Programs performing inplace operations must be mindful of this behavior.
 
-## Warnings
-
 ### When should I TORCH_WARN vs. TORCH_WARN_ONCE?
 
 PyTorch offers both [TORCH_WARN](https://github.com/pytorch/pytorch/blob/4f538a2ba48afeb2a2a1f3b6e01b1ec461d4a5ed/c10/util/Exception.h#L391) and [TORCH_WARN_ONCE](https://github.com/pytorch/pytorch/blob/4f538a2ba48afeb2a2a1f3b6e01b1ec461d4a5ed/c10/util/Exception.h#L402). The latter, as the name suggests, will cause a warning to be triggered one time per process, while TORCH_WARN will throw a warning every time.
