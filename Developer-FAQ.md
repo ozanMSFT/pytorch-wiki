@@ -41,6 +41,16 @@ A "safe" copy is different from PyTorch's regular copy because it requires the t
 
 Note that while the numerics of out= are that the operation is performed and then its results are "safe" copied, behind the scenes operations may reuse the storage of out= tensors and fuse the copy for efficiency. Many operations, like add, perform these optimizations. 
 
+### Reshaping operations and returning self, a view, or a tensor with its own storage
+
+Reshaping operations in PyTorch manipulate a tensor's shape without modifying its elements. Examples of these operations are `contiguous()`, `reshape()`, and `flatten()`. These operations have different options for what to return:
+
+- if the operation is a nullop, then the input can be returned, a view of the input can be returned, or a copy of the input can be returned
+- if the operation produces a shape that can be a view of the input, a view of the input or a copy of the input can be returned
+- if the operation produces a shape that cannot be a view of the input, a copy of the input must be returned
+
+PyTorch aggressively prefers returning self when possible, then a view, then making a copy of the input data. This can be confusing, since operations like `reshape()` can sometimes produce a view and sometimes produce a tensor that doesn't share storage with its input, and these results have different write semantics. PyTorch has decided, however, to bias towards performance and memory use in these cases. Programs performing inplace operations must be mindful of this behavior.
+
 ## Warnings
 
 ### When should I TORCH_WARN vs. TORCH_WARN_ONCE?
