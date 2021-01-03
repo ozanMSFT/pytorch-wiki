@@ -7,6 +7,8 @@ Testing is an important part of developing PyTorch. Good tests ensure both that:
 
 This article explains PyTorch's existing testing tools to help you write effective and efficient tests.
 
+If you're interested in helping to improve PyTorch's tests then see our tracking issue here: https://github.com/pytorch/pytorch/issues/50006. 
+
 ### Test file organization
 
 PyTorch's test suites are located under [pytorch/test](https://github.com/pytorch/pytorch/tree/master/test).
