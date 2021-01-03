@@ -19,7 +19,7 @@ Welcome to the PyTorch developer's wiki!
 * [Introducing Quantized Tensor](Introducing-Quantized-Tensor)
 * [Life of a Tensor](Life-of-A-Tensor)
 * [How to use `TensorIterator`](How-to-use-TensorIterator)
-* [Writing tests that run on all available device types](Writing-tests-that-run-on-all-available-device-types)
+* [Writing tests in PyTorch 1.8](Writing-tests-in-PyTorch-1.8)
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
 * [The torch.fft module in PyTorch 1.7](The-torch.fft-module-in-PyTorch-1.7)
