@@ -28,6 +28,18 @@ Push your changes to a pytorch/pytorch branch named ci-all/<your name here>. Tha
 
 Each PR takes costly machine and developer time. "Small" PRs that may correct a spelling error or making a tiny grammar change are simply not worth the cost.
 
+### I have a new function or feature I'd like to add to PyTorch, should it be in "PyTorch Core" or a library like torchvision?
+
+First, thanks for wanting to add new functionality to PyTorch!
+
+Typically a new function or feature requires an issue for discussion, followed by a consensus that the function/feature will be accepted into PyTorch Core. Good candidates for acceptance have one or more of the following properties:
+
+- further a current PyTorch UX or functionality goal
+- are derived from frequently used and established research that's been vetted for 2+ years
+- add necessary functionality to support research that does not conflict with PyTorch's UX
+
+Many function/feature proposals are interesting and derived from compelling research but lack vetting from the community. These ideas are best implemented in PyTorch-compatible libraries to incubate. Numerous functions or features related to a specific research area are also probably best implemented in a library. There is a reason, for example, that torchvision is not part of PyTorch Core. 
+
 ## UX
 
 ### How does out= work in PyTorch?
