@@ -53,6 +53,12 @@ A "safe" copy is different from PyTorch's regular copy because it requires the t
 
 Note that while the numerics of out= are that the operation is performed and then its results are "safe" copied, behind the scenes operations may reuse the storage of out= tensors and fuse the copy for efficiency. Many operations, like add, perform these optimizations. 
 
+### How do in place operations work in PyTorch?
+
+In place operations in PyTorch operate directly on their input tensor's memory. These operations typically have an underscore at the end of their name to specify they're inplace. For example, torch.add(a, b) produces a tensor c with its own storage, but a.add_(b) modifies a's data. From a UX standpoint, these operations are equivalent to specifying the modified tensor as an "out tensor." That is, torch.add(a, b, out=a) is equivalent to a.add_(b). 
+
+One caveat with this thinking is that gradients for operations using the out kwarg are not supported, but gradients are often supported for operations performed in place.
+
 ### Reshaping operations and returning self, a view, or a tensor with its own storage
 
 Reshaping operations in PyTorch manipulate a tensor's shape without modifying its elements. Examples of these operations are `contiguous()`, `reshape()`, and `flatten()`. These operations have different options for what to return:
