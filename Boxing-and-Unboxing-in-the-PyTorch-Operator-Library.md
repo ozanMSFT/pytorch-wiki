@@ -42,7 +42,7 @@ Note that caffe2 was fully boxed, in caffe2 no unboxed paradigm existed.
 
 ### Bridging Paradigms
 
-We do need both the boxed and unboxed paradigms. Examples for boxed calling are JIT and Mobile, and also the still existing caffe2 frontend. Unboxed calling happens from Python and C++ eager mode. Examples for boxed operator implementations are caffe2 kernels that are exported to PyTorch, but also backend fallback kernels like Lazy, AMP or Profiling that “hook” into the dispatcher to run some code instead of the actual kernel, but then re-dispatch to the actual kernel. Examples for unboxed operator implementations are almost all other operators, whether they come from native_functions.yaml or from the custom operator API.
+We do need both the boxed and unboxed paradigms. Examples for boxed calling are JIT and Mobile, and also the still existing caffe2 frontend. Unboxed calling happens from Python and C++ eager mode. Examples for boxed operator implementations are caffe2 kernels that are exported to PyTorch, but also backend fallback kernels like Lazy or AMP that “hook” into the dispatcher to run some code instead of the actual kernel, but then re-dispatch to the actual kernel. Examples for unboxed operator implementations are almost all other operators, whether they come from native_functions.yaml or from the custom operator API.
 
 Having both paradigms also means we need to build a bridge. This is where “boxing” or “unboxing” comes in.
 
