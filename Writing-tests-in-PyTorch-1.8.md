@@ -81,7 +81,7 @@ class TestFooCUDA(TestCase):
     ...
 ```
 
-These tests can be run directly with a command like `python test_foo.py TestFooCPU.test_foo_cpu`. Even those these tests are generated they will also work with the `-k` flag, so `python test_foo.py -k test_foo` will run both `test_foo_cpu` and `test_foo_cuda`. 
+These tests can be run directly with a command like `python test_foo.py TestFooCPU.test_foo_cpu`. Even though these tests are generated they will also work with the `-k` flag, so `python test_foo.py -k test_foo` will run both `test_foo_cpu` and `test_foo_cuda`. 
 
 Tensors created in these tests should typically be placed on the device, like this:
 
@@ -207,7 +207,7 @@ Notably it DOES NOT test:
 
 And this may seem odd. How can, for example, test_ops.py verify that the operation's derivative and second derivative are implemented properly but not that the operation itself is!? It's because the tests for the derivative and second derivative assume the operation's "forward" is correctly implemented, but test_ops.py has no way of knowing if that's true. In the future it may be expanded with additional support for verifying that a function's "forward" behavior is correct, too.
 
-This means that, typically, when implementing a new tensor operation you will need to write an OpInfo and one or more device-generic test templates for it. These templates should verify the operation's forward is properly implemented, but they do not need to be redundant with test_ops.py. In particular, they usually don't need to test the operation's jitted behavior or that it's derivative is properly implemented. Some derived classes of OpInfo, like the UnaryUfuncInfos, actually do have the structure to test the forward behavior of their operators, however. See test_unary_ufuncs.py for details on how the UnaryUfuncInfos work.
+This means that, typically, when implementing a new tensor operation you will need to write an OpInfo and one or more device-generic test templates for it. These templates should verify the operation's forward is properly implemented, but they do not need to be redundant with test_ops.py. In particular, they usually don't need to test the operation's jitted behavior or that its derivative is properly implemented. Some derived classes of OpInfo, like the UnaryUfuncInfos, actually do have the structure to test the forward behavior of their operators, however. See test_unary_ufuncs.py for details on how the UnaryUfuncInfos work.
 
 ### NN Module Testing
 
