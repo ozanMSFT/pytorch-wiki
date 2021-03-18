@@ -31,10 +31,10 @@ Unittest-specific arguments can be appended to this command. For example, to run
 python test_torch.py <TestClass>.<TestName>
 ```
 
-Other commonly useful options are `-k`, which specifies a string to filter the tests, and `-v`, which runs the test suite in "verbose" mode. For example, 
+Other commonly useful options are `-k`, which specifies a string to filter the tests, and `-v`, which runs the test suite in "verbose" mode. Unfortunately `-k` works only with `pytest`.  For example, 
 
 ```
-python test_torch.py -k cpu
+pytest test_torch.py -k cpu
 ```
 
 Will run all the tests in test_torch.py with "cpu" in their name.
@@ -81,7 +81,7 @@ class TestFooCUDA(TestCase):
     ...
 ```
 
-These tests can be run directly with a command like `python test_foo.py TestFooCPU.test_foo_cpu`. Even though these tests are generated they will also work with the `-k` flag, so `python test_foo.py -k test_foo` will run both `test_foo_cpu` and `test_foo_cuda`. 
+These tests can be run directly with a command like `python test_foo.py TestFooCPU.test_foo_cpu`. Even though these tests are generated they will also work with the `-k` flag, so `pytest test_foo.py -k test_foo` will run both `test_foo_cpu` and `test_foo_cuda`. 
 
 Tensors created in these tests should typically be placed on the device, like this:
 
