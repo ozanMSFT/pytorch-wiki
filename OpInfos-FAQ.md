@@ -4,7 +4,7 @@ Here are some tips for when you want to write tests using OpInfos. The basic lay
 
 ```
 class TestAdd(TestCase):
-    @ops([OpInfo1, OpInfo2]
+    @ops([OpInfo1, OpInfo2])
     def test_ops(self, device, dtype, op):
         for sample in op.sample_inputs(device, dtype):
             tensors = sample.input
@@ -18,12 +18,23 @@ instantiate_device_type_tests(TestAdd, globals())
 <summary><b>How many tests will this run?</b></summary>
 The `ops` decorator will create a set of tests for each `device` and `OpInfo`.
 The `OpInfo.dtype*` and `OpInfo.default_test_dtypes` will be combined with the `device`
-to further generate test functions.
+to further generate test functions, each one will be called with a `device`, `dtype` and `op`.
 </details>
+
 <details>
-<summary><b>How do I write a `sample_inputs` method?<b></summary>
+<summary><b>The test signature has `device`, `dtype` and `op`, where do the rest of the parameters come from?</b></summary>
+In order to generate tensors ([make_tensor](https://github.com/pytorch/pytorch/blob/61b074581ce1ccf0fb1bf4f1b73f4b99f93fa70c/torch/testing/_internal/common_utils.py#L1592) 
+is a convenient way to do that) you need some kind of **domain** of values ((high, low), non-negative, ...)
+and shapes, as well as optional parameters like `requires_grad` and `contiguous`. These all can be part of the
+OpInfo which has *Info* about the *Op* under test. The `sample_inputs` function is a convenient interface to
+encapsulate this knowledge.
+</details>
+
+<details>
+<summary><b>How do I write a `sample_inputs` method to generate tensors to test with?<b></summary>
 TBD, include examples
 </details>
+
 <details>
 <summary><b>A test failed. How do I reproduce it?<b></summary>
 TBD
