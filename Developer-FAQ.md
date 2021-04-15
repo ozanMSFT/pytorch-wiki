@@ -46,9 +46,9 @@ Many function/feature proposals are interesting and derived from compelling rese
 
 When a user passes one or more tensors to out= the contract is as follows:
 
-- if an out tensor has no elements it may be resized to the size of the result of the computation
-- if an out tensor is a different size than the result of the computation an error is thrown OR the out tensor is resized to the same size as the result of the computation (this latter behavior is deprecated and PyTorch is updating its operators to consistently throw an error)
-- passing out= tensors is numerically equivalent to performing the operation and "safe" copying its results to the out tensor (which must now be the same size as the result of the operation)
+- if an out tensor has no elements it may be resized to the size and shape of the result of the computation
+- if an out tensor is a different size or shape than the result of the computation an error is thrown OR the out tensor is resized to the same size and shape as the result of the computation (this latter behavior is deprecated and PyTorch is updating its operators to consistently throw an error)
+- passing out= tensors is numerically equivalent to performing the operation and "safe" copying its results to the out tensor (which must now be the same size and shape as the result of the operation)
 
 A "safe" copy is different from PyTorch's regular copy because it requires the to tensor's device be the same as from tensor's, and, for computations that have a "computation type" (like those participating in type promotion) the copy cannot be to a lower "type kind." PyTorch has four type kinds: boolean, integer, float, and complex, in that order. So, for example, an operation like add will throw a runtime error if given float inputs but an integer out= tensor.
 
