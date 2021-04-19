@@ -48,11 +48,11 @@ When a user passes one or more tensors to out= the contract is as follows:
 
 - if an out tensor has no elements it may be resized to the size and shape of the result of the computation
 - if an out tensor is a different size or shape than the result of the computation an error is thrown OR the out tensor is resized to the same size and shape as the result of the computation (this latter behavior is deprecated and PyTorch is updating its operators to consistently throw an error)
-- passing out= tensors is numerically equivalent to performing the operation and "safe" copying its results to the out tensor (which must now be the same size and shape as the result of the operation)
+- passing out= tensors is numerically equivalent to performing the operation and "safe copying" its results to the out tensor (which must now be the same size and shape as the result of the operation)
 
-A "safe" copy is different from PyTorch's regular copy because it requires the to tensor's device be the same as from tensor's, and, for computations that have a "computation type" (like those participating in type promotion) the copy cannot be to a lower "type kind." PyTorch has four type kinds: boolean, integer, float, and complex, in that order. So, for example, an operation like add will throw a runtime error if given float inputs but an integer out= tensor.
+A "safe copy" is different from PyTorch's regular copy. For operations that do not participate in type promotion the device and dtype of the source and destination tensors must match. For operations that do participate in type promotion the copy can be to a different dtype, but the destination of the copy cannot be a lower "type kind" than the source. PyTorch has four type kinds: boolean, integer, float, and complex, in that order. So, for example, an operation like add (which participates in type promotion) will throw a runtime error if given float inputs but an integer out= tensor.
 
-Note that while the numerics of out= are that the operation is performed and then its results are "safe" copied, behind the scenes operations may reuse the storage of out= tensors and fuse the copy for efficiency. Many operations, like add, perform these optimizations. 
+Note that while the numerics of out= are that the operation is performed and then its results are "safe copied," behind the scenes operations may reuse the storage of out= tensors and fuse the copy for efficiency. Many operations, like add, perform these optimizations. 
 
 ### How do in place operations work in PyTorch?
 
