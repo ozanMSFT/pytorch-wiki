@@ -122,7 +122,7 @@ Welcome to the PyTorch developer's wiki!
 * [Modular Benchmarking Components](https://github.com/pytorch/pytorch/blob/master/torch/utils/benchmark/README.md)
 
 ### DataLoader
-* [DataPipe Typing System]()
+* [DataPipe Typing System](https://github.com/pytorch/pytorch/blob/master/torch/utils/data/typing.ipynb)
 
 ## Workflow docs
 
