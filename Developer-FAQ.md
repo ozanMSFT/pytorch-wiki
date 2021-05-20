@@ -10,15 +10,37 @@ Complex numbers are not part of any totally ordered field, so comparisons betwee
 
 ## PRs
 
-### My PR hasn't been reviewed in awhile, what should I do? 
+### My PR hasn't been reviewed in a while, what should I do? 
 
 You can and should ping reviewers by ccing them in a comment if they haven't responded to a review request in 2 full working days. For example, if you request a review on Friday, you can ping your reviewers on Wednesday of the next week. 
 
-### If I'm editing the documentation, how do I see the formatted doc?
+### My PR may change the documentation, how do I see the formatted doc?
 
-See [here](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#building-documentation) for instructions on building the docs locally.
+**Iterate on the docs locally.**
 
-If you've submitted a PR, click the "Details" link next to the pytorch_python_doc_build, then go to the "Artifacts" tab. It has links to the documentation built for your PR. 
+If you want to iterate on the docs locally, see [here](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#building-documentation) for instructions on building the docs locally.
+
+**Iterate on the docs from PR.**
+
+If you've submitted a PR, make sure the following jobs are finished
+
+- `Linux CI (pytorch-linux-xenial-py3.6-gcc5.4)`
+  - `pytorch_python_doc_build`
+
+And then you can download the artifacts (pytorch_github_io.zip) from the GitHub Action page of `Linux CI (pytorch-linux-xenial-py3.6-gcc5.4)`. 
+
+![image](https://user-images.githubusercontent.com/658840/119040554-6a897f80-b96a-11eb-9499-dd4b59abe893.png)
+
+Unzip it, and you can follow how we build the docs `site` there: https://github.com/pytorch/pytorch.github.io#setup
+
+```
+# Install rbenv and yarn dependencies for a jekyll website
+# Follow https://github.com/pytorch/pytorch.github.io
+cd <path_to>/pytorch.github.io
+
+# Serve the doc site locally
+make serve
+```
 
 ### My PR caused a build to fail, but it's not usually run in the Github CI. How do I test my PR against EVERY build?
 
