@@ -37,6 +37,8 @@ pytest test_torch.py -k cpu
 
 Will run all the tests in test_torch.py with "cpu" in their name.
 
+## Using environment variables:
+
 In addition to unittest and pytest options, PyTorch's test suite also understands the following environment variables:
 
 - PYTORCH_TEST_WITH_SLOW, if set to 1 this will run tests marked with the @slowTest decorator (default=0)
@@ -53,6 +55,15 @@ PYTORCH_TEST_WITH_SLOW=1 python test_torch.py
 ```
 
 Will run the tests in test_torch.py, including those decorated with @slowTest.
+
+## Using Github label to control CI behavior on PR
+
+PyTorch runs different sets of jobs on PR vs. on master commits.
+
+In order to control the behavior of CI jobs on PR. We support Github Labels to control what to test on CI on PRs:
+- `ci/master`: runs sets of CI jobs that normally only run on master
+- `ci/binaries`: runs sets of CI jobs that builds additional binaries (normally only run on nightly)
+
 
 # Common test utilities
 
