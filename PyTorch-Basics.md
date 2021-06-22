@@ -2,7 +2,7 @@
 
 Please see https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#developing-pytorch
 
-For fb employees, please go [here](https://fb.quip.com/ZxEmAzk8HX8T) for an opinionated setup guide.
+For fb employees, please read through [this](https://fb.quip.com/2jrUAlXglURQ) as well.
 
 ## Learn about how to use PyTorch
 
