@@ -77,6 +77,14 @@ Prefer using [make_tensor](https://github.com/pytorch/pytorch/blob/0e7b5ea6c003b
 
 PyTorch's test framework lets you instantiate test templates for different operators, datatypes (dtypes), and devices to improve test coverage. It is recommended that all tests be written as templates, whether it's necessary or not, to make it easier for the test framework to inspect the test's properties.
 
+In general, there exist three variants of instantiated tests, which adapt the names at runtime according the following scheme.
+
+- Tests are parametrized with multiple devices:  `<TestClass><DEVICE>.<test_name>_<device>`
+- Tests are additionally parametrized with multiple dtypes: `<TestClass><DEVICE>.<test_name>_<device>_<dtype>`
+- Test are additionally parametrized with multiple operators: `<TestClass><DEVICE>.<test_name>_<operator_name>_<device>_<dtype>`
+
+To use the selection syntax to run only a single test class or test, be it with `unittest` or `pytest`, it is important to use instantiated name rather than the template name. For `pytest` users there is the [`pytest-pytorch`](https://labs.quansight.org/blog/2021/06/pytest-pytorch/) plugin, that re-enables selecting individual test classes or tests by their template name.
+
 # OpInfos
 
 [See this comment for details on writing OpInfos and how they're used.](https://github.com/pytorch/pytorch/blob/0baad214b07ad35be1f10100168ed761cc7c51c0/torch/testing/_internal/common_methods_invocations.py#L182)
