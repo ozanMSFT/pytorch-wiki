@@ -8,7 +8,7 @@ You should add both your mentor as well as @albanD as a reviewer for this PR.
 
 For this lab, we are going to consider the following attention function
 
-```
+```py
 import torch
 
 def attn(q, k, v):
