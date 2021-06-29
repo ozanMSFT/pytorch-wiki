@@ -11,8 +11,8 @@ Read through [link](https://colab.research.google.com/drive/1aWNdmYt7RcHMbUk-Xz2
 
 ## Given an operator, how do I derive a backward formula for it?
 
-How to derive formula for torch.sin (real case) [link](https://colab.research.google.com/drive/1lUU5JUh0h-8XwaavyLuOkQfeQgn4m8zr).
-How to derive formula for torch.mm (real case) [link](https://colab.research.google.com/drive/1z6641HKB51OfYJMCxOFo0lYd7viytnIG).
+- How to derive formula for torch.sin (real case) [link](https://colab.research.google.com/drive/1lUU5JUh0h-8XwaavyLuOkQfeQgn4m8zr).
+- How to derive formula for torch.mm (real case) [link](https://colab.research.google.com/drive/1z6641HKB51OfYJMCxOFo0lYd7viytnIG).
 
 ## Given a new operator, how do I write a new backward formula? (using derivatives.yaml)
 
