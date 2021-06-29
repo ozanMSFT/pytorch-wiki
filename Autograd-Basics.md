@@ -30,8 +30,8 @@ Coming soon!
 
 Coming soon!
 
-## Lab: Derive the backward formula for a fake operator
+## Try out the Autograd Onboarding Lab
 
-Coming soon!
+https://github.com/pytorch/pytorch/wiki/Autograd-Onboarding-Lab
 
 
