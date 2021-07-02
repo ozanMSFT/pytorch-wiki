@@ -1,5 +1,7 @@
 Welcome to the PyTorch developer's wiki!
 
+[TOC]
+
 ## User docs
 
 * [Release notes](https://github.com/pytorch/pytorch/releases)
