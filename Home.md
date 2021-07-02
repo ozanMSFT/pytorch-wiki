@@ -1,6 +1,6 @@
 Welcome to the PyTorch developer's wiki!
 
-[TOC]
+TOC
 
 ## User docs
 
