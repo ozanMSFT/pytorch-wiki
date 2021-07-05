@@ -62,6 +62,18 @@ Typically a new function or feature requires an issue for discussion, followed b
 
 Many function/feature proposals are interesting and derived from compelling research but lack vetting from the community. These ideas are best implemented in PyTorch-compatible libraries to incubate. Numerous functions or features related to a specific research area are also probably best implemented in a library. There is a reason, for example, that torchvision is not part of PyTorch Core. 
 
+### I have implemented an algorithm / feature from a research paper that is related to optimization. When is the correct time to add it to PyTorch Core ?
+
+Thank you for following research updates and your interest to contribute to PyTorch Core.
+
+Typically adding a new optimizer, learning rate scheduler or a feature needs an issue filed and decision discussion. We generally prefer algorithms that satisfy most of the following properties:
+
+- The algorithm has proven track of applicability to real-life datasets in Deep Learning problems.
+- The method is frequently used and established research that's been vetted for 1.5+ years
+- The paper that is introducing the method has at least 200 citations in the last two years or cumulative 1000+ citations
+
+If a paper satisfies all these properties, we are discussing the algorithm internally with feedback from an expert in optimization research then finalize our decision.
+
 ## UX
 
 ### What is type promotion and why do some PyTorch operations support it while others don't?
