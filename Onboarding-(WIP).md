@@ -5,7 +5,7 @@ New to developing PyTorch? We've got you covered.
 - [Tensor and Operator Basics](https://github.com/pytorch/pytorch/wiki/Tensor-and-Operator-Basics)
 - [Autograd basics](https://github.com/pytorch/pytorch/wiki/Autograd-Basics)
 - Dispatcher and Python bindings
-- [[nn|nn-Basics]] [[C++|Cpp-API-Quick-Walkthrough]]
+- [[nn|nn-Basics]], [[C++|Cpp-API-Quick-Walkthrough]]
 - CUDA basics
 
 Some further things:
