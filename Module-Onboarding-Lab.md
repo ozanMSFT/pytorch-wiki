@@ -8,8 +8,9 @@ For this lab, we are going to create a module named `nn.Bias` that simply adds a
 
 ```python
 import torch
+from torch import nn
 
-m = Bias(num_features=5)
+m = nn.Bias(num_features=5)
 input = torch.randn(10, 5)
 output = m(input)  # output should be equal to input + module's bias parameter
 ```
