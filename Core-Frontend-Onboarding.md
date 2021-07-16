@@ -9,4 +9,4 @@ New to developing PyTorch? We've got you covered.
 - CUDA basics
 
 Some further things:
-- optim, data,
+- optim, data
