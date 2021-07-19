@@ -39,7 +39,7 @@ You can write this in a small standalone script that defines the Function and ru
 ## III) Write native composite function and OpInfo
 
 Now that you know that the formula is correct, you can implement a brand new native function in “native_functions.yaml” as a CompositeImplicit function.
-You can then add an OpInfo entry (in common_method_invocation.py) to be able to test the new operator.
+You can then add an OpInfo entry (in common_methods_invocations.py) to be able to test the new operator.
 
 ## IV) Write custom formula in derivatives.yaml
 
