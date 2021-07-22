@@ -34,7 +34,7 @@ each of the wrappers above.
 * `torch/nn/modules/__init__.py` - add the module class name to the list in `__all__`
 * `torch/nn/functional.py` - add the Python functional form of the module here
 * `torch/csrc/api/include/torch/nn/modules/linear.h` / `torch/csrc/api/src/nn/modules/linear.cpp` - add the C++ module class definitions here
-* `torch/csrc/api/include/torch/nn/options/linear.h` - add options for the module here (i.e. `num_features`)
+* `torch/csrc/api/include/torch/nn/options/linear.h` / `torch/csrc/api/src/nn/options/linear.cpp` - add options for the module here (i.e. `num_features`)
 * `torch/testing/_internal/common_nn.py` - add a `dict` entry to the `module_tests` list defining how to generate generic tests for the new module (note: this part is in the process of being improved)
 * `test/test_nn.py` - add any module functionality tests here as functions on `TestNN` or `TestNNDeviceType` (for device-specific tests)
 * `test/cpp/api/functional.cpp` - add C++ API functional tests here
