@@ -64,6 +64,9 @@ In order to control the behavior of CI jobs on PR. We support Github Labels to c
 - `ci/master`: runs sets of CI jobs that normally only run on master
 - `ci/binaries`: runs sets of CI jobs that builds additional binaries (normally only run on nightly)
 
+Note that `ci/master` and `ci/binaries` only work for jobs running in CircleCI. We're migrating CI jobs to GitHub Actions,
+the new proposal of how to dynamically trigger workflows in GitHub Actions can be tracked [here](https://github.com/pytorch/pytorch/issues/61888).
+
 
 # Common test utilities
 
