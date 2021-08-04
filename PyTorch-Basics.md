@@ -6,7 +6,7 @@ For fb employees, please read through [this](https://fb.quip.com/2jrUAlXglURQ) a
 
 ## Learn about how to use PyTorch
 
-Run through the [PyTorch 60 Minute Blitz](tutorial)
+Run through the [PyTorch 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
 
 If you're not familiar with machine learning, [here](https://www.youtube.com/playlist?list=PLC1qU-LWwrF64f4QKQT-Vg5Wr4qEE1Zxk) is a nice lecture series.
 
