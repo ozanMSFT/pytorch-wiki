@@ -8,9 +8,9 @@ Documentation can easily go out of date. This page is meant to be a guide to bes
 
 ## Adding a new page
 
-Each page should have a "Page Maintainers: " section at a very top that lists the people responsible for maintaining the page. *Maintainers* are responsible for keeping the pages up to date.
+Each page should have a "Page Maintainers: " section at a very top that lists the GitHub handles of folks responsible for maintaining the page. *Maintainers* are responsible for keeping the pages up to date.
 
 ## A page looks out of date, what do I do?
 
 * For small changes, feel free to fix it yourself.
-* For larger changes, or if you're not sure how to correct something, open a github issue and assign it to the maintainers.
+* For larger changes, or if you're not sure how to correct something, open a GitHub issue and assign it to the maintainers.
