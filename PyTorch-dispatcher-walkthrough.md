@@ -1,3 +1,5 @@
+Page Maintainer: @bdhirsh
+
 Adapted from: http://blog.ezyang.com/2020/09/lets-talk-about-the-pytorch-dispatcher/
 
 ## Why care about a dispatcher?
