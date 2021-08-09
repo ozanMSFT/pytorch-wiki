@@ -5,9 +5,6 @@ Welcome to the PyTorch developer's wiki!
 ## User docs
 
 * [Release notes](https://github.com/pytorch/pytorch/releases)
-* [Breaking Changes from Variable and Tensor merge](Breaking-Changes-from-Variable-and-Tensor-merge) (from 0.4 release)
-* [Tensor API changes for Caffe2 developers](Tensor-API-changes-for-Caffe2-developers) (from 1.0 release, plus some stuff on master)
-* [Autograd and Fork](Autograd-and-Fork)
 * [PyTorch Versions](PyTorch-Versions)
 
 ## Developer docs
@@ -143,3 +140,9 @@ Welcome to the PyTorch developer's wiki!
 * [Contributing](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
 * [PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
 * [PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
+
+## Archived
+
+* [Breaking Changes from Variable and Tensor merge](Breaking-Changes-from-Variable-and-Tensor-merge) (from 0.4 release)
+* [Tensor API changes for Caffe2 developers](Tensor-API-changes-for-Caffe2-developers) (from 1.0 release, plus some stuff on master)
+* [Autograd and Fork](Autograd-and-Fork)
