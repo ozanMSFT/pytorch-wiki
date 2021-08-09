@@ -1,3 +1,5 @@
+Page Maintainers: @alband, @soulitzer
+
 ## Scope
 * Understand how backpropagation works in theory
 * Understand how to derive backward formulas and how to add a backward formula to an operator
