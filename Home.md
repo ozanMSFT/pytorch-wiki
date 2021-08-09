@@ -7,6 +7,11 @@ Welcome to the PyTorch developer's wiki!
 * [Release notes](https://github.com/pytorch/pytorch/releases)
 * [PyTorch Versions](PyTorch-Versions)
 
+## Onboarding
+
+New to PyTorch? Don't know where to start?
+- [[Core Onboarding|Core Frontend Onboarding]]
+
 ## Developer docs
 
 * [Developer FAQ](Developer-FAQ)
