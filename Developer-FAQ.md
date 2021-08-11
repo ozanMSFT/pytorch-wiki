@@ -94,9 +94,9 @@ Beyond these three classes type promotion becomes trickier, less intuitive, and 
 
 When a user passes one or more tensors to out= the contract is as follows:
 
-- if an out tensor has no elements it may be resized to the size and shape of the result of the computation
-- if an out tensor is a different size or shape than the result of the computation an error is thrown OR the out tensor is resized to the same size and shape as the result of the computation (this latter behavior is deprecated and PyTorch is updating its operators to consistently throw an error)
-- passing out= tensors is numerically equivalent to performing the operation and "safe copying" its results to the out tensor (which must now be the same size and shape as the result of the operation)
+- if an out tensor has no elements it will be resized to the size and shape of the result of the computation. (It is resized using the resize_ method, so additional characteristics of the tensors are defined by resize_'s behavior.)
+- if an out tensor is a different size or shape than the result of the computation an error is thrown OR the out tensor is resized to the same size and shape as the result of the computation (this latter behavior is deprecated and PyTorch is updating its operators to consistently throw an error). (Just like the above case, the tensor is resized using the resize_ method.)
+- passing out= tensors is numerically equivalent to performing the operation and "safe copying" its results to the (possibly resized) out tensor.
 
 A "safe copy" is different from PyTorch's regular copy. For operations that do not participate in type promotion the device and dtype of the source and destination tensors must match. For operations that do participate in type promotion the copy can be to a different dtype, but the destination of the copy cannot be a lower "type kind" than the source. PyTorch has four type kinds: boolean, integer, float, and complex, in that order. So, for example, an operation like add (which participates in type promotion) will throw a runtime error if given float inputs but an integer out= tensor.
 
