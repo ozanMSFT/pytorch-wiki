@@ -131,6 +131,7 @@ New to PyTorch? Don't know where to start?
 
 ## Workflow docs
 
+* [Continuous Integration](Continuous-Integration)
 * [Bot commands](Bot-commands)
 * [Code review values](Code-review-values)
 * [Lint as you type](Lint-as-you-type)
