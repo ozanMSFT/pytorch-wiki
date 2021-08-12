@@ -7,7 +7,7 @@ New to developing PyTorch? We've got you covered.
 - [Autograd basics](https://github.com/pytorch/pytorch/wiki/Autograd-Basics)
 - [[Dispatcher and Python bindings|PyTorch-dispatcher-walkthrough]]
 - [[nn|nn-Basics]], [[C++|Cpp-API-Quick-Walkthrough]]
-- CUDA basics
+- [[CUDA-basics]]
 
 Some further things:
 - optim, data
