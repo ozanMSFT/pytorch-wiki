@@ -39,25 +39,55 @@ Defintion of solutions:
 - "derivatives.yaml" means that you should implement your derivatives using `tools/autograd/derivatives.yaml`.
 - "Custom Function" means that you should use custom autograd Function to wrap your function.
 
+## What is a Composite function and how to write one?
+
+We use the name composite here is used to refer to functions that are not "elementary" from the point of view of the autograd. This means that the autograd will ignore it and simply look at the functions that are called by this function and track these.
+A function can only be composite if it is implemented with differentiable functions.
+
+Every function you write using pytorch operators (in python or c++) is composite. So there is nothing special you need to do.
+
+Note that if you are working with native_functions.yaml, you need to use the CompositeImplicit key (which is the default if no dispatch at all is specified).
+
 ## Given an operator, how do I derive a backward formula for it?
+
+If you cannot use a composite function based on the table above, you will need to write the backward formula for your function by hand either in derivatives.yaml or in a custom Function.
+So the first step is to write down on paper what this formula is.
 
 - How to derive a simple formula: torch.sin [link](https://colab.research.google.com/drive/1lUU5JUh0h-8XwaavyLuOkQfeQgn4m8zr).
 - How to derive a more advanced formula: torch.mm [link](https://colab.research.google.com/drive/1z6641HKB51OfYJMCxOFo0lYd7viytnIG).
 
 ## Given a new operator, how do I write a new backward formula? (using derivatives.yaml)
 
-Coming soon!
+Implementing the backward using derivatives.yaml is the simplest.
+Add a new entry in [`tools/autograd/derivatives.yaml`](https://github.com/pytorch/pytorch/blob/master/tools/autograd/derivatives.yaml) for your function.
+The name should match the signature you added to native_functions.yaml.
+Then you should add one entry for each input for which you implement the backward formula.
+The codegen will then take care of everything for you!
+
+You can find more details in the documentation at the top of the derivatives.yaml file.
+
+## What are custom autograd Functions?
+
+Custom autograd functions are the way to extend autograd outside of core.
+In particular, you will need to implement both the forward and backward functions that will be used to evaluate and compute the gradient for your function.
+
+See details in the doc for how to implement such a Function [link](https://pytorch.org/docs/stable/notes/extending.html).
 
 ## How do I test an autograd formula?
 
-Coming soon!
-
-## What are custom autograd functions?
-
-Coming soon!
+Now that you have your function implemented and supporting autograd, it is time to check if the computed gradients are correct.
+We provide a builin tool for that called [`autograd.gradcheck`](https://pytorch.org/docs/stable/generated/torch.autograd.gradcheck.html?highlight=gradcheck#torch.autograd.gradcheck).
+This can be used to compare the gradient you implemented with a [finite difference](https://en.wikipedia.org/wiki/Finite_difference) approximation.
 
 ## Try out the Autograd Onboarding Lab
 
 https://github.com/pytorch/pytorch/wiki/Autograd-Onboarding-Lab
 
+## Autograd gotchas
 
+There are a lot of small details in the autograd.
+Here are a few of them that are important for the lab above.
+
+- Tensor full of zeros, `None` in python and undefined Tensors in c++ all mean the same thing for gradients. This means that your backward function need to properly handle potential None/undefined Tensors and behave as-if they were Tensors full of zeros. Similarly, you backward can return None/undefined Tensors instead of a Tensor full of zeros if needed.
+- Don't forget to use `ctx.set_materialize_grads()` described in the extending doc on your custom Function to prevent zero Tensors from being materialized.
+- The dtype that the backward functions support might be different than the ones that the forward supports for some already defined functions. OpInfo provides many options to specify dtypes: `dtypes`, `dtypesIfCUDA`, `backward_dtypes` and `backward_dtypesIfCUDA`.
