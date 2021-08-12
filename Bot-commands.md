@@ -1,5 +1,6 @@
 Page Maintainers: @zhouzhuojie
 
+Updated on: Thursday, Aug 12, 2021
 
 ## Deprecated @pytorchbot commands
 The following commands are deprecated, you might find them used in the previous PRs, but due to the fundamental CI system changes, these commands may not work anymore. 
