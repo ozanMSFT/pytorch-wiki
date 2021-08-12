@@ -5,7 +5,7 @@ Updated on: Thursday, Aug 12, 2021
 # ChatOps
 
 ## @pytorchbot commands live
-Stay tuned. Due to the underlying CI system migrations, we are adding new @pytorchbot commands.
+Stay tuned. Due to the underlying CI system migrations, we will introduce new @pytorchbot commands to orchestrate PR workflows.
 
 ## @pytorchbot commands deprecated
 The following commands are deprecated, you might find them used in the previous PRs, but due to the fundamental CI system changes, these commands may or may not work anymore. 
