@@ -76,11 +76,8 @@ See details in the doc for how to implement such a Function [link](https://pytor
 ## How do I test an autograd formula?
 
 Now that you have your function implemented and supporting autograd, it is time to check if the computed gradients are correct.
-We provide a builin tool for that called [`autograd.gradcheck`](https://pytorch.org/docs/stable/generated/torch.autograd.gradcheck.html?highlight=gradcheck#torch.autograd.gradcheck).
+We provide a builin tool for that called [`autograd.gradcheck`](https://pytorch.org/docs/stable/generated/torch.autograd.gradcheck.html?highlight=gradcheck#torch.autograd.gradcheck). See [here](https://colab.research.google.com/drive/1fc3pfw-tIHx0nR-E5iAFdBwY2nmnTFOG) for a quick intro (toy implementation).
 This can be used to compare the gradient you implemented with a [finite difference](https://en.wikipedia.org/wiki/Finite_difference) approximation.
-
-Helpful links:
- - See [here](https://colab.research.google.com/drive/1fc3pfw-tIHx0nR-E5iAFdBwY2nmnTFOG) for a quick intro to what gradcheck does + discussion of gradgradcheck. 
 
 ## Try out the Autograd Onboarding Lab
 
