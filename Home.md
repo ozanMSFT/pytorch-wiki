@@ -24,7 +24,7 @@ New to PyTorch? Don't know where to start?
 * [Introducing Quantized Tensor](Introducing-Quantized-Tensor)
 * [Life of a Tensor](Life-of-A-Tensor)
 * [How to use `TensorIterator`](How-to-use-TensorIterator)
-* [Running and writing tests in PyTorch 1.9](Running-and-writing-tests-in-PyTorch-1.9)
+* [Running and writing tests](Running-and-writing-tests)
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
 * [The torch.fft module in PyTorch 1.7](The-torch.fft-module-in-PyTorch-1.7)
