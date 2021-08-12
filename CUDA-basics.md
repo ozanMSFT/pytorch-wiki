@@ -31,5 +31,6 @@ TensorIterator kernels
 * Use pytorch built-in profiler (kineto) or nsys to get information on GPU utilization and most time-consuming kernels
 
 See https://www.dropbox.com/s/3350s3qfy8rpm5a/CUDA_presentation.key?dl=0 for high level overview of CUDA programming and useful links
+
 Goto N1023015 to do TensorIterator cuda perf lab
 
