@@ -33,10 +33,10 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
 
 PyTorch CI system ensures that proper build/test process should pass on both PRs and master commits. There are several terminologies we would like to clarify:
 
-- CI job: a CI job consist of a sequence of predefined steps, each of which will execute some specific script to build or test PyTorch. For example: 
-- CI workflow: a CI workflow consist of a collection of CI jobs that are depending on each other. For example:
-- CI result on a single commit: refers to all the CI workflows triggered on a single commit (either on PR or on master). For example:
-- CI platform: we currently have 3 CI platforms (Github Actions, CirlceCI, Jenkins). 
+- *CI job*: a CI job consist of a sequence of predefined steps, each of which will execute some specific script to build or test PyTorch. For example: 
+- *CI workflow*: a CI workflow consist of a collection of CI jobs that are depending on each other. For example:
+- *CI run*: Refers to all the CI workflows triggered on a single commit (either on PR or on master). For example:
+- *CI platform*: we currently have 3 CI platforms (Github Actions, CirlceCI, Jenkins). 
 
 PyTorch supports many different hardware architectures, operation system, accelerator GPU. Therefore, many different CI workflows run parallel on each commit to ensure that PyTorch can be built and run correctly in different environments and configurations. See [CI Matrix](#ci-matrix) section for more info.
 
@@ -44,9 +44,39 @@ For historic reasons we currently have 3 different CI platforms and there are do
 
 ## CI Matrix
 
+Currently there are 3 different categories of CI runs for a single commit: CI run (1) on PR, (2) on master commits, (3) on nightly commits. These CI workflow configurations changes from time to time (Please refer to the [CI Internals](#ci-internals) section for more detail), but in general the rule of thumb for our CI runs are.
+1. We consider the set of CI workflows run on master commits are the base line.
+2. We run on PRs a subset of CI workflows comparing to the base line we run on master commits.
+3. We mostly run binary CI workflows and smoke tests on nightly commits.
+
+For more details on which CI workflow is being run on which category, please refer to the section: [What is CI testing and When](#what-is-ci-testing-and-when).
+
+Each one of these triggers a specific subset of CI workflows defined in the CI matrix. Currently our CI matrix consists of some combination of the following basic configurations. 
+
 ### Basic Configurations
 
+**Note** examples are based on the CI workflows at the time of writing.
+
+1. Python versions (e.g. 3.6 - 3.9)
+2. OS versions (e.g. Linux xenial/bionic, Windows 10, macos 10.13/10.15)
+3. Compute Hardware (e.g. CPU, CUDA10/11, ROCM4)
+4. Compiler (GCC 5.4/7/9, Clang5/7/9)
+
+Obviously not every Cartesian product of these combination is being tested. Please refer to the [PyTorch CI HUD](https://hud.pytorch.org/build2/pytorch-master) for more information on all the combinations run currently.
+
 ### Other Variances
+
+**Note** variances in configurations can change more rapidly comparing to the basic configurations.
+
+Other than the 4 basic configuration coordinates, we also have some special variances in configurations that we run. These variances are created to test some specific features or to cover some specific test domains. For example:
+
+1. *ASAN build*: to run address sanitizers.
+2. *libtorch builds*: to target CPP APIs.
+3. *coverage builds*: to report test coverages.
+4. *pure torch build*: to test PyTorch built without Caffe2.
+5. *ONNX build*: to test ONNX integration.
+6. *XLA/Vulkan build*: to test XLA integration.
+7. *Android/IOS build*: to test PyTorch run mobile platforms.
 
 ## Entrypoint for CI
 
