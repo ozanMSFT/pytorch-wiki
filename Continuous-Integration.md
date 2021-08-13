@@ -31,11 +31,16 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
 
 ## CI System Overview
 
-### Github Actions
+PyTorch CI system ensures that proper build/test process should pass on both PRs and master commits. There are several terminologies we would like to clarify:
 
-### CircleCI
+- CI job: a CI job consist of a sequence of predefined steps, each of which will execute some specific script to build or test PyTorch. For example: 
+- CI workflow: a CI workflow consist of a collection of CI jobs that are depending on each other. For example:
+- CI result on a single commit: refers to all the CI workflows triggered on a single commit (either on PR or on master). For example:
+- CI platform: we currently have 3 CI platforms (Github Actions, CirlceCI, Jenkins). 
 
-### Jenkins
+PyTorch supports many different hardware architectures, operation system, accelerator GPU. Therefore, many different CI workflows run parallel on each commit to ensure that PyTorch can be built and run correctly in different environments and configurations. See [CI Matrix](#ci-matrix) section for more info.
+
+For historic reasons we currently have 3 different CI platforms and there are dozens of CI jobs run on these 3 platforms. For each platform specific information please refer to the [CI Internals](#ci-internals) section for more info.
 
 ## CI Matrix
 
