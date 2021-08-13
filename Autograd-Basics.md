@@ -1,4 +1,4 @@
-[[Page Maintainers|How to add a new page, edit a page, or suggest edits]]: @alband, @soulitzer
+[[Page Maintainers|Where or how should I add documentation?]]: @alband, @soulitzer
 
 ## Scope
 * Understand how backpropagation works in theory
