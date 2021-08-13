@@ -139,7 +139,7 @@ New to PyTorch? Don't know where to start?
 * [Pull request review etiquette](Pull-request-review-etiquette)
 * [Docker image build on CircleCI](Docker-image-build-on-CircleCI)
 * [Debugging with Remote Desktop on CircleCI](Debugging-Windows-with-Remote-Desktop-or-CDB-(CLI-windbg)-on-CircleCI)
-* [Structure of CI (CircleCI)](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
+* [Structure of CI on CircleCI](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
 
 ## Community
 * [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
