@@ -86,6 +86,7 @@ We provide a builin tool for that called [`autograd.gradcheck`](https://pytorch.
 This can be used to compare the gradient you implemented with a [finite difference](https://en.wikipedia.org/wiki/Finite_difference) approximation.
 
 This tool is used extensively in our automated test system (in particular OpInfo-based tests). But is also explicitly called in some cases such as in linalg [here](https://github.com/pytorch/pytorch/blob/1022443168b5fad55bbd03d087abf574c9d2e9df/test/test_linalg.py#L719).
+Full details on how gradcheck work can be found in this [note](https://pytorch.org/docs/stable/notes/gradcheck.html).
 
 ## Try out the Autograd Onboarding Lab
 
