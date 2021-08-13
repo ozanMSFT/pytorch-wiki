@@ -21,7 +21,7 @@ Our recommendation is to add a Wiki page and link to it with a quick blurb in so
 
 ## Adding a new page to the Developer Wiki
 
-Each page should have a "Page Maintainers: " section at a very top that lists the GitHub handles of folks who are maintaining the page. Please put your name down to expand your scope so that people know where to bring questions! Maintainers are responsible for keeping the pages up to date.
+Each page should have a "Page Maintainers: " section at a very top that lists the GitHub handles of folks who are maintaining the page. If you're an expert on the page, please put your name down so that people know where to bring questions! Maintainers are responsible for keeping the pages up to date.
 
 When you add a page, please make sure to pick a good title! Renaming the title breaks any past hyperlinks to the page. For example, you should not use the PyTorch version number in the title name (e.g. "Benchmarking in PyTorch 1.9" should just be "Benchmarking")
 
