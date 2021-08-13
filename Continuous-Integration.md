@@ -65,6 +65,8 @@ See [this section on the "Running and writing tests" page](https://github.com/py
 
 ### Docker Builds
 
+See: https://github.com/pytorch/pytorch/wiki/Docker-image-build-on-CircleCI for more information.
+
 ### Other Related Repos
 
 ### Which commit is used in CI for your PR?
