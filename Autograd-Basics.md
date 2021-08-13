@@ -48,6 +48,9 @@ Every function you write using pytorch operators (in python or c++) is composite
 
 Note that if you are working with native_functions.yaml, you need to use the CompositeImplicit key (which is the default if no dispatch at all is specified).
 
+An example of such operator is the `torch.narrow()` function for example. You can see it defined in native functions [here](https://github.com/pytorch/pytorch/blob/cb23976f9f304a6db62b612c83aae371a077031f/aten/src/ATen/native/native_functions.yaml#L3119-L3122).
+Other examples include all the backward formulas that live in [FunctionsManual.cpp](https://github.com/pytorch/pytorch/blob/master/torch/csrc/autograd/FunctionsManual.cpp) or python functions such as the lp-pooling implementation [here](https://github.com/pytorch/pytorch/blob/cb23976f9f304a6db62b612c83aae371a077031f/torch/nn/functional.py#L931-L953).
+
 ## Given an operator, how do I derive a backward formula for it?
 
 If you cannot use a composite function based on the table above, you will need to write the backward formula for your function by hand either in derivatives.yaml or in a custom Function.
@@ -64,7 +67,7 @@ The name should match the signature you added to native_functions.yaml.
 Then you should add one entry for each input for which you implement the backward formula.
 The codegen will then take care of everything for you!
 
-You can find more details in the documentation at the top of the derivatives.yaml file.
+You can find more details in the documentation at the top of the derivatives.yaml file and browse that file for all the functions that are already implemented with this method such as [acos](https://github.com/pytorch/pytorch/blob/cb23976f9f304a6db62b612c83aae371a077031f/tools/autograd/derivatives.yaml#L191-L192).
 
 ## What are custom autograd Functions?
 
@@ -73,11 +76,16 @@ In particular, you will need to implement both the forward and backward function
 
 See details in the doc for how to implement such a Function [link](https://pytorch.org/docs/stable/notes/extending.html).
 
+We use this feature in core both in python (to implement for example complex functions like [lobpcg](https://github.com/pytorch/pytorch/blob/cb23976f9f304a6db62b612c83aae371a077031f/torch/_lobpcg.py#L262)) and in c++ (to implement some low level interaction between the distributed RPC framework and autograd [here](https://github.com/pytorch/pytorch/blob/c371542efc31b1abfe6f388042aa3ab0cef935f2/torch/csrc/distributed/autograd/functions/sendrpc_backward.h#L17)).
+This is also used extensively outside of core to implement new functions that need to interact with autograd, for example in torchvision [here](https://github.com/pytorch/vision/blob/74559c476e6dcd8701c5765e7462d6b8aa7e0966/torchvision/csrc/ops/autograd/roi_pool_kernel.cpp#L11).
+
 ## How do I test an autograd formula?
 
 Now that you have your function implemented and supporting autograd, it is time to check if the computed gradients are correct.
 We provide a builin tool for that called [`autograd.gradcheck`](https://pytorch.org/docs/stable/generated/torch.autograd.gradcheck.html?highlight=gradcheck#torch.autograd.gradcheck). See [here](https://colab.research.google.com/drive/1fc3pfw-tIHx0nR-E5iAFdBwY2nmnTFOG) for a quick intro (toy implementation).
 This can be used to compare the gradient you implemented with a [finite difference](https://en.wikipedia.org/wiki/Finite_difference) approximation.
+
+This tool is used extensively in our automated test system (in particular OpInfo-based tests). But is also explicitly called in some cases such as in linalg [here](https://github.com/pytorch/pytorch/blob/1022443168b5fad55bbd03d087abf574c9d2e9df/test/test_linalg.py#L719).
 
 ## Try out the Autograd Onboarding Lab
 
