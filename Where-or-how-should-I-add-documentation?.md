@@ -1,4 +1,4 @@
-[[Page Maintainers|How to add a new page, edit a page, or suggest edits]]: @zou3519
+[[Page Maintainers|Where or how should I add documentation?]]: @zou3519
 
 ## Goals
 
