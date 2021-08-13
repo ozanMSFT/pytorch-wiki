@@ -2,7 +2,7 @@ The goal of this lab is to give first hand experience with deriving autograd for
 
 The deliverable will be a stack of PRs (that won’t be merged into master) containing all the code for the different sections below.
 You should add both your mentor as well as @albanD as a reviewer for this PR.
-
+The task will be considered finished when the PR is accepted by the reviewers and you can just close it at that time.
 
 ## Considered Function
 
