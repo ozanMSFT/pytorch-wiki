@@ -56,13 +56,16 @@ PYTORCH_TEST_WITH_SLOW=1 python test_torch.py
 
 Will run the tests in test_torch.py, including those decorated with @slowTest.
 
-## Using Github label to control CI behavior on PR
+## Using Github label to control CI behavior on PR _(last updated 2021-08-13)_
 
 PyTorch runs different sets of jobs on PR vs. on master commits.
 
 In order to control the behavior of CI jobs on PR. We support Github Labels to control what to test on CI on PRs:
 - `ci/master`: runs sets of CI jobs that normally only run on master
 - `ci/binaries`: runs sets of CI jobs that builds additional binaries (normally only run on nightly)
+- `ci/slow-gradcheck`: runs the [slow gradcheck build](https://github.com/pytorch/pytorch/pull/59020)
+
+If this list becomes out of date, the current definitions should be able to be found in [`.github/pytorch-circleci-labels.yml`](https://github.com/pytorch/pytorch/blob/72bc6dc8c31f977036195536292170ac9132751d/.github/pytorch-circleci-labels.yml).
 
 Note that `ci/master` and `ci/binaries` only work for jobs running in CircleCI. We're migrating CI jobs to GitHub Actions,
 the new proposal of how to dynamically trigger workflows in GitHub Actions can be tracked [here](https://github.com/pytorch/pytorch/issues/61888).
