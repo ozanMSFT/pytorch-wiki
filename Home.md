@@ -1,6 +1,6 @@
 Welcome to the PyTorch developer's wiki!
 
-*Please read our [[best practices|How to add a new page, edit a page, or suggest edits]] if you're interested in adding a page or making edits*
+*Please read our [[best practices|Where or how should I add documentation?]] if you're interested in adding a page or making edits*
 
 ## User docs
 
