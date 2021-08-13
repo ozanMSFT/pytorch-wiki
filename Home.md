@@ -15,6 +15,7 @@ New to PyTorch? Don't know where to start?
 ## Developer docs
 
 * [Developer FAQ](Developer-FAQ)
+* [[Where should I add documentation?|Where should I add documentation?]]
 * [PyTorch Data Flow and Interface Diagram](PyTorch-Data-Flow-and-Interface-Diagram)
 * [Multiprocessing Technical Notes](Multiprocessing-Technical-Notes)
 * [Software Architecture for c10](Software-Architecture-for-c10)
