@@ -28,6 +28,8 @@ Each page should have a "Page Maintainers: " section at a very top that lists th
 * For small changes, feel free to fix it yourself.
 * For larger changes, or if you're not sure how to correct something, open a GitHub issue and assign it to the maintainers.
 
+NOTE: Please do NOT rename pages without updating all the links to it. The page title is unfortunately what gets used as the URL.
+
 ## Where do I actually write user-facing docs?
 
 See [CONTRIBUTING.MD](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#writing-documentation)
