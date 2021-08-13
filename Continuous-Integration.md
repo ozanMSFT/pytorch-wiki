@@ -18,6 +18,8 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
   - [CI workflow on PR](#ci-workflow-on-pr)
   - [CI workflow on master commits](#ci-workflow-on-master-commits)
 - [Customize CI behavior on PR](#customize-ci-behavior-on-pr)
+  - [Using Github Labels](#using-github-labels)
+  - [Using CIFlow](#using-ciflow)
 - [Other Topics](#other-topics)
   - [CI Internals](#ci-internals)
   - [Binary Builds](#binary-builds)
@@ -47,7 +49,7 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
 
 ### Test System
 
-See [this section on the "Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/Running-and-writing-tests#using-github-label-to-control-ci-behavior-on-pr) for information on how to use GitHub labels to change what CircleCI jobs are run.
+See ["Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/Running-and-writing-tests) for information.
 
 ## What is CI testing and When
 
@@ -56,6 +58,12 @@ See [this section on the "Running and writing tests" page](https://github.com/py
 ### CI workflow on master commits
 
 ## Customize CI behavior on PR
+
+### Using Github Labels
+
+See ["how to use GitHub labels" section on the "Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/Running-and-writing-tests#using-github-label-to-control-ci-behavior-on-pr) for information.
+
+### Using CIFlow
 
 ## Other Topics
 
