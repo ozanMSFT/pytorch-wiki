@@ -2,9 +2,8 @@ For those who used to work with the docker image build process, we’ve migrated
 
 ## Current config
 
-
-The config of docker image  now live at https://github.com/pytorch/pytorch/tree/master/.circleci/docker 
-and you can find existing images (both permanent and weekly) at [http://docker.pytorch.org](http://docker.pytorch.org/)  which will be updated hourly by this job: https://github.com/pytorch/pytorch/blob/master/.circleci/config.yml#L5752-L5776 (for same reason as above, you can search “ecr_gc_job” to be sure)
+The config of docker image now live at https://github.com/pytorch/pytorch/tree/master/.circleci/docker 
+and you can find existing images (both permanent and weekly) at [http://docker.pytorch.org](http://docker.pytorch.org/) which will be updated hourly by this job: https://github.com/pytorch/pytorch/blob/988ef190e3df0b48ef59dcf8007258ed79bb7946/.circleci/config.yml#L2038-L2093
 
 
 ## Q & A
@@ -26,7 +25,7 @@ code for the purge job is https://github.com/pytorch/pytorch/blob/master/.circle
 
 ### The production images disappeared, what should I do?
 
-Sometimes there is a bug in ecr_gc_job and it deletes Docker images it shouldn't. All Docker images are also saved to S3 with a one month retention period, so there's a chance they may still be there.  You can use this script to recover in that case:
+Sometimes there is a bug in ecr_gc_job and it deletes Docker images it shouldn't. All Docker images are also saved to S3 with a one-month retention period, so there's a chance they may still be there.  You can use this script to recover in that case:
 
 ```
 import yaml
