@@ -10,23 +10,63 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
   - [Jenkins](#jenkins)
 - [CI Matrix](#ci-matrix)
   - [Basic Configurations](#basic-configurations)
-  - [Variances](#configuration-variances)
-- [Entrypoint for CI](#ci-entry-point)
-  - [Build System](#ci-build)
-  - [Test System](#ci-test)
-  - [Binary Builds](#ci-binary)
-- [What is CI testing and When](#ci-what-and-when)
-  - [CI workflow on PR](#ci-on-pr)
-  - [CI workflow on master commits](#ci-on-master-commits)
-- [Customize CI behavior on PR](#customize-ci-on-pr)
+  - [Other Variances](#other-variances)
+- [Entrypoint for CI](#entrypoint-for-ci)
+  - [Build System](#build-system)
+  - [Test System](#test-system)
+- [What is CI testing and When](#what-is-ci-testing-and-when)
+  - [CI workflow on PR](#ci-workflow-on-pr)
+  - [CI workflow on master commits](#ci-workflow-on-master-commits)
+- [Customize CI behavior on PR](#customize-ci-behavior-on-pr)
 - [Other Topics](#other-topics)
-  - [What is the base commit used in CI for your PR?](#which-commit-is-used-in-ci)
-  - [CI failure tips on PR](#ci-failure-tips)
+  - [CI Internals](#ci-internals)
+  - [Binary Builds](#binary-builds)
+  - [Docker Builds](#docker-builds)
+  - [Other Related Repos](#other-related-repos)
+  - [Which commit is used in CI for your PR?](#which-commit-is-used-in-ci-for-your-pr)
+  - [CI failure tips on PR](#ci-failure-tips-on-pr)
 
-# CI System Overview
 
-## GitHub Actions
+## CI System Overview
 
-## CircleCI
+### Github Actions
+
+### CircleCI
+
+### Jenkins
+
+## CI Matrix
+
+### Basic Configurations
+
+### Other Variances
+
+## Entrypoint for CI
+
+### Build System
+
+### Test System
 
 See [this section on the "Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/Running-and-writing-tests#using-github-label-to-control-ci-behavior-on-pr) for information on how to use GitHub labels to change what CircleCI jobs are run.
+
+## What is CI testing and When
+
+### CI workflow on PR
+
+### CI workflow on master commits
+
+## Customize CI behavior on PR
+
+## Other Topics
+
+### CI Internals
+
+### Binary Builds
+
+### Docker Builds
+
+### Other Related Repos
+
+### Which commit is used in CI for your PR?
+
+### CI failure tips on PR
