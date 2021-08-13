@@ -27,7 +27,7 @@ All terms are defined below the table.
 Definition of the Levels:
 - "Tensor" means that your function is always working with PyTorch Tensors and using differentiable ops.
 - "Third party lib" means that your function uses a third party lib that doesn't work with Tensors directly (numpy, CUDA, etc).
-- "Raw data pointer access" means that your function extracts the data_ptr from the Tensor and work with that directly.
+- "Raw data pointer access" means that your function extracts the data_ptr from the Tensor and work with that directly (for example our c++ implementations of many functions).
 
 Definition of the Wheres:
 - "Aten native function" means functions that are defined in `native_functions.yaml`.
