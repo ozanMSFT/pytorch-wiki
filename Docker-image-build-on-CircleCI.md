@@ -18,6 +18,10 @@ New images will automatically be passed down through to dependent jobs.
 
 [http://docker.pytorch.org](http://docker.pytorch.org/) which will be updated hourly
 
+### How to docker pull the docker images?
+Note that the docker images are built within a private AWS ECR repository, the detailed instruction of how to pull those images can be found here: https://github.com/pytorch/ossci-job-dsl#ci-failed-but-my-local-build-is-fine-what-should-i-do.
+
+
 ### How do we purge old images / what’s the retention policy?
 
 We have ecr_gc_job job (you can search for it in config.yml) that runs every hour to purge old images. Currently, we need temporary images for 1 day, and weekly builds for 2 weeks. And we will keep image with tags defined in https://github.com/pytorch/pytorch/blob/master/.circleci/verbatim-sources/workflows-ecr-gc.yml#L13 forever. 
