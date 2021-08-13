@@ -56,7 +56,9 @@ PYTORCH_TEST_WITH_SLOW=1 python test_torch.py
 
 Will run the tests in test_torch.py, including those decorated with @slowTest.
 
-## Using Github label to control CI behavior on PR _(last updated 2021-08-13)_
+## Using Github label to control CI behavior on PR
+
+_(last updated 2021-08-13)_
 
 PyTorch runs different sets of jobs on PR vs. on master commits.
 
