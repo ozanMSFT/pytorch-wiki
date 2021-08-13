@@ -21,7 +21,7 @@ Our recommendation is to add a Wiki page and link to it with a quick blurb in so
 
 ## Adding a new page to the Developer Wiki
 
-Each page should have a "Page Maintainers: " section at a very top that lists the GitHub handles of folks responsible for maintaining the page. *Maintainers* are responsible for keeping the pages up to date.
+Each page should have a "Page Maintainers: " section at a very top that lists the GitHub handles of folks who are maintaining the page. Please put your name down to expand your scope so that people know where to bring questions! Maintainers are responsible for keeping the pages up to date.
 
 ## A page looks out of date, what do I do?
 
