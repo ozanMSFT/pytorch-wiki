@@ -77,6 +77,10 @@ See: https://github.com/pytorch/pytorch/wiki/Docker-image-build-on-CircleCI for 
 
 ### Other Related Repos
 
+#### [pytorch/builder](https://github.com/pytorch/builder)
+#### [pytorch/test-infra](https://github.com/pytorch/test-infra)
+#### [pytorch/pytorch-ci-hud](https://github.com/pytorch/pytorch-ci-hud)
+
 ### Which commit is used in CI for your PR?
 
 ### CI failure tips on PR
