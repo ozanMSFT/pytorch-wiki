@@ -21,6 +21,13 @@ New images will automatically be passed down through to dependent jobs.
 ### How to docker pull the docker images?
 Note that the docker images are built within a private AWS ECR repository, the detailed instruction of how to pull those images can be found here: https://github.com/pytorch/ossci-job-dsl#ci-failed-but-my-local-build-is-fine-what-should-i-do.
 
+### How to reproduce build and test with the local docker image?
+Right now, since CI has so many different configuration and environment variables settings, it's hard to have 100% docker reproducible build and tests, so we still recommend you rely on CI first (as of 08/12/2021). If you really want to reproduce the docker based `build` and `test`, here's the steps you can follow. Make sure you have the ECR credentials (see instruction above), and you have already pulled the base docker images, you can try to reproduce what the GitHub Action CI does. 
+
+For example: 
+- build step: https://github.com/pytorch/pytorch/blob/219ba6575b682a9b61476da041c2220142d20e3b/.github/workflows/generated-linux-xenial-py3.6-gcc5.4.yml#L140-L159
+- test step: https://github.com/pytorch/pytorch/blob/219ba6575b682a9b61476da041c2220142d20e3b/.github/workflows/generated-linux-xenial-py3.6-gcc5.4.yml#L327-L351
+
 
 ### How do we purge old images / what’s the retention policy?
 
