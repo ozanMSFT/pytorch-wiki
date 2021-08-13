@@ -23,6 +23,8 @@ Our recommendation is to add a Wiki page and link to it with a quick blurb in so
 
 Each page should have a "Page Maintainers: " section at a very top that lists the GitHub handles of folks who are maintaining the page. Please put your name down to expand your scope so that people know where to bring questions! Maintainers are responsible for keeping the pages up to date.
 
+When you add a page, please make sure to pick a good title! Renaming the title breaks any past hyperlinks to the page. For example, you should not use the PyTorch version number in the title name (e.g. "Benchmarking in PyTorch 1.9" should just be "Benchmarking")
+
 ## A page looks out of date, what do I do?
 
 * For small changes, feel free to fix it yourself.
