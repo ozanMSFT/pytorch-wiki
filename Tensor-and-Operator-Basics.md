@@ -18,7 +18,8 @@ A Tensor [consists of](https://github.com/pytorch/pytorch/blob/2d6fd22e241763da6
 * a storage offset
 
 ## How to author an operator
-Coming soon
+
+[Comprehensive guide](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/README.md)
 
 ## TensorIterator
 
