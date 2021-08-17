@@ -13,7 +13,9 @@ PyTorch's test suites are located under [pytorch/test](https://github.com/pytorc
 
 Code for generating tests and testing helper functions are located under [pytorch/torch/testing/_internal](https://github.com/pytorch/pytorch/tree/master/torch/testing/_internal).
 
-# Running PyTorch's test files
+# Running PyTorch's tests
+
+## Directly running python test files
 
 Most PyTorch test files can be run using unittest (the default) or pytest. 
 
@@ -37,6 +39,27 @@ pytest test_torch.py -k cpu
 
 Will run all the tests in test_torch.py with "cpu" in their name.
 
+## Running via `test/run_test.py`
+
+In addition to directly running python test files. PyTorch's [Continuous Integeration](https://github.com/pytorch/pytorch/wiki/Continuous-Integration) and some specialized test cases can be launched via [pytorch/test/run_test.py](https://github.com/pytorch/pytorch/tree/master/test/run_test.py).
+
+It provides some additional features that normally doesn't exist when directly running python test files. For example:
+1. Run multiple python test files together via selective run.
+2. Run distributed test and cpp_extension tests via custom test handler.
+3. Perform other CI related optimizations such as target determination based on changed files, automatic sharding, etc. See [What is CI testing and When](https://github.com/pytorch/pytorch/wiki/Continuous-Integration#what-is-ci-testing-and-when) section for more details.
+
+One can directly run the `test/run_test.py` file and it will selectively run all tests available in your current platform:
+
+```
+python test/run_test.py
+```
+
+Alternatively you can pass in additional arguments to run specific test(s), use the help function to find out all possible test options.
+
+```
+python test/run_test.py -h
+```
+
 ## Using environment variables:
 
 In addition to unittest and pytest options, PyTorch's test suite also understands the following environment variables:
@@ -49,12 +72,11 @@ In addition to unittest and pytest options, PyTorch's test suite also understand
 - PYTORCH_TEST_SKIP_NOARCH, if set to 1 this will all noarch tests (default=0)
 
 For instance,
-
 ```
 PYTORCH_TEST_WITH_SLOW=1 python test_torch.py
 ```
+will run the tests in test_torch.py, including those decorated with `@slowTest`.
 
-Will run the tests in test_torch.py, including those decorated with @slowTest.
 
 ## Using Github label to control CI behavior on PR
 
