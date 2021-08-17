@@ -61,9 +61,7 @@ def forward(x):
 
 
 # Quantization Workflow
-TODO: upload image
-
-Diagram Source: Quantization Flow 
+![Quantization Workflow](https://docs.google.com/drawings/d/e/2PACX-1vQ6tgl6MOkSPLcVV4ZRWwCBLebj-ugMIpBJgw8OL2FxqYg2u5rpp8UKSVQUg_Ie1HsHyVJf3A5dPIb_/pub?w=950&h=700)
 
 As we can see from the above diagram, we’ll separate the generation of a quantized model in PyTorch and the actual runnable quantized model on a specific backend. PyTorch will produce a reference quantized model which contains reference patterns that can be fused into quantized functions, this model will act as a unified representation of a quantized model and we do not give guarantees on either numerics or performance. 
 
