@@ -90,15 +90,49 @@ See ["Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/R
 
 ### CI workflow on PR
 
-### CI workflow on master commits
-
-### Change CI workflow behavior on PR
-
 #### Using Github Labels
 
 See ["how to use GitHub labels" section on the "Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/Running-and-writing-tests#using-github-label-to-control-ci-behavior-on-pr) for information.
 
 #### Using CIFlow
+
+CI Flow is a flexible CI workflow dispatcher that's going to dispatch GitHub Actions CI workflows based on various PR contexts and user instructions. See the discussion on the RFC here https://github.com/pytorch/pytorch/issues/61888.
+
+**Architecture**
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/658840/126261336-630bf00f-ce42-4e3e-8e64-92c72ed8837e.png" width="800px" />
+</p>
+
+**User Guide**
+- Create PR as normal, and @pytorchbot will automatically handle the rest. It also generates a comment block
+- If the PR author or anyone with `write` permission to the pytorch/pytorch repo wants to instrument @pytorchbot to run different configurations of the CI flow, people can run commands like
+
+```
+# ciflow rerun, "ciflow/default" will always be added automatically
+@pytorchbot ciflow rerun
+# ciflow rerun with additional labels "-l <ciflow/label_name>", which is equivalent to adding these labels manually and trigger the rerun
+@pytorchbot ciflow rerun -l ciflow/scheduled -l ciflow/slow
+```
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/658840/129799464-9f0e0309-897c-4b68-b61f-7117a7ced882.png" width="800px" />
+</p>
+
+**Implementation Details**
+
+The pytorchbot (which is defined [here](https://github.com/pytorch/pytorch-probot/blob/c3bd6139897e7de45695c2c99ccb2d75f0831a08/src/ciflow-bot.ts)) will leverage multiple strategies to orchestrate how GitHub Action workflows are run or not run. The decision is made into two steps:
+
+- PR author or @pytorchbot will add labels to the PR, e.g. `ciflow/default` (which is added automatically), or other labels.
+- @pytorchbot will trigger an `unassign` event on the PR, which triggers all the workflows that are listening on `on.pull_request - [unassign]` events, and that event will have information of the `ciflow/*` labels, which is used to decide the condition.
+  - See the [generate_ci_workflows.py](https://github.com/pytorch/pytorch/blob/master/.github/scripts/generate_ci_workflows.py) definition
+  - See the sample [ciflow_should_run](https://github.com/pytorch/pytorch/blob/495e7e4815d3f9a4000a6671022fd2608440db75/.github/workflows/generated-linux-xenial-py3.6-gcc7-bazel-test.yml#L34)'s `if` condition.
+
+
+### CI workflow on master commits
+
+### Change CI workflow behavior on PR
+
 
 ## Other Topics
 
