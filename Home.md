@@ -111,6 +111,7 @@ New to PyTorch? Don't know where to start?
 * [Tensor basics](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_basics.rst)
 * [Tensor Creation API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_creation.rst)
 * [Tensor Indexing API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/tensor_indexing.rst)
+* [MaybeOwned\<Tensor\>](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/maybe_owned.rst)
 * [Installing C++ Distributions of PyTorch](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/installing.rst)
 * [Torch Library API](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/library.rst)
 * [libtorch](https://github.com/pytorch/pytorch/blob/master/docs/libtorch.rst)
