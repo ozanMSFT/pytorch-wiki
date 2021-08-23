@@ -8,7 +8,7 @@ At first, We need to build the debug version libtorch On Windows. You can refer 
 
 ## Start Visual Studio correctly
 Once the libtorch built, please copy the directory of the libiomp5md.dll and add it to the PATH.
-![where libiomp5md.dll](image/libiomp5.png)<br>
+![where libiomp5md.dll](images/bestpractices_win/libiomp5.png)<br>
 For me, I use a bat to start Visual Studio
 ```
 set PATH=D:\programs\envs\nightly\Library\bin\;%PATH%
