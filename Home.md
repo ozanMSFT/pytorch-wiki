@@ -120,7 +120,7 @@ New to PyTorch? Don't know where to start?
 * [JIT C++ Tests](https://github.com/pytorch/pytorch/blob/master/test/cpp/jit/README.md)
 * [C++ Frontend Tests](https://github.com/pytorch/pytorch/blob/master/test/cpp/api/README.md)
 * [FAQ](https://github.com/pytorch/pytorch/blob/master/docs/cpp/source/notes/faq.rst)
-* [Best Practices on Windows](https://github.com/pytorch/pytorch/wiki/Best-Practices-to-Edit-and-Compile-Pytorch-Source-Code-On-Windows）
+* [Best-Practices-to-Edit-and-Compile-Pytorch-Source-Code-On-Windows](https://github.com/pytorch/pytorch/wiki/Best-Practices-to-Edit-and-Compile-Pytorch-Source-Code-On-Windows）
 
 ### Benchmarks
 * [Distributed Data Parallel Benchmark](https://github.com/pytorch/pytorch/blob/master/benchmarks/distributed/ddp/README.md)
