@@ -58,4 +58,4 @@ In this section, I'll demo how to add one printf in test/cpp/api/nn_utils.cpp,  
 
 ## One Reminder
 You might find some changes you made doesn't work and after recompiling, the changes dismissed. That is because some PyTorch C++ code is generated in compile.
-For Codegen, you could check out [[Codegen and Structured Kernels Overview | Codegen and Structured Kernels Overview]]
+For Codegen, you could check out [[Codegen and Structured Kernels| Codegen and Structured Kernels]]
