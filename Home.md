@@ -131,6 +131,7 @@ New to PyTorch? Don't know where to start?
 * [Modular Benchmarking Components](https://github.com/pytorch/pytorch/blob/master/torch/utils/benchmark/README.md)
 
 ### DataLoader
+* [Implementing DataPipe](https://github.com/pytorch/pytorch/blob/master/torch/utils/data/datapipes/README.md)
 * [DataPipe Typing System](https://github.com/pytorch/pytorch/blob/master/torch/utils/data/typing.ipynb)
 
 ## Workflow docs
