@@ -42,4 +42,5 @@ each of the wrappers above.
 * `test/cpp/api/modules.cpp` - add C++ API module tests here
 * `test/cpp_api_parity/parity-tracker.md` - add module and functional entries to the parity tracker to check C++ vs. Python behavior (used by `build/bin/test_api`, which runs the C++ module and functional tests)
 * `torch/overrides.py` - add override lambda here (used by `test/test_overrides.py`)
+* `torch/nn/functional.pyi.in` - add skeleton signature here (used by mypy)
 * ??? - other updates may be needed to pass all CI checks & tests
