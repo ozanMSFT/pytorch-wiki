@@ -9,9 +9,11 @@ At first, We need to build the debug version libtorch On Windows. You can refer 
 ## Start Visual Studio correctly
 Once the libtorch built, please copy the directory of the libiomp5md.dll and add it to the PATH.
 ![where libiomp5md.dll](images/bestpractices_win/libiomp5.png)<br>
+
+If you're debugging on a GPU machine, nvToolsExt PATH should be added as well.
 For me, I use a bat to start Visual Studio
 ```
-set PATH=D:\programs\envs\nightly\Library\bin\;%PATH%
+set PATH=D:\programs\envs\nightly\Library\bin\;"C:\Program Files\NVIDIA Corporation\NvToolsExt\bin\x64\";%PATH%
 "D:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.exe"
 ```
 
