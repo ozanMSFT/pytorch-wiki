@@ -133,6 +133,19 @@ The pytorchbot (which is defined [here](https://github.com/pytorch/pytorch-probo
 
 ### Change CI workflow behavior on PR
 
+### Disabled tests in CI
+
+Some PyTorch tests are currently disabled due to their flakiness, incompatibility with certain platforms, or other temporary brokenness. We have a system where GitHub issues titled “DISABLED test_a_name” disable desired tests in PyTorch CI until the issues are closed, e.g., #62970. If you are wondering what tests are currently disabled in CI, please check out [disabled-tests.json](https://github.com/pytorch/test-infra/blob/main/stats/disabled-tests.json), where these test cases are all gathered.
+
+#### How to disable a test
+First, you should never disable a test if you're not sure what you're doing. Tests are important in validating PyTorch functionality, and ignoring test failures is not recommended as it can degrade user experience. When you are certain that disabling a test is the best option, for example, when it is flaky, make plans to fix the test so that it is not disabled indefinitely.
+
+To disable a test, say, `test_case_a_name` from the TestClassA module, create an issue with the title `DISABLED test_case_a_name (__main__.TestClassA)`. A real title example would look like: `DISABLED test_jit_cuda_extension (__main__.TestCppExtensionJIT)`. In the body of the issue, feel free to include any details and logs as you normally would with any issue. If you would like to skip the test for particular platforms, such as ROCm, please include a line (case insensitive) in the issue body like so: "<start of line>Platforms: Mac, Windows<end of line>." The available platforms to choose from are: mac/macos, windows, rocm, and linux.
+
+#### How to test the disabled test on CI
+It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI). After #62851, PRs with key phrases like “fixes #55555” or “Close #62851” in their PR bodies will re-enable the tests disabled by the linked issues (in this example, #55555 and #62851). More accepted key phrases are defined by the [GitHub docs](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
+
+Limitations: this feature only works for GitHub Actions CI and for when the issue is linked through key phrases in the PR body (and not commit messages).
 
 ## Other Topics
 
