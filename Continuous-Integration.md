@@ -5,31 +5,31 @@ This document discusses the Continuous Integration (CI) system for PyTorch.
 Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various different CI build/test configurations. We will discuss these related contents in the following sections:
 
 - [CI System Overview](#ci-system-overview)
-  - [Github Actions](#github-actions)
-  - [CircleCI](#circleci)
-  - [Jenkins](#jenkins)
 - [CI Matrix](#ci-matrix)
-  - [Basic Configurations](#basic-configurations)
-  - [Other Variances](#other-variances)
+  * [Basic Configurations](#basic-configurations)
+  * [Other Variances](#other-variances)
 - [Entrypoint for CI](#entrypoint-for-ci)
-  - [Build System](#build-system)
-  - [Test System](#test-system)
+  * [Build System](#build-system)
+  * [Test System](#test-system)
 - [What is CI testing and When](#what-is-ci-testing-and-when)
-  - [CI workflow on PR](#ci-workflow-on-pr)
-  - [CI workflow on master commits](#ci-workflow-on-master-commits)
-  - [Change CI workflow behavior on PR](#change-ci-workflow-behavior-on-pr)
-    - [Using Github Labels](#using-github-labels)
-    - [Using CIFlow](#using-ciflow)
-  - [Disabled tests in CI](#disabled-tests-in-ci)
-    - [How to disable a test](#how-to-disable-a-test)
-    - [How to test the disabled test on CI](#how-to-test-the-disabled-test-on-ci)
+  * [CI workflow on PR](#ci-workflow-on-pr)
+    + [Using Github Labels](#using-github-labels)
+    + [Using CIFlow](#using-ciflow)
+      - [Architecture](#architecture)
+      - [User Guide](#user-guide)
+      - [Implementation Details](#implementation-details)
+  * [CI workflow on master commits](#ci-workflow-on-master-commits)
+  * [Change CI workflow behavior on PR](#change-ci-workflow-behavior-on-pr)
+  * [Disabled tests in CI](#disabled-tests-in-ci)
+    + [How to disable a test](#how-to-disable-a-test)
+    + [How to test the disabled test on CI](#how-to-test-the-disabled-test-on-ci)
 - [Other Topics](#other-topics)
-  - [CI Internals](#ci-internals)
-  - [Binary Builds](#binary-builds)
-  - [Docker Builds](#docker-builds)
-  - [Other Related Repos](#other-related-repos)
-  - [Which commit is used in CI for your PR?](#which-commit-is-used-in-ci-for-your-pr)
-  - [CI failure tips on PR](#ci-failure-tips-on-pr)
+  * [CI Internals](#ci-internals)
+  * [Binary Builds](#binary-builds)
+  * [Docker Builds](#docker-builds)
+  * [Other Related Repos](#other-related-repos)
+  * [Which commit is used in CI for your PR?](#which-commit-is-used-in-ci-for-your-pr-)
+  * [CI failure tips on PR](#ci-failure-tips-on-pr)
 
 
 ## CI System Overview
@@ -101,13 +101,13 @@ See ["how to use GitHub labels" section on the "Running and writing tests" page]
 
 CI Flow is a flexible CI workflow dispatcher that's going to dispatch GitHub Actions CI workflows based on various PR contexts and user instructions. See the discussion on the RFC here https://github.com/pytorch/pytorch/issues/61888.
 
-**Architecture**
+##### Architecture
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/658840/126261336-630bf00f-ce42-4e3e-8e64-92c72ed8837e.png" width="800px" />
 </p>
 
-**User Guide**
+##### User Guide
 - Create PR as normal, and @pytorchbot will automatically handle the rest. It also generates a comment block
 - If the PR author or anyone with `write` permission to the pytorch/pytorch repo wants to instrument @pytorchbot to run different configurations of the CI flow, people can run commands like
 
@@ -122,7 +122,7 @@ CI Flow is a flexible CI workflow dispatcher that's going to dispatch GitHub Act
   <img src="https://user-images.githubusercontent.com/658840/129799464-9f0e0309-897c-4b68-b61f-7117a7ced882.png" width="800px" />
 </p>
 
-**Implementation Details**
+##### Implementation Details
 
 The pytorchbot (which is defined [here](https://github.com/pytorch/pytorch-probot/blob/c3bd6139897e7de45695c2c99ccb2d75f0831a08/src/ciflow-bot.ts)) will leverage multiple strategies to orchestrate how GitHub Action workflows are run or not run. The decision is made into two steps:
 
