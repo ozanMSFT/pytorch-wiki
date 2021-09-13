@@ -101,8 +101,6 @@ See ["how to use GitHub labels" section on the "Running and writing tests" page]
 
 CIFlow is a flexible CI workflow dispatcher that's going to dispatch GitHub Actions CI workflows based on various PR contexts and user instructions. See the discussion on the RFC [here](https://github.com/pytorch/pytorch/issues/61888).
 
-To opt-in CIFlow, please put your GitHub handler in this issue https://github.com/pytorch/pytorch/issues/64124.
-
 ##### Architecture
 
 <p align="center">
@@ -110,8 +108,11 @@ To opt-in CIFlow, please put your GitHub handler in this issue https://github.co
 </p>
 
 ##### User Guide
-- Create PR as normal, and @pytorchbot will automatically handle the rest. It also generates a comment block
-- If the PR author or anyone with `write` permission to the pytorch/pytorch repo wants to instrument @pytorchbot to run different configurations of the CI flow, people can run commands like
+
+Note: To opt-in CIFlow, please put your GitHub handler in this issue https://github.com/pytorch/pytorch/issues/64124.
+
+- Create PR as normal, and @pytorchbot will automatically handle the rest. It also generates a comment block **"CI Flow Status"**.
+- If the PR author or anyone with `write` permission to the pytorch/pytorch repo wants to instrument @pytorchbot to run different configurations of the CI flow, people can **comment on the PR with the commands** like the following to trigger CIFlow.
 
 ```
 # ciflow rerun, "ciflow/default" will always be added automatically
