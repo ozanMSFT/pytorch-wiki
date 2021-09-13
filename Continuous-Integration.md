@@ -99,7 +99,9 @@ See ["how to use GitHub labels" section on the "Running and writing tests" page]
 
 #### Using CIFlow
 
-CI Flow is a flexible CI workflow dispatcher that's going to dispatch GitHub Actions CI workflows based on various PR contexts and user instructions. See the discussion on the RFC here https://github.com/pytorch/pytorch/issues/61888.
+CIFlow is a flexible CI workflow dispatcher that's going to dispatch GitHub Actions CI workflows based on various PR contexts and user instructions. See the discussion on the RFC [here](https://github.com/pytorch/pytorch/issues/61888).
+
+To opt-in CIFlow, please put your GitHub handler in this issue https://github.com/pytorch/pytorch/issues/64124.
 
 ##### Architecture
 
@@ -114,6 +116,7 @@ CI Flow is a flexible CI workflow dispatcher that's going to dispatch GitHub Act
 ```
 # ciflow rerun, "ciflow/default" will always be added automatically
 @pytorchbot ciflow rerun
+
 # ciflow rerun with additional labels "-l <ciflow/label_name>", which is equivalent to adding these labels manually and trigger the rerun
 @pytorchbot ciflow rerun -l ciflow/scheduled -l ciflow/slow
 ```
