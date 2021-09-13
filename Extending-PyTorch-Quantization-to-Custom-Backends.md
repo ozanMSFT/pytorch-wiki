@@ -5,7 +5,7 @@ Today PyTorch Quantization has well documented support for two backends: fbgemm 
 * Provide a simple and clear API for model developers to quantize models targeting custom backends
 
 The workflow for custom backend developers who want to extend PyTorch Quantization to work on their backend looks like following:
-* Define the configurations for quantized operators (including fused and quantized operators)
+* Define the configurations for quantized operators (including fused and quantized operators) with backend_config_dict api
 * Define a lowering pass that transforms a model with reference quantized functions to a model that can be understood by the custom backend
 
 The workflow for model developers who want to quantize for a particular backend need to do the following:
