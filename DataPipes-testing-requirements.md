@@ -11,3 +11,4 @@ Besides functional testing of every DataPipe, tests should include:
 * Test if DataPipe is lazy (serialized size is 'reasonable')
 * Test how DataPipe works in deterministic context
 * Test if DataPipes creates properly linked DataPipes graph
+* Test if DataPipe is picklable (using pickle or dill)
