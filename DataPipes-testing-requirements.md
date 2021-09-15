@@ -1,6 +1,6 @@
 Besides functional testing of every DataPipe, tests should include:
 
-* Test if DataPipe resets correctly
+* Test if DataPipe resets correctly (#65067)
 ```python
  dp = create_dp()
  list1 = list(dp)
