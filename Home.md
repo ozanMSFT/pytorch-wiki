@@ -132,6 +132,7 @@ New to PyTorch? Don't know where to start?
 
 ### DataLoader
 * [Implementing DataPipe](https://github.com/pytorch/pytorch/blob/master/torch/utils/data/datapipes/README.md)
+* [DataPipe test requirements](https://github.com/pytorch/pytorch/wiki/DataPipes-testing-requirements)
 * [DataPipe Typing System](https://github.com/pytorch/pytorch/blob/master/torch/utils/data/typing.ipynb)
 
 ## Workflow docs
