@@ -1,0 +1,13 @@
+Besides functional testing of every DataPipe, tests should include:
+
+* Test if DataPipe resets correctly
+```python
+ dp = create_dp()
+ list1 = list(dp)
+ list2 = list(dp)
+```
+* Test if DataPipe iterators are independent (should not be expected in multiprocessing, but good coding pattern)
+* Test if DataPipe is serializable
+* Test if DataPipe is lazy (serialized size is 'reasonable')
+* Test how DataPipe works in deterministic context
+* Test if DataPipes creates properly linked DataPipes graph
