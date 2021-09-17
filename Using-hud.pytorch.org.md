@@ -17,13 +17,13 @@ PyTorch's CI currently runs on 3 platforms, GitHub Actions, Jenkins, and CircleC
 
 ## Individual Pull Requests and Commits
 
-GitHub provides a view for GitHub Action job logs for commits and PRs, but we received many reports that this was lacking in functionality and usability, so we created our own view which is also hosted on hud.pytorch.org. 
+GitHub provides a view for GitHub Action job logs for commits and PRs, but we received many reports that this was lacking in functionality and usability, so we created our own view which is also hosted on hud.pytorch.org. The page displays statuses for a commit, so if you are viewing a PR you will see statuses for the *latest* commit to that PR.
 
 ### Finding the Page
 
 For PRs, you can navigate to the page directly by going to `hud.pytorch.org/pr/<pr number>`, or by finding the link in the automated Dr. CI facebook-github-bot comment on your PR.
 
-![image-20210917154031914](https://user-images.githubusercontent.com/9407960/133862671-f339d93a-a105-415c-ab5e-2d1ac6ee005c.png)
+![image-20210917154031914](https://user-images.githubusercontent.com/9407960/133863472-ccc19e93-2e94-40b5-8079-836b69a5774b.png)
 
 For commits, you can go to `hud.pytorch.org/commit/<long commit hash>` or by clicking the link from the main HUD page (see "Jobs" above).
 
@@ -31,7 +31,7 @@ For commits, you can go to `hud.pytorch.org/commit/<long commit hash>` or by cli
 
 You will need to sign in with GitHub on your first visit to the page. This is necessary so the HUD can make calls to the GitHub API.
 
-![image-20210917154355041](https://user-images.githubusercontent.com/9407960/133862692-fd4c79a8-5f3f-4ed9-a25e-52d75d7c2fc0.png)
+![image-20210917154355041](https://user-images.githubusercontent.com/9407960/133863454-af2c0e43-b052-4660-9595-f18b653a5b32.png)
 
 Once done, you should be able to see the GitHub Actions jobs for that commit or PR. For PRs, the jobs shown are for the latest commit pushed to that PR. The jobs are sorted so failing jobs are at the top. Some jobs that are not very helpful are grouped together at the bottom (such as the "Triage" jobs).
 
