@@ -146,6 +146,7 @@ New to PyTorch? Don't know where to start?
 * [Debugging with SSH on Github Actions](Debugging-using-with-ssh-for-Github-Actions)
 * [Debugging with Remote Desktop on CircleCI](Debugging-Windows-with-Remote-Desktop-or-CDB-(CLI-windbg)-on-CircleCI)
 * [Structure of CI on CircleCI](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
+* [Using hud.pytorch.org](Using-hud.pytorch.org)
 
 ## Community
 * [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
