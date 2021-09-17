@@ -1,3 +1,5 @@
+TLDR: Visit [hud.pytorch.org](https://hud.pytorch.org/build2/pytorch-master) for a quick glance into PyTorch's CI. Go to `hud.pytorch.org/pr/<pr number>` ([example](https://hud.pytorch.org/pr/65123)) or `hud.pytorch.org/commit/<long hash>` ([example](https://hud.pytorch.org/commit/ae00075ac71eb6ea81d05b12f153b61f215f870b)) for a detailed view of GitHub Actions jobs.
+
 ## Jobs
 
 PyTorch's CI currently runs on 3 platforms, GitHub Actions, Jenkins, and CircleCI. It can be hard to tell at a glance how the various jobs across these services are doing on recent commits to PyTorch to determine if a failure on your pull request is a real failure vs. something that is broken on `master`. [hud.pytorch.org](https://hud.pytorch.org/build2/pytorch-master) aims to fill this gap by providing a quick view over all the jobs on these commits.
