@@ -1,6 +1,6 @@
 TLDR: Visit [hud.pytorch.org](https://hud.pytorch.org/build2/pytorch-master) for a quick glance into PyTorch's CI. Go to `hud.pytorch.org/pr/<pr number>` ([example](https://hud.pytorch.org/pr/65123)) or `hud.pytorch.org/commit/<long hash>` ([example](https://hud.pytorch.org/commit/ae00075ac71eb6ea81d05b12f153b61f215f870b)) for a detailed view of GitHub Actions jobs.
 
-Please report any HUD bugs you find in our [issue tracker](https://github.com/pytorch/pytorch-ci-hud/issues)!.
+Please report any HUD bugs you find in our [issue tracker](https://github.com/pytorch/pytorch-ci-hud/issues)!
 
 ## Jobs
 
