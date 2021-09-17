@@ -24,6 +24,7 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
     + [How to disable a test](#how-to-disable-a-test)
     + [How to test the disabled test on CI](#how-to-test-the-disabled-test-on-ci)
 - [Other Topics](#other-topics)
+  * [CI Metrics](#ci-metrics)
   * [CI Internals](#ci-internals)
   * [Binary Builds](#binary-builds)
   * [Docker Builds](#docker-builds)
@@ -155,6 +156,10 @@ It is not easy to test these disabled tests with CI because, well, they’re int
 Limitations: this feature only works for GitHub Actions CI and for when the issue is linked through key phrases in the PR body (and not commit messages).
 
 ## Other Topics
+
+### CI Metrics
+
+A compilation of dashboards and metrics relating to CI could be found in [the PyTorch CI Metrics Dashboards wiki](https://github.com/pytorch/pytorch/wiki/PyTorch-CI-Metrics-Dashboards)
 
 ### CI Internals
 
