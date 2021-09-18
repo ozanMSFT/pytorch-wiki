@@ -14,6 +14,7 @@ PyTorch's CI currently runs on 3 platforms, GitHub Actions, Jenkins, and CircleC
 4. The PR on GitHub related to this commit
 5. The HUD page for this commit
 6. The GitHub page for this commit
+7. Filter job names by this regex
 
 ## Individual Pull Requests and Commits
 
