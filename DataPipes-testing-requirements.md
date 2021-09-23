@@ -1,7 +1,7 @@
 Besides functional testing of every DataPipe, tests should include:
 
 * Test if DataPipe resets correctly (#65067)
-* * Order of the outputs should be consistent between iterations
+  * Order of the outputs should be consistent between iterations
 ```python
  dp = create_dp()
  list1 = list(dp)
