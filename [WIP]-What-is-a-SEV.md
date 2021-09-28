@@ -13,8 +13,11 @@ Create an issue that clearly indicates the scope and the impact area. Tag the is
 
 <img src="https://user-images.githubusercontent.com/658840/135177774-bfd3d953-8b60-4261-9183-1b95daaf69c0.png" width="600px" />
 
-## Mitigating CI SEV
-SEV events visibility on HUD should be able to help tree-hugger oncalls to clarify if some "test failures" are SEV or infra flaky issues.
+## Mitigating CI SEV (Runbook)
+- Raise the awareness. SEV events visibility on HUD should be able to help tree-hugger oncalls to clarify if some "test failures" are SEV or infra flaky issues.
+- Notify the related tests' owner team. 
+- Escalate the issue with `high priority` label if necessary
+- After the issue is resolved, simply close the issue (but don't remove the label `ci: sev`).
 
 ## Review Meeting
 
