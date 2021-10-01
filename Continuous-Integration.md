@@ -110,7 +110,7 @@ CIFlow is a flexible CI workflow dispatcher that's going to dispatch GitHub Acti
 
 ##### User Guide
 
-Note: To opt-in CIFlow, please put your GitHub handler in this issue https://github.com/pytorch/pytorch/issues/64124.
+Note: CIFlow is automatically enabled for everyone (starting 10/1/2021), if you want to opt out, please follow the instructions in this issue https://github.com/pytorch/pytorch/issues/64124.
 
 - Create PR as normal, and @pytorchbot will automatically handle the rest. It also generates a comment block **"CI Flow Status"**.
 - If the PR author or anyone with `write` permission to the pytorch/pytorch repo wants to instrument @pytorchbot to run different configurations of the CI flow, people can **comment on the PR with the commands** like the following to trigger CIFlow.
