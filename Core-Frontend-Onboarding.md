@@ -8,6 +8,7 @@ New to developing PyTorch? We've got you covered.
 - [[Dispatcher and Python bindings|PyTorch-dispatcher-walkthrough]]
 - [[nn|nn-Basics]], [[C++|Cpp-API-Quick-Walkthrough]]
 - [[CUDA-basics]]
+- [[data|Data-Basics]]
 
 Some further things:
-- optim, data
+- optim
