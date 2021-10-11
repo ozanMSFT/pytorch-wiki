@@ -51,7 +51,7 @@
   * Users will be kicked after workflows have either *timed out* or have been *cancelled*
 
 ## Windows
-* The *Windows* workspace is currently located at `C:\actions-runner\_work\pytorch\pytorch\pytorch`
+* The *Windows* workspace is currently located at `C:\actions-runner\_work\pytorch\pytorch`
 * To use other shells for *Windows* just append the shell you'd like to run to your ssh command like:
   * `ssh runneruser@ec2-3-238-136-38.compute-1.amazonaws.com -- bash.exe`
 
