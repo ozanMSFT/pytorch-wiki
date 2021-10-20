@@ -337,5 +337,5 @@ Where does all of this boxing and unboxing conversion logic happen? Since the di
 * If you’re curious, some of the template magic that does that lives around here: https://github.com/pytorch/pytorch/blob/8216da1f23b893c074e76e8a9aa7127efbda4287/aten/src/ATen/core/boxing/impl/make_boxed_from_unboxed_functor.h#L521
 
 # Codegen Task
-Coming Soon!
+See https://github.com/pytorch/pytorch/wiki/Codegen-and-Structured-Kernels
 
