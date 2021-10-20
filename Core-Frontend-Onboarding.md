@@ -6,6 +6,7 @@ New to developing PyTorch? We've got you covered.
 - [[Running and writing tests|Running-and-writing-tests]]
 - [Autograd basics](https://github.com/pytorch/pytorch/wiki/Autograd-Basics)
 - [[Dispatcher and Python bindings|PyTorch-dispatcher-walkthrough]]
+- [Codegen and Structured Kernels](https://github.com/pytorch/pytorch/wiki/Codegen-and-Structured-Kernels)
 - [[nn|nn-Basics]], [[C++|Cpp-API-Quick-Walkthrough]]
 - [[CUDA-basics]]
 - [[data|Data-Basics]]
