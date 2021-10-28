@@ -47,11 +47,9 @@ git checkout -b my_new_feature
 # (Some people develop with origin pointing to pytorch/pytorch)
 git pull --rebase upstream viable/strict
 ```
+### For more details
 
-### Make no-op build fast
-
-`pip install ninja` and consider setting CCache (see [here](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#make-no-op-build-fast) for more details)
-
+See this detailed section in our [CONTRIBUTING.MD](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#c-development-tips)
 
 ## Submitting a change to PyTorch
 
