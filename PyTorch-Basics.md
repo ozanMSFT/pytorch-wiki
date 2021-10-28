@@ -21,6 +21,38 @@ Explore popular open-source models and frameworks using PyTorch
    * [PyText, NLP](https://github.com/facebookresearch/pytext)
    * [Horizon, Applied Reinforcement Learning](https://github.com/facebookresearch/Horizon)
 
+## Workflow tips and tricks
+
+### Build only what you need
+
+If you don't need CUDA, build using `USE_CUDA=0`: the build is significantly faster. Below is an opinionated build command that gets rid of a lot of different options that don't get used very often.
+```
+USE_KINETO=0 BUILD_CAFFE2=0 USE_DISTRIBUTED=0 USE_NCCL=0 BUILD_TEST=0 USE_XNNPACK=0 USE_FBGEMM=0 USE_QNNPACK=0 USE_MKLDNN=0 USE_MIOPEN=0 USE_NNPACK=0 BUILD_CAFFE2_OPS=0 USE_TENSORPIPE=0 python setup.py develop
+```
+
+(See [this](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#build-only-what-you-need) for more details)
+
+
+### Use viable/strict
+
+The head of the pytorch/pytorch master branch may have test failures ([see here for the current state](https://hud.pytorch.org/build2/pytorch-master)). When developing PyTorch, instead of branching off of `master`, you can branch off of `viable/strict`. `viable/strict` is a branch that lags behind master and guarantees that all PyTorch tests are passing on the branch. Basing your work off of `viable/strict` gives you confidence that any test failures are actually your code's fault.
+
+Some quick git tips:
+```
+# Creating a new feature branch off of viable/strict
+git checkout viable/strict
+git checkout -b my_new_feature
+
+# Rebasing your work to appear on top of viable/strict, assuming upstream points to pytorch/pytorch.
+# (Some people develop with origin pointing to pytorch/pytorch)
+git pull --rebase upstream viable/strict
+```
+
+### Make no-op build fast
+
+`pip install ninja` and consider setting CCache (see [here](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#make-no-op-build-fast) for more details)
+
+
 ## Submitting a change to PyTorch
 
 Please see https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md
