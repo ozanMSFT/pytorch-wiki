@@ -25,7 +25,7 @@ Explore popular open-source models and frameworks using PyTorch
 
 ### Build only what you need
 
-If you don't need CUDA, build using `USE_CUDA=0`: the build is significantly faster. Below is an opinionated build command that gets rid of a lot of different options that don't get used very often.
+If you don't need CUDA, build using `USE_CUDA=0`: the build is significantly faster. There are also a lot of other build flags that help get rid of components that you might not work on. Below is an opinionated build command that gets rid of a lot of different options that don't get used very often.
 ```
 USE_KINETO=0 BUILD_CAFFE2=0 USE_DISTRIBUTED=0 USE_NCCL=0 BUILD_TEST=0 USE_XNNPACK=0 USE_FBGEMM=0 USE_QNNPACK=0 USE_MKLDNN=0 USE_MIOPEN=0 USE_NNPACK=0 BUILD_CAFFE2_OPS=0 USE_TENSORPIPE=0 python setup.py develop
 ```
