@@ -76,10 +76,6 @@ Most of common questions for DataLoader come from multiple workers as multiproce
   - Iterable-style Dataset requires users to manually implement sharding inside `__iter__` method using `torch.utils.data.get_worker_info()`. Please check the [example](https://pytorch.org/docs/stable/data.html#torch.utils.data.IterableDataset).
 - Shuffle is not enabled for Iterable-style Dataset. If needed, users need to implement the shuffle utilities inside `IterableDataset` class. (This is solved by TorchData project)
 
-### Lab for DataLoader [WIP]
-- Reproduce "leaking memory issue" with fork
-- Control randomness per worker
-
 ## Introduction to next-generation Data API (TorchData)
 Read through [link](https://github.com/pytorch/data#why-composable-data-loading) and [link](https://github.com/pytorch/data#what-are-datapipes)
 Expected features:
@@ -89,5 +85,5 @@ Expected features:
 - DataFrame integration
 - etc.
 
-### Task for TorchData
-Please reach out to onboarding POC to get a task
+### Lab for DataLoader and DataPipe
+Goto N1222094 for Data Lab
