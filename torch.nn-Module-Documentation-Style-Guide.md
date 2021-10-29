@@ -56,7 +56,9 @@ Examples::
 """
 ```
 
-As shown above, the docstring for every module provided by torch.nn should include the following sections in order:
+As shown above, the docstring for every module provided by torch.nn should include a thorough
+description of the module's computation (supporting math / references can be helpful) as well as
+the following sections in order:
 
 * **Args**
 * **Shape**
