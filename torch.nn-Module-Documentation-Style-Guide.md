@@ -1,4 +1,4 @@
-The purpose of this style guide is to provide guidance for writing torch.nn module documentation. It is purposefully strongly opinionated to keep documentation across modules consistent and readable. It describes which sections should be present for each module, as well as formatting details that should always be followed. Note that Google-style doc strings are utilized throughout the Python source code.
+The purpose of this style guide is to provide guidance for writing torch.nn module documentation. It is purposefully strongly opinionated to keep documentation across modules consistent and readable. It describes which sections should be present for each module, as well as formatting details that should always be followed.
 
 ## Module Docstring Formatting
 Module docstrings should match the following format. Note that Google-style doc strings are utilized throughout the Python source code.
