@@ -26,4 +26,5 @@ New to developing PyTorch? We've got you covered.
 - [CUDA Perf Lab (internal-only)](https://github.com/pytorch/pytorch/wiki/CUDA-basics#debugging-and-profiling-tips)
 
 ### Unit 7: Data (Optional)
-- [[data|Data-Basics]]
+- [[Data|Data-Basics]]
+- [Data Lab (internal-only)](https://github.com/pytorch/pytorch/wiki/Data-Basics#lab-for-dataloader-and-datapipe)
