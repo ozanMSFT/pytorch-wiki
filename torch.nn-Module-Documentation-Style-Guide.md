@@ -89,7 +89,7 @@ Shape:
 ```
 
 * The shapes themselves should be tuples formatted with ``` :math:`(...)` ```.
-* A 0D tensor shape should be denoted with ``` :math:`()` ```.
+* A 0D tensor is known as a "scalar tensor" and its shape can be denoted with ``` :math:`()` ```.
 * Note that the formatting for this section is rendered differently from that of `Args` by Sphinx / napoleon. This is why list items must be explicitly tagged with `-` for this section.
 * The following symbols should be used to represent dimensions consistently:
     * `C` - number of channels or number of classes
