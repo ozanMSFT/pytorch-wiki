@@ -5,7 +5,13 @@ Module docstrings should match the following format. Note that Google-style doc 
 
 ```
 r"""
-Applies a linear transformation to the incoming data: :math:`y = xA^T + b`.
+Applies a linear transformation to the incoming data.
+
+.. math::
+    y = xA^T + b
+
+where :math:`x` is the input, :math:`A` is the ``weight`` parameter, :math:`b` is the
+optional ``bias`` parameter, and :math:`y` is the output.
 
 Note:
     This module supports :ref:`TensorFloat32<tf32_on_ampere>`.
@@ -153,13 +159,15 @@ Examples::
 * For consistency, this section should always be named `Examples` and not `Example`, even if only one example is present.
 
 ### Other Sections / Formatting
-* For math formulas: use `.. math::`
+* For math formulas: use `.. math::`.
     * Used to describe computation being performed by the module.
-* For warnings: use `Warning:` (don’t use `.. warning::`)
+* For warnings: use `Warning:` (don’t use `.. warning::`).
     * Used to describe possible pitfalls or caveats to using the module.
-* For notes: use `Note:` (don’t use `.. note::`)
+* For notes: use `Note:` (don’t use `.. note::`).
     * Used for other, non-critical information about the module.
-* For references: use [links](https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html)
+* For referencing other modules: use e.g. ``` :class:`~torch.nn.Unfold` ```.
+* For referencing other functions: use e.g. ``` :func:`torch.nn.functional.pad()` ```.
+* For external references: use [links](https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html).
     * Used to reference relevant papers or other supporting information.
-* For images: use `.. image:: <relative_path>`
+* For images: use `.. image:: <relative_path>`.
 * Don't specify a `Returns` section, as it contains redundant information that should be covered by other sections.
