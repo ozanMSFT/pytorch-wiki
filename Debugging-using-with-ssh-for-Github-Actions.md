@@ -50,6 +50,10 @@
 * The default timeout for these jobs is **2 hours after workflows have completed**
   * Users will be kicked after workflows have either *timed out* or have been *cancelled*
 
+### VSCode
+
+VSCode's remote SSH extension works with both Linux and Windows CI machines. Add them as you would any other SSH remote, with `cmd + shift + P > SSH: New Remote` and use the address `runneruser@https://ec2....compute-1.amazonaws.com` as provided to you in the GitHub CI logs.
+
 ## Windows
 * The *Windows* workspace is currently located at `C:\actions-runner\_work\pytorch\pytorch`
 * To use other shells for *Windows* just append the shell you'd like to run to your ssh command like:
