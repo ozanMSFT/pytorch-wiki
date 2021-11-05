@@ -1,4 +1,4 @@
-## Codegen Task: Update an op to bypass the Dispatcher
+# Codegen Task: Update an op to bypass the Dispatcher
 
 This is a more hands-on task meant to walk you through making a change to an operator that impacts our codegen and dispatcher registration subsystems. The goal of this task is to:
 
@@ -10,7 +10,7 @@ This is a more hands-on task meant to walk you through making a change to an ope
 
 You’re going to modify at::add and see what happens!
 
-## Exercise: Make torch.add Bypass the Dispatcher
+# Exercise: Make torch.add Bypass the Dispatcher
 
 In this lab, you’re going to update the cpu kernel of at::add to bypass the dispatcher.
 
@@ -24,7 +24,7 @@ The lab will involve:
 * Staring at some code-generated output
 * Measuring performance cost associated with all of the flexibility that the dispatcher gives us
 
-## Bypassing the dispatcher
+# Bypassing the dispatcher
 
 The dispatcher gives us a lot of flexibility - we can implement separate add kernels for different backends, provide autograd support, and hook in custom behavior like batching and tracing. But that extra flexible also comes with a performance cost!
 
@@ -33,7 +33,7 @@ There are some basic operators that we’ve are simple enough and perf-critical 
 Here’s ![a diagram](https://pasteboard.co/NAhXmNPm39Lx.png) describing the call path in C++ before/after skipping the dispatcher.
 
 
-# The Change
+## The Change
 
 *Note 1:* Before starting, I recommend you create two separate conda environments. e.g. codegen_task_before and codegen_task_after. Run a REL_WITH_DEB_INFO=1 build before your changes in the first conda environment, and then switch to the second environment when making your changes. That will make it very easy to benchmark and compare your change to the baseline.
 
@@ -55,11 +55,11 @@ By removing all of the structured metadata and adding manual_cpp_bindings, a few
     * at::Tensor:: The methods API (add and add_)
     * at::native:: The native API. This namespace contains all of our internal kernel definitions. (add, add_ and add_out)
 
-# How to make the changes
+## How to make the changes
 
 What should the functions look like? You can use the existing structured kernel scaffolding, but the codegen will no longer generate it for you since we’re using manual_cpp_bindings. Instead, you can manually write the structured kernel scaffolding (probably by copy-pasting the output of the original codegen).
 
-# Where to make changes
+## Where to make changes
 
 There are 4 files that make up the main parts of the C++ function and method API’s:
 
@@ -78,7 +78,7 @@ Benchmarking
 
 You can re-run the gdb the same way that we did before and see that a lot less is getting called. Instead of invoking the dispatcher to send us to the add kernel, calling at::add() takes us straight to the kernel implementation.
 
-# Test A: the profiler
+## Test A: the profiler
 
 Another feature that’s provided directly inside of the dispatcher is the profiler, which profiles the set of aten ops that ran in your model as well as how much time was spent in them.
 
@@ -95,7 +95,7 @@ Run the following snippet before/after your change, and compare:
 
 You should see that aten::add() no longer shows up in the profiler! The profiler is no longer aware of aten::add(), since the function bypasses the dispatcher. It also completely excludes the time spent running at::add() in the total time, since it’s not aware of the call.
 
-# Test B (Optional): instruction count measurements
+## Test B (Optional): instruction count measurements
 
 To see how much faster torch.add() is without the extra dispatcher overhead, we have some helpful tools for benchmarking code.
 
