@@ -55,6 +55,23 @@
 * To use other shells for *Windows* just append the shell you'd like to run to your ssh command like:
   * `ssh runneruser@ec2-3-238-136-38.compute-1.amazonaws.com -- bash.exe`
 
+### RDP
+To use remote desktop, get a RDP client ([Mac App Store](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)) and:
+1. The Windows EC2 machines only allow SSH connections on port 22, so make a tunnel for the RDP port (default 3389) to your local machine and set a password:
+
+```bash
+# change the EC2 hostname to the one given to you in the GitHub Actions logs
+[your mac] $ ssh -L 3389:localhost:3389 runneruser@ec2-3-238-198-8.compute-1.amazonaws.com
+
+# set a password for the 'runneruser' account (it must have upper
+# and lowercase letters, a number, and be at least 8 characters)
+[windows] $ net user runneruser <some password>
+```
+
+2. Open the RDP client, add a new PC with the hostname `localhost`
+
+3. Connect to it by double clicking, use the username `runneruser` with the password you just created. You should see the remote desktop window open.
+
 ## Planned features
 - [ ] Add support for RDP tunneling using SSH on Windows
   - see https://www.ntkernel.com/securing-remote-desktop-with-ssh/
