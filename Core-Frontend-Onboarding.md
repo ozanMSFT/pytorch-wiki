@@ -15,7 +15,8 @@ New to developing PyTorch? We've got you covered.
 
 ### Unit 4: Dispatcher, Structured Kernels, and Codegen
 - [[Dispatcher and Python bindings|PyTorch-dispatcher-walkthrough]]
-- [Codegen and Structured Kernels Lab](https://github.com/pytorch/pytorch/wiki/Codegen-and-Structured-Kernels)
+- [Codegen and Structured Kernels](https://github.com/pytorch/pytorch/wiki/Codegen-and-Structured-Kernels)
+- [Dispatcher and Structured Kernels Lab](https://github.com/pytorch/pytorch/wiki/Dispatcher---Structured-Kernels-Lab)
 
 ### Unit 5: torch.nn
 - [[nn|nn-Basics]], [[C++|Cpp-API-Quick-Walkthrough]]
