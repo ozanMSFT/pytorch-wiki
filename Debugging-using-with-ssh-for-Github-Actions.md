@@ -52,7 +52,12 @@
 
 ### VSCode
 
-VSCode's remote SSH extension works with both Linux and Windows CI machines. Add them as you would any other SSH remote, with `cmd + shift + P > SSH: New Remote` and use the address `runneruser@https://ec2....compute-1.amazonaws.com` as provided to you in the GitHub CI logs.
+VSCode's remote SSH extension works with both Linux and Windows CI machines. Add them as you would any other SSH remote, with `cmd + shift + P > SSH: New Remote` and use the address `runneruser@https://ec2....compute-1.amazonaws.com` as provided to you in the GitHub CI logs. On Windows you can directly open VSCode to the `pytorch` folder with the command:
+
+```bash
+[your mac] $ export HOST=runneruser@ec2-3-238-198-8.compute-1.amazonaws.com
+[your mac] $ code --folder-uri vscode-remote://ssh-remote+$HOST/c:\\actions-runner\\_work\\pytorch\\pytorch
+```
 
 ## Windows
 * The *Windows* workspace is currently located at `C:\actions-runner\_work\pytorch\pytorch`
