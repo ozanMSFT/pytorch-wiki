@@ -75,10 +75,3 @@ To use remote desktop, get a RDP client ([Mac App Store](https://apps.apple.com/
 2. Open the RDP client, add a new PC with the hostname `localhost`
 
 3. Connect to it by double clicking, use the username `runneruser` with the password you just created. You should see the remote desktop window open.
-
-## Planned features
-- [ ] Add support for RDP tunneling using SSH on Windows
-  - see https://www.ntkernel.com/securing-remote-desktop-with-ssh/
-
-
-cc @ezyang @seemethere @malfet @walterddr @lg20987 @pytorch/pytorch-dev-infra
