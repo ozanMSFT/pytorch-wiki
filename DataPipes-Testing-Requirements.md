@@ -16,5 +16,7 @@ Besides functional testing of every DataPipe, tests should include:
 * Test if DataPipe is picklable (using pickle or dill)
   * Test if it is still picklable after the DataPipe has been iterated through.
 
+TODO: Some of these requirements are only relevant for `IterDataPipe`, we also need to requirements for `MapDataPipe`.
+
 
 Ideally, there are examples and helper functions for each of these requirements.
