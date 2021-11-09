@@ -14,6 +14,7 @@ Besides functional testing of every DataPipe, tests should include:
 * Test how DataPipe works in deterministic context
 * Test if DataPipes creates properly linked DataPipes graph
 * Test if DataPipe is picklable (using pickle or dill)
+  * Test if it is still picklable after the DataPipe has been iterated through.
 
 
 Ideally, there are examples and helper functions for each of these requirements.
