@@ -29,6 +29,7 @@ New to PyTorch? Don't know where to start?
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
 * [The torch.fft module in PyTorch 1.7](The-torch.fft-module-in-PyTorch-1.7)
+* [Guide for developing PyTorch ONNX exporter](Guide-for-developing-PyTorch-ONNX-exporter)
 
 ### Notes
 * [Automatic Mixed Precision package](https://github.com/pytorch/pytorch/blob/master/docs/source/amp.rst)
