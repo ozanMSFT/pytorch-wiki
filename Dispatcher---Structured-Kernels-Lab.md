@@ -3,7 +3,7 @@
 This is a more hands-on task meant to walk you through making a change to an operator that impacts our codegen and dispatcher registration subsystems. The goal of this task is to:
 
 * Give an introduction to our codegen subsystem
-    * pre-reading: https://fb.quip.com/BLIAAI6vi0Jn
+    * pre-reading: https://github.com/pytorch/pytorch/wiki/Codegen-and-Structured-Kernels
 * Learn how the codegen interacts with the dispatcher
 * Learn more about Structured Kernels
 * See how the [codegen] / [dispatcher registration] / [call path of an operator] all change when we make a tweak to bypass the dispatcher.
