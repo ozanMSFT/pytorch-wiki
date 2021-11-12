@@ -1,3 +1,4 @@
+
 # Basic development usage of exporter 
 
 We basically need PyTorch, ONNX and ONNX Runtime. Prefer using conda whenever possible, but  we may need to mix conda and pip. 
@@ -98,17 +99,6 @@ Refer link: Experience rebasing  to update onnx_ms_1
 
  
 
-## Code review. 
-
-Code Review standards 
-
-A good guide: [How To Do A Code Review and The CL Author's Guide](https://google.github.io/eng-practices/review/)
-
-Exporter team number has the regular to review code and deal with github issue. 
-
-
- 
-
 ## Merge code into onnx_ms_1. 
 
 The person merging a PR needs to ensure: 
@@ -138,11 +128,15 @@ Step 3: Add author information by the end of the description section, to preserv
 Step 4: Confirm squash and merge. 
  
 
-## onnx_ms_1 merge into master. 
+## Code review and merge into master. 
 
-Exporter team will periodically merge onnx_ms_1 branch into pytorch master. 
+Exporter team number has the regular to review related PR and deal with github issue. 
 
-Steps to merge onnx_ms_1 into PyTorch master 
+At the same time, exporter team will also periodically merge onnx_ms_1 branch into pytorch master. 
+
+Code Review standards 
+
+A good guide: [How To Do A Code Review and The CL Author's Guide](https://google.github.io/eng-practices/review/)
 
 
 # Add an operator and run test
@@ -220,4 +214,10 @@ python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset14.test_s
 ```
  
 
-An example of adding unit tests for a new symbolic function PR: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675) 
+An example of adding unit tests for a new symbolic function PR: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
+
+## Some source of PyTorch ONNX exporter in Pytorch repo
+[docs/source/onnx.rst](https://github.com/pytorch/pytorch/blob/onnx_ms_1/docs/source/onnx.rst)
+
+[pytorch/torch/csrc/jit/passes/onnx/README.md](https://github.com/pytorch/pytorch/blob/onnx_ms_1/torch/csrc/jit/passes/onnx/README.md)
+ 
