@@ -142,10 +142,7 @@ New to PyTorch? Don't know where to start?
 * [Code review values](Code-review-values)
 * [Lint as you type](Lint-as-you-type)
 * [Pull request review etiquette](Pull-request-review-etiquette)
-* [Docker image build on CircleCI](Docker-image-build-on-CircleCI)
 * [Debugging with SSH on Github Actions](Debugging-using-with-ssh-for-Github-Actions)
-* [Debugging with Remote Desktop on CircleCI](Debugging-Windows-with-Remote-Desktop-or-CDB-(CLI-windbg)-on-CircleCI)
-* [Structure of CI on CircleCI](https://github.com/pytorch/pytorch/blob/master/.circleci/README.md)
 * [Using hud.pytorch.org](Using-hud.pytorch.org)
 
 ## Community
