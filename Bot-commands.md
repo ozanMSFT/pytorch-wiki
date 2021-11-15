@@ -1,12 +1,10 @@
-Page Maintainers: @zhouzhuojie
+Page Maintainers: @zhouzhuojie, @seemethere
 
-Updated on: Thursday, Aug 12, 2021
+Updated on: Monday, Nov 15, 2021
 
-# ChatOps
+# @pytorchbot commands
 
-## @pytorchbot commands
-
-### Re-running workflows with ciflow
+## Re-running workflows with ciflow
 ```
 # rerun all workflows
 @pytorchbot ciflow rerun
