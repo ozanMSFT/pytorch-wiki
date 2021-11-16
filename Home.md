@@ -56,7 +56,6 @@ New to PyTorch? Don't know where to start?
 * [Code Coverage Tool for Pytorch](https://github.com/pytorch/pytorch/blob/master/tools/code_coverage/README.md)
 * [How to write tests using FileCheck](https://github.com/pytorch/pytorch/blob/master/test/HowToWriteTestsUsingFileCheck.md)
 * [PyTorch Release Scripts](https://github.com/pytorch/pytorch/blob/master/scripts/release/README.md)
-* [Docker images for Jenkins](https://github.com/pytorch/pytorch/blob/master/docker/caffe2/jenkins/README.md)
 * [Serialized operator test framework](https://github.com/pytorch/pytorch/blob/master/caffe2/python/serialized_test/README.md)
 * [ONNX op coverage](https://github.com/pytorch/pytorch/blob/master/caffe2/python/onnx/ONNXOpCoverage.md)
 * [Observers](https://github.com/pytorch/pytorch/blob/master/caffe2/observers/README.md)
