@@ -144,14 +144,14 @@ my_backend_config_dict = get_my_backend_config_dict()
 
 # Proposed APIs for Model Developers
 ```python
-from torch.quantization.quantize_fx import prepare_fx, convert_fx
+from torch.quantization.quantize_fx import prepare_fx, convert_to_reference_fx
 from custom_backend_library import get_my_backend_config_dict, lower_to_custom_backend
 
 backend_config_dict = get_my_backend_config_dict()
 model = prepare_fx(model, qconfig_dict, prepare_custom_config_dict = ?, backend_config_dict = backend_config_dict)
 # calibration 
 ...
-model = convert_fx(model, convert_custom_config_dict=?, backend_config_dict=backend_config_dict)
+model = convert_to_reference_fx(model, convert_custom_config_dict=?, backend_config_dict=backend_config_dict)
 
 # get the lower_to_custom_backend function defined by custom backend developers and call the function to lower a Reference Quantized Model to a model that runs on a custom backend
 model = lower_to_custom_backend(model)
@@ -165,7 +165,7 @@ model = model.eval()
 qconfig_dict = {"": torch.quantization.default_qconfig}
 model = prepare_fx(model, qconfig_dict)
 calibration(model, ...)
-model = convert_fx(model)
+model = convert_to_reference_fx(model)
 ```
 
 The model produced here is a reference model that contains reference patterns, it is runnable since it is using quantize_per_tensor/dequantize/floating point operators to simulate quantized operators. For numerics we’ll provide an approximation to backend numerics even though it may not have the exact same numerics as any backends, or same speed up as the backends.
@@ -177,7 +177,7 @@ model = model.eval()
 qconfig_dict = {"": torch.quantization.default_qconfig}
 model = prepare_fx(model, qconfig_dict)
 calibration(model, ...)
-model = convert_fx(model)
+model = convert_to_reference_fx(model)
 
 # This step will transform a model with reference patterns to a model with
 # fbgemm/qnnpack ops, e.g. torch.ops.quantized.conv2d
@@ -237,7 +237,7 @@ model = model.eval()
 qconfig_dict = {"": torch.quantization.default_qconfig}
 model = prepare_fx(model, qconfig_dict)
 calibration(model, ...)
-model = convert_fx(model)
+model = convert_to_reference_fx(model)
 
 # This optional step will transform a model with reference 
 # functions to a model with fakeNNPI ops, e.g. torch.ops.fakeNNPI.sigmoidFP16
