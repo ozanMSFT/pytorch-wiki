@@ -19,7 +19,7 @@
 
 ### Differences
 
-* Only works for FB employees on the FB VPN
+* Only works for users who are connected to the Meta VPN
 * Requires a label (*with-ssh* in this case) to be applied to the Pull Request
     * As opposed to clicking *Re-run with SSH* through the CircleCI UI
     * **NOTE:** SSH keys will not be added to jobs ran *before* the label is applied so workflows will need to be re-ran *after* the *with-ssh* label has been applied
@@ -29,7 +29,7 @@
 
 ## Known limitations
 
-* Only works for FB employees on FB VPN
+* Only works for users who are connected to the Meta VPN
     * No current planned support for outside collaborators yet
 
 ## Workflow for users
