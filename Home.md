@@ -29,7 +29,7 @@ New to PyTorch? Don't know where to start?
 * [Writing memory format aware operators](Writing-memory-format-aware-operators)
 * [Guide for adding type annotations to PyTorch](Guide-for-adding-type-annotations-to-PyTorch)
 * [The torch.fft module in PyTorch 1.7](The-torch.fft-module-in-PyTorch-1.7)
-* [Guide for developing PyTorch ONNX exporter](Guide-for-developing-PyTorch-ONNX-exporter)
+* [PyTorch-ONNX exporter](PyTorch-ONNX-exporter)
 
 ### Notes
 * [Automatic Mixed Precision package](https://github.com/pytorch/pytorch/blob/master/docs/source/amp.rst)
@@ -47,7 +47,6 @@ New to PyTorch? Don't know where to start?
 * [Windows FAQ](https://github.com/pytorch/pytorch/blob/master/docs/source/notes/windows.rst)
 * [Python Language Reference Coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/jit_python_reference.rst)
 * [Complex Numbers](https://github.com/pytorch/pytorch/blob/master/docs/source/complex_numbers.rst)
-* [ONNX](https://github.com/pytorch/pytorch/blob/master/docs/source/onnx.rst)
 * [Android](https://github.com/pytorch/pytorch/blob/master/android/README.md)
 * [iOS](https://github.com/pytorch/pytorch/blob/master/ios/README.md)
 * [How-to: Writing PyTorch & Caffe2 Operators](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/core/op_registration/README.md)
@@ -57,7 +56,6 @@ New to PyTorch? Don't know where to start?
 * [How to write tests using FileCheck](https://github.com/pytorch/pytorch/blob/master/test/HowToWriteTestsUsingFileCheck.md)
 * [PyTorch Release Scripts](https://github.com/pytorch/pytorch/blob/master/scripts/release/README.md)
 * [Serialized operator test framework](https://github.com/pytorch/pytorch/blob/master/caffe2/python/serialized_test/README.md)
-* [ONNX op coverage](https://github.com/pytorch/pytorch/blob/master/caffe2/python/onnx/ONNXOpCoverage.md)
 * [Observers](https://github.com/pytorch/pytorch/blob/master/caffe2/observers/README.md)
 * [Snapdragon NPE Support](https://github.com/pytorch/pytorch/blob/master/caffe2/mobile/contrib/snpe/README.md)
 * [Using TensorBoard in ifbpy](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/tensorboard/tensorboard.md)
@@ -149,6 +147,7 @@ New to PyTorch? Don't know where to start?
 * [Doxygen Notes](https://github.com/pytorch/pytorch/blob/master/docs/caffe2/DOXYGEN.md)
 * [Docker & Caffe2](https://github.com/pytorch/pytorch/blob/master/docker/caffe2/readme.md)
 * [Caffe2 implementation of Open Neural Network Exchange (ONNX)](https://github.com/pytorch/pytorch/blob/master/caffe2/python/onnx/README.md)
+* [Caffe2 ONNX op coverage](https://github.com/pytorch/pytorch/blob/master/caffe2/python/onnx/ONNXOpCoverage.md)
 * [nomnigraph](https://github.com/pytorch/pytorch/blob/master/caffe2/core/nomnigraph/README.md)
 * [Caffe2 & TensorRT integration](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/tensorrt/README.md)
 * [Playground for Caffe2 Models](https://github.com/pytorch/pytorch/blob/master/caffe2/contrib/playground/README.md)
