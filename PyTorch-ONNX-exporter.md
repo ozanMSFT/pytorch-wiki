@@ -40,7 +40,8 @@ Optional but highly recommended: [PyTorch C++ development tips](https://github.c
 Additional dependencies are required to run the torch.onnx tests.
 
 ```sh
-conda install -c conda-forge expecttest pytest mypy flake8
+# flake8 version restriction due to https://github.com/pytorch/pytorch/issues/69500
+conda install -c conda-forge expecttest pytest mypy 'flake8<4'
 ```
 
 #### ONNX Runtime
