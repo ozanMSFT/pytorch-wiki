@@ -1,223 +1,140 @@
+Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`).
 
-# Basic development usage of exporter 
+# Table of Contents
 
-We basically need PyTorch, ONNX and ONNX Runtime. Prefer using conda whenever possible, but  we may need to mix conda and pip. 
+<!-- TOC generated with https://github.com/ekalinin/github-markdown-toc -->
 
-Here is an example of setting local environment from source: 
+* [Development process](#development-process)
+   * [Environment setup](#environment-setup)
+      * [Fork PyTorch](#fork-pytorch)
+      * [Build PyTorch](#build-pytorch)
+      * [Install additional dependencies](#install-additional-dependencies)
+      * [Sanity check](#sanity-check)
+   * [Pull requests](#pull-requests)
+   * [Tests](#tests)
+      * [Adding tests](#adding-tests)
+* [Links](#links)
+   * [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
 
-Example platform: Linux, Visual Studio Code, Python, Anaconda 
+# Development process
 
- 
+## Environment setup
 
-## Fork pytorch/pytorch on GitHub 
+We highly recommend using Linux. Other platforms are not tested in PyTorch CI and
+are generally not used by the torch.onnx developers.
 
-On github.com, navigate to the pytorch/pytorch repository.  
+### Fork PyTorch
 
-In the top-right corner of the page, click Fork. 
+[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) github.com/pytorch/pytorch and clone your fork to your workstation.
 
-And now you get a fork of the PyTorch repository. 
+### Build PyTorch
 
- 
+CUDA is not required for most development tasks. If you use CUDA, building PyTorch will probably be slower.
 
-## Set up your development dependencies environment. 
+See the instructions in PyTorch's [README](https://github.com/pytorch/pytorch/blob/master/README.md#from-source).
 
-Set up the ONNX and ONNXRUNTIME environment.
-```
-pip install onnx, onnxruntime 
-```
- 
-Install torchvision for running onnx tests 
-```
-pip install torchvision 
-```
+Optional but highly recommended: [PyTorch C++ development tips](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#c-development-tips).
 
-PyTorch code Common Dependencies 
-```
-conda install astunparse numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses 
-```
-More information of building ONNX、ONNXRuntime from official source.
+### Install additional dependencies
 
-[ONNX build](https://github.com/onnx/onnx#installation)
+Additional dependencies are required to run the torch.onnx tests.
 
-[ONNXRuntime build](https://onnxruntime.ai/docs/build/)
-
- 
-## Build the PyTorch code from source 
-
-Get the PyTorch source code and install Pytorch (will take up the pytorch from the package).   
-
-Get PyTorch source code from your own repository using ssh. 
-```
-git clone git@github.com:{your github name}/pytorch.git 
+```sh
+conda install -c conda-forge expecttest pytest mypy flake8
 ```
 
-If CUDA needed, add LAPACK support matches your CUDA version from https://anaconda.org/pytorch/repo 
-```
-conda install -c pytorch magma-cuda110 
-```
-Set CMAKE_PREFIX_PATH with conda
-```
-export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"} 
-```
-Build PyTorch project, it can take tozens of minutes. Or using install, develop for more convenient debugging. 
-```
-debug=1 use_cuda=1 python setup.py develop 
-```
-You can also refer: [pytorch/blob/master/README.md](https://github.com/pytorch/pytorch/blob/master/README.md#from-source )
+#### ONNX Runtime
 
-## Make your changes and open a PR against onnx_ms_1. 
-
-So we need to fork our feature branch from `onnx_ms_1` branch instead of master. The PRs submited will also use this branch as target and not pytorch master branch.
-
-This branch will be periodically merged back into pytorch master. 
-
-Any existing PRs will also have to be rebased to this branch and resubmitted.  
-
-
-Create your branch based on onnx_ms_1 branch: 
-```
-git checkout onnx_ms_1 
-
-git checkout –b {your_branch_name} 
+```sh
+conda install -c conda-forge onnxruntime
 ```
 
-After you made changes and push to github, "onnx_ms_1" branch may be changed by others. 
+If you need a newer or different version of ONNX Runtime than what is available via conda, you can instead install
+it [from source](https://onnxruntime.ai/docs/build/inferencing.html) or
+[pip](https://onnxruntime.ai/docs/install/).
 
-rebase the latest onnx_ms_1 and fix the confliction
+#### TorchVision
 
-```
-git fetch origin onnx_ms_1 
-
-git rebase origin/onnx_ms_1  
-
-git push origin {your_branch}  
-```
-
-Then you can create a PR in github UI. 
-
-Refer link: Experience rebasing  to update onnx_ms_1 
-
- 
-
-## Merge code into onnx_ms_1. 
-
-The person merging a PR needs to ensure: 
-
-Title and descriptions are meaningful, usually copying from the PR title and description. 
-
-Author information is included: Co-authored-by author_name <author_email>. 
-
-For example: 
-
-Step 1: hit `Squash and merge` button 
-
-Graphical user interface, text, application, email
-
-Description automatically generated 
-
-Step 2: Edit the description. Usually, one just needs to copy from the original PR description. The auto generated description consists of all the commit messages is lengthy and not helpful. 
-
-Graphical user interface, text, application, email
-
-Description automatically generated 
-
- 
-Step 3: Add author information by the end of the description section, to preserve original PR author info. 
- 
-
-Step 4: Confirm squash and merge. 
- 
-
-## Code review and merge into master. 
-
-Exporter team number has the regular to review related PR and deal with github issue. 
-
-At the same time, exporter team will also periodically merge onnx_ms_1 branch into pytorch master. 
-
-Code Review standards 
-
-A good guide: [How To Do A Code Review and The CL Author's Guide](https://google.github.io/eng-practices/review/)
-
-
-# Add an operator and run test
-
-During export aten graph into ONNX graph, each node in the TorchScript aten graph is visited in topological order. Upon visiting a node, the exporter C++ code tries to find a registered symbolic function for that node. Symbolic functions are named `_run_symbolic_function` implemented in Python, you can also see the calling in [/torch/csrc/jit/passes/onnx.cpp#L404](https://github.com/pytorch/pytorch/blob/a6c0edff1a60e299d3f9794407f0a1c9a269fd19/torch/csrc/jit/passes/onnx.cpp#L404). 
-
-## Add a symbolic function 
-
-If the operator is an ATen operator, it can be done by the following steps: 
-
-Add the symbolic function in torch/onnx/symbolic_opset_`version`.py, for example torch/onnx/symbolic_opset14.py. 
-
-The first parameter is always the exported ONNX graph. Parameter names must EXACTLY match the names in `pytorch/aten/src/ATen/native/native_functions.yaml`
-
-In the symbolic function, if the operator is already standardized in ONNX, we only need to create a node to represent the ONNX operator in the graph.  
-
-Here is the `add` example symbolic function in opset 9:  
-```python
-def add(g, self, other, alpha=None): 
-
-    if sym_help._is_value(self) and sym_help._is_tensor_list(self): 
-
-        return sym_help._onnx_opset_unsupported_detailed("Add", 9, 11, "Add between list of tensors not supported") 
-
-    # default alpha arg is to allow no-alpha add (aten add st overload no alpha) 
-
-    if alpha and sym_help._scalar(sym_help._maybe_get_scalar(alpha)) != 1: 
-
-        return _unimplemented("add", "alpha != 1") 
-
-return g.op("Add", self, other) 
+```sh
+# cpuonly not needed if you're using CUDA
+# The first command installs torch as a dependency.
+conda install -c pytorch-nightly torchvision cpuonly
+# Remove torch so we can use the locally built version.
+pip uninstall torch
 ```
 
+### Sanity check
 
-## Unit testing 
+If your environment is set up correctly, you should be able to run these commands successfully:
 
-### Adding tests 
-
-All PyTorch ONNX test suites are in [pytorch/test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx) folder with `test_*` file, the ending string `*` represent the meaning of this test file.  
-
-If we want to add a new feature or operator in exporter. The most used test file is in [test/onnx/test_pytorch_onnx_onnxruntime.py](https://github.com/pytorch/pytorch/blob/onnx_ms_1/test/onnx/test_pytorch_onnx_onnxruntime.py). 
-
-Define the model class, python function and run self.run_test to test the result between PyTorch and ONNX. The test will compare the output ONNX graph with expected. 
-
-Decide to use python decorator to skip some opset versions. Such as where op only supports for opset < 9. So we need to add `@skipIfUnsupportedMinOpsetVersion(9) to skip version < 9.`
-
-Here is the  simple `test_add_inplace` unit test case: 
-
-```python
-    def test_add_inplace(self): 
-
-        class InplaceAddModel(torch.nn.Module): 
-
-            def forward(self, x): 
-
-                x += 12 
-
-                return x
-
-        x = torch.randn(4, 2, 3, requires_grad=True) 
-
-        self.run_test(InplaceAddModel(), x) 
+```sh
+git fetch upstream onnx_ms_1
+git checkout upstream/onnx_ms_1
+python setup.py develop
+pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_long
 ```
- 
 
-### Running tests 
+## Pull requests
 
-You can narrow down what you're testing even further by specifying the name of an individual test with TESTCLASSNAME.TESTNAME. Here, TESTNAME is the name of the test you want to run, and TESTCLASSNAME is the name of the class in which it is defined. 
+Most PRs should be opened against the branch [onnx_ms_1](https://github.com/pytorch/pytorch/tree/onnx_ms_1) instead of master.
+This branch will be periodically merged into master. This lets the torch.onnx developers avoid merge conflicts with each other
+without waiting for our PRs to be merged into master (which can take a long time).
 
+Start your work by creating a local branch based on `onnx_ms_1`:
 
-Going off the above example, let's say you want to run test_sum in opset version 14, which is defined as part of the TestONNXRuntime_opset14 class in test/onnx/test_pytorch_onnx_onnxruntime.py. Your command would be: 
-
+```sh
+git checkout upstream/onnx_ms_1
+git switch -c {your_branch_name}
 ```
-python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset14.test_sum 
+
+If you make significant changes to non-ONNX related code, then open the PR against master instead of `onnx_ms_1`.
+
+See [GitHub pull request workflow](https://docs.github.com/en/get-started/quickstart/github-flow).
+
+Adhere to [Google's Code Review Developer Guide](https://google.github.io/eng-practices/review/).
+
+Feel free to ignore a failing GitHub check that:
+
+* Doesn't have "onnx" in the name
+* Seems unrelated to your change
+
+## Tests
+
+Running all the tests locally takes a very long time, so generally you should run a few tests locally and rely on
+GitHub CI checks for comprehensive testing.
+We highly recommend using [pytest to run tests selectively](https://docs.pytest.org/en/latest/how-to/usage.html).
+
+Most relevant tests are in [test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx).
+
+The most used test file is [test_pytorch_onnx_onnxruntime.py](https://github.com/pytorch/pytorch/blob/onnx_ms_1/test/onnx/test_pytorch_onnx_onnxruntime.py). The tests in this file generally:
+
+* Define a subclass of `torch.nn.Module`.
+* Define some inputs.
+* Call `self.run_test()` with the instantiated module and inputs.
+
+`run_test()` converts the module to ONNX and compares the output between PyTorch and ONNX Runtime.
+
+Tests added to `TestONNXRuntime` are automatically defined for all supported opset versions.
+The class name with no suffix runs tests against opset version 9.
+
+For example:
+
+```sh
+# run test for opset 11
+pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime_opset11::test_arithmetic_prim_bool
+# run test for opset 9
+pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_bool
 ```
- 
+An example of adding unit tests for a new symbolic function: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
 
-An example of adding unit tests for a new symbolic function PR: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
+# Links
 
-## Some source of PyTorch ONNX exporter in Pytorch repo
-[docs/source/onnx.rst](https://github.com/pytorch/pytorch/blob/onnx_ms_1/docs/source/onnx.rst)
+* [User-facing docs](https://pytorch.org/docs/master/onnx.html).
 
-[pytorch/torch/csrc/jit/passes/onnx/README.md](https://github.com/pytorch/pytorch/blob/onnx_ms_1/torch/csrc/jit/passes/onnx/README.md)
- 
+## Relevant parts of PyTorch repo
+
+* User-facing doc: [docs/source/onnx.rst](https://github.com/pytorch/pytorch/blob/onnx_ms_1/docs/source/onnx.rst)
+* Python tests: [test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx)
+* More Python tests: [test/jit/test_onnx_export.py](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/jit/test_onnx_export.py)
+* Python code: [torch/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/onnx)
+* C++ code: [torch/csrc/jit/passes/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/csrc/jit/passes/onnx)
