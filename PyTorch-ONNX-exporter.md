@@ -37,7 +37,7 @@ Optional but highly recommended: [PyTorch C++ development tips](https://github.c
 
 ### Install additional dependencies
 
-Additional dependencies are required to run the torch.onnx tests.
+Install the dependencies required to run CI checks locally.
 
 ```sh
 # flake8 version restriction due to https://github.com/pytorch/pytorch/issues/69500
@@ -58,22 +58,32 @@ it [from source](https://onnxruntime.ai/docs/build/inferencing.html) or
 
 ```sh
 # cpuonly not needed if you're using CUDA
-# The first command installs torch as a dependency.
 conda install -c pytorch-nightly torchvision cpuonly
-# Remove torch so we can use the locally built version.
-pip uninstall torch
 ```
+
+This installs PyTorch as a dependency, but it should be ignored in favor of the version you build
+with `setup.py` if you run `python` from the root of the pytorch repo.
 
 ### Sanity check
 
-If your environment is set up correctly, you should be able to run these commands successfully:
+You should be able to run these commands successfully:
 
 ```sh
 git fetch upstream onnx_ms_1
 git checkout upstream/onnx_ms_1
 python setup.py develop
-pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_long
+python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_long
 ```
+
+And this should fail:
+
+```sh
+echo "assert False >> torch/onnx/utils.py"
+python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_long
+git restore torch/onnx/utils.py
+```
+
+If the second command succeeds, then you're somehow using
 
 ## Pull requests
 
@@ -104,6 +114,8 @@ Feel free to ignore a failing GitHub check that:
 Running all the tests locally takes a very long time, so generally you should run a few tests locally and rely on
 GitHub CI checks for comprehensive testing.
 We highly recommend using [pytest to run tests selectively](https://docs.pytest.org/en/latest/how-to/usage.html).
+Note that you should use `python -m pytest` rather than calling `pytest` directly to make sure it uses your locally
+built version of PyTorch.
 
 Most relevant tests are in [test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx).
 
