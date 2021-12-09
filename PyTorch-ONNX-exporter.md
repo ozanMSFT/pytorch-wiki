@@ -83,7 +83,7 @@ python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::te
 git restore torch/onnx/utils.py
 ```
 
-If the second command succeeds, then you're somehow using
+If the second command succeeds, then probably python is finding the PyTorch that was installed via `conda` or `pip`, not the one that was built from source by `python setup.py develop`.
 
 ## Pull requests
 
