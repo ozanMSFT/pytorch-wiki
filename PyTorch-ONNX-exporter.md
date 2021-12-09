@@ -15,6 +15,8 @@ Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`).
       * [Adding tests](#adding-tests)
 * [Links](#links)
    * [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
+* [Features](#features)
+   * [Quantized model export](#quantized-model-export)
 
 # Development process
 
@@ -151,3 +153,10 @@ An example of adding unit tests for a new symbolic function: [Add binary_cross_e
 * More Python tests: [test/jit/test_onnx_export.py](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/jit/test_onnx_export.py)
 * Python code: [torch/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/onnx)
 * C++ code: [torch/csrc/jit/passes/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/csrc/jit/passes/onnx)
+
+# Features
+
+## Quantized model export
+
+To support quantized model export, we need to unpack the quantized tensor inputs and the PackedParam weights (https://github.com/pytorch/pytorch/pull/69232). We construct through `TupleConstruct` to have a 1-to-1 input mapping, 
+so that we can use `replaceAllUsesWith` API for its successors. In addition, we support quantized namespace export, and the developers can add more symbolics for quantized operators conveniently in the current framework.
