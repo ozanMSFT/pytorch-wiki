@@ -68,7 +68,7 @@ New to PyTorch? Don't know where to start?
 * [Introduction to Quantization](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization.rst)
 * [Quantization Operation coverage](https://github.com/pytorch/pytorch/blob/master/docs/source/quantization-support.rst)
 * [Implementing native quantized ops](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/quantized/README.md)
-* [Extend PyTorch Quantization to Custom Backends](https://github.com/pytorch/pytorch/wiki/Extending-PyTorch-Quantization-to-Custom-Backends)
+* [Extend PyTorch Quantization to Custom Backends](https://github.com/pytorch/rfcs/blob/master/RFC-0019-Extending-PyTorch-Quantization-to-Custom-Backends.md)
 
 ### JIT/TorchScript 
 * [JIT Technical Overview](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/OVERVIEW.md)
