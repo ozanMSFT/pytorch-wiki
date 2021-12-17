@@ -10,7 +10,7 @@ git branch my-awesome-feature
 git checkout my-awesome-feature
 ```
 
-Checkout the PyTorch viable/strict branch. All PyTorch tests are guaranteed to be passing on the viable/strict branch (as opposed to the master branch, where they might not pass). viable/strict is automatically advanced whenever a new commit to master passes all tests. [More details here](https://github.com/pytorch/pytorch/wiki/PyTorch-Basics#use-viablestrict)
+Checkout the PyTorch viable/strict branch. All PyTorch tests are guaranteed to be passing on the viable/strict branch (as opposed to the master branch, where they might not pass). viable/strict lags behind PyTorch's master branch and is automatically advanced whenever a new commit to master passes all tests. [More details here](https://github.com/pytorch/pytorch/wiki/PyTorch-Basics#use-viablestrict)
 
 Create a new branch that is based on viable/strict and make some changes to PyTorch.
 
