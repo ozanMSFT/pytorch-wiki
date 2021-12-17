@@ -26,6 +26,9 @@ PyTorch has a lot of test files under `test/`. You'll have to pick one (or a cou
 ```
 python test/test_torch.py
 ```
+
+[More details here](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#developing-pytorch)
+
 ### Submitting a change (the traditional way)
 
 `git push` to the branch on your PyTorch fork. Then, open a pull request.
