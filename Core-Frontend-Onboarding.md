@@ -2,6 +2,7 @@ New to developing PyTorch? We've got you covered.
 
 ### Unit 1: PyTorch Basics
 - [Developer Environment Setup](https://github.com/pytorch/pytorch/wiki/PyTorch-Basics#development-setup)
+- [PyTorch Workflow Cheatsheat](https://github.com/pytorch/pytorch/wiki/PyTorch-Workflow-Cheatsheat)
 - [Learn about where and how PyTorch is used](https://github.com/pytorch/pytorch/wiki/PyTorch-Basics#learn-about-how-to-use-pytorch)
 
 ### Unit 2: Tensors, Operators, and Testing
