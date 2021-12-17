@@ -16,7 +16,7 @@ Create a new branch that is based on viable/strict and make some changes to PyTo
 
 ### Building and testing PyTorch
 
-When you've made some changes to PyTorch, build and test PyTorch. PyTorch has a lot of build flags; if you turn off some of them your build will go faster.
+When you've made some changes to PyTorch, build and test PyTorch. PyTorch has a lot of build flags; if you turn off some of them your build will go faster. The most important one is USE_CUDA, which defaults to 1. If your machine doesn't have a GPU, you probably want to build without CUDA: `USE_CUDA=0`
 
 ```
 USE_KINETO=0 BUILD_CAFFE2=0 USE_DISTRIBUTED=0 USE_NCCL=0 BUILD_TEST=0 USE_XNNPACK=0 USE_FBGEMM=0 USE_QNNPACK=0 USE_MKLDNN=0 USE_MIOPEN=0 USE_NNPACK=0 BUILD_CAFFE2_OPS=0 USE_TENSORPIPE=0 python setup.py develop
