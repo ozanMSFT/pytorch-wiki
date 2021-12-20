@@ -33,9 +33,36 @@ are generally not used by the torch.onnx developers.
 
 CUDA is not required for most development tasks. If you use CUDA, building PyTorch will probably be slower.
 
-See the instructions in PyTorch's [README](https://github.com/pytorch/pytorch/blob/master/README.md#from-source).
+Install [Anaconda](https://www.anaconda.com/products/individual) and activate a new environment.
 
-Optional but highly recommended: [PyTorch C++ development tips](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#c-development-tips).
+Install [direnv](https://direnv.net/) and initialize your envrc file in the root of your PyTorch git repo:
+
+```sh
+# Make the local package name built by `setup.py develop` the same
+# as the one that's on conda.
+echo "export TORCH_PACKAGE_NAME=pytorch" >> .envrc
+# Let CMake find binaries and libs installed by conda.
+echo 'export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}' >> .envrc
+direnv allow
+```
+
+Then see the instructions in PyTorch's [README](https://github.com/pytorch/pytorch/blob/master/README.md#from-source).
+
+#### Optional build tips
+
+[PyTorch C++ development tips](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#c-development-tips).
+
+[Use direnv for Anaconda environment selection](https://github.com/direnv/direnv/wiki/Python#anaconda).
+
+Set more environment variables in your .envrc file:
+```sh
+# Only if you're building without CUDA.
+export USE_CUDA=0
+# Only if you're building with ccache.
+PATH_add /usr/lib/ccache
+# Build with debug symbols.
+export DEBUG=1
+```
 
 ### Install additional dependencies
 
@@ -61,10 +88,20 @@ it [from source](https://onnxruntime.ai/docs/build/inferencing.html) or
 ```sh
 # cpuonly not needed if you're using CUDA
 conda install -c pytorch-nightly torchvision cpuonly
+conda uninstall --force pytorch
 ```
 
-This installs PyTorch as a dependency, but it should be ignored in favor of the version you build
-with `setup.py` if you run `python` from the root of the pytorch repo.
+This first command installs PyTorch as a dependency, so we remove it with the second command
+so that you can use the locally-built pytorch rather than the one from conda.
+If you later run into issues with conda complaining about an inconsistent environment, you
+can temporarily reinstall PyTorch via conda:
+
+```sh
+conda update -c pytorch-nightly torchvision cpuonly
+```
+
+I hope there's a better way to deal with this. If you know of one please
+update these instructions and email the team!
 
 ### Sanity check
 
@@ -74,14 +111,14 @@ You should be able to run these commands successfully:
 git fetch upstream onnx_ms_1
 git checkout upstream/onnx_ms_1
 python setup.py develop
-python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_long
+python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_long
 ```
 
 And this should fail:
 
 ```sh
 echo "assert False >> torch/onnx/utils.py"
-python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_long
+python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_long
 git restore torch/onnx/utils.py
 ```
 
@@ -136,9 +173,9 @@ For example:
 
 ```sh
 # run test for opset 11
-python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime_opset11::test_arithmetic_prim_bool
+python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset11.test_arithmetic_prim_bool
 # run test for opset 9
-python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime::test_arithmetic_prim_bool
+python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_bool
 ```
 An example of adding unit tests for a new symbolic function: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
 
