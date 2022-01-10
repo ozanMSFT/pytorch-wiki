@@ -80,3 +80,29 @@ To use remote desktop, get a RDP client ([Mac App Store](https://apps.apple.com/
 2. Open the RDP client, add a new PC with the hostname `localhost`
 
 3. Connect to it by double clicking, use the username `runneruser` with the password you just created. You should see the remote desktop window open.
+
+## (For META Employees) Debugging using AWS SSM
+
+AWS SSM can be used to log into _any_ currently running EC2 instances whether or not your SSH key has been added to the particular instance.
+
+This can be used to debug currently running jobs on PRs or trunk.
+
+### Pre-requisites
+* Network connection on META VPN
+* Cloud SSO Access (`bunnylol cloud fbossci`)
+
+### Usage
+```bash
+aws ssm start-session --target "<instance_id>" --region "<region>"
+```
+
+Example:
+
+```bash
+aws ssm start-session --target i-0099d5a07d34e8904 --region us-east-1
+```
+
+### Caveats
+* Nodes will still be reaped on their regular schedule
+* Jobs will not wait for your session to finish before concluding
+* There is no extra hold on the machine and the 2 hour timeout does not apply here, sessions will most likely end immediately at the next reap cycle
