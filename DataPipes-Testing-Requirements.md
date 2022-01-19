@@ -8,7 +8,7 @@ Besides functional testing of every DataPipe, tests should include:
  list2 = list(dp)
 ```
 * Test if DataPipe iterators are independent (should not be expected in multiprocessing, but good coding pattern)
-* Test if DataPipe is serializable
+* Test if DataPipe is [serializable](https://github.com/pytorch/data/issues/172)
 * Test if DataPipe has `__len__` correctly implemented or throws an expected error
 * Test if DataPipe is lazy (serialized size is 'reasonable')
 * Test how DataPipe works in deterministic context
