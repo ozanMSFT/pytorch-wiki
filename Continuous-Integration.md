@@ -143,7 +143,7 @@ The pytorchbot (which is defined [here](https://github.com/pytorch/pytorch-probo
 
 ### Disabled tests in CI
 
-Some PyTorch tests are currently disabled due to their flakiness, incompatibility with certain platforms, or other temporary brokenness. We have a system where GitHub issues titled “DISABLED test_a_name” disable desired tests in PyTorch CI until the issues are closed, e.g., #62970. If you are wondering what tests are currently disabled in CI, please check out [disabled-tests.json](https://github.com/pytorch/test-infra/blob/main/stats/disabled-tests.json), where these test cases are all gathered.
+Some PyTorch tests are currently disabled due to their flakiness, incompatibility with certain platforms, or other temporary brokenness. We have a system where GitHub issues titled “DISABLED test_a_name” disable desired tests in PyTorch CI until the issues are closed, e.g., #62970. If you are wondering what tests are currently disabled in CI, please check out [disabled-tests.json](https://github.com/pytorch/test-infra/blob/generated-stats/stats/disabled-tests.json), where these test cases are all gathered.
 
 #### How to disable a test
 First, you should never disable a test if you're not sure what you're doing. Tests are important in validating PyTorch functionality, and ignoring test failures is not recommended as it can degrade user experience. When you are certain that disabling a test is the best option, for example, when it is flaky, make plans to fix the test so that it is not disabled indefinitely.
