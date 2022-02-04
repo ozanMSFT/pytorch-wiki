@@ -26,11 +26,18 @@ PyTorch makes a best effort to inform users and developers about upcoming BC-bre
 
 Note that it is not always possible to make BC-breaking changes this way. Sometimes, for example, changes have to be reverted because they have unintended consequences, and these reverts can cause BC-breaking changes themselves. Other times the current behavior is so unsafe it should not be used at all and there is no clear alternative to it. Still, all BC-breaking changes should do their best to comport with the above. 
 
-This policy means that PyTorch programs which run without deprecation warnings are likely to continue running as expected for at least 180 days or two more PyTorch releases. And when BC-breaking changes would cause silent breakages this policy provides a window of 360 days or 4 PyTorch releases to safely update. By providing ample warning time, clear alternatives, and prominent documentation we make it easy for users to update their programs with a minimum of fuss and facilitate developers supporting multiple PyTorch versions. 
+This policy means that PyTorch programs relying on stable components and running without deprecation warnings are likely to continue running as expected for at least 180 days or two more PyTorch releases. And when BC-breaking changes would cause silent breakages this policy provides a window of 360 days or 4 PyTorch releases to safely update. By providing ample warning time, clear alternatives, and prominent documentation we make it easy for users to update their programs with a minimum of fuss and facilitate developers supporting multiple PyTorch versions. 
+
 
 ## What isn't a BC-breaking change
 
-BC-breaking changes prevent old programs from running as expected on newer PyTorch versions. Generally, however, bug fixes (where PyTorch's behavior changes to better reflect its documentation), changes to PyTorch's internals, and changes to module and operator signatures that don't impact users are not considered BC-breaking. This is especially important for developers building on PyTorch to understand. For example, adding a new keyword-only argument with a default value to an operator or module is not a BC-breaking change because PyTorch programs will continue running as before. Systems relying on PyTorch's operators and modules should account for this possibility and not depend on the precise form of PyTorch's internals.
+BC-breaking changes prevent old programs from running as expected on newer PyTorch versions. Generally, however, the following are not BC-breaking changes:
+
+* bug fixes (where PyTorch's behavior changes to better reflect its documentation)
+* changes to PyTorch's internals
+* changes to module and operator signatures that don't impact users
+
+This is especially important for developers building on PyTorch to understand. For example, adding a new keyword-only argument with a default value to an operator or module is not a BC-breaking change because PyTorch programs will continue running as before. Systems relying on PyTorch's operators and modules should account for this possibility and not depend on the precise form of PyTorch's internals.
 
 ## Prototypes, beta, and stable parts of PyTorch
 
@@ -42,20 +49,8 @@ Prototype components should warn users before use (using `TORCH_WARN_ONCE`) and 
 
 # Forwards compatibility (FC)
 
-A version of PyTorch is "forwards compatible (FC)" with future versions if it can run the same programs those future versions can run. This is practically impossible to achieve completely because PyTorch is constantly evolving and adding new features which won't work on previous versions. However, 
+A version of PyTorch is "forwards compatible (FC)" with future versions if programs written for those future versions run in the current version. This is practically impossible to achieve completely because PyTorch is constantly evolving and adding new features which won't work on previous versions. However, a best effort is made for forwards compatibility, and there is a particular case we try hard to support:
 
- focus on "feature forwards compatibility (FFC)", where 
+* If a program runs on PyTorch with commit X, then the same program serialized using torchscript by a commit of PyTorch no more than two weeks older than X should also run on commit X.
 
-
-
-
-This is an important property, because without it users would have to create new PyTorch programs with every release. In practice, PyTorch may not be completely backwards compatible with previous versions, but there should be few, clearly documented incompatibilities that are easy to address for users and developers between each version.
-
-- what are upgraders [to be written]
-
-- what is FC
-- the window
-- interesting examples of avoiding user calls to new ops
-
-- systems relying on PyTorch
-- we don't support exact signature matches
+This is a very technical case that is unlikely to come up for most users, especially users who don't use nightly builds, build from source, or use torchscript. Conceptually PyTorch tries to support a two-week torchscript FC window which allows PyTorch users leeway when updating multiple systems using PyTorch. For instance if a company has one system to train PyTorch models and another that runs them using torchscript, then this allows the the version of PyTorch running models to be up to two weeks older than the version that trains them.
