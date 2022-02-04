@@ -1,6 +1,6 @@
 # Summary
 
-This page describes PyTorch's backwards and forward compatibility policy. This policy lets us provide a modern user experience while minimizing disruption to PyTorch's users and developers. 
+This page describes PyTorch's Python Frontend backwards and forward compatibility policy. This policy lets us provide a modern user experience while minimizing disruption to PyTorch's users and developers. 
 
 # Backwards compatibility (BC)
 
