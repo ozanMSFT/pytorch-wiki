@@ -34,6 +34,8 @@ This policy means that PyTorch programs relying on stable components and running
 BC-breaking changes prevent old programs from running as expected on newer PyTorch versions. Generally, however, the following are not BC-breaking changes:
 
 * bug fixes (where PyTorch's behavior changes to better reflect its documentation)
+* small numerics changes
+* numerical accuracy improvements
 * changes to PyTorch's internals
 * changes to module and operator signatures that don't impact users
 
