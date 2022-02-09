@@ -76,12 +76,18 @@ conda install -c conda-forge expecttest pytest mypy 'flake8<4'
 #### ONNX Runtime
 
 ```sh
-conda install -c conda-forge onnxruntime
+# install a version of protobuf compatible with ONNX submodule
+conda install -c conda-forge protobuf=$(cat third_party/onnx/requirements-release.txt | grep protobuf | awk '{print $3}') flatbuffers
+pip install onnxruntime
 ```
 
+Onnxruntime is also available from conda-forge, but it seems to demand a version of protobuf that's newer than
+what the ONNX submodule wants to use, which lead to seg-faults in my case. This may be resolved with future
+versions of ONNX or ONNX Runtime. If you find `conda install -c conda-forge onnxruntime` works, please update
+these instructions.
+
 If you need a newer or different version of ONNX Runtime than what is available via conda, you can instead install
-it [from source](https://onnxruntime.ai/docs/build/inferencing.html) or
-[pip](https://onnxruntime.ai/docs/install/).
+it [from source](https://onnxruntime.ai/docs/build/inferencing.html).
 
 #### TorchVision
 
