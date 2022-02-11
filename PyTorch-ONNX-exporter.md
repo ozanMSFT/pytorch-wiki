@@ -70,7 +70,7 @@ Install the dependencies required to run CI checks locally.
 
 ```sh
 # flake8 version restriction due to https://github.com/pytorch/pytorch/issues/69500
-conda install -c conda-forge expecttest pytest mypy=0.812 'flake8<4'
+conda install -c conda-forge expecttest pytest mypy=0.812 'flake8<4' hypothesis
 ```
 
 #### ONNX Runtime
