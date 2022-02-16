@@ -132,27 +132,24 @@ If the second command succeeds, then probably python is finding the PyTorch that
 
 ## Pull requests
 
-Most PRs should be opened against the branch [onnx_ms_1](https://github.com/pytorch/pytorch/tree/onnx_ms_1) instead of master.
-This branch will be periodically merged into master. This lets the torch.onnx developers avoid merge conflicts with each other
-without waiting for our PRs to be merged into master (which can take a long time).
+PRs should be opened directly against master. PRs can be directly merged into master as long as it satisfies the [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L3):
+* Approved by one of torch.onnx developers listed in `approved_by` section.
+* All modified files fall under the `patterns` section.
 
-Start your work by creating a local branch based on `onnx_ms_1`:
+Pay special attention to the following GitHub checks:
+* Has "onnx" in the name, which runs ONNX related tests.
+* Has "Lint" in the name, which does code format checks.
 
-```sh
-git checkout upstream/onnx_ms_1
-git switch -c {your_branch_name}
-```
+Regarding other failing GitHub checks, if you are certain the failure is unrelated to your change, try rebasing with master. Often times these kind of failures are caused by branch out of sync with master.
+For rare occasions, You can ignore the failing check if it is a regression in master. This can be verified by checking if master is also failing from [CI HUD for PyTorch](https://hud.pytorch.org/ci/pytorch/pytorch/master).
 
-If you make significant changes to non-ONNX related code, then open the PR against master instead of `onnx_ms_1`.
+To merge your pull request, comment on the PR "@pytorchbot merge this".
+
+If you make changes to non-ONNX related code, i.e. files out side of [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L4), please note the PR will require additional reviews from people outside of torch.onnx developers, and will take a longer process to merge into master. In this case, pytorchbot will not be able to merge the pull request. It will leave a comment like "Merge failed due to PR XXX does not match merge rules". Please label the pull request with `onnx-needs-import`.
 
 See [GitHub pull request workflow](https://docs.github.com/en/get-started/quickstart/github-flow).
 
 Adhere to [Google's Code Review Developer Guide](https://google.github.io/eng-practices/review/).
-
-Feel free to ignore a failing GitHub check that:
-
-* Doesn't have "onnx" in the name
-* Seems unrelated to your change
 
 ## Tests
 
