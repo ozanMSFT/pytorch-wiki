@@ -61,3 +61,47 @@ A version of PyTorch is "forwards compatible (FC)" with future versions if progr
 * If a program runs on PyTorch with commit X, then the same program serialized using torchscript by a commit of PyTorch no more than two weeks older than X should also run on commit X.
 
 This is a very technical case that is unlikely to come up for most users, especially users who don't use nightly builds, build from source, or use torchscript. Conceptually PyTorch tries to support a two-week torchscript FC window which allows PyTorch users leeway when updating multiple systems using PyTorch. For instance if a company has one system to train PyTorch models and another that runs them using torchscript, then this allows the the version of PyTorch running models to be up to two weeks older than the version that trains them.
+
+Note that adding a new keyword argument with a default value to an operation should never be FC-breaking (or BC-breaking, per above). 
+
+# Example Changes
+
+## Changing the behavior of a mode
+
+Let's consider a hypothetical function `foo(..., *, mode)` that accepts a variety of modes controlling its behavior. (This function might be like `torch.div()`, which accepts a `rounding_mode` kwarg.) Now let's say that we want to change the behavior of one of those modes, but we are concerned that the change will affect backwards compatibility. For ease of exposition, we'll refer to this hypothetical mode as Mode A. Here's how that change could be made:
+
+- create a new mode for the desired behavior of Mode A, we'll call it Mode B
+- create a new mode with the same behavior as Mode A, we'll call it Mode C, if keeping a mode with Mode A's behavior is desired
+- throw a warning when Mode A is used, telling users that it will be removed and they should use Mode C (if available) to preserve their behavior or Mode B if they would prefer the new behavior
+- update `foo`'s documentation to indicate that Mode A is deprecated, when it was deprecated, and what the alternatives to it are
+- wait for the warning to be thrown for 2 releases (180 days on nightlies)
+- remove Mode A
+- update `foo`'s documentation to indicate that Mode A was removed, when it was removed, and what the alternatives to it are
+- wait 2 releases (180 days on nightlies)
+- restore Mode A with the functionality of Mode B
+- update `foo`'s documentation to indicate that Mode A was restored and when it was restored
+
+Once Mode A is restored Mode B can be deprecated.
+
+## Making an arg keyword-only
+
+Let's consider a hypothetical function `foo(..., ARG, *, ...)` with a positional argument ARG. This function might have been originally developed back when PyTorch supported Python 2 and keyword-only arguments didn't exist, but now PyTorch only supports later Python 3 versions and many arguments are more readable if specified as keywords. (Function calls like `foo(t, 1, 3, True)` are very tricky to read compared to `foo(t, dim=1, alpha=3, keepdim=True)`.) Here's how an argument can be made keyword-only:
+
+- throw a warning when ARG is specified positionally
+- update `foo`'s documentation to show ARG as a keyword-only argument
+- wait for the warning to be thrown for 2 releases (180 days on nightlies)
+- remove support for specifying ARG positionally
+
+# Legacy Torchscript Backwards Compatibility
+
+The document above specifies PyTorch's Frontend Backward and Forward Compatibility Policy. Community members should use it as a guide to understand PyTorch's stability, and developers should use it as a guide to minimize the disruption of BC-breaking changes. An important implementation detail for developers, however, is that in addition to the above policy there is a legacy torchscript requirement, described in this section. In the future we expect this requirement to go away (that's why it's legacy). 
+
+## History
+
+PyTorch didn't always communicate a clear policy backwards or forwards compatibility policy to its community. As such, the community expected that their programs would continue working as they always had, and based on this belief some community members serialized torchscript programs once and lost the ability to update them. We encourage all community members to "phase out" these fossilized programs and be ready to update programs that have been throwing warnings for two releases. (In the future PyTorch will likely help identify these programs with new tools, like [an improved messaging system](https://github.com/pytorch/pytorch/issues/72948)). However, because this policy is new we want to respect our users and do our best to keep old serialized torchscript programs running even as we encourage the community to adapt this new model.
+
+## Upgraders
+
+To keep old serialized torchscript programs working as expected we write upgraders that map historic operator calls to modern operator calls. For example, in PyTorch the `torch.div()` operator used to perform truncation division when dividing integer inputs like Python 2 and C++ do. It now always performs true division like Python 3 and NumPy do, and there's [an upgrader](https://github.com/pytorch/pytorch/blob/0942af7c4b22d5219fb30799ac4c16db6940f62b/torch/csrc/jit/operator_upgraders/upgraders_entry.cpp#L45) that maps old serialized `torch.div()` into either a true division or truncation division call depending on the datatype of its inputs. 
+
+Writing an upgrader is required for any BC-breaking change that can affect an older serialized torchscript model.
