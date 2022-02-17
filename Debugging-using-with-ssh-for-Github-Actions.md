@@ -40,14 +40,14 @@
     1. ![image (1)](https://user-images.githubusercontent.com/1700823/130687616-eb899bd4-d5e3-441c-9134-6637c1b0857c.png)
 3. Traverse to logs for a `build` or `test` job that runs the `add-github-ssh-key` step added (currently all of our linux workflows have this enabled)
     1. <img width="1254" alt="Screen Shot 2021-08-04 at 11 47 56 AM" src="https://user-images.githubusercontent.com/1700823/130687634-973fc0ac-558c-44eb-8568-eed10027062b.png">
-4. Use the SSH command provided to log into the node:
+4. Use the SSH command provided to log into the node (do this immediately, as the job will start cleaning up if it reaches the end without any active SSH session):
     1. <img width="948" alt="Screen Shot 2021-08-04 at 11 49 25 AM" src="https://user-images.githubusercontent.com/1700823/130687653-b74ce62e-0e7b-40b0-9957-5d157a6b0c62.png">
 
 
 ## Notes for users
 
 ## General
-* The default timeout for these jobs is **2 hours after workflows have completed**
+* The default timeout for these jobs is **2 hours after workflows have completed**, but only if you SSH in before the end of the job
   * Users will be kicked after workflows have either *timed out* or have been *cancelled*
 
 ### VSCode
