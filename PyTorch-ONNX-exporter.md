@@ -60,6 +60,8 @@ Set more environment variables in your .envrc file:
 export USE_CUDA=0
 # Only if you're building with ccache.
 PATH_add /usr/lib/ccache
+# Needed for older compilers or conda compilers
+export LDFLAGS='-lrt'
 # Build with debug symbols.
 export DEBUG=1
 ```
@@ -123,7 +125,7 @@ python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmeti
 And this should fail:
 
 ```sh
-echo "assert False >> torch/onnx/utils.py"
+echo "assert False" >> torch/onnx/utils.py
 python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_long
 git restore torch/onnx/utils.py
 ```
