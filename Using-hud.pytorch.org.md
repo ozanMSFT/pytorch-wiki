@@ -1,10 +1,10 @@
-TLDR: Visit [hud.pytorch.org](https://hud.pytorch.org/build2/pytorch-master) for a quick glance into PyTorch's CI. Go to `hud.pytorch.org/pr/<pr number>` ([example](https://hud.pytorch.org/pr/65123)) or `hud.pytorch.org/commit/<long hash>` ([example](https://hud.pytorch.org/commit/ae00075ac71eb6ea81d05b12f153b61f215f870b)) for a detailed view of GitHub Actions jobs.
+TLDR: Visit [hud.pytorch.org](https://hud.pytorch.org) for a quick glance into PyTorch's CI. Go to `hud.pytorch.org/pr/<pr number>` ([example](https://hud.pytorch.org/pr/65123)) or `hud.pytorch.org/commit/<long hash>` ([example](https://hud.pytorch.org/commit/ae00075ac71eb6ea81d05b12f153b61f215f870b)) for a detailed view of GitHub Actions jobs.
 
-Please report any HUD bugs you find in our [issue tracker](https://github.com/pytorch/pytorch-ci-hud/issues)!
+Please report any HUD bugs you find in our [issue tracker](https://github.com/pytorch/test-infra/issues)!
 
 ## Jobs
 
-PyTorch's CI currently runs on 3 platforms, GitHub Actions, Jenkins, and CircleCI. It can be hard to tell at a glance how the various jobs across these services are doing on recent commits to PyTorch to determine if a failure on your pull request is a real failure vs. something that is broken on `master`. [hud.pytorch.org](https://hud.pytorch.org/build2/pytorch-master) aims to fill this gap by providing a quick view over all the jobs on these commits.
+PyTorch's CI currently runs on 3 platforms, GitHub Actions, Jenkins, and CircleCI. It can be hard to tell at a glance how the various jobs across these services are doing on recent commits to PyTorch to determine if a failure on your pull request is a real failure vs. something that is broken on `master`. [hud.pytorch.org](https://hud.pytorch.org/) aims to fill this gap by providing a quick view over all the jobs on these commits.
 
 ![image-20210917160028974](https://user-images.githubusercontent.com/9407960/133862655-acdb1278-e3a5-48c7-9fbe-8bad3b24ea6f.png)
 
