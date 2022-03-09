@@ -4,17 +4,17 @@ Please report any HUD bugs you find in our [issue tracker](https://github.com/py
 
 ## Jobs
 
+
 PyTorch's CI currently runs on 3 platforms, GitHub Actions, Jenkins, and CircleCI. It can be hard to tell at a glance how the various jobs across these services are doing on recent commits to PyTorch to determine if a failure on your pull request is a real failure vs. something that is broken on `master`. [hud.pytorch.org](https://hud.pytorch.org/) aims to fill this gap by providing a quick view over all the jobs on these commits.
 
-![image-20210917160028974](https://user-images.githubusercontent.com/9407960/133862655-acdb1278-e3a5-48c7-9fbe-8bad3b24ea6f.png)
-
-1. You can pick a branch (`master`, `nightly`, `release/1.9`) to view commits for at the top of the page
-2. There are many jobs that run for each commit, too many to show individually. Related jobs are instead grouped together by default. Group jobs can be identified by the bold icon for their status and the arrow icon at the end of their names in the header. Uncheck this box to disable grouping entirely.
-3. These mark that a job is a grouped job (a bold icon or arrow). Click either one to expand the group and see the individual statuses of the jobs within.
-4. The PR on GitHub related to this commit
-5. The HUD page for this commit
-6. The GitHub page for this commit
-7. Filter job names by this regex
+<img width="1490" alt="Screen Shot 2022-03-09 at 2 37 12 PM" src="https://user-images.githubusercontent.com/34172846/157532857-e92dd794-ee57-452b-974c-65a77627714a.png">
+1. Quickly switch between different branches. Also has a link to MiniHUD, a more granular, commit based view. 
+2. Click on these to change the branch or repo. Only works on repos within Pytorch
+3. Search for jobs in here and press "Go" to get the permalink
+4. Group the workflows by logical organization  
+5. Click on these commits to take you to the HUD view of the jobs that ran
+6. Click on these to take you to the PR on Github
+7. Click on this to expand the group
 
 ## Individual Pull Requests and Commits
 
