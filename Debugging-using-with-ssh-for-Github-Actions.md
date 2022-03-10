@@ -60,9 +60,11 @@ VSCode's remote SSH extension works with both Linux and Windows CI machines. Add
 ```
 
 ## Windows
+* To set-up the same CI environment run: `C:\actions-runner\_work\pytorch\pytorch\build\win_tmp\ci_scripts\pytorch_env_restore.bat`
 * The *Windows* workspace is currently located at `C:\actions-runner\_work\pytorch\pytorch`
 * To use other shells for *Windows* just append the shell you'd like to run to your ssh command like:
   * `ssh runneruser@ec2-3-238-136-38.compute-1.amazonaws.com -- bash.exe`
+* To run a particular test use the Miniconda Python: `C:\jenkins\miniconda3\python.exe test_profiler.py`
 
 ### RDP
 To use remote desktop, get a RDP client ([Mac App Store](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)) and:
