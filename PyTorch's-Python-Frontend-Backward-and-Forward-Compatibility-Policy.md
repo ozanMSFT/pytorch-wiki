@@ -46,7 +46,7 @@ Different parts of PyTorch are considered to be in a "prototype," "beta," or "st
 
 Current stable behavior should, ideally, not be deprecated in favor of prototype or beta features. The deprecation should generally wait until alternatives to it are stable. 
 
-Prototype components should warn users before use (using `TORCH_WARN_ONCE`) and beta components should provide a clear warning notice in their documentation that they are subject to change at any time without warning.
+Prototype and beta components should warn users before use (using `TORCH_WARN_ONCE`) and provide a clear warning notice in their documentation that they are subject to change at any time without warning.
 
 ## "Silent" Backwards Compatibility Breakages
 
