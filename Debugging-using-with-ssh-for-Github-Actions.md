@@ -73,7 +73,9 @@ Now you can find the pytorch working directory, which could be ~/workspace or ~/
 * To run a particular test use the Miniconda Python: `C:\jenkins\miniconda3\python.exe test_profiler.py`
 
 ### RDP
-To use remote desktop, get a RDP client ([Mac App Store](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)) and:
+
+For certain Windows failures, it may be useful to have a full [Remote
+Desktop](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) connection. To use remote desktop, get a RDP client ([Mac App Store](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)) and:
 1. The Windows EC2 machines only allow SSH connections on port 22, so make a tunnel for the RDP port (default 3389) to your local machine and set a password:
 
 ```bash
@@ -88,6 +90,8 @@ To use remote desktop, get a RDP client ([Mac App Store](https://apps.apple.com/
 2. Open the RDP client, add a new PC with the hostname `localhost`
 
 3. Connect to it by double clicking, use the username `runneruser` with the password you just created. You should see the remote desktop window open.
+
+* **Old reference**: Detailed instructions [for debugging Windows with SSH on CircleCI](https://github.com/pytorch/pytorch/wiki/Debugging-Windows-with-Remote-Desktop-or-CDB-(CLI-windbg)-on-CircleCI).
 
 ## (For META Employees) Debugging using AWS SSM
 
