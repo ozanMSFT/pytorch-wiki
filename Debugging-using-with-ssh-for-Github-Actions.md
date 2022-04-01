@@ -59,6 +59,12 @@ VSCode's remote SSH extension works with both Linux and Windows CI machines. Add
 [your mac] $ code --folder-uri vscode-remote://ssh-remote+$HOST/c:\\actions-runner\\_work\\pytorch\\pytorch
 ```
 
+## Linux
+Once you are connected through ssh, you may need to enter a docker container. Run `docker ps` to check if there are any docker containers running. Note that your CI job might be in the process of initiating a docker container, which means it will not show up yet. It is best to wait until the CI job reaches a step where it is building pytorch or running pytorch tests. If the job does have a docker container, run `docker exec -it IMAGE_ID /bin/bash` to connect to it.
+
+Now you can find the pytorch working directory, which could be ~/workspace or ~/project, and run commands locally to debug the failure.
+
+
 ## Windows
 * To set-up the same CI environment run: `C:\actions-runner\_work\pytorch\pytorch\build\win_tmp\ci_scripts\pytorch_env_restore.bat`
 * The *Windows* workspace is currently located at `C:\actions-runner\_work\pytorch\pytorch`
