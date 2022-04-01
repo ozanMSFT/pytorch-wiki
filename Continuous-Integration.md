@@ -151,9 +151,9 @@ First, you should never disable a test if you're not sure what you're doing. Tes
 To disable a test, say, create an issue with the title `DISABLED test_case_name (test.ClassName)`. A real title example would look like: `DISABLED test_jit_cuda_extension (__main__.TestCppExtensionJIT)`. In the body of the issue, feel free to include any details and logs as you normally would with any issue. If you would like to skip the test for particular platforms, such as ROCm, please include a line (case insensitive) in the issue body like so: "<start of line>Platforms: Mac, Windows<end of line>." The available platforms to choose from are: mac/macos, windows, rocm, linux, and asan (whether the test is with ASAN).
 
 #### How to test the disabled test on CI
-It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI). After #62851, PRs with key phrases like “fixes #55555” or “Close #62851” in their PR bodies will re-enable the tests disabled by the linked issues (in this example, #55555 and #62851). More accepted key phrases are defined by the [GitHub docs](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
+It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI). After #62851 and #74981, PRs with key phrases like “fixes #55555” or “Close #62851” in their PR bodies or commit messages will re-enable the tests disabled by the linked issues (in this example, #55555 and #62851). More accepted key phrases are defined by the [GitHub docs](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
 
-Limitations: this feature only works for GitHub Actions CI and for when the issue is linked through key phrases in the PR body (and not commit messages).
+Limitations: this feature only works for GitHub Actions CI.
 
 ## Other Topics
 
