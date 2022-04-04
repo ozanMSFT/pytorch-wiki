@@ -151,7 +151,13 @@ First, you should never disable a test if you're not sure what you're doing. Tes
 To disable a test, say, create an issue with the title `DISABLED test_case_name (test.ClassName)`. A real title example would look like: `DISABLED test_jit_cuda_extension (__main__.TestCppExtensionJIT)`. In the body of the issue, feel free to include any details and logs as you normally would with any issue. If you would like to skip the test for particular platforms, such as ROCm, please include a line (case insensitive) in the issue body like so: "<start of line>Platforms: Mac, Windows<end of line>." The available platforms to choose from are: mac/macos, windows, rocm, linux, and asan (whether the test is with ASAN).
 
 #### How to test the disabled test on CI
-It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI). After #62851 and #74981, PRs with key phrases like “fixes #55555” or “Close #62851” in their PR bodies or commit messages will re-enable the tests disabled by the linked issues (in this example, #55555 and #62851). More accepted key phrases are defined by the [GitHub docs](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
+It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI).  
+
+After #62851 and #74981, PRs with key phrases like “fixes #55555” or “Close #62851” in their PR bodies or commit messages will re-enable the tests disabled by the linked issues (in this example, #55555 and #62851).  Including a key phrase in the PR body only works for tests triggered by pull request and does not work for push-triggered CI.  Including a key phrase in the commit message will work for both pull and  push triggered CI.  The test will also be run if ANY of the commit messages in the PR contains a key phrase.
+
+<img width="830" alt="Screen Shot 2022-04-04 at 11 20 55 AM" src="https://user-images.githubusercontent.com/44682903/161607690-429e9df3-5f6d-4fed-9e60-b31a65373bec.png">
+
+More accepted key phrases are defined by the [GitHub docs](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
 
 Limitations: this feature only works for GitHub Actions CI.
 
