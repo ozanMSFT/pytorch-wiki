@@ -178,7 +178,7 @@ For example:
 # run test for opset 11
 python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset11.test_arithmetic_prim_bool
 # run test for opset 9
-python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_bool
+python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset9.test_arithmetic_prim_bool
 ```
 An example of adding unit tests for a new symbolic function: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
 
