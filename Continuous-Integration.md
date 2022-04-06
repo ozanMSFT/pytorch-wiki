@@ -153,7 +153,7 @@ To disable a test, say, create an issue with the title `DISABLED test_case_name 
 #### How to test the disabled test on CI
 It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI).  
 
-After #62851 and #74981, PRs with key phrases like “fixes #55555” or “Close #62851” in their PR bodies or commit messages will re-enable the tests disabled by the linked issues (in this example, #55555 and #62851).  Including a key phrase in the PR body only works for tests triggered by pull request and does not work for push-triggered CI.  Including a key phrase in the commit message will work for both pull and  push triggered CI.  The test will also be run if ANY of the commit messages in the PR contains a key phrase.
+After #62851 and #74981, PRs with key phrases like “fixes #55555” or “Close https://github.com/pytorch/pytorch/issues/62359” in their PR bodies or commit messages will re-enable the tests disabled by the linked issues (in this example, #55555 and #62359).  Including a key phrase in the PR body only works for tests triggered by pull request and does not work for push-triggered CI.  Including a key phrase in the commit message will work for both pull and  push triggered CI.  The test will also be run if ANY of the commit messages in the PR contains a key phrase. 
 
 <img width="830" alt="Screen Shot 2022-04-04 at 11 20 55 AM" src="https://user-images.githubusercontent.com/44682903/161607690-429e9df3-5f6d-4fed-9e60-b31a65373bec.png">
 
