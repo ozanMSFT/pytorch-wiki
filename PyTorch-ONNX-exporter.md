@@ -117,14 +117,14 @@ You should be able to run these commands successfully:
 
 ```sh
 python setup.py develop
-python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_long
+python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset10.test_arithmetic_prim_long
 ```
 
 And this should fail:
 
 ```sh
 echo "assert False" >> torch/onnx/utils.py
-python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_long
+python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset10.test_arithmetic_prim_long
 git restore torch/onnx/utils.py
 ```
 
