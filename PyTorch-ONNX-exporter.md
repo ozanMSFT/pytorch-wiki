@@ -116,8 +116,6 @@ update these instructions and email the team!
 You should be able to run these commands successfully:
 
 ```sh
-git fetch upstream onnx_ms_1
-git checkout upstream/onnx_ms_1
 python setup.py develop
 python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime.test_arithmetic_prim_long
 ```
