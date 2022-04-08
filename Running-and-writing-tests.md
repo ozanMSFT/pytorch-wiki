@@ -117,9 +117,9 @@ To use the selection syntax to run only a single test class or test, be it with 
 
 # OpInfos
 
-[See this comment for details on writing OpInfos and how they're used.](https://github.com/pytorch/pytorch/blob/0baad214b07ad35be1f10100168ed761cc7c51c0/torch/testing/_internal/common_methods_invocations.py#L182)
+See the "OpInfos" note in common_methods_invocations.py for details on adding an OpInfo and how they work.
 
-OpInfos are used to automatically generate a variety of operator tests from metadata. If you're adding a new operator to the torch, torch.special, torch.fft, or torch.linalg namespaces you should write an OpInfo for it so it's tested properly.
+OpInfos are used to automatically generate a variety of operator tests from metadata. If you're adding a new operator to the torch, torch.nn, torch.special, torch.fft, or torch.linalg namespaces you should write an OpInfo for it so it's tested properly.
 
 
 
