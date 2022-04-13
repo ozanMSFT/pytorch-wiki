@@ -17,7 +17,7 @@ To ensure that we can check that all objects that "looks public" are expected, w
 
 The submodule compliance is tested in https://github.com/pytorch/pytorch/blob/master/test/test_public_bindings.py 
 This ensures that:
-- Our C++ bindings do not expose unexpected objects in `torch.` namespace (for example jit types or internal objects that are missing a leading `_`).
+- Our C++ bindings do not expose private API in `torch.` namespace (for example JIT types or internal objects that are missing a leading `_`). 
 - Ensure that all submodules within the `torch.` namespace follow the rules above.
 
 If a newly added function breaks any of these tests, you should make sure that the submodule in question is compliant.
