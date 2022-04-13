@@ -7,8 +7,11 @@ A submodule is considered public if no name in its path starts with `_`.
 Other objects, in particular functions and classes, are public if they have a `__module__` attribute, it starts with `torch.`, corresponds to a public submodule and the object's name itself does not start with “_”. 
 
 To ensure that we can check that all objects that "looks public" are expected, we also have the following constraints for public submodules within the torch namespace. They should either:
-- Define `__all__` and all non-module objects in that list must have their `__module__` start with the current submodule’s path. All attributes that are not in `__all__` must NOT have their `__module__` start with the current submodule.
-- Not define `__all__` and all the objects in `dir(submod)` must have their `__module__` that start with the current submodule.
+- Define `__all__` 
+   - In this case, all callable and classes in `__all__` must have their `__module__` start with the current submodule’s path. 
+   - All attributes that are not in `__all__` must NOT have their `__module__` start with the current submodule's path.
+- Not define `__all__`
+   - In this case, all the objects in `dir(submod)` must have their `__module__` that start with the current submodule.
 
 # How do we check compliance of submodules?
 
