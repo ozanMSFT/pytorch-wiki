@@ -5,6 +5,6 @@ To get started, run the following to install `lintrunner`. Make sure you are at 
 pip install lintrunner
 lintrunner init
 ```
-This will install lintrunner on your system and download all the necessary dependencies to run linters locally. Note that this will install new packages with `pip` and download binaries maintained by the PyTorch team. If you want to see what `lintrunner init` will install, run `lintrunner init --dry-run`.
+This will install `lintrunner` on your system and download all the necessary dependencies to run linters locally. Note that this will install new packages with `pip` and download binaries maintained by the PyTorch team. If you want to see what `lintrunner init` will install, run `lintrunner init --dry-run`.
 
 After that, just run `lintrunner` to lint your changes! For more docs, see [the `lintrunner` repo](https://github.com/suo/lintrunner).
