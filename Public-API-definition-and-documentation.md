@@ -8,10 +8,10 @@ Other objects, in particular functions and classes, are public if they have a `_
 
 To ensure that we can check that all objects that "looks public" are expected, we also have the following constraints for public submodules within the torch namespace. They should either:
 - Define `__all__` 
-   - In this case, all callable and classes in `__all__` must have their `__module__` start with the current submodule. 
-   - All attributes that are not in `__all__` must NOT have their `__module__` start with the current submodule.
+   - In this case, all callable and classes in `__all__` must be public and have their `__module__` start with the current submodule. 
+   - All attributes that are not in `__all__` must NOT be public and have their `__module__` start with the current submodule.
 - Not define `__all__`
-   - In this case, all the objects in `dir(submod)` must have their `__module__` that start with the current submodule.
+   - In this case, all the objects in `dir(submod)` that do not start with `_` must have their `__module__` start with the current submodule.
 
 # How do we check compliance of submodules?
 
