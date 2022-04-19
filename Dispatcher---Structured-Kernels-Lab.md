@@ -8,13 +8,13 @@ This is a more hands-on task meant to walk you through making a change to an ope
 * Learn more about Structured Kernels
 * See how the [codegen] / [dispatcher registration] / [call path of an operator] all change when we make a tweak to bypass the dispatcher.
 
-You’re going to modify at::add and see what happens!
+You’re going to modify at::mul and see what happens!
 
-# Exercise: Make torch.add Bypass the Dispatcher
+# Exercise: Make torch.mul Bypass the Dispatcher
 
-In this lab, you’re going to update the cpu kernel of at::add to bypass the dispatcher.
+In this lab, you’re going to update the cpu kernel of at::mul to bypass the dispatcher.
 
-Why would we want to update at::add to bypass the dispatcher? We don’t - this will remove a lot of core functionality (and break any relevant tests - you won’t be able to use torch.add with autograd, measure it in the profiler, or run it on cuda, amongst other things). But skipping over all that logic will also make torch.add faster!
+Why would we want to update at::mul to bypass the dispatcher? We don’t - this will remove a lot of core functionality (and break any relevant tests - you won’t be able to use torch.mul with autograd, measure it in the profiler, or run it on cuda, amongst other things). But skipping over all that logic will also make torch.mul faster!
 
 This is meant to serve as a repeatable lab to get exposure to the codegen/dispatcher, since there aren’t that many bootcamp-friendly outstanding github issues for either subsystem.
 
@@ -37,23 +37,25 @@ Here’s ![a diagram](https://pasteboard.co/NAhXmNPm39Lx.png) describing the cal
 
 *Note 1:* Before starting, I recommend you create two separate conda environments. e.g. codegen_task_before and codegen_task_after. Run a REL_WITH_DEB_INFO=1 build before your changes in the first conda environment, and then switch to the second environment when making your changes. That will make it very easy to benchmark and compare your change to the baseline.
 
+I recommend you build with the following flags: `REL_WITH_DEB_INFO=1 USE_PER_OPERATOR_HEADERS=0 USE_DISTRIBUTED=0 USE_CUDA=0 python setup.py develop`
+
 *Note 2:* Feel free to ask the task owner for help if you’re stuck. There’s also a separate doc with tips + some gotchas that you might encounter here: https://fb.quip.com/L7PvAJOIb5iL.
 
-The main change that you’re going to make is to update the entries for add/add_/add_out in native_functions.yaml to mark them as manual_cpp_bindings.
+The main change that you’re going to make is to update the entries for mul/mul_/mul_out in native_functions.yaml to mark them as manual_cpp_bindings.
 
 Delete the structured/structured_inherits/structured_delegate/dispatch lines from each entry, and add in a new line: manual_cpp_bindings: True. You will also need to make the same change in derivatives.yaml.
 
 By removing all of the structured metadata and adding manual_cpp_bindings, a few things will happen:
 
-* The codegen will stop generating all of the structured kernel scaffolding for add:
+* The codegen will stop generating all of the structured kernel scaffolding for mul:
     * Function and Method API declaration/definitions in Functions.h and TensorBody.h
     * Calls to the dispatcher (these live in Operators.cpp)
     * Structured Kernel meta() and impl() declarations, which live in NativeFunctions.h and NativeMetaFunctions.h
-    * All of the class scaffolding + actual codegen’d kernels for the 3 add variants that you saw in RegisterCPU.cpp
+    * All of the class scaffolding + actual codegen’d kernels for the 3 mul variants that you saw in RegisterCPU.cpp
 * The codegen will now expect the existence of the following functions, which you will need to implement.
-    * at:: The functions API (add and add_out)
-    * at::Tensor:: The methods API (add and add_)
-    * at::native:: The native API. This namespace contains all of our internal kernel definitions. (add, add_ and add_out)
+    * at:: The functions API (mul and mul_out)
+    * at::Tensor:: The methods API (mul and mul_)
+    * at::native:: The native API. This namespace contains all of our internal kernel definitions. (mul, mul_ and mul_out)
 
 ## How to make the changes
 
@@ -70,9 +72,11 @@ aten/src/ATen/templates/TensorMethods.cpp
 
 These files are all in the templates folder because they are ingested by the codegen. The codegen is responsible for filling the files with the function and method declarations/definitions for all of the ~2000 ops in native_functions.yaml.
 
-The original file for the native API of add lives in aten/src/ATen/native/BinaryOps.cpp, so you can write your native kernels there.
+The original file for the native API of mul lives in aten/src/ATen/native/BinaryOps.cpp, so you can write your native kernels there.
 
-Finally, don’t bother trying to submit a PR with this change and run CI against your branch - lots of stuff will fail, because we’re effectively ripping out a bunch of core functionality for torch.add: most importantly, autograd + the ability to run it on cuda. But we’ve done the bare minimum to make the compiler happy so we can run torch.add() and benchmark it!
+Finally, don’t bother trying to submit a PR with this change and run CI against your branch - lots of stuff will fail, because we’re effectively ripping out a bunch of core functionality for torch.mul: most importantly, autograd + the ability to run it on cuda. But we’ve done the bare minimum to make the compiler happy so we can run torch.mul() and benchmark it!
+
+Some other code that uses the generated `at::redispatch::mul` and `at::cpu::mul` functions won't compile - feel free to replace them with `at::mul`, or just comment them out.
 
 Benchmarking
 
