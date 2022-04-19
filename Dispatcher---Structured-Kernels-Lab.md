@@ -90,6 +90,7 @@ Run the following snippet before/after your change, and compare
 
 (Also, make sure that you built with `REL_WITH_DEB_INFO=1`, so you're using a release builds. Otherwise your times will be unnecessarily slow.)
 
+```
 >>> import torch
 >>> with torch.profiler.profile() as prof:
 ...     a = torch.ones(2)
@@ -97,7 +98,7 @@ Run the following snippet before/after your change, and compare
 ...     c = a + b
 ...
 >>> str(prof.events())
-
+```
 
 You should see that aten::mul() no longer shows up in the profiler! The profiler is no longer aware of aten::mul(), since the function bypasses the dispatcher. It also completely excludes the time spent running at::mul() in the total time, since it’s not aware of the call.
 
