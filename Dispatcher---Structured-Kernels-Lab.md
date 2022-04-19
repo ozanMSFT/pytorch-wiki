@@ -26,7 +26,7 @@ The lab will involve:
 
 # Bypassing the dispatcher
 
-The dispatcher gives us a lot of flexibility - we can implement separate add kernels for different backends, provide autograd support, and hook in custom behavior like batching and tracing. But that extra flexible also comes with a performance cost!
+The dispatcher gives us a lot of flexibility - we can implement separate mul kernels for different backends, provide autograd support, and hook in custom behavior like batching and tracing. But that extra flexible also comes with a performance cost!
 
 There are some basic operators that we’ve are simple enough and perf-critical enough that they don’t need to be part of the dispatcher. The codegen provides a hook to bypass the dispatcher through the manual_cpp_bindings keyword in native_functions.yaml. You can find some example operators that use it by grepping for that keyword in native_functions.yaml: one example is is_complex().
 
@@ -80,7 +80,7 @@ Some other code that uses the generated `at::redispatch::mul` and `at::cpu::mul`
 
 Benchmarking
 
-You can re-run the gdb the same way that we did before and see that a lot less is getting called. Instead of invoking the dispatcher to send us to the add kernel, calling at::add() takes us straight to the kernel implementation.
+You can re-run the gdb the same way that we did before and see that a lot less is getting called. Instead of invoking the dispatcher to send us to the mul kernel, calling at::mul() takes us straight to the kernel implementation.
 
 ## Test A: the profiler
 
@@ -97,13 +97,13 @@ Run the following snippet before/after your change, and compare:
 >>> str(prof.events())
 
 
-You should see that aten::add() no longer shows up in the profiler! The profiler is no longer aware of aten::add(), since the function bypasses the dispatcher. It also completely excludes the time spent running at::add() in the total time, since it’s not aware of the call.
+You should see that aten::mul() no longer shows up in the profiler! The profiler is no longer aware of aten::mul(), since the function bypasses the dispatcher. It also completely excludes the time spent running at::mul() in the total time, since it’s not aware of the call.
 
 ## Test B (Optional): instruction count measurements
 
-To see how much faster torch.add() is without the extra dispatcher overhead, we have some helpful tools for benchmarking code.
+To see how much faster torch.mul() is without the extra dispatcher overhead, we have some helpful tools for benchmarking code.
 
-If you’re interested, and for a great overview to benchmarking in PyTorch, see the guide here: https://pytorch.org/tutorials/recipes/recipes/timer_quick_start.html#instruction-counts-timer-collect-callgrind. Take a look at that guide, and create an instruction count benchmark for torch.add() before/after your change. Note that running the benchmarks requires valgrind.
+If you’re interested, and for a great overview to benchmarking in PyTorch, see the guide here: https://pytorch.org/tutorials/recipes/recipes/timer_quick_start.html#instruction-counts-timer-collect-callgrind. Take a look at that guide, and create an instruction count benchmark for torch.mul() before/after your change. Note that running the benchmarks requires valgrind.
 
 You’ll see a very large speedup - that’s mostly because we’re measuring with very small tensors, so much of the time taken is from framework overhead - i.e. the (lack of) use of the dispatcher.
 
