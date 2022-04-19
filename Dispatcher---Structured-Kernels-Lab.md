@@ -86,7 +86,9 @@ You can re-run the gdb the same way that we did before and see that a lot less i
 
 Another feature that’s provided directly inside of the dispatcher is the profiler, which profiles the set of aten ops that ran in your model as well as how much time was spent in them.
 
-Run the following snippet before/after your change, and compare:
+Run the following snippet before/after your change, and compare
+
+(Also, make sure that you built with `REL_WITH_DEB_INFO=1`, so you're using a release builds. Otherwise your times will be unnecessarily slow.)
 
 >>> import torch
 >>> with torch.profiler.profile() as prof:
