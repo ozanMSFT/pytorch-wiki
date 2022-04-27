@@ -162,7 +162,7 @@ These are all codegen’d and live in `torch/csrc/autograd/generated/python_torc
 #19: at::Tensor::add
 #18: at::_ops::add_Tensor::call
 
-The next stop is the C++ method API, which is one of the top-level API’s for calling into the dispatcher. The dispatcher then looks at all of the arguments + any thread-local state to figure out which kernel to dispatch to. https://fb.quip.com/crnrAjLMKVbs has some more details about the dispatcher key-calculation process.
+The next stop is the C++ method API, which is one of the top-level API’s for calling into the dispatcher. The dispatcher then looks at all of the arguments + any thread-local state to figure out which kernel to dispatch to. https://github.com/pytorch/pytorch/wiki/PyTorch-dispatcher-walkthrough has some more details about the dispatcher key-calculation process.
 
 In `build/aten/src/ATen/TensorBody.h`:
 
