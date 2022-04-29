@@ -15,6 +15,7 @@ Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`).
       - [ONNX](#onnx)
       - [TorchVision](#torchvision)
     - [Sanity check](#sanity-check)
+    - [VS Code](#vs-code)
   - [Pull requests](#pull-requests)
   - [Tests](#tests)
 - [Links](#links)
@@ -139,6 +140,75 @@ git restore torch/onnx/utils.py
 ```
 
 If the second command succeeds, then probably python is finding the PyTorch that was installed via `conda` or `pip`, not the one that was built from source by `python setup.py develop`.
+
+### VS Code
+
+You can place this recommended `settings.json` under `.vscode/`
+
+```jsonc
+{
+    // Always remove trailing whitespaces
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "[python]": {
+        "editor.tabSize": 4,
+        // Auto sort imports
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.rulers": [88],
+    },
+    // Enable Python linting and Pylance type checking
+    "python.analysis.typeCheckingMode": "basic",
+    "python.formatting.provider": "black",
+    "python.sortImports.args": ["--profile", "black"],
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pydocstyleArgs": ["--convention=google"]
+}
+```
+
+Recommended extensions
+
+```jsonc
+{
+  "recommendations": [
+    // Python
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "njpwerner.autodocstring",
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    "DavidAnson.vscode-markdownlint",
+    // Coding style
+    "shardulm94.trailing-spaces",
+    // Linting display
+    "usernamehw.errorlens",
+    "igorsbitnev.error-gutters",
+    "ryanluker.vscode-coverage-gutters",
+    // Github review integration
+    "GitHub.vscode-pull-request-github",
+    "eamodio.gitlens",
+    // Show changed files between branches
+    "letmaik.git-tree-compare",
+  ]
+}
+```
+
+If you use error lens, I recommend the following settings
+
+```jsonc
+{
+    "errorLens.excludeBySource": [
+        "cSpell" // Exclude noisy spelling errors
+    ],
+    "errorLens.followCursor": "closestProblem",
+    "errorLens.fontSize": "0.9em", // Smaller unintrusive messages
+    "errorLens.followCursorMore": 3, // Hide errors too far away from the cursor
+}
+```
 
 ## Pull requests
 
