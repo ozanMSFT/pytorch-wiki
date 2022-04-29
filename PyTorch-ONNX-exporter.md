@@ -12,6 +12,7 @@ Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`).
       - [Optional build tips](#optional-build-tips)
     - [Install additional dependencies](#install-additional-dependencies)
       - [ONNX Runtime](#onnx-runtime)
+      - [ONNX](#onnx)
       - [TorchVision](#torchvision)
     - [Sanity check](#sanity-check)
   - [Pull requests](#pull-requests)
