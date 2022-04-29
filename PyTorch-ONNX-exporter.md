@@ -4,19 +4,22 @@ Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`).
 
 <!-- TOC generated with https://github.com/ekalinin/github-markdown-toc -->
 
-* [Development process](#development-process)
-   * [Environment setup](#environment-setup)
-      * [Fork PyTorch](#fork-pytorch)
-      * [Build PyTorch](#build-pytorch)
-      * [Install additional dependencies](#install-additional-dependencies)
-      * [Sanity check](#sanity-check)
-   * [Pull requests](#pull-requests)
-   * [Tests](#tests)
-      * [Adding tests](#adding-tests)
-* [Links](#links)
-   * [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
-* [Features](#features)
-   * [Quantized model export](#quantized-model-export)
+- [Table of Contents](#table-of-contents)
+- [Development process](#development-process)
+  - [Environment setup](#environment-setup)
+    - [Fork PyTorch](#fork-pytorch)
+    - [Build PyTorch](#build-pytorch)
+      - [Optional build tips](#optional-build-tips)
+    - [Install additional dependencies](#install-additional-dependencies)
+      - [ONNX Runtime](#onnx-runtime)
+      - [TorchVision](#torchvision)
+    - [Sanity check](#sanity-check)
+  - [Pull requests](#pull-requests)
+  - [Tests](#tests)
+- [Links](#links)
+  - [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
+- [Features](#features)
+  - [Quantized model export](#quantized-model-export)
 
 # Development process
 
@@ -55,6 +58,7 @@ Then see the instructions in PyTorch's [README](https://github.com/pytorch/pytor
 [Use direnv for Anaconda environment selection](https://github.com/direnv/direnv/wiki/Python#anaconda).
 
 Set more environment variables in your .envrc file:
+
 ```sh
 # Only if you're building without CUDA.
 export USE_CUDA=0
@@ -133,12 +137,14 @@ If the second command succeeds, then probably python is finding the PyTorch that
 ## Pull requests
 
 PRs should be opened directly against master. PRs can be directly merged into master as long as it satisfies the [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L3):
-* Approved by one of torch.onnx developers listed in `approved_by` section.
-* All modified files fall under the `patterns` section.
+
+- Approved by one of torch.onnx developers listed in `approved_by` section.
+- All modified files fall under the `patterns` section.
 
 Pay special attention to the following GitHub checks:
-* Has "onnx" in the name, which runs ONNX related tests.
-* Has "Lint" in the name, which does code format checks.
+
+- Has "onnx" in the name, which runs ONNX related tests.
+- Has "Lint" in the name, which does code format checks.
 
 Regarding other failing GitHub checks, if you are certain the failure is unrelated to your change, try rebasing with master. Often times these kind of failures are caused by branch out of sync with master.
 For rare occasions, You can ignore the failing check if it is a regression in master. This can be verified by checking if master is also failing from [CI HUD for PyTorch](https://hud.pytorch.org/ci/pytorch/pytorch/master).
@@ -163,9 +169,9 @@ Most relevant tests are in [test/onnx/](https://github.com/pytorch/pytorch/tree/
 
 The most used test file is [test_pytorch_onnx_onnxruntime.py](https://github.com/pytorch/pytorch/blob/onnx_ms_1/test/onnx/test_pytorch_onnx_onnxruntime.py). The tests in this file generally:
 
-* Define a subclass of `torch.nn.Module`.
-* Define some inputs.
-* Call `self.run_test()` with the instantiated module and inputs.
+- Define a subclass of `torch.nn.Module`.
+- Define some inputs.
+- Call `self.run_test()` with the instantiated module and inputs.
 
 `run_test()` converts the module to ONNX and compares the output between PyTorch and ONNX Runtime.
 
@@ -180,23 +186,24 @@ python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset11.test_a
 # run test for opset 9
 python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset9.test_arithmetic_prim_bool
 ```
+
 An example of adding unit tests for a new symbolic function: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
 
 # Links
 
-* [User-facing docs](https://pytorch.org/docs/master/onnx.html).
+- [User-facing docs](https://pytorch.org/docs/master/onnx.html).
 
 ## Relevant parts of PyTorch repo
 
-* User-facing doc: [docs/source/onnx.rst](https://github.com/pytorch/pytorch/blob/onnx_ms_1/docs/source/onnx.rst)
-* Python tests: [test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx)
-* More Python tests: [test/jit/test_onnx_export.py](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/jit/test_onnx_export.py)
-* Python code: [torch/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/onnx)
-* C++ code: [torch/csrc/jit/passes/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/csrc/jit/passes/onnx)
+- User-facing doc: [docs/source/onnx.rst](https://github.com/pytorch/pytorch/blob/onnx_ms_1/docs/source/onnx.rst)
+- Python tests: [test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx)
+- More Python tests: [test/jit/test_onnx_export.py](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/jit/test_onnx_export.py)
+- Python code: [torch/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/onnx)
+- C++ code: [torch/csrc/jit/passes/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/csrc/jit/passes/onnx)
 
 # Features
 
 ## Quantized model export
 
-To support quantized model export, we need to unpack the quantized tensor inputs and the PackedParam weights (https://github.com/pytorch/pytorch/pull/69232). We construct through `TupleConstruct` to have a 1-to-1 input mapping, 
+To support quantized model export, we need to unpack the quantized tensor inputs and the PackedParam weights (<https://github.com/pytorch/pytorch/pull/69232>). We construct through `TupleConstruct` to have a 1-to-1 input mapping,
 so that we can use `replaceAllUsesWith` API for its successors. In addition, we support quantized namespace export, and the developers can add more symbolics for quantized operators conveniently in the current framework.
