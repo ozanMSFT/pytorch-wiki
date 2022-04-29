@@ -87,10 +87,10 @@ conda install -c conda-forge protobuf=$(cat third_party/onnx/requirements-releas
 pip install onnxruntime
 ```
 
-_Onnxruntime is also available from conda-forge, but it seems to demand a version of protobuf that's newer than_
-_what the ONNX submodule wants to use, which lead to seg-faults in my case._ This may be resolved with future
-versions of ONNX or ONNX Runtime. If you find `conda install -c conda-forge onnxruntime` works, please update
-these instructions.
+> _Onnxruntime is also available from conda-forge, but it seems to demand a version of protobuf that's newer than_
+> _what the ONNX submodule wants to use, which lead to seg-faults in my case._ This may be resolved with future
+> versions of ONNX or ONNX Runtime. If you find `conda install -c conda-forge onnxruntime` works, please update
+> these instructions.
 
 If you need a newer or different version of ONNX Runtime than what is available via conda, you can instead install
 it [from source](https://onnxruntime.ai/docs/build/inferencing.html).
@@ -118,8 +118,8 @@ can temporarily reinstall PyTorch via conda:
 conda update -c pytorch-nightly torchvision cpuonly
 ```
 
-I hope there's a better way to deal with this. If you know of one please
-update these instructions and email the team!
+> I hope there's a better way to deal with this. If you know of one please
+> update these instructions and email the team!
 
 ### Sanity check
 
@@ -155,7 +155,7 @@ Pay special attention to the following GitHub checks:
 Regarding other failing GitHub checks, if you are certain the failure is unrelated to your change, try rebasing with master. Often times these kind of failures are caused by branch out of sync with master.
 For rare occasions, You can ignore the failing check if it is a regression in master. This can be verified by checking if master is also failing from [CI HUD for PyTorch](https://hud.pytorch.org/ci/pytorch/pytorch/master).
 
-To merge your pull request, comment on the PR "@pytorchbot merge this".
+**To merge your pull request, comment on the PR `@pytorchbot merge this`.**
 
 If you make changes to non-ONNX related code, i.e. files out side of [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L4), please note the PR will require additional reviews from people outside of torch.onnx developers, and will take a longer process to merge into master. In this case, pytorchbot will not be able to merge the pull request. It will leave a comment like "Merge failed due to PR XXX does not match merge rules". Please label the pull request with `onnx-needs-import`.
 
