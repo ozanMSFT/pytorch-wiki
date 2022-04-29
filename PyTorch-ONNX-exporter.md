@@ -26,7 +26,7 @@ Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`).
 ## Environment setup
 
 We highly recommend using Linux. Other platforms are not tested in PyTorch CI and
-are generally not used by the torch.onnx developers.
+are generally not used by the `torch.onnx` developers.
 
 ### Fork PyTorch
 
@@ -36,7 +36,7 @@ are generally not used by the torch.onnx developers.
 
 CUDA is not required for most development tasks. If you use CUDA, building PyTorch will probably be slower.
 
-Install [Anaconda](https://www.anaconda.com/products/individual) and activate a new environment.
+Install [Anaconda](https://www.anaconda.com/products/individual) and activate a new environment. Use Python 3.9 as onnxruntime does not support Python 3.10 or higher (as of April 2022).
 
 Install [direnv](https://direnv.net/) and initialize your envrc file in the root of your PyTorch git repo:
 
@@ -75,8 +75,7 @@ export DEBUG=1
 Install the dependencies required to run CI checks locally.
 
 ```sh
-# flake8 version restriction due to https://github.com/pytorch/pytorch/issues/69500
-conda install -c conda-forge expecttest pytest mypy=0.812 'flake8<4' hypothesis
+conda install -c conda-forge expecttest pytest mypy=0.812 flake8 hypothesis
 ```
 
 #### ONNX Runtime
@@ -94,6 +93,12 @@ these instructions.
 
 If you need a newer or different version of ONNX Runtime than what is available via conda, you can instead install
 it [from source](https://onnxruntime.ai/docs/build/inferencing.html).
+
+#### ONNX
+
+```sh
+conda install onnx
+```
 
 #### TorchVision
 
