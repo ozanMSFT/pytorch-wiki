@@ -31,13 +31,13 @@ are generally not used by the `torch.onnx` developers.
 
 ### Fork PyTorch
 
-[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) github.com/pytorch/pytorch and clone your fork to your workstation.
+[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) [github.com/pytorch/pytorch](https://github.com/pytorch/pytorch/fork) and clone your fork to your workstation.
 
 ### Build PyTorch
 
 CUDA is not required for most development tasks. If you use CUDA, building PyTorch will probably be slower.
 
-Install [Anaconda](https://www.anaconda.com/products/individual) and activate a new environment. Use Python 3.9 as onnxruntime does not support Python 3.10 or higher (as of April 2022).
+Install [Anaconda](https://www.anaconda.com/products/individual) and activate a new environment. Use Python 3.9 as `onnxruntime` does not support Python 3.10 or higher (as of April 2022).
 
 Install [direnv](https://direnv.net/) and initialize your envrc file in the root of your PyTorch git repo:
 
