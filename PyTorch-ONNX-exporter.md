@@ -98,7 +98,7 @@ it [from source](https://onnxruntime.ai/docs/build/inferencing.html).
 #### ONNX
 
 ```sh
-conda install onnx
+pip install onnx
 ```
 
 #### TorchVision
