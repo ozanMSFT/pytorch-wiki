@@ -87,8 +87,8 @@ conda install -c conda-forge protobuf=$(cat third_party/onnx/requirements-releas
 pip install onnxruntime
 ```
 
-Onnxruntime is also available from conda-forge, but it seems to demand a version of protobuf that's newer than
-what the ONNX submodule wants to use, which lead to seg-faults in my case. This may be resolved with future
+_Onnxruntime is also available from conda-forge, but it seems to demand a version of protobuf that's newer than_
+_what the ONNX submodule wants to use, which lead to seg-faults in my case._ This may be resolved with future
 versions of ONNX or ONNX Runtime. If you find `conda install -c conda-forge onnxruntime` works, please update
 these instructions.
 
