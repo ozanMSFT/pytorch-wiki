@@ -10,7 +10,7 @@ This will install `lintrunner` on your system and download all the necessary dep
 ```
 lintrunner
 ```
-to lint your local changes (by default, this is your working tree changes and the HEAD commit).
+to lint your local changes (by default, this is your **working tree changes and the HEAD commit**).
 ### How do I autoformat my code?
 ```
 lintrunner f
