@@ -39,7 +39,7 @@ You can also add multiple labels using comments with pytorchbot.
 @pytorchbot label label1,label2,etc
 ```
 
-## Rebase (Beta)
+## Rebase (Beta) - NON GHSTACK ONLY
 Rebasing is useful you're reviewing an older PR and want to get new signal: you might want to rebase to get the most up to date tests and re run the CI. You can rebase your own PR anytime, but please tag @pytorch/pytorch-dev-infra regarding our allowlists for this functionality.
 
 ```
