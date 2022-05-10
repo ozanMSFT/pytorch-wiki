@@ -104,19 +104,18 @@ pip install onnx
 
 #### TorchVision
 
-```sh
-# cpuonly not needed if you're using CUDA
-conda install -c pytorch-nightly torchvision cpuonly
-conda uninstall --force pytorch
-```
-
-This first command installs PyTorch as a dependency, so we remove it with the second command
-so that you can use the locally-built pytorch rather than the one from conda.
-If you later run into issues with conda complaining about an inconsistent environment, you
-can temporarily reinstall PyTorch via conda:
+The ONNX tests depend on torchvision.
+This is tricky because TorchVision depends on PyTorch, but we don't want our
+package manager to install PyTorch, we want to use our locally built one.
+The best solution I've found is to install torchvision with pip (so that
+conda doesn't try to manage it) without any deps (so that pip doesn't install 
+pytorch and the locally built version is used).
 
 ```sh
-conda update -c pytorch-nightly torchvision cpuonly
+# If you're not using CUDA. If you are, see https://pytorch.org/get-started/locally/
+pip install --no-deps --pre torchvision --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+# manually install torchvision deps
+conda install -c conda-forge pillow
 ```
 
 > I hope there's a better way to deal with this. If you know of one please
