@@ -29,11 +29,11 @@ lintrunner torch/jit/_script.py torch/jit/_trace.py
 ```
 find -type f torch/onnx | xargs lintrunner
 ```
-### How do I run lint on every file?
+### How do I run lint on all files?
 ```
-lintrunner --paths-cmd='git grep -Il .'
+lintrunner --all-files
 ```
-(or use `xargs`).
+**Warning**: this may take a while, PyTorch has a lot of files.
 ### How do I run only a specific linter?
 ```
 lintrunner --take BLACK,CLANGFORMAT
