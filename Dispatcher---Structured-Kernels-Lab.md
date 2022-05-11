@@ -28,7 +28,7 @@ The lab will involve:
 
 The dispatcher gives us a lot of flexibility - we can implement separate mul kernels for different backends, provide autograd support, and hook in custom behavior like batching and tracing. But that extra flexible also comes with a performance cost!
 
-There are some basic operators that we’ve are simple enough and perf-critical enough that they don’t need to be part of the dispatcher. The codegen provides a hook to bypass the dispatcher through the manual_cpp_bindings keyword in native_functions.yaml. You can find some example operators that use it by grepping for that keyword in native_functions.yaml: one example is is_complex().
+There are some basic operators that we’ve are simple enough and perf-critical enough that they don’t need to be part of the dispatcher. The codegen provides a hook to bypass the dispatcher through the manual_cpp_binding keyword in native_functions.yaml. You can find some example operators that use it by grepping for that keyword in native_functions.yaml: one example is is_complex().
 
 Here’s ![a diagram](https://pasteboard.co/NAhXmNPm39Lx.png) describing the call path in C++ before/after skipping the dispatcher.
 
@@ -41,11 +41,11 @@ I recommend you build with the following flags: `REL_WITH_DEB_INFO=1 USE_PER_OPE
 
 *Note 2:* Feel free to ask the task owner for help if you’re stuck. There’s also a separate doc with tips + some gotchas that you might encounter here: https://fb.quip.com/L7PvAJOIb5iL.
 
-The main change that you’re going to make is to update the entries for mul/mul_/mul_out in native_functions.yaml to mark them as manual_cpp_bindings.
+The main change that you’re going to make is to update the entries for mul/mul_/mul_out in native_functions.yaml to mark them as manual_cpp_binding.
 
-Delete the structured/structured_inherits/structured_delegate/dispatch lines from each entry, and add in a new line: manual_cpp_bindings: True. You will also need to make the same change in derivatives.yaml.
+Delete the structured/structured_inherits/structured_delegate/dispatch lines from each entry, and add in a new line: manual_cpp_binding: True. You will also need to make the same change in derivatives.yaml.
 
-By removing all of the structured metadata and adding manual_cpp_bindings, a few things will happen:
+By removing all of the structured metadata and adding manual_cpp_binding, a few things will happen:
 
 * The codegen will stop generating all of the structured kernel scaffolding for mul:
     * Function and Method API declaration/definitions in Functions.h and TensorBody.h
@@ -59,7 +59,7 @@ By removing all of the structured metadata and adding manual_cpp_bindings, a few
 
 ## How to make the changes
 
-What should the functions look like? You can use the existing structured kernel scaffolding, but the codegen will no longer generate it for you since we’re using manual_cpp_bindings. Instead, you can manually write the structured kernel scaffolding (probably by copy-pasting the output of the original codegen).
+What should the functions look like? You can use the existing structured kernel scaffolding, but the codegen will no longer generate it for you since we’re using manual_cpp_binding. Instead, you can manually write the structured kernel scaffolding (probably by copy-pasting the output of the original codegen).
 
 ## Where to make changes
 
@@ -95,7 +95,7 @@ Run the following snippet before/after your change, and compare
 >>> with torch.profiler.profile() as prof:
 ...     a = torch.ones(2)
 ...     b = torch.ones(2)
-...     c = a + b
+...     c = a * b
 ...
 >>> str(prof.events())
 ```
