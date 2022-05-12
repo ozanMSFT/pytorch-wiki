@@ -98,45 +98,6 @@ See ["Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/R
 
 See ["how to use GitHub labels" section on the "Running and writing tests" page](https://github.com/pytorch/pytorch/wiki/Running-and-writing-tests#using-github-label-to-control-ci-behavior-on-pr) for information.
 
-#### Using CIFlow
-
-CIFlow is a flexible CI workflow dispatcher that's going to dispatch GitHub Actions CI workflows based on various PR contexts and user instructions. See the discussion on the RFC [here](https://github.com/pytorch/pytorch/issues/61888).
-
-##### Architecture
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/658840/126261336-630bf00f-ce42-4e3e-8e64-92c72ed8837e.png" width="800px" />
-</p>
-
-##### User Guide
-
-Note: CIFlow is automatically enabled for everyone (starting 10/1/2021), if you want to opt out, please follow the instructions in this issue https://github.com/pytorch/pytorch/issues/64124.
-
-- Create PR as normal, and @pytorchbot will automatically handle the rest. It also generates a comment block **"CI Flow Status"**.
-- If the PR author or anyone with `write` permission to the pytorch/pytorch repo wants to instrument @pytorchbot to run different configurations of the CI flow, people can **comment on the PR with the commands** like the following to trigger CIFlow.
-
-```
-# ciflow rerun, "ciflow/default" will always be added automatically
-@pytorchbot ciflow rerun
-
-# ciflow rerun with additional labels "-l <ciflow/label_name>", which is equivalent to adding these labels manually and trigger the rerun
-@pytorchbot ciflow rerun -l ciflow/scheduled -l ciflow/slow
-```
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/658840/129799464-9f0e0309-897c-4b68-b61f-7117a7ced882.png" width="800px" />
-</p>
-
-##### Implementation Details
-
-The pytorchbot (which is defined [here](https://github.com/pytorch/pytorch-probot/blob/c3bd6139897e7de45695c2c99ccb2d75f0831a08/src/ciflow-bot.ts)) will leverage multiple strategies to orchestrate how GitHub Action workflows are run or not run. The decision is made into two steps:
-
-- PR author or @pytorchbot will add labels to the PR, e.g. `ciflow/default` (which is added automatically), or other labels.
-- @pytorchbot will trigger an `unassign` event on the PR, which triggers all the workflows that are listening on `on.pull_request - [unassign]` events, and that event will have information of the `ciflow/*` labels, which is used to decide the condition.
-  - See the [generate_ci_workflows.py](https://github.com/pytorch/pytorch/blob/master/.github/scripts/generate_ci_workflows.py) definition
-  - See the sample [ciflow_should_run](https://github.com/pytorch/pytorch/blob/495e7e4815d3f9a4000a6671022fd2608440db75/.github/workflows/generated-linux-xenial-py3.6-gcc7-bazel-test.yml#L34)'s `if` condition.
-
-
 ### CI workflow on master commits
 
 ### Change CI workflow behavior on PR
@@ -149,6 +110,11 @@ Some PyTorch tests are currently disabled due to their flakiness, incompatibilit
 First, you should never disable a test if you're not sure what you're doing. Tests are important in validating PyTorch functionality, and ignoring test failures is not recommended as it can degrade user experience. When you are certain that disabling a test is the best option, for example, when it is flaky, make plans to fix the test so that it is not disabled indefinitely.
 
 To disable a test, say, create an issue with the title `DISABLED test_case_name (test.ClassName)`. A real title example would look like: `DISABLED test_jit_cuda_extension (__main__.TestCppExtensionJIT)`. In the body of the issue, feel free to include any details and logs as you normally would with any issue. If you would like to skip the test for particular platforms, such as ROCm, please include a line (case insensitive) in the issue body like so: "<start of line>Platforms: Mac, Windows<end of line>." The available platforms to choose from are: mac/macos, windows, rocm, linux, and asan (whether the test is with ASAN).
+
+#### Disabling a test for all dtypes/devices
+Currently, you are able to disable all sorts of test instantiations by removing the suffixed device type (e.g., `cpu`, `cuda`, or `meta`) AND dtype (e.g., `int8`, `bool`, `complex`). So given a test `test_case_name_cuda_int64 (test.ClassNameCUDA)`, you can:
+1. specifically disable this particular test with `DISABLED test_case_name_cuda_int64 (test.ClassNameCUDA)`
+2. disable ALL instances of the test with `DISABLED test_case_name (test.ClassName)`. NOTE: You must get rid of BOTH the device and dtype suffixes AND the suffix in the test suite as well. 
 
 #### How to test the disabled test on CI
 It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI).  
