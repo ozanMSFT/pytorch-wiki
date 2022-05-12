@@ -18,6 +18,7 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
   * [Change CI workflow behavior on PR](#change-ci-workflow-behavior-on-pr)
   * [Disabled tests in CI](#disabled-tests-in-ci)
     + [How to disable a test](#how-to-disable-a-test)
+    + [Disabling a test for all dtypes/devices](#disabling-a-test-for-all-dtypesdevices)
     + [How to test the disabled test on CI](#how-to-test-the-disabled-test-on-ci)
 - [Other Topics](#other-topics)
   * [CI Metrics](#ci-metrics)
