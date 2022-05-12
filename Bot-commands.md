@@ -31,7 +31,7 @@ Examples:
 Similar to merging, we have a command to revert a PR, though it requires you be a Meta employee at the moment. You can always submit a PR to back out a change and merge with the commands above. Revert requires you to provide both a message and classification for record keeping purposes.
 
 ```
-@pytorch bot revert -m="" -c=""
+@pytorch bot revert -m="This is breaking tests on trunk" -c=nosignal
 ```
 -m, -message: The reason why you are reverting this PR. Must be at least 3 words.
 
