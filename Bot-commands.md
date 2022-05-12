@@ -12,8 +12,6 @@ By default, the Lint and pull workflows should run on every push to your pull re
 ## Merging through GH1 (Beta)
 We are in the process of prototyping our GitHub First initiative, which will allow certain pull requests based on the upstream repo (not a fork) to be merged through GitHub first, then imported internally into Meta. The requirements for such PRs are described in [our merge rules](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json) where files fitting the specified patterns approved by the specified maintainers are allowed to merge directly with the following comment:
 
-# Merging
-Merging is simple. You can simply use the following command. 
 ```
 @pytorchbot merge
 ```
