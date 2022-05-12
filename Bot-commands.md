@@ -36,6 +36,7 @@ Similar to merging, we have a command to revert a PR, though it requires you be 
 @pytorch bot revert -m="" -c=""
 ```
 -m, -message: The reason why you are reverting this PR. Must be at least 3 words.
+
 -c, -classification: What type of revert this is. Potential classifications are: nosignal, ignoredsignal, landrace, weird, ghfirst. 
 
 ## Labeling
