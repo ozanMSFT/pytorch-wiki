@@ -18,7 +18,7 @@ We are in the process of prototyping our GitHub First initiative, which will all
 
 We also have the following flags:
 
--f, -force: force merge the PR, bypassing all the required status checks.
+-f, -force: force merge the PR, bypassing all the required status checks. ONLY USE THIS AT YOUR DISCRETION FOR CRITICAL FAILURES. 
 
 -g, -green, -onGreen: merge the PR only when all the required status checks have passed (BETA).
 
