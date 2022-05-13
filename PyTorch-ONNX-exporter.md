@@ -164,8 +164,10 @@ You can place this recommended `settings.json` under `.vscode/`
     "python.sortImports.args": ["--profile", "black"],
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": true,
     "python.linting.pydocstyleEnabled": true,
-    "python.linting.pydocstyleArgs": ["--convention=google"]
+    "python.linting.pydocstyleArgs": ["--convention=google"],
+    "python.linting.banditEnabled": true
 }
 ```
 
