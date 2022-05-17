@@ -80,27 +80,20 @@ Install the dependencies required to run CI checks locally.
 conda install -c conda-forge expecttest pytest mypy=0.812 flake8 hypothesis
 ```
 
-#### ONNX Runtime
+#### ONNX and ONNX Runtime
 
 ```sh
 # install a version of protobuf compatible with ONNX submodule
-conda install -c conda-forge protobuf=$(cat third_party/onnx/requirements-release.txt | grep protobuf | awk '{print $3}') flatbuffers
-pip install onnxruntime
+conda install -c conda-forge \
+  protobuf=$(cat third_party/onnx/requirements-release.txt | grep protobuf | awk '{print $3}') \
+  python-flatbuffers
+pip install onnxruntime onnx==$(cat third_party/onnx/VERSION_NUMBER)
 ```
 
-> _Onnxruntime is also available from conda-forge, but it seems to demand a version of protobuf that's newer than_
-> _what the ONNX submodule wants to use, which lead to seg-faults in my case._ This may be resolved with future
+> ONNX and ONNX Runtime are also available from conda-forge, but they depend on a version of protobuf that's newer than
+> what the ONNX submodule wants to use, which lead to seg-faults in my case. This may be resolved with future
 > versions of ONNX or ONNX Runtime. If you find `conda install -c conda-forge onnxruntime` works, please update
-> these instructions.
-
-If you need a newer or different version of ONNX Runtime than what is available via conda, you can instead install
-it [from source](https://onnxruntime.ai/docs/build/inferencing.html).
-
-#### ONNX
-
-```sh
-pip install onnx
-```
+> these instructions to use conda instead of pip.
 
 #### TorchVision
 
@@ -112,7 +105,7 @@ conda doesn't try to manage it) without any deps (so that pip doesn't install
 pytorch and the locally built version is used).
 
 ```sh
-# If you're not using CUDA. If you are, see https://pytorch.org/get-started/locally/
+# If you're not using CUDA, use the command below. If you are, see https://pytorch.org/get-started/locally/
 pip install --no-deps --pre torchvision --extra-index-url https://download.pytorch.org/whl/nightly/cpu
 # manually install torchvision deps
 conda install -c conda-forge pillow
@@ -138,7 +131,7 @@ python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset10.test_a
 git restore torch/onnx/utils.py
 ```
 
-If the second command succeeds, then probably python is finding the PyTorch that was installed via `conda` or `pip`, not the one that was built from source by `python setup.py develop`.
+If the second command succeeds, then probably python is finding a PyTorch that was installed via `conda` or `pip`, not the one that was built from source by `python setup.py develop`.
 
 ### VS Code
 
@@ -223,8 +216,8 @@ Pay special attention to the following GitHub checks:
 - Has "onnx" in the name, which runs ONNX related tests.
 - Has "Lint" in the name, which does code format checks.
 
-Regarding other failing GitHub checks, if you are certain the failure is unrelated to your change, try rebasing with master. Often times these kind of failures are caused by branch out of sync with master.
-For rare occasions, You can ignore the failing check if it is a regression in master. This can be verified by checking if master is also failing from [CI HUD for PyTorch](https://hud.pytorch.org/ci/pytorch/pytorch/master).
+Regarding other failing checks: if you are certain the failure is unrelated to your change, try rebasing on master. Often these failures are caused by a branch being out of sync with master.
+You can ignore the failing check if it is a regression in master. This can be verified by checking if master is also failing from [CI HUD](https://hud.pytorch.org/ci/pytorch/pytorch/master).
 
 **To merge your pull request, comment on the PR `@pytorchbot merge this`.**
 
