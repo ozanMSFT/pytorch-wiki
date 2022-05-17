@@ -4,24 +4,22 @@ Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`).
 
 <!-- TOC generated with https://github.com/ekalinin/github-markdown-toc -->
 
-- [Table of Contents](#table-of-contents)
-- [Development process](#development-process)
-  - [Environment setup](#environment-setup)
-    - [Fork PyTorch](#fork-pytorch)
-    - [Build PyTorch](#build-pytorch)
-      - [Optional build tips](#optional-build-tips)
-    - [Install additional dependencies](#install-additional-dependencies)
-      - [ONNX Runtime](#onnx-runtime)
-      - [ONNX](#onnx)
-      - [TorchVision](#torchvision)
-    - [Sanity check](#sanity-check)
-    - [VS Code](#vs-code)
-  - [Pull requests](#pull-requests)
-  - [Tests](#tests)
-- [Links](#links)
-  - [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
-- [Features](#features)
-  - [Quantized model export](#quantized-model-export)
+* [Development process](#development-process)
+   * [Environment setup](#environment-setup)
+      * [Fork PyTorch](#fork-pytorch)
+      * [Build PyTorch](#build-pytorch)
+         * [Optional build tips](#optional-build-tips)
+      * [Install additional dependencies](#install-additional-dependencies)
+         * [ONNX and ONNX Runtime](#onnx-and-onnx-runtime)
+         * [TorchVision](#torchvision)
+      * [Sanity check](#sanity-check)
+      * [VS Code](#vs-code)
+   * [Pull requests](#pull-requests)
+   * [Tests](#tests)
+* [Links](#links)
+   * [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
+* [Features](#features)
+   * [Quantized model export](#quantized-model-export)
 
 # Development process
 
@@ -101,7 +99,7 @@ The ONNX tests depend on torchvision.
 This is tricky because TorchVision depends on PyTorch, but we don't want our
 package manager to install PyTorch, we want to use our locally built one.
 The best solution I've found is to install torchvision with pip (so that
-conda doesn't try to manage it) without any deps (so that pip doesn't install 
+conda doesn't try to manage it) without any deps (so that pip doesn't install
 pytorch and the locally built version is used).
 
 ```sh
