@@ -44,7 +44,7 @@ You can also add multiple labels using comments with pytorchbot.
 @pytorchbot label label1,label2,etc
 ```
 
-## Rebase (Beta) - NON GHSTACK ONLY
+## Rebase (Beta)
 Rebasing is useful you're reviewing an older PR and want to get new signal: you might want to rebase to get the most up to date tests and re run the CI. Note that rebasing always defaults to the default branch of pytorch/pytorch, which currently is master. You can rebase your own PR anytime, but currently, only a select few organization members can rebase others' PRs.
 
 ```
