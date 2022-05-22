@@ -4,6 +4,8 @@
 * `abs_`
 * `acos`
 * `acos_`
+* `adaptive_avg_pool2d`
+* `adaptive_max_pool2d`
 * `add`
 * `add_`
 * `addcdiv`
@@ -14,6 +16,7 @@
 * `asin_`
 * `atan2`
 * `atan2_`
+* `avg_pool2d`
 * `batch_norm`
 * `bfloat16`
 * `bool`
@@ -21,8 +24,10 @@
 * `ceil`
 * `ceil_`
 * `char`
+* `channel_shuffle`
 * `clone`
 * `contiguous`
+* `conv2d`
 * `copy_`
 * `digamma`
 * `digamma_`
@@ -39,6 +44,7 @@
 * `floor`
 * `floor_`
 * `full_like`
+* `group_norm`
 * `gt`
 * `half`
 * `int`
@@ -53,12 +59,16 @@
 * `log2_`
 * `long`
 * `lt`
+* `max_pool2d`
+* `max_unpool2d`
 * `mul`
 * `mul_`
 * `ne`
 * `neg`
 * `neg_`
 * `ones_like`
+* `pixel_shuffle`
+* `pixel_unshuffle`
 * `pow`
 * `pow_`
 * `randint_like`
@@ -87,6 +97,8 @@
 * `trunc`
 * `trunc_`
 * `type`
+* `upsample_bilinear2d`
+* `upsample_nearest2d`
 * `zero_`
 * `zeros_like`
 ## GPU operators
