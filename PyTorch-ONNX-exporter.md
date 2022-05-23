@@ -75,7 +75,7 @@ export DEBUG=1
 Install the dependencies required to run CI checks locally.
 
 ```sh
-conda install -c conda-forge expecttest pytest mypy=0.812 flake8 hypothesis
+conda install -c conda-forge expecttest pytest mypy=0.950 flake8 hypothesis
 ```
 
 #### ONNX and ONNX Runtime
