@@ -55,6 +55,6 @@ Make sure new functions and classes are private to the module by default. New mo
         TensorProtoDataType = _C._onnx.TensorProtoDataType
         ```
 
-        In symbolic_helper.py, instead of `torch.onnx.TensorProtoDataType.UINT8`, we should use `_C_onnx.TensorProtoDataType.UINT8`.
+        In symbolic_helper.py, instead of using ~`torch.onnx.TensorProtoDataType.UINT8`~ internally, we should use `_C_onnx.TensorProtoDataType.UINT8`.
 
     - Alias defined in `__init__.py` should only be used outside the module (by users).
