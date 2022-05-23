@@ -4,7 +4,7 @@ This document lists conventions on namespacing in the `torch.onnx` module.
 
 Make sure new functions and classes are private to the module by default. New modules should be private to torch.onnx by default.
 
-> Only “promote” them to public names when needed, by removing the prefix `_`
+> Only "promote" them to public names when needed, by removing the prefix `_`
 
 ### Rationale
 
