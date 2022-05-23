@@ -41,7 +41,7 @@ Make sure new functions and classes are private to the module by default. New mo
 
         for it to be consumed internally.
 
-        `_symbolic_helper` (as an example name; doesn’t mean we should hide what is already exposed) is a private module to torch.onnx so we can import it in other modules. unimplemented is not private to its own module, so we can use it in another module.
+        Explanation: `_symbolic_helper` (as an example name; doesn’t mean we should hide what is already exposed) is a private module to `torch.onnx` so we can import it in other modules. `unimplemented` is not private to its own module, so we can use it in another module.
     - This provides clarity to readers and consistency in code structure, reinforcing the convention that private functions should not be used outside of their modules.
     - Additionally, a function not prefixed by `_` signals that we should create a unit test for it. A function prefixed with `_` may be implementation details not worthy of unit tests.
     - It keeps type checkers happy by only using non-private functions in a module.
