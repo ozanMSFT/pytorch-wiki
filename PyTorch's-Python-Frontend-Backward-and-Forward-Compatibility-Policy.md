@@ -12,7 +12,7 @@ A version of PyTorch is "backwards compatible (BC)" with previous versions if it
 
 ## Minimizing the disruption of BC-breaking changes
 
-PyTorch makes a best effort to minimize the disruption of BC-breaking changes to stable components (see below for a discussion of stability) by providing ample notice of the change, how to handle it, and time to adapt.
+PyTorch makes a best effort to minimize the disruption of BC-breaking changes to public and stable components (see below for a discussion of stability) by providing ample notice of the change, how to handle it, and time to adapt.
 
 - A warning should be thrown once per process (using `TORCH_WARN_ONCE`) when the deprecated behavior is used.
   - The warning should clearly describe the deprecated behavior and why it is deprecated.
@@ -37,6 +37,7 @@ BC-breaking changes prevent old programs from running as expected on newer PyTor
 * numerical accuracy improvements
 * changes to PyTorch's internals
 * changes to module and operator signatures that don't impact users
+* changes to private operations (those starting with an underscore)
 
 This is especially important for developers building on PyTorch to understand. For example, adding a new keyword-only argument with a default value to an operator or module is not a BC-breaking change because PyTorch programs will continue running as before. Systems relying on PyTorch's operators and modules should account for this possibility and not depend on the precise form of PyTorch's internals.
 
