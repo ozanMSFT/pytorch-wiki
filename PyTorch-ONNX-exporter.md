@@ -162,7 +162,7 @@ You can place this recommended `settings.json` under `.vscode/`
 }
 ```
 
-Recommended extensions
+Recommended extensions (you can install them in the "Extensions" tab)
 
 ```jsonc
 {
