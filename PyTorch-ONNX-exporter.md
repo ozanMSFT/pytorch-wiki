@@ -143,9 +143,9 @@ You can place this recommended `settings.json` under `.vscode/`
     "files.trimFinalNewlines": true,
     "[python]": {
         "editor.tabSize": 4,
-        // Auto sort imports
+        // Set to true to auto sort imports
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": false
         },
         "editor.rulers": [88],
     },
@@ -155,10 +155,13 @@ You can place this recommended `settings.json` under `.vscode/`
     "python.sortImports.args": ["--profile", "black"],
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": true,
     "python.linting.pydocstyleEnabled": true,
     "python.linting.pydocstyleArgs": ["--convention=google"],
-    "python.linting.banditEnabled": true
+    "python.linting.banditEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--disable=no-member"
+    ]
 }
 ```
 
