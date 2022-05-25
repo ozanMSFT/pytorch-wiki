@@ -75,7 +75,7 @@ export DEBUG=1
 Install the dependencies required to run CI checks locally.
 
 ```sh
-conda install -c conda-forge expecttest pytest mypy=0.950 flake8 hypothesis
+conda install -c conda-forge expecttest pytest mypy=0.950 flake8 hypothesis pytest-cov pytest-xdist
 ```
 
 #### ONNX and ONNX Runtime
@@ -259,6 +259,12 @@ python test/onnx/test_pytorch_onnx_onnxruntime.py TestONNXRuntime_opset9.test_ar
 ```
 
 An example of adding unit tests for a new symbolic function: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
+
+You can use `pytest` to run tests in parallel and generate a coverage report.
+
+```sh
+pytest -n auto --cov --cov-report "xml:test/coverage.xml" test/onnx/test_pytorch_onnx_onnxruntime.py
+```
 
 # Links
 
