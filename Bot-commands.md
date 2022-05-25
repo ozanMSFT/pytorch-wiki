@@ -20,7 +20,7 @@ We also have the following flags:
 
 -f, -force: force merge the PR, bypassing all the required status checks. ONLY USE THIS AT YOUR DISCRETION FOR CRITICAL FAILURES. 
 
--g, -green, -onGreen: merge the PR only when all the required status checks have passed (BETA). DISCLAIMER: currently, our required status checks only include Lint.
+-g, -green, -onGreen: merge the PR only when all the required status checks have passed (BETA). DISCLAIMER: currently, our required status checks only include Lint and builds, not tests.
 
 Examples:
 ```
