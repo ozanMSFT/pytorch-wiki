@@ -266,11 +266,7 @@ You can use `pytest` to run tests in parallel and generate a coverage report.
 python -m pytest -n auto --cov --cov-report "xml:test/coverage.xml" test/onnx/test_pytorch_onnx_onnxruntime.py
 ```
 
-To test everything minus caffe2 and gpu tests, use
-
-```sh
-python -m pytest -n auto --cov --cov-report "xml:test/coverage.xml" --ignore "test/onnx/test_pytorch_onnx_caffe2.py" --ignore "test/onnx/test_pytorch_onnx_caffe2_quantized.py" --ignore "test/onnx/test_caffe2_common.py" --ignore "test/onnx/test_pytorch_onnx_onnxruntime_cuda.py"
-```
+Test coverage reports generated from CI are available on [https://app.codecov.io/gh/pytorch/pytorch](https://app.codecov.io/gh/pytorch/pytorch)
 
 # Links
 
