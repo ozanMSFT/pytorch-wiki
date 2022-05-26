@@ -15,12 +15,15 @@ Make sure new functions and classes are **private to the module by default.** Ne
 ## Naming and usage convention
 
 1. Import only modules (in most cases).
-    - **Import only the _module_ instead of classes and functions** to keep the namespace clean and provide readers with more context on where its members come from. For example, readers don’t need to backtrack to see `sleep` is a function from `time`, as opposed to a function defined in the file. https://google.github.io/styleguide/pyguide.html#22-imports
-    - As another example,
+    - **Import only the _module_ instead of classes and functions** to (1) keep the namespace clean and provide readers with more context on where its members come from, and (2) prevent circular import errors.
+    1. Prevent circular import errors: [Programming FAQ — Python 3.10.4 documentation](https://docs.python.org/3/faq/programming.html?highlight=faq#what-are-the-best-practices-for-using-import-in-a-module)
+        > Circular imports are fine where both modules use the “import <module>” form of import. They fail when the 2nd module wants to grab a name out of the first (“from module import name”) and the import is at the top level. That’s because names in the 1st are not yet available, because the first module is busy importing the 2nd.
+    2. Clean namespace: For example, readers don’t need to backtrack to see `sleep` is a function from `time`, as opposed to a function defined in the file. https://google.github.io/styleguide/pyguide.html#22-imports
+        - As another example,
 
-        ![image](https://user-images.githubusercontent.com/11205048/169882197-f0a2ff8f-ec58-4610-a3c7-137ac68b3e53.png)
+            ![image](https://user-images.githubusercontent.com/11205048/169882197-f0a2ff8f-ec58-4610-a3c7-137ac68b3e53.png)
 
-        Having the module name “opset9” clearly signals to the reader where the op comes from. This helps reduce errors caused by confusion when different versions of a function are defined in different modules and used together.
+            Having the module name “opset9” clearly signals to the reader where the op comes from. This helps reduce errors caused by confusion when different versions of a function are defined in different modules and used together.
 2. `_module` is private to `torch.onnx`
     - Not for external consumption
     - If a module is inside a folder which has a `_` name. It is ok for the module to not be prefixed by `_` for simplicity.
