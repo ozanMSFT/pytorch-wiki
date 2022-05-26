@@ -1,6 +1,6 @@
 Page Maintainers: @seemethere, @janeyx99, @zengk95
 
-Updated on: Tue, May 10, 2022
+Updated on: Thu, May 26, 2022
 
 Please report any buggy instances to @pytorch/pytorch-dev-infra asynchronously or join our [Office Hours](https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours) to give in-person feedback or get in-person help!
 
@@ -45,12 +45,20 @@ You can also add multiple labels using comments with pytorchbot.
 ```
 
 ## Rebase
-Rebasing is useful you're reviewing an older PR and want to get new signal: you might want to rebase to get the most up to date tests and re run the CI. Note that rebasing always defaults to the default branch of pytorch/pytorch, which currently is master. You, along with any member of the pytorch organization, can rebase your PR.
+Rebasing is useful you're reviewing an older PR and want to get new signal: you might want to rebase to get the most up to date tests and re run the CI. Rebasing defaults to the default branch of pytorch/pytorch, which currently is master. You, along with any member of the pytorch organization, can rebase your PR.
 
 ```
 @pytorchbot rebase
 ```
 
+We also have the following flags:
+
+-s, -stable, -viableStrict: rebase the PR to the viable/strict branch instead of master.
+
+Examples:
+```
+@pytorchbot merge -s
+```
 
 <details>
 <summary> deprecated commands </summary>
