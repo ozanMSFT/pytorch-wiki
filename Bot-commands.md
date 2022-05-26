@@ -57,7 +57,7 @@ We also have the following flags:
 
 Examples:
 ```
-@pytorchbot merge -s
+@pytorchbot rebase -s
 ```
 
 <details>
