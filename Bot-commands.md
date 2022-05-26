@@ -53,7 +53,7 @@ Rebasing is useful you're reviewing an older PR and want to get new signal: you 
 
 We also have the following flags:
 
--s, -stable, -viableStrict: rebase the PR to the viable/strict branch instead of master.
+-s, -stable, -viableStrict: rebase the PR to the viable/strict branch instead of master. The viable/strict branch contains all commits on pytorch/pytorch that are green and stable (i.e. it passes all of the CI checks). 
 
 Examples:
 ```
