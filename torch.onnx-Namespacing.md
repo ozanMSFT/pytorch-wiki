@@ -61,3 +61,7 @@ Make sure new functions and classes are **private to the module by default.** Ne
         In symbolic_helper.py, instead of using ~`torch.onnx.TensorProtoDataType.UINT8`~ internally, we should use `_C_onnx.TensorProtoDataType.UINT8`.
 
     - Alias defined in `__init__.py` should only be used outside the module (by users).
+5. Similar to 4, do not define classes and functions in `__init__.py` meant for internal use. Define them in internal modules and expose them in `__init__.py` by aliasing instead. This prevents internal modules from depending on a partially initialized `torch.onnx`, causing import errors.
+6. Expose names in torch.onnx to users by declaring them in `__all__` within `__init__.py` as specified in [[Public API definition and documentation|Public API definition and documentation]]
+    - As opposed to not declaring the `__all__` variable in `__init__.py`
+    - This helps tighten the set of public APIs and serves as a safeguard against accidental declaration of public functions.
