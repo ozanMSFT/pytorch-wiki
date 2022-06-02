@@ -6,6 +6,13 @@ Please report any buggy instances to @pytorch/pytorch-dev-infra asynchronously o
 
 # @pytorchbot commands
 
+In order to invoke the bot on your PR, simply include a line that starts with `@pytorchbot` anywhere in a comment. That line will form the command; no multi-line commands are allowed. For example:
+```
+Some extra context, blah blah, wow this PR looks awesome
+
+@pytorchbot merge
+```
+
 ## CI Flow
 By default, the Lint and pull workflows should run on every push to your pull request. If that is not the case, tag @pytorch/pytorch-dev-infra with the instance. To trigger a set of non-default tests on your PR, add corresponding [labels](https://github.com/pytorch/pytorch/labels?q=ciflow) for the workflows you'd like to rerun (e.g., ciflow/trunk or ciflow/scheduled). 
 
