@@ -66,10 +66,12 @@ You can also add multiple labels using comments with pytorchbot.
 Rebasing is useful you're reviewing an older PR and want to get new signal: you might want to rebase to get the most up to date tests and re run the CI. Rebasing defaults to the default branch of pytorch/pytorch, which currently is master. You, along with any member of the pytorch organization, can rebase your PR.
 
 ```
-usage: @pytorchbot rebase [-s]
+usage: @pytorchbot rebase [-s | -b BRANCH]
 
 optional arguments:
-  -s, --stable  Rebase to viable/strict
+  -s, --stable          Rebase to viable/strict
+  -b BRANCH, --branch BRANCH
+                        Branch you would like to rebase to
 ```
 
 Examples:
