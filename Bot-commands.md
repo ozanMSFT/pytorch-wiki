@@ -20,12 +20,11 @@ By default, the Lint and pull workflows should run on every push to your pull re
 We are in the process of prototyping our GitHub First initiative, which will allow certain pull requests based on the upstream repo (not a fork) to be merged through GitHub first, then imported internally into Meta. The requirements for such PRs are described in [our merge rules](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json) where files fitting the specified patterns approved by the specified maintainers are allowed to merge directly with the following comment:
 
 ```
-usage: @pytorchbot merge [-g] [-a] [-f]
+usage: @pytorchbot merge [-g] [-f]
 
 optional arguments:
   -g, --green      Merge when required status checks pass. Currently, we only
                    require lint and builds to pass.
-  -a, --all-green  Merge when all status checks pass
   -f, --force      Merge without checking anything. ONLY USE THIS FOR CRITICAL
                    FAILURES.
 ```
