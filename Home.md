@@ -73,7 +73,6 @@ New to PyTorch? Don't know where to start?
 
 ### JIT/TorchScript 
 * [JIT Technical Overview](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/OVERVIEW.md)
-* [Current workflow](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/tensorexpr/DesignOverview.md)
 * [Static Runtime](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/runtime/static/README.md)
 * [TorchScript serialization](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/docs/serialization.md) 
 * [PyTorch Fuser](https://github.com/pytorch/pytorch/blob/master/torch/csrc/jit/codegen/fuser/README.md)
