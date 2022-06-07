@@ -97,6 +97,6 @@ https://github.com/pytorch/pytorch/wiki/Autograd-Onboarding-Lab
 There are a lot of small details in the autograd.
 Here are a few of them that are important for the lab above.
 
-- Tensor full of zeros, `None` in python and undefined Tensors in c++ all mean the same thing for gradients. This means that your backward function need to properly handle potential None/undefined Tensors and behave as-if they were Tensors full of zeros. Similarly, you backward can return None/undefined Tensors instead of a Tensor full of zeros if needed.
+- Tensor full of zeros, `None` in python and undefined Tensors in c++ all mean the same thing for gradients. This means that your backward function need to properly handle potential None/undefined Tensors and behave as-if they were Tensors full of zeros. Similarly, your backward can return None/undefined Tensors instead of a Tensor full of zeros if needed.
 - Don't forget to use `ctx.set_materialize_grads()` described in the extending doc on your custom Function to prevent zero Tensors from being materialized.
 - The dtype that the backward functions support might be different than the ones that the forward supports for some already defined functions. OpInfo provides many options to specify dtypes: `dtypes`, `dtypesIfCUDA`, `backward_dtypes` and `backward_dtypesIfCUDA`.
