@@ -222,7 +222,7 @@ Pay special attention to the following GitHub checks:
 Regarding other failing checks: if you are certain the failure is unrelated to your change, try rebasing on master. Often these failures are caused by a branch being out of sync with master.
 You can ignore the failing check if it is a regression in master. This can be verified by checking if master is also failing from [CI HUD](https://hud.pytorch.org/ci/pytorch/pytorch/master).
 
-**To merge your pull request, comment on the PR `@pytorchbot merge this`.**
+**To merge your pull request, comment on the PR `@pytorchbot merge`.** (doc [[Bot commands|]])
 
 If you make changes to non-ONNX related code, i.e. files out side of [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L4), please note the PR will require additional reviews from people outside of torch.onnx developers, and will take a longer process to merge into master. In this case, pytorchbot will not be able to merge the pull request. It will leave a comment like "Merge failed due to PR XXX does not match merge rules". Please label the pull request with `onnx-needs-import`.
 
