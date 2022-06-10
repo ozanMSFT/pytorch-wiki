@@ -23,10 +23,9 @@ We are in the process of prototyping our GitHub First initiative, which will all
 usage: @pytorchbot merge [-g] [-f]
 
 optional arguments:
-  -g, --green      Merge when required status checks pass. Currently, we only
-                   require lint and builds to pass.
-  -f, --force      Merge without checking anything. ONLY USE THIS FOR CRITICAL
-                   FAILURES.
+  -g, --green  Merge when all status checks pass.
+  -f, --force  Merge without checking anything. ONLY USE THIS FOR CRITICAL
+               FAILURES.
 ```
 
 Examples:
