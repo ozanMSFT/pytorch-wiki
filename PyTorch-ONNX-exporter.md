@@ -228,7 +228,7 @@ If you make changes to non-ONNX related code, i.e. files out side of [ONNX merge
 
 See [GitHub pull request workflow](https://docs.github.com/en/get-started/quickstart/github-flow).
 
-Adhere to [Google's Code Review Developer Guide](https://google.github.io/eng-practices/review/).
+Adhere to [Google's Code Review Developer Guide](https://google.github.io/eng-practices/review/) and [[PyTorch Code review values|Code review values]]
 
 ## Tests
 
@@ -267,8 +267,6 @@ You can use `pytest` to run tests in parallel and generate a coverage report.
 ```sh
 python -m pytest -n auto --cov --cov-report "xml:test/coverage.xml" test/onnx/test_pytorch_onnx_onnxruntime.py
 ```
-
-Test coverage reports generated from CI are available on [https://app.codecov.io/gh/pytorch/pytorch](https://app.codecov.io/gh/pytorch/pytorch)
 
 # Links
 
