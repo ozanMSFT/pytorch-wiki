@@ -22,7 +22,7 @@
 * Only works for users who are connected to the Meta VPN
 * Requires a label (*with-ssh* in this case) to be applied to the Pull Request
     * As opposed to clicking *Re-run with SSH* through the CircleCI UI
-    * **NOTE:** SSH keys will not be added to jobs ran *before* the label is applied so workflows will need to be re-ran *after* the *with-ssh* label has been applied
+    * **NOTE:** SSH keys will not be added to jobs that ran *before* the label is applied, so workflows will need to be re-ran *after* the *with-ssh* label has been applied
         * This is true even if the job is re-run using GitHub’s “re-run jobs” button
         * **A completely new workflow run needs to be triggered after the label is applied**
 * Only works for `pull_request` events and will not work on *main branch* `push` events
