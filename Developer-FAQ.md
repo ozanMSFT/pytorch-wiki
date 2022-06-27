@@ -48,7 +48,7 @@ Push your changes to a pytorch/pytorch branch named ci-all/<your name here>. Tha
 
 ### My PR was rejected for being "too small" &mdash; what gives!?
 
-Each PR takes costly machine and developer time. "Small" PRs that only correct minor spelling errors or make tiny grammatical improvements typically aren't worth that expensve.
+Each PR takes costly machine and developer time. "Small" PRs that only correct minor spelling errors, make tiny grammatical improvements, or reformat a few lines of code typically aren't worth that expense.
 
 ### I have a new function or feature I'd like to add to PyTorch, should it be in "PyTorch Core" or a library like torchvision?
 
