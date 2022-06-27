@@ -1,5 +1,5 @@
 **Warning:** This doc presents the end state where we want to be with our public API. And as of writing, there are still some function that "look public" even though they should be private.
-As of writing, if a function "looks public" and is documented on https://pytorch.org/docs, then you can rely on it being public. Otherwise, if you plan to rely on a function that is not documented on the website, please open an issue first to ask if this function is indeed public or unexpectedly exposed and might get removed in the future.
+As of writing this note, if a function "looks public" and is documented on https://pytorch.org/docs, then you can rely on it being public. Otherwise, if you plan to rely on a function that is not documented on the website, please open an issue first to ask if this function is indeed public or unexpectedly exposed and might get removed in the future.
 
 # What is public API within the PyTorch project
 
