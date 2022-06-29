@@ -248,16 +248,13 @@ The most used test file is [test_pytorch_onnx_onnxruntime.py](https://github.com
 
 `run_test()` converts the module to ONNX and compares the output between PyTorch and ONNX Runtime.
 
-Tests added to `TestONNXRuntime` are automatically defined for all supported opset versions.
-The class name with no suffix runs tests against opset version 9.
+Tests added to `TestONNXRuntime` are automatically defined for all supported opset versions. Use the `-k` option in pytest to run the test you want.
 
 For example:
 
 ```sh
-# run test for opset 11
-python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime_opset11::test_arithmetic_prim_bool
-# run test for opset 9
-python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py::TestONNXRuntime_opset9::test_arithmetic_prim_bool
+# run the `test_quantized_arithmetic_qfunctional` test
+python -m pytest test/onnx/test_pytorch_onnx_onnxruntime.py -k test_quantized_arithmetic_qfunctional
 ```
 
 An example of adding unit tests for a new symbolic function: [Add binary_cross_entropy_with_logits op](https://github.com/pytorch/pytorch/pull/49675)
