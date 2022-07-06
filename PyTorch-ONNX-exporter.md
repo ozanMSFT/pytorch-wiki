@@ -6,22 +6,25 @@ Documentation for developing the PyTorch-ONNX exporter (`torch.onnx`). For an in
 
 <!-- TOC generated with https://github.com/ekalinin/github-markdown-toc -->
 
-* [Development process](#development-process)
-   * [Environment setup](#environment-setup)
-      * [Fork PyTorch](#fork-pytorch)
-      * [Build PyTorch](#build-pytorch)
-         * [Optional build tips](#optional-build-tips)
-      * [Install additional dependencies](#install-additional-dependencies)
-         * [ONNX and ONNX Runtime](#onnx-and-onnx-runtime)
-         * [TorchVision](#torchvision)
-      * [Sanity check](#sanity-check)
-      * [VS Code](#vs-code)
-   * [Pull requests](#pull-requests)
-   * [Tests](#tests)
-* [Links](#links)
-   * [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
-* [Features](#features)
-   * [Quantized model export](#quantized-model-export)
+- [Table of Contents](#table-of-contents)
+- [Development process](#development-process)
+  - [Environment setup](#environment-setup)
+    - [Fork PyTorch](#fork-pytorch)
+    - [Build PyTorch](#build-pytorch)
+      - [Optional build tips](#optional-build-tips)
+    - [Install additional dependencies](#install-additional-dependencies)
+      - [ONNX and ONNX Runtime](#onnx-and-onnx-runtime)
+      - [TorchVision](#torchvision)
+    - [Sanity check](#sanity-check)
+    - [VS Code](#vs-code)
+      - [Recommended settings and extensions](#recommended-settings-and-extensions)
+      - [Debugging with `gdb`](#debugging-with-gdb)
+  - [Pull requests](#pull-requests)
+  - [Tests](#tests)
+- [Links](#links)
+  - [Relevant parts of PyTorch repo](#relevant-parts-of-pytorch-repo)
+- [Features](#features)
+  - [Quantized model export](#quantized-model-export)
 
 # Development process
 
@@ -135,6 +138,8 @@ If the second command succeeds, then probably python is finding a PyTorch that w
 
 ### VS Code
 
+#### Recommended settings and extensions
+
 You can place this recommended `settings.json` under `.vscode/`
 
 ```jsonc
@@ -207,17 +212,57 @@ If you use error lens, I recommend the following settings
 }
 ```
 
+#### Debugging with `gdb`
+
+You can set up VS Code to run `gdb` and set breakpoints when debugging c++ code. In `launch.json` add the configuration
+
+```jsonc
+  // ...
+  "configurations": [
+    {
+      "name": "(gdb) Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "<path to python bin>",
+      "args": [
+        "-m",
+        "pytest",
+        "<test file and test name in pytest format>"
+      ],
+      "stopAtEntry": false,
+      "cwd": "path/to/repo/of/pytorch",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+  ]
+```
+
+You can then set breakpoints in the c++ source and run the debugger in VS Code.
+
 ## Pull requests
 
 PRs should be opened directly against master. PRs can be directly merged into master as long as it satisfies the [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L3):
 
-- Approved by one of torch.onnx developers listed in `approved_by` section.
-- All modified files fall under the `patterns` section.
+* Approved by one of torch.onnx developers listed in `approved_by` section.
+* All modified files fall under the `patterns` section.
 
 Pay special attention to the following GitHub checks:
 
-- Has "onnx" in the name, which runs ONNX related tests.
-- Has "Lint" in the name, which does code format checks.
+* Has "onnx" in the name, which runs ONNX related tests.
+* Has "Lint" in the name, which does code format checks.
 
 Regarding other failing checks: if you are certain the failure is unrelated to your change, try rebasing on master. Often these failures are caused by a branch being out of sync with master.
 You can ignore the failing check if it is a regression in master. This can be verified by checking if master is also failing from [CI HUD](https://hud.pytorch.org/ci/pytorch/pytorch/master).
@@ -242,9 +287,9 @@ Most relevant tests are in [test/onnx/](https://github.com/pytorch/pytorch/tree/
 
 The most used test file is [test_pytorch_onnx_onnxruntime.py](https://github.com/pytorch/pytorch/blob/onnx_ms_1/test/onnx/test_pytorch_onnx_onnxruntime.py). The tests in this file generally:
 
-- Define a subclass of `torch.nn.Module`.
-- Define some inputs.
-- Call `self.run_test()` with the instantiated module and inputs.
+* Define a subclass of `torch.nn.Module`.
+* Define some inputs.
+* Call `self.run_test()` with the instantiated module and inputs.
 
 `run_test()` converts the module to ONNX and compares the output between PyTorch and ONNX Runtime.
 
@@ -267,15 +312,15 @@ python -m pytest -n auto --cov --cov-report "xml:test/coverage.xml" test/onnx/te
 
 # Links
 
-- [User-facing docs](https://pytorch.org/docs/master/onnx.html).
+* [User-facing docs](https://pytorch.org/docs/master/onnx.html).
 
 ## Relevant parts of PyTorch repo
 
-- User-facing doc: [docs/source/onnx.rst](https://github.com/pytorch/pytorch/blob/onnx_ms_1/docs/source/onnx.rst)
-- Python tests: [test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx)
-- More Python tests: [test/jit/test_onnx_export.py](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/jit/test_onnx_export.py)
-- Python code: [torch/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/onnx)
-- C++ code: [torch/csrc/jit/passes/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/csrc/jit/passes/onnx)
+* User-facing doc: [docs/source/onnx.rst](https://github.com/pytorch/pytorch/blob/onnx_ms_1/docs/source/onnx.rst)
+* Python tests: [test/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/onnx)
+* More Python tests: [test/jit/test_onnx_export.py](https://github.com/pytorch/pytorch/tree/onnx_ms_1/test/jit/test_onnx_export.py)
+* Python code: [torch/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/onnx)
+* C++ code: [torch/csrc/jit/passes/onnx/](https://github.com/pytorch/pytorch/tree/onnx_ms_1/torch/csrc/jit/passes/onnx)
 
 # Features
 
