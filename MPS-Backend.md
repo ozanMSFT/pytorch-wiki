@@ -31,7 +31,7 @@ res = x[:2]
 
 All the view operations will call into as_strided in order to create the View tensor:
 
-`
+```
 Tensor as_strided_tensorimpl_mps(const Tensor& self, IntArrayRef size, IntArrayRef stride, optional<int64_t> storage_offset_)
 {
   auto storage_offset = storage_offset_.value_or(self.storage_offset());
@@ -44,16 +44,16 @@ Tensor as_strided_tensorimpl_mps(const Tensor& self, IntArrayRef size, IntArrayR
 
   return result;
 }
-`
+```
 
 At this step, when the View tensor is initialized, we are creating a generic graph which we will later use to materialize the data. The graph that we are creating will Gather the data that the View tensor requested from the original Tensor. For the Gather graph, we are performing the following algorithm.
 
 Inside mps::createViewGraph we are creating a generic graph based on the original Tensor, the new shape of the View tensor and the dtype of the original Tensor, then we will cache this graph so other similar View operations could reuse it:
 
-`
+```
 string key = getStridedKey(self.scalar_type(), base_shape, size, needsScatter);
 cachedGraph = static_cast<ViewCachedGraph *>(cache_->CreateCachedGraph(key, ^ MPSCachedGraph * ()
-`
+```
 
 Note that we store the shape of the original tensor in its buffer block in MPSAllocator, so it could be retrieved at the time of gather or when we need the original shape of the tensor when we’re creating a view from it.  
 
@@ -61,7 +61,7 @@ Gather algorithm :
 
 To create the Graph, we are using the following algorithm:
 
-`
+```
 // 1. Create 1D *indicesTensor*:
 //      Based on the *strides* and the *storage_offset* of the View, create a list of
 //      indices that we need to gather from the original Tensor 
@@ -72,7 +72,7 @@ To create the Graph, we are using the following algorithm:
 // 4. Reshape the gathered data (*gatherResult*) back to the original shape of the View:
 //     *outputTensor* = [graph reshapeTensor: *gatherResult
 *//                         withShapeTensor: shapeOfViewTensor ...];
-`
+```
 
 Materialize memory:
 
@@ -85,7 +85,7 @@ The above graph is cached and later used when the memory of that View is *materi
 2. In any PyTorch operation using View tensors:
     1. We are materializing the data of the View during the Placeholder creation:
 
-`
+```
 Placeholder*::*Placeholder(MPSGraphTensor* mpsGraphTensor, const Tensor& src, MPSShape *mpsShape) : _tensor(src)
 {
   // ... 
@@ -94,16 +94,16 @@ Placeholder*::*Placeholder(MPSGraphTensor* mpsGraphTensor, const Tensor& src, MP
   }
   // ...
 } 
-`
+```
 
 Example of Gather algorithm:
 
 *Slicing:*
 
-`
+```
 x = torch.tensor([1, 2, 3, 4], device="mps")
 res = x[:2]
-`
+```
 
 For this example, the algorithm works in the following way:
 
@@ -123,14 +123,14 @@ Scatter algorithm:
 
 In some cases, we can not simply copy gather’s result doing a blit operation. Let’s take for example the following case:
 
-`
+```
 x = torch.tensor([[1, 2, 3], [4, 5, 6]], device="mps")
 x[:,0] = 7
-`
+```
 
 Here we are replacing the first column with 7. In this case, when copy_kernel_mps is called, we will gather from *src* and scatter back to *dst*. The passed *dst* is a View tensor of *x* ** , ** and, based on it’s strides and storage offset, we are creating an *indicesTensor* (similar as in Gather Algorithm). Based on the indicesTensor we will do an in-place scatter operation and write back the gathered values from src into dst:
 
-`
+```
 // 1. Create 1D *indicesTensor* based on *dst*:
 //      Based on the *strides* and the *storage_offset* of the View, create a list of
 //      indices that we need to scatter back to the original Tensor 
@@ -147,55 +147,55 @@ Here we are replacing the first column with 7. In this case, when copy_kernel_mp
 // 4. Reshape the scattered data (*gatherResult*) back to the original shape of the *dst* View:
 //     *outputTensor* = [graph reshapeTensor: *scatterResult*
 //                               withShape: baseShapeOfDst ...];
-`
+```
 
 Example of Scatter algorithm:
 
 *Replacing a column:*
 
-`
+```
 x = torch.tensor([[1, 2, 3], [4, 5, 6]], device="mps")
 x[:,0] = 7
-`
+```
 For above example, copy_kernel_mps will be called:
 
-`
+```
 *static* at*::*Tensor& copy_kernel_mps(at*::*Tensor& dst_, const at*::*Tensor& src_, bool non_blocking)
-`
+```
 
 * dst will be a view of x (x[:,0])
 * src is a non-contiguous tensor. We will run gather for it, and the result will be [7, 7]
 * The gathered result is used as updatedTensor in Scatter. If dst is a non contiguous Tensor (in this case it is), we will scatter back the results from Gather in dst . 
     * Perform in-place Scatter operation. Based on dst’s strides and storage offset, we will end up with the following scatter call:
-    *  `
+    *  ```
         //     *scatterResult* = [graph scatterAlongAxis: 0
         //                               withDataTensor: *[1, 2, 3, 4, 5, 6]*
         //                                updatesTensor: *[7, 7]*                                  
         //                                indicesTensor: *[0, 3]* ** ...];
-       `
+       ```
 
 Example of Gather Scatter mixed together: 
 
 * Slicing with step:
-`
+```
 x = torch.zeros(10, dtype=torch.float32, device="mps")
 x[::2] = 1.0
-`
+```
 * Replacing a column:
-`
+```
 x = torch.tensor([[1, 2, 3], [4, 5, 6]], device="mps")
 x[:,0] = 7
-`
+```
 * In-place operations:
-`
+```
 a_mps = torch.ones((2, 2),).to(torch.device("mps"))
 b_mps = torch.ones((2, 2),).to(torch.device("mps"))
 
 a_mps[:, 0] += b_mps[:, 0]
 a_mps[:, 0]  = a_mps[:, 0] + b_mps[:, 0]
-`
+```
 * Padding:
-`
+```
 y = torch.ones(2,1, device='mps')
 y_pad = torch.nn.functional.pad(y, (1, 1, 1, 1), 'constant', 0)
-`
+```
