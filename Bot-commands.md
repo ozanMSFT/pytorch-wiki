@@ -28,14 +28,18 @@ command:
 ```
 ## Merge
 ```
-usage: @pytorchbot merge [-g | -f]
+usage: @pytorchbot merge [-g | -f REASON | -l]
 
 Merge an accepted PR, subject to the rules in .github/merge_rules.json.
 By default, this will wait for all required checks to succeed before merging.
 
 optional arguments:
-  -g, --green  Merge when *all* status checks pass.
-  -f, --force  Merge without checking anything. ONLY USE THIS FOR CRITICAL FAILURES.
+  -g, --green           Merge when *all* status checks pass.
+  -f FORCE, --force REASON
+                        Merge without checking anything. This requires a reason for auditting purpose, for example:
+                        `@pytorchbot merge -f '[MINOR] Fix lint. Expecting all PR tests to pass'`
+                        The reason must be longer than 2 words. ONLY USE THIS FOR CRITICAL FAILURES.
+  -l, --land-checks     Merge with land time checks. This will create a new branch with your changes rebased on viable/strict and run additional tests (EXPERIMENTAL)
 ```
 ## Revert
 ```
