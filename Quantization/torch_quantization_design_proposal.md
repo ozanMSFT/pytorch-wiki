@@ -94,7 +94,7 @@ In that case, we plan to support quantized operations with default values for th
 ```
 c = torch.add(a,b)
 # Works for both quantized and float tensors, scale and zero-point for c
-# is set to 0 and 1.
+# is set to 1 and 0.
 c = torch._empty_affine_quantized(scale = 0.5, zero-point = 32, dtype = torch.qint8)
 torch.add(a,b, out = c)
 # Can also do:
