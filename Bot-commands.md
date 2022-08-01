@@ -4,7 +4,7 @@ Updated on: 7/21/22
 
 Please report any buggy instances to @pytorch/pytorch-dev-infra asynchronously or join our [Office Hours](https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours) to give in-person feedback or get in-person help!
 # Land Checks
-We are currently rolling out land checks to all of the users in this [list](https://github.com/pytorch/test-infra/blob/main/torchci/lib/bot/rolloutUtils.ts). If you want to use the old behavior, you can use the -g which will wait for all checks to pass (which is usually just pull and lint workflows). If you believe there's some infra flakiness preventing you from landing, please use -f and supply a message. Additionally, you can add the accept2run label to your PR to run land check signals when your PR gets approved so that the land process doesn't take as long. You can also add accept2ship if you want to land your PR as soon as your PR gets approved.  
+We are currently rolling out land checks to all of the users in this [list](https://github.com/pytorch/test-infra/blob/main/torchci/lib/bot/rolloutUtils.ts). If you want to use the old behavior, you can use the `-g` which will wait for all checks to pass (which is usually just pull and lint workflows). If you believe there's some infra flakiness preventing you from landing, please use `-f` and supply a message. Additionally, you can add the accept2run label to your PR to run land check signals when your PR gets approved so that the land process doesn't take as long. You can also add accept2ship if you want to land your PR as soon as your PR gets approved.  
 
 If you have any feedback or complaints, please reach out to the Pytorch OSS CI team or visit our [Office Hours](https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours).
 
