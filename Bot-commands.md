@@ -1,6 +1,6 @@
 Page Maintainers: @seemethere, @janeyx99, @zengk95
 
-Updated on: 7/21/22
+Updated on: 8/8/22
 
 Please report any buggy instances to @pytorch/pytorch-dev-infra asynchronously or join our [Office Hours](https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours) to give in-person feedback or get in-person help!
 # Land Checks
@@ -42,7 +42,10 @@ optional arguments:
   -f MESSAGE, --force MESSAGE
                         Merge without checking anything. This requires a reason for auditting purpose, for example:
                         `@pytorchbot merge -f 'Minor update to fix lint. Expecting all PR tests to pass'`
-  -l, --land-checks     Merge with land time checks. This will create a new branch with your changes rebased on viable/strict and run additional tests (EXPERIMENTAL)
+  -l, --land-checks     Merge with land time checks. This will create a new branch with your changes rebased 
+                        on viable/strict and run a majority of trunk tests _before_ landing to increase trunk
+                        reliability and decrease risk of revert. The tests added are: pull, Lint and trunk. Note
+                        that periodic is excluded. (EXPERIMENTAL)
 ```
 ## Revert
 ```
