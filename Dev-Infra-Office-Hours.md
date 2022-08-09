@@ -1,10 +1,4 @@
-## Are you running into build failures? 
-
-Is your PR stuck?
-
-Weird tests failing?
-
-Build red for mysterious reasons?
+## Running into build failures? PR stuck? Weird tests failing? CI mysteriously red?
 
 **Come to the Pytorch Dev Infra Office Hours for help!**
  
