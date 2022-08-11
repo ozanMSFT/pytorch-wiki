@@ -109,7 +109,7 @@ pytorch and the locally built version is used).
 
 ```sh
 # If you're not using CUDA, use the command below. If you are, see https://pytorch.org/get-started/locally/
-pip install --no-deps --pre torchvision --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+pip install --upgrade --no-deps --pre torchvision --extra-index-url https://download.pytorch.org/whl/nightly/cpu
 # manually install torchvision deps
 conda install -c conda-forge pillow
 ```
