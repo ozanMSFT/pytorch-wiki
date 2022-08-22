@@ -41,7 +41,7 @@ are generally not used by the `torch.onnx` developers.
 
 CUDA is not required for most development tasks. If you use CUDA, building PyTorch will probably be slower.
 
-Install [Anaconda](https://www.anaconda.com/products/individual) and activate a new environment. Use Python 3.9 as `onnxruntime` does not support Python 3.10 or higher (as of April 2022).
+Install [Anaconda](https://www.anaconda.com/products/distribution#linux) and activate a new environment. Use Python 3.9 as `onnxruntime` does not support Python 3.10 or higher (as of April 2022).
 
 Install [direnv](https://direnv.net/) and initialize your envrc file in the root of your PyTorch git repo:
 
