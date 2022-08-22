@@ -13,6 +13,11 @@ Welcome to the PyTorch developer's wiki!
 New to PyTorch? Don't know where to start?
 - [[Core Onboarding|Core Frontend Onboarding]]
 
+## Contributing
+* [PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
+* [Setting up you dev environment (contributing.md)](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
+* [How to propose feature changes to PyTorch](How to propose feature changes to PyTorch)
+
 ## Developer docs
 
 * [Developer FAQ](Developer-FAQ)
@@ -131,8 +136,6 @@ New to PyTorch? Don't know where to start?
 
 ## Community
 * [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
-* [Contributing](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
-* [PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
 * [PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
 
 ## Archived
