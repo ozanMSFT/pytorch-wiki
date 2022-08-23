@@ -117,6 +117,14 @@ conda install -c conda-forge pillow
 > I hope there's a better way to deal with this. If you know of one please
 > update these instructions and email the team!
 
+#### Dev tools
+
+Install [[lintrunner|lintrunner]] and [ghstack](https://github.com/ezyang/ghstack)
+
+```sh
+pip install lintrunner ghstack
+```
+
 ### Sanity check
 
 You should be able to run these commands successfully:
