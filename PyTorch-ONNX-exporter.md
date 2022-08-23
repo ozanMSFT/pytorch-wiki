@@ -77,11 +77,14 @@ export DEBUG=1
 
 ### Install additional dependencies
 
-Install the dependencies required to run CI checks locally.
+Install the dependencies required for development and to run CI checks locally.
 
 ```sh
-conda install -c conda-forge expecttest pytest mypy=0.950 flake8 hypothesis pytest-cov pytest-xdist
+pip install expecttest pytest flake8 hypothesis pytest-cov pytest-xdist pylint lintrunner ghstack
+lintrunner init
 ```
+
+Read more about [[lintrunner|lintrunner]] and [ghstack](https://github.com/ezyang/ghstack).
 
 #### ONNX and ONNX Runtime
 
@@ -116,14 +119,6 @@ conda install -c conda-forge pillow
 
 > I hope there's a better way to deal with this. If you know of one please
 > update these instructions and email the team!
-
-#### Dev tools
-
-Install [[lintrunner|lintrunner]] and [ghstack](https://github.com/ezyang/ghstack)
-
-```sh
-pip install lintrunner ghstack
-```
 
 ### Sanity check
 
