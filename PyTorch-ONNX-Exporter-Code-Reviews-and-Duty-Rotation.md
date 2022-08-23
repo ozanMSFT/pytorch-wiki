@@ -20,7 +20,7 @@ Some good reasons an author may assign reviewers:
 - That reviewer has much more context on the change than anybody else on the team.
 - That reviewer is the only person with expertise in the code being changed.
 
-If this PR is for an ADO Product Backlog Item and work on that item cannot proceed until it's merged, the author should move the item into the "In Review" column on the Kanban.
+If this PR is for an item whose work cannot proceed until the PR is merged, the author should move the item into the "In Review" column on the Kanban.
 
 ### Reviewers
 
