@@ -1,5 +1,18 @@
 Author: garymiguel. Created: 2021-07-16
 
+- [Pull request review protocol](#pull-request-review-protocol)
+  - [Authors](#authors)
+  - [Reviewers](#reviewers)
+- [Duty rotation](#duty-rotation)
+  - [Mechanics](#mechanics)
+  - [Rotation duties](#rotation-duties)
+  - [Review new pull requests](#review-new-pull-requests)
+  - [Review previously assigned pull requests](#review-previously-assigned-pull-requests)
+  - [GitHub issue triage](#github-issue-triage)
+    - [Triage new issues](#triage-new-issues)
+    - [Resolving an issue](#resolving-an-issue)
+  - [Review "onnx-needs-info" items](#review-onnx-needs-info-items)
+
 ## Pull request review protocol
 
 Reviewers and authors should follow [Google's Code Review Developer Guide](https://google.github.io/eng-practices/review/).
