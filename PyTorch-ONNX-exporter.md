@@ -73,6 +73,9 @@ PATH_add /usr/lib/ccache
 export LDFLAGS='-lrt'
 # Build with debug symbols.
 export DEBUG=1
+
+# torch.onnx flags
+export TORCH_ONNX_EXPERIMENTAL_RUNTIME_TYPE_CHECK=ERRORS
 ```
 
 ### Install additional dependencies
@@ -80,7 +83,7 @@ export DEBUG=1
 Install the dependencies required for development and to run CI checks locally.
 
 ```sh
-pip install expecttest pytest flake8 hypothesis pytest-cov pytest-xdist pylint lintrunner ghstack
+pip install expecttest pytest flake8 hypothesis pytest-cov pytest-xdist pylint lintrunner ghstack beartype
 lintrunner init
 ```
 
