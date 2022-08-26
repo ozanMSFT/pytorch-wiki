@@ -83,7 +83,7 @@ export TORCH_ONNX_EXPERIMENTAL_RUNTIME_TYPE_CHECK=ERRORS
 Install the dependencies required for development and to run CI checks locally.
 
 ```sh
-pip install expecttest pytest flake8 hypothesis pytest-cov pytest-xdist pylint lintrunner ghstack beartype
+pip install expecttest pytest parameterized flake8 hypothesis pytest-cov pytest-xdist pylint lintrunner ghstack beartype
 lintrunner init
 ```
 
