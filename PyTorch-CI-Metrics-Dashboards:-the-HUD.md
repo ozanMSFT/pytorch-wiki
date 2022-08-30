@@ -1,4 +1,10 @@
-# PyTorch CI Metrics/Dashboards Compilation
+# PyTorch CI Metrics/Dashboards Compilation: the HUD
+
+All our relevant dashboards and metrics have been consolidated on our HUD: https://hud.pytorch.org/ 
+Code for the HUD can be found in https://github.com/pytorch/test-infra/tree/main/torchci
+
+OUTDATED - The below was as of Sept 2021.
+<details>
 
 This page is a compilation of dashboards we have for tracking PyTorch CI, including test time, test status, and when the docs were last updated.
 
@@ -35,4 +41,4 @@ This page is a compilation of dashboards we have for tracking PyTorch CI, includ
 * Internal stats from other teams
     * Fortify Reliability (https://fburl.com/unidash/kicivh9f) (from internal DevX)
     * Remote worker status (https://fburl.com/unidash/iu7kdxza) (from internal DevX, mostly for GPU and mobile RE)
-
+<details>
