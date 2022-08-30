@@ -13,9 +13,10 @@ Caveat: Slower merges: Once you run the merge command you'll still need to wait 
 
 We are currently rolling out land checks to all of the users in this [list](https://github.com/pytorch/test-infra/blob/main/torchci/lib/bot/rolloutUtils.ts).
 
-If you want to use the old behavior, you can use `@pytorchmergebot merge -g` which will wait for all checks on the PR to pass (which is usually just pull and lint workflows).
-
-If you believe there's some infra flakiness preventing you from landing, please use `-f` and supply a message. 
+If you find rough edges with the land validation:
+- Please file an issue to call it out to us!
+- You can revert back to the old behavior by invoking `@pytorchmergebot merge -g`, which will only for checks on the PR to pass (which is usually just pull and lint workflows).
+- If you believe there's some infra flakiness preventing you from landing, you can also use `-f` and supply a message. 
 
 Additionally, you can add the accept2run label to your PR to run land check signals when your PR gets approved so that the land process doesn't take as long. You can also add accept2ship if you want to land your PR as soon as your PR gets approved.
 
