@@ -1,6 +1,6 @@
-Page Maintainers: @seemethere, @janeyx99, @zengk95
+Page Maintainers: @seemethere, @janeyx99, @zengk95, @zainrizvi
 
-Updated on: 8/8/22
+Updated on: 8/30/22
 
 Please report any buggy instances to @pytorch/pytorch-dev-infra asynchronously or join our [Office Hours](https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours) to give in-person feedback or get in-person help!
 
