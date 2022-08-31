@@ -11,6 +11,8 @@ Benefit: You get higher confidence that your PR won't have to be reverted after 
 
 Caveat: Slower merges: Once you run the merge command you'll still need to wait for the land checks branch to build and pass all checks
 
+If you have the ciflow/trunk tag on your PR, no extra checks will be run since you've already passed all the checks that would've been attempted.
+
 We are currently rolling out land checks to all of the users in this [list](https://github.com/pytorch/test-infra/blob/main/torchci/lib/bot/rolloutUtils.ts).
 
 If you find rough edges with the land validation:
