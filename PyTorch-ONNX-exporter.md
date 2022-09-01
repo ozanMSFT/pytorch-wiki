@@ -260,7 +260,7 @@ You can then set breakpoints in the c++ source and run the debugger in VS Code.
 
 ## Pull requests
 
-PRs should be opened directly against master. PRs can be directly merged into master as long as it satisfies the [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L3):
+PRs should be opened directly against master. PRs can be directly merged into master as long as it satisfies the [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.yaml#L14):
 
 * Approved by one of torch.onnx developers listed in `approved_by` section.
 * All modified files fall under the `patterns` section.
@@ -275,7 +275,7 @@ You can ignore the failing check if it is a regression in master. This can be ve
 
 **To merge your pull request, comment on the PR `@pytorchbot merge`.** (doc [[Bot commands|]])
 
-If you make changes to non-ONNX related code, i.e. files out side of [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.json#L4), please note the PR will require additional reviews from people outside of torch.onnx developers, and will take a longer process to merge into master. In this case, pytorchbot will not be able to merge the pull request. It will leave a comment like "Merge failed due to PR XXX does not match merge rules". Please label the pull request with `onnx-needs-import`.
+If you make changes to non-ONNX related code, i.e. files outside of [ONNX merge rule](https://github.com/pytorch/pytorch/blob/master/.github/merge_rules.yaml#L14), please note the PR will require additional reviews from people outside of torch.onnx developers, and will take a longer process to merge into master. In this case, pytorchbot will not be able to merge the pull request. It will leave a comment like "Merge failed due to PR XXX does not match merge rules". Please label the pull request with `onnx-needs-import`.
 
 See [GitHub pull request workflow](https://docs.github.com/en/get-started/quickstart/github-flow).
 
