@@ -87,7 +87,9 @@ pip install expecttest pytest parameterized flake8 hypothesis pytest-cov pytest-
 lintrunner init
 ```
 
-Read more about [[lintrunner|lintrunner]] and [ghstack](https://github.com/ezyang/ghstack).
+Read more about:
+1. [[lintrunner|lintrunner]] (required): Run all the linters, and ensures consistency between the CI and local development environments.
+2. [ghstack](https://github.com/ezyang/ghstack) (optional): Conveniently submit stacks of diffs to GitHub as separate pull requests.
 
 #### ONNX and ONNX Runtime
 
