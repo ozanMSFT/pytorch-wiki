@@ -90,6 +90,7 @@ lintrunner init
 Read more about:
 1. [[lintrunner|lintrunner]] (required): Run all the linters, and ensures consistency between the CI and local development environments.
 2. [ghstack](https://github.com/ezyang/ghstack) (optional): Conveniently submit stacks of diffs to GitHub as separate pull requests.
+NOTE: [GitLens](https://gitlens.amod.io/) comes in handy with ghstack
 
 #### ONNX and ONNX Runtime
 
