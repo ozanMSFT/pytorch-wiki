@@ -20,7 +20,7 @@ We're responsible for areas like:
 
 If you have any questions, frustrations, or other feedback, please join our office hours!  We would love to hear from you!
 
-## There will be no office hours on
+## There will be no office hours on US holidays, specifically:
 - April 29th, 2022
 - May 27th, 2022
 - July 1st, 2022
