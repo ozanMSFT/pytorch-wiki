@@ -22,7 +22,17 @@ yarn test test/autoLabelBot.test.ts
 
 When your change is ready, open up a pull request to [our test-infra repo](https://github.com/pytorch/test-infra) and tag @pytorch/pytorch-dev-infra for a review.
 
-### How does categorizing for the release notes work?
-The overall goal is to give every PR a single `release notes: blah` label and also a single `topic: blah` label. There is the exception that if a PR is `topic: not user facing`, there is no need to categorize it for the release notes (since it won't be a part of the release notes). 
+### Why categorize (for release notes)? And how does it work?
 
-The current heuristics we use are mainly defined in the [`getReleaseNotesCategoryAndTopic`](https://github.com/pytorch/test-infra/blob/main/torchci/lib/bot/autoLabelBot.ts#L130) function. You can always help extend our heuristics by making conditions more specific, extending our bot to categorize more by looking at existing labels/title patterns/features of the pull request. 
+- Why categorize? The purpose of categorizing is so that during the release notes process, commits/PRs are routed to the right module owner whose job is to clean up the commit message and include additional information regarding bc-breaking changes or deprecations. 
+- When and how? Categorizing a PR to the right module should happen before it is landed and can be done by adding a single `release notes: <module name>` label. Labels corresponding to the modules are prefixed with `release notes:`. 
+- Optionally add a single `topic: blah` to make the module owners lives easier later. 
+- For PRs that are not user facing and are not intended to be a part of the release notes, the `topic: not user facing` should be added. In that case, the `release notes: <module name>` label is not required.
+
+If you are unsure of which label should be added, one can search existing PRs for examples: https://github.com/pytorch/pytorch/pulls?q=is%3Apr+is%3Aopen+label%3A%22release+notes%3A+nn%22
+
+The current heuristics we use are mainly defined in the [`getReleaseNotesCategoryAndTopic`](https://github.com/pytorch/test-infra/blob/main/torchci/lib/bot/autoLabelBot.ts#L130) function. You can always help extend our heuristics by making conditions more specific, extending our bot to categorize more by looking at existing labels/title patterns/features of the pull request.
+
+Please file an issue and tag @soulitzer/@janeyx99 if you find that your PRs are being mislabeled
+
+
