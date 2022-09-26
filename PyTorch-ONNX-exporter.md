@@ -337,5 +337,3 @@ python -m pytest -n auto --cov --cov-report "xml:test/coverage.xml" test/onnx/te
 
 To support quantized model export, we need to unpack the quantized tensor inputs and the PackedParam weights (<https://github.com/pytorch/pytorch/pull/69232>). We construct through `TupleConstruct` to have a 1-to-1 input mapping,
 so that we can use `replaceAllUsesWith` API for its successors. In addition, we support quantized namespace export, and the developers can add more symbolics for quantized operators conveniently in the current framework.
-
-Test Save
