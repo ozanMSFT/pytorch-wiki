@@ -25,11 +25,11 @@ When your change is ready, open up a pull request to [our test-infra repo](https
 ### Why categorize (for release notes)? And how does it work?
 
 - Why categorize? The purpose of categorizing is so that during the release notes process, commits/PRs are routed to the right module owner whose job is to clean up the commit message and include additional information regarding bc-breaking changes or deprecations. 
-- When and how? Categorizing a PR to the right module should happen before it is landed and can be done by adding a single `release notes: <module name>` label. Labels corresponding to the modules are prefixed with `release notes:`. 
+- When and how? Categorizing a PR to the right module should happen before it is landed and can be done by adding a single `release notes: <module name>` label. Labels corresponding to the modules are prefixed with `release notes:`. To find a full list of all the labels see: https://github.com/pytorch/pytorch/labels?q=release+notes%3A.
 - Optionally add a single `topic: blah` to make the module owners lives easier later. 
 - For PRs that are not user facing and are not intended to be a part of the release notes, the `topic: not user facing` should be added. In that case, the `release notes: <module name>` label is not required.
 
-If you are unsure of which label should be added, one can search existing PRs for examples: https://github.com/pytorch/pytorch/pulls?q=is%3Apr+is%3Aopen+label%3A%22release+notes%3A+nn%22
+If you are unsure of which label should be added, please ask your PR reviewer for help. One can also search existing PRs for examples: https://github.com/pytorch/pytorch/pulls?q=is%3Apr+is%3Aopen+label%3A%22release+notes%3A+nn%22
 
 The current heuristics we use are mainly defined in the [`getReleaseNotesCategoryAndTopic`](https://github.com/pytorch/test-infra/blob/main/torchci/lib/bot/autoLabelBot.ts#L130) function. You can always help extend our heuristics by making conditions more specific, extending our bot to categorize more by looking at existing labels/title patterns/features of the pull request.
 
