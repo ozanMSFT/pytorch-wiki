@@ -48,20 +48,19 @@ command:
 ```
 ## Merge
 ```
-usage: @pytorchbot merge [-g | -f REASON | -l]
+usage: @pytorchbot merge [-g | -f MESSAGE | -l] [-r [{viable/strict,master}]]
 
 Merge an accepted PR, subject to the rules in .github/merge_rules.json.
-By default, this will wait for all required checks to succeed before merging.
+By default, this will wait for all required checks (lint, pull) to succeed before merging.
 
 optional arguments:
-  -g, --green           Merge when *all* status checks pass.
+  -g, --green           Merge when all status checks running on the PR pass. To add status checks, use labels like `ciflow/trunk`.
   -f MESSAGE, --force MESSAGE
                         Merge without checking anything. This requires a reason for auditting purpose, for example:
-                        `@pytorchbot merge -f 'Minor update to fix lint. Expecting all PR tests to pass'`
-  -l, --land-checks     Merge with land time checks. This will create a new branch with your changes rebased 
-                        on viable/strict and run a majority of trunk tests _before_ landing to increase trunk
-                        reliability and decrease risk of revert. The tests added are: pull, Lint and trunk. Note
-                        that periodic is excluded. (EXPERIMENTAL)
+                        @pytorchbot merge -f 'Minor update to fix lint. Expecting all PR tests to pass'
+  -l, --land-checks     Merge with land time checks. This will create a new branch with your changes rebased on viable/strict and run a majority of trunk tests _before_ landing to increase trunk reliability and decrease risk of revert. The tests added are: pull, Lint and trunk. Note that periodic is excluded. (EXPERIMENTAL)
+  -r [{viable/strict,master}], --rebase [{viable/strict,master}]
+                        Rebase the PR to re run checks before merging.  Accepts viable/strict or master as branch options and will default to viable/strict if not specified.
 ```
 ## Revert
 ```
@@ -82,11 +81,11 @@ optional arguments:
 ```
 usage: @pytorchbot rebase [-s | -b BRANCH]
 
-Rebase a PR. Rebasing defaults to the default branch of pytorch (master).
+Rebase a PR. Rebasing defaults to the stable viable/strict branch of pytorch.
 You, along with any member of the pytorch organization, can rebase your PR.
 
 optional arguments:
-  -s, --stable          Rebase to viable/strict
+  -s, --stable          [DEPRECATED] Rebase onto viable/strict
   -b BRANCH, --branch BRANCH
                         Branch you would like to rebase to
 ```
