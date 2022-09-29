@@ -58,6 +58,7 @@ Before merging, pull requests should be approved by **at least two** members of 
 - Ti-Tai Wang ([@AllenTiTaiWang](https://github.com/AllenTiTaiWang))
 - Shubham Bhokare ([@shubhambhokare1](https://github.com/shubhambhokare1))
 - Justin Chu ([@justinchuby](https://github.com/justinchuby))
+- Wei-Sheng Chin ([@wschin](https://github.com/wschin))
 
 ## Duty rotation
 
