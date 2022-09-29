@@ -48,6 +48,17 @@ If an assigned reviewer thinks someone else would be a much better reviewer, or 
 
 If the author does not work at Microsoft and has not responded to comments in over a week, add the label "onnx-needs-info", and un-assign yourself.
 
+### Approvers
+
+Before merging, pull requests should be approved by **at least two** members of the PyTorch ONNX Exporter engineering team at Microsoft, one of whom must be a [designated maintainer<sup>1</sup>](https://pytorch.org/docs/stable/community/persons_of_interest.html#onnx-exporter). Current Microsoft engineering team members include:
+
+- **Bowen Bao<sup>1</sup> ([@BowenBao](https://github.com/BowenBao))**
+- **Aaron Bockover<sup>1</sup> ([@abock](https://github.com/abock))**
+- Thiago Crepaldi ([@thiagocrepaldi](https://github.com/thiagocrepaldi))
+- Ti-Tai Wang ([@AllenTiTaiWang](https://github.com/AllenTiTaiWang))
+- Shubham Bhokare ([@shubhambhokare1](https://github.com/shubhambhokare1))
+- Justin Chu ([@justinchuby](https://github.com/justinchuby))
+
 ## Duty rotation
 
 ### Mechanics
