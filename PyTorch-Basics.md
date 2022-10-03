@@ -35,7 +35,7 @@ USE_KINETO=0 BUILD_CAFFE2=0 USE_DISTRIBUTED=0 USE_NCCL=0 BUILD_TEST=0 USE_XNNPAC
 
 ### Use viable/strict
 
-The head of the pytorch/pytorch master branch may have test failures ([see here for the current state](https://hud.pytorch.org/build2/pytorch-master)). When developing PyTorch, instead of branching off of `master`, you can branch off of `viable/strict`. `viable/strict` is a branch that lags behind master and guarantees that all PyTorch tests are passing on the branch. Basing your work off of `viable/strict` gives you confidence that any test failures are actually your code's fault.
+The head of the pytorch/pytorch master branch may have test failures ([see here for the current state](https://hud.pytorch.org/)). When developing PyTorch, instead of branching off of `master`, you can branch off of `viable/strict`. `viable/strict` is a branch that lags behind master and guarantees that all PyTorch tests are passing on the branch. Basing your work off of `viable/strict` gives you confidence that any test failures are actually your code's fault.
 
 Some quick git tips:
 ```
@@ -53,6 +53,6 @@ See this detailed section in our [CONTRIBUTING.MD](https://github.com/pytorch/py
 
 ## Submitting a change to PyTorch
 
-Please see https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md
+Please see https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md and [the GitHub First user guide](https://docs.google.com/document/d/1ZL55DvvnBwGqkyjrDRoQNK7ZCYeu7e2U4vi1O36c53I/edit).
 
-For fb employees, please see [here](https://fb.quip.com/Qym6ATnVdb5O)
+For fb employees, feel free to check out [instructions for our old workflow of landing internally](https://fb.quip.com/Qym6ATnVdb5O).
