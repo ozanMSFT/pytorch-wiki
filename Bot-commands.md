@@ -48,7 +48,7 @@ command:
 ```
 ## Merge
 ```
-usage: @pytorchbot merge [-g | -f MESSAGE | -l] [-r [{viable/strict,master}]]
+usage: @pytorchbot merge [-g | -f MESSAGE ] [-r [{viable/strict,master}]]
 
 Merge an accepted PR, subject to the rules in .github/merge_rules.json.
 By default, this will wait for all required checks (lint, pull, etc) to succeed before merging.
@@ -60,7 +60,6 @@ optional arguments:
   -f MESSAGE, --force MESSAGE
                         Merge without checking anything. This requires a reason for auditting purpose, for example:
                         @pytorchbot merge -f 'Minor update to fix lint. Expecting all PR tests to pass'
-  -l, --land-checks     Merge with land time checks. This will create a new branch with your changes rebased on viable/strict and run a majority of trunk tests _before_ landing to increase trunk reliability and decrease risk of revert. The tests added are: pull, Lint and trunk. Note that periodic is excluded. (EXPERIMENTAL)
   -r [{viable/strict,master}], --rebase [{viable/strict,master}]
                         Rebase the PR to re run checks before merging.  Accepts viable/strict or master as branch options and will default to viable/strict if not specified.
 ```
