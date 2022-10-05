@@ -51,7 +51,9 @@ command:
 usage: @pytorchbot merge [-g | -f MESSAGE | -l] [-r [{viable/strict,master}]]
 
 Merge an accepted PR, subject to the rules in .github/merge_rules.json.
-By default, this will wait for all required checks (lint, pull) to succeed before merging.
+By default, this will wait for all required checks (lint, pull, etc) to succeed before merging.
+
+If you initiate a merge but then change your mind, if the merge hasn't completed yet you can cancel the operation by deleting your merge comment.
 
 optional arguments:
   -g, --green           Merge when all status checks running on the PR pass. To add status checks, use labels like `ciflow/trunk`.
