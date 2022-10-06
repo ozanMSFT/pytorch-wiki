@@ -30,7 +30,8 @@ A (non-exhaustive) list of functionality (we need all of this for every operator
 We have a yaml file, native_functions.yaml, which describes metadata about each operator that gets consumed by the codegen: https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/native_functions.yaml
 
 We’re going to focus on the operator torch.add(a, b, out=c), which corresponds to the yaml entry add.out:
-```
+
+```yaml
 - func: add.out(Tensor self, Tensor other, *, Scalar alpha=1, Tensor(a!) out) -> Tensor(a!)
   device_check: NoCheck   # TensorIterator
   structured: True
@@ -56,7 +57,7 @@ For this exercise you’ll need to have pytorch built with debug symbols. I usua
 
 We’re going to run a small python program using gdb to view the full stack trace. Create a python script, tmp.py, with the following:
 
-```
+```python
 import torch
 a = torch.tensor([1, 1])
 b = torch.tensor([1, 1])
@@ -132,7 +133,7 @@ This is the first stop that we hit after going through the python interpreter: p
 
 You can see a snippet of the function below: Its job is basically to take all of the PyObjects that it was handed from cpython, parse them into actual C++ types (like at::Tensor), and call into the C++ API. It does that below by calling into the Tensor add method:  self.add(other, alpha).
 
-```
+```cpp
 static PyObject * THPVariable_add(PyObject* self_, PyObject* args, PyObject* kwargs)
 {
   HANDLE_TH_ERRORS
@@ -166,7 +167,7 @@ The next stop is the C++ method API, which is one of the top-level API’s for c
 
 In `build/aten/src/ATen/TensorBody.h`:
 
-```
+```cpp
 //namespace at
 inline at::Tensor Tensor::add(const at::Tensor & other, const at::Scalar & alpha) const {
     return at::_ops::add_Tensor::call(const_cast<Tensor&>(*this), other, alpha);
@@ -175,7 +176,7 @@ inline at::Tensor Tensor::add(const at::Tensor & other, const at::Scalar & alpha
 
 In `build/aten/src/ATen/Operators.cpp`:
 
-```
+```cpp
 //namespace at::_ops
 at::Tensor add_Tensor::call(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha) {
     static auto op = c10::Dispatcher::singleton()
@@ -194,7 +195,7 @@ After a bunch of dispatcher-related functions, the dispatcher eventually takes u
 * saves some metadata for autograd
 * re-invokes the dispatcher by calling at::redispatch::add(ks & c10::after_autograd_keyset, self_, other_, alpha);
 
-```
+```cpp
 // namespace at::VariableType
 at::Tensor add_Tensor(c10::DispatchKeySet ks, const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha) {
   ...
@@ -216,7 +217,7 @@ The autograd kernel ends up calling back into the C++ API (by calling at::redisp
 
 After a few more function hops through the dispatcher, we eventually dispatch to the CPU add kernel, which has to actually carry out the computation. The code for the cpu kernel (and the code that registers the kernel to the dispatcher) looks like this:
 
-```
+```cpp
 at::Tensor wrapper_add_Tensor(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha) {
   structured_add_out_functional op;
   op.meta(self, other, alpha);
@@ -272,7 +273,7 @@ The CPU kernel for the torch.add operator lives in https://github.com/pytorch/py
 
 ### Meta function:
 
-```
+```cpp
 // expands to structured_add_Tensor::meta() { ... }
 TORCH_META_FUNC2(add, Tensor) (
   const Tensor& self, const Tensor& other, const Scalar& alpha
@@ -284,7 +285,7 @@ TORCH_META_FUNC2(add, Tensor) (
 
 Impl function:
 
-```
+```cpp
 // expands to structured_add_out::impl() { ... }
 TORCH_IMPL_FUNC(add_out) (
   const Tensor& self, const Tensor& other, const Scalar& alpha, const Tensor& result
@@ -298,7 +299,7 @@ So, the code above implements the two functions structured_add_Tensor::meta() an
 
 In NativeMetaFunctions.h:
 
-```
+```cpp
 // namespace at::meta
 struct TORCH_API structured_add_Tensor : public TensorIteratorBase {
     void meta(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
@@ -307,7 +308,7 @@ struct TORCH_API structured_add_Tensor : public TensorIteratorBase {
 
 In NativeFunctions.h:
 
-```
+```cpp
 // namespace at::native
 struct TORCH_API structured_add_out : public at::meta::structured_add_Tensor {
     void impl(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha, const at::Tensor & out);
@@ -318,7 +319,7 @@ You can see that the codegen generated declarations for the two functions, and w
 
 The code-generated logic that stitches them together lives in the code-generated file RegisterCPU.cpp, and looks like this:
 
-```
+```cpp
 // functional version
 at::Tensor wrapper_add_Tensor(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha) {
   structured_add_out_functional op;
@@ -352,9 +353,9 @@ TORCH_LIBRARY_IMPL(aten, CPU, m) {
 }
 ```
 
-This is the “final” output - the 3 operators that we needed. The codegen created 3 new kernels, each of which call into our meta() and impl() functions. The only difference between the 3 is that they use different classes, each of which has a different implementation of set_output(). You can also find the definition of all 3 of these classes in RegisterCPU.cpp, but below is the example for structured_add_out_functional:
+This is the "final" output - the 3 operators that we needed. The codegen created 3 new kernels, each of which call into our meta() and impl() functions. The only difference between the 3 is that they use different classes, each of which has a different implementation of set_output(). You can also find the definition of all 3 of these classes in RegisterCPU.cpp, but below is the example for structured_add_out_functional:
 
-```
+```cpp
 struct structured_add_out_functional final : public at::native::structured_add_out {
 
     void set_output(int64_t output_idx, IntArrayRef sizes, IntArrayRef strides,
