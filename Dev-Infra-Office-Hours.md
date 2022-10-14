@@ -2,7 +2,7 @@
 
 **Come to the Pytorch Dev Infra Office Hours for help!**
  
-The Pytorch Dev Infra team is hosting office hours every [Friday at 10AM PST (zoom link)](https://fb.zoom.us/j/97659913934?pwd=cmxlcEgxNmZJckd2dTBUVWdRZkY3Zz09) or tag @pytorch/pytorch-dev-infra. You can also reach out to us internally at our [Workplace Group](https://fb.workplace.com/groups/807199250440942).
+The Pytorch Dev Infra team is hosting office hours every [Friday at 10AM PST (zoom link)](https://fb.zoom.us/j/94768367550?pwd=aWtOanlJTURzcExaNUFJRWtoSWFDUT09) or tag @pytorch/pytorch-dev-infra. You can also reach out to us internally at our [Workplace Group](https://fb.workplace.com/groups/807199250440942).
 
 ## Who are we? 
 
