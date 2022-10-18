@@ -100,6 +100,7 @@ This can be used to debug currently running jobs on PRs or trunk.
 ### Pre-requisites
 * Network connection on META VPN
 * Cloud SSO Access (`bunnylol cloud fbossci`)
+* [Session manager plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html) for AWS CLI (`aws ssm start-session` will fail silently without it)
 
 ### Usage
 ```bash
