@@ -1,6 +1,6 @@
 # PyTorch AutoLabel Bot
-**Page maintainer(s):** @janeyx99
-**Last updated:** 8/30/22
+**Page maintainer(s):** @ZainRizvi
+**Last updated:** 10/21/22
 
 PyTorch maintainers use GitHub labeling for several organizational purposes, such as triaging issues to the right module owners, assigning priority to certain tasks, and categorizing pull requests (PRs). Labeling has much potential! Thus, this is a technical guide for how it works and how you can join in and improve our labeling.
 
