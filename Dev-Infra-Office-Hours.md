@@ -2,13 +2,13 @@
 
 **Come to the Pytorch Dev Infra Office Hours for help!**
  
-The Pytorch Dev Infra team is hosting office hours every [Friday at 10AM PST (zoom link)](https://fb.zoom.us/j/94768367550?pwd=aWtOanlJTURzcExaNUFJRWtoSWFDUT09) or tag @pytorch/pytorch-dev-infra. You can also reach out to us internally at our [Workplace Group](https://fb.workplace.com/groups/807199250440942).
+The PyTorch Dev Infra team is hosting office hours every [Friday at 10AM PST (zoom link)](https://fb.zoom.us/j/94768367550?pwd=aWtOanlJTURzcExaNUFJRWtoSWFDUT09) or tag @pytorch/pytorch-dev-infra. You can also reach out to us internally at our [Workplace Group](https://fb.workplace.com/groups/807199250440942).
 
 ## Who are we? 
 
 We're responsible for areas like:
 - **CI**: How to debug CI workflows, adding new ones, ensuring jobs run reliably.
-- **Developer Experience**: How easy it is to develop, get signal, and reviews for Pytorch
+- **Developer Experience**: How easy it is to develop, get signal, and reviews for PyTorch
 - **Passing Builds**: Keeping the workflows that run on master and nightly green.
 
 If you have any questions, frustrations, or other feedback, please join our office hours!  We would love to hear from you!
