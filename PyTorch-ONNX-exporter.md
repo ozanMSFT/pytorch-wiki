@@ -37,6 +37,12 @@ are generally not used by the `torch.onnx` developers.
 
 [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) [github.com/pytorch/pytorch](https://github.com/pytorch/pytorch/fork) and clone your fork to your workstation.
 
+Run
+
+```sh
+git submodule update --init --recursive --jobs 0
+```
+
 ### Build PyTorch
 
 CUDA is not required for most development tasks. If you use CUDA, building PyTorch will probably be slower.
