@@ -18,6 +18,7 @@ New to PyTorch? Don't know where to start?
 * [Setting up you dev environment (contributing.md)](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
 * [How to propose feature changes to PyTorch](How-to-propose-feature-changes-to-PyTorch)
 * [Troubleshooting](Troubleshooting)
+* [Getting Help](getting-help-as-a-contributor)
 
 ## Developer docs
 
