@@ -9,7 +9,7 @@ File an issue against the Developer Experience (DevX) team when you want some as
 
 This could be a bug with the tooling, frustrations you felt while trying to submit your PR, or something feature that you really wish we had.
 
-To get the DevX team to see your bug faster, file the issue [here](https://github.com/pytorch/pytorch/issues/new/choose) and then add it to the `PyTorch OSS DevX` project
+To get the DevX team to see your bug faster, file the issue [here](https://github.com/pytorch/pytorch/issues/new/choose) and then add it to the `PyTorch OSS DevX` project (leave the `Status` blank)
 ![Assign it to the PyTorch OSS DevX Project](https://user-images.githubusercontent.com/4468967/201147013-c00809f5-4791-4a5e-9f5f-bd1cf10186a9.jpeg)
 
 
