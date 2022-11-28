@@ -1,8 +1,8 @@
 > **Warning** This page is under construction
 
-This document discusses the Continuous Integration (CI) system for PyTorch. 
+This document discusses the Continuous Integration (CI) system for PyTorch.
 
-Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various different CI build/test configurations. We will discuss these related contents in the following sections:
+Currently PyTorch utilizes Github Actions and CircleCI for various different CI build/test configurations. We will discuss these related contents in the following sections:
 
 - [CI System Overview](#ci-system-overview)
 - [CI Matrix](#ci-matrix)
@@ -34,25 +34,25 @@ Currently PyTorch utilizes Github Action, CircleCI and Jenkins CI for various di
 
 PyTorch CI system ensures that proper build/test process should pass on both PRs and master commits. There are several terminologies we would like to clarify:
 
-- *CI job*: a CI job consist of a sequence of predefined steps, each of which will execute some specific script to build or test PyTorch. For example: 
-- *CI workflow*: a CI workflow consist of a collection of CI jobs that are depending on each other. For example:
-- *CI run*: Refers to all the CI workflows triggered on a single commit (either on PR or on master). For example:
-- *CI platform*: we currently have 3 CI platforms (Github Actions, CirlceCI, Jenkins). 
+- *CI workflow*: a CI workflow consist of a collection of CI jobs that are depending on each other. For example: [lint](https://github.com/pytorch/pytorch/blob/5abe454d6c02ac16e2e1fc87500aa46697385501/.github/workflows/lint.yml)
+- *CI job*: a CI job consist of a sequence of predefined steps, each of which will execute some specific script to build or test PyTorch. For example: [lintrunner](https://github.com/pytorch/pytorch/blob/5abe454d6c02ac16e2e1fc87500aa46697385501/.github/workflows/lint.yml#L14)
+- *CI run*: Refers to all the CI workflows triggered on a single commit (either on PR or on master).
+- *CI platform*: we currently have 3 CI platforms (Github Actions, CirlceCI).
 
-PyTorch supports many different hardware architectures, operation system, accelerator GPU. Therefore, many different CI workflows run parallel on each commit to ensure that PyTorch can be built and run correctly in different environments and configurations. See [CI Matrix](#ci-matrix) section for more info.
+PyTorch supports many different hardware architectures, operation systems, and accelerator GPUs. Therefore, many different CI workflows run parallel on each commit to ensure that PyTorch can be built and run correctly in different environments and configurations. See [CI Matrix](#ci-matrix) section for more info.
 
-For historic reasons we currently have 3 different CI platforms and there are dozens of CI jobs run on these 3 platforms. For each platform specific information please refer to the [CI Internals](#ci-internals) section for more info.
+For historic reasons we currently have 2 different CI platforms and there are dozens of CI jobs run on these 2 platforms. For each platform specific information please refer to the [CI Internals](#ci-internals) section for more info.
 
 ## CI Matrix
 
 Currently there are 3 different categories of CI runs for a single commit: CI run (1) on PR, (2) on master commits, (3) on nightly commits. These CI workflow configurations changes from time to time (Please refer to the [CI Internals](#ci-internals) section for more detail), but in general the rule of thumb for our CI runs are.
-1. We consider the set of CI workflows run on master commits are the base line.
+1. We consider the set of CI workflows run on master commits to be the base line.
 2. We run on PRs a subset of CI workflows comparing to the base line we run on master commits.
 3. We mostly run binary CI workflows and smoke tests on nightly commits.
 
 For more details on which CI workflow is being run on which category, please refer to the section: [What is CI testing and When](#what-is-ci-testing-and-when).
 
-Each one of these triggers a specific subset of CI workflows defined in the CI matrix. Currently our CI matrix consists of some combination of the following basic configurations. 
+Each one of these triggers a specific subset of CI workflows defined in the CI matrix. Currently our CI matrix consists of some combination of the following basic configurations.
 
 ### Basic Configurations
 
@@ -63,7 +63,7 @@ Each one of these triggers a specific subset of CI workflows defined in the CI m
 3. Compute Hardware (e.g. CPU, CUDA10/11, ROCM4)
 4. Compiler (GCC 5.4/7/9, Clang5/7/9)
 
-Obviously not every Cartesian product of these combination is being tested. Please refer to the [PyTorch CI HUD](https://hud.pytorch.org/build2/pytorch-master) for more information on all the combinations run currently.
+Obviously not every Cartesian product of these combination is being tested. Please refer to the [PyTorch CI HUD](https://hud.pytorch.org/) for more information on all the combinations run currently.
 
 ### Other Variances
 
@@ -101,7 +101,7 @@ See ["how to use GitHub labels" section on the "Running and writing tests" page]
 
 ### Disabled tests in CI
 
-Some PyTorch tests are currently disabled due to their flakiness, incompatibility with certain platforms, or other temporary brokenness. We have a system where GitHub issues titled “DISABLED test_a_name” disable desired tests in PyTorch CI until the issues are closed, e.g., #62970. If you are wondering what tests are currently disabled in CI, please check out [disabled-tests.json](https://github.com/pytorch/test-infra/blob/generated-stats/stats/disabled-tests.json), where these test cases are all gathered.
+Some PyTorch tests are currently disabled due to their flakiness, incompatibility with certain platforms, or other temporary brokenness. We have a system where GitHub issues titled “DISABLED test_a_name” disable desired tests in PyTorch CI until the issues are closed, e.g., #62970. If you are wondering what tests are currently disabled in CI, please check out [disabled-tests.json](https://github.com/pytorch/test-infra/blob/generated-stats/stats/disabled-tests-condensed.json), where these test cases are all gathered.
 
 #### How to disable a test
 First, you should never disable a test if you're not sure what you're doing. Tests are important in validating PyTorch functionality, and ignoring test failures is not recommended as it can degrade user experience. When you are certain that disabling a test is the best option, for example, when it is flaky, make plans to fix the test so that it is not disabled indefinitely.
@@ -111,12 +111,12 @@ To disable a test, say, create an issue with the title `DISABLED test_case_name 
 #### Disabling a test for all dtypes/devices
 Currently, you are able to disable all sorts of test instantiations by removing the suffixed device type (e.g., `cpu`, `cuda`, or `meta`) AND dtype (e.g., `int8`, `bool`, `complex`). So given a test `test_case_name_cuda_int64 (test.ClassNameCUDA)`, you can:
 1. specifically disable this particular test with `DISABLED test_case_name_cuda_int64 (test.ClassNameCUDA)`
-2. disable ALL instances of the test with `DISABLED test_case_name (test.ClassName)`. NOTE: You must get rid of BOTH the device and dtype suffixes AND the suffix in the test suite as well. 
+2. disable ALL instances of the test with `DISABLED test_case_name (test.ClassName)`. NOTE: You must get rid of BOTH the device and dtype suffixes AND the suffix in the test suite as well.
 
 #### How to test the disabled test on CI
-It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI).  
+It is not easy to test these disabled tests with CI because, well, they’re intentionally disabled. Previous alternatives were to either mimic the test environment locally (often not convenient) or to close the issue and re-enable the test in all of CI (risking breaking trunk CI).
 
-After #62851 and #74981, PRs with key phrases like “fixes #55555” or “Close https://github.com/pytorch/pytorch/issues/62359” in their PR bodies or commit messages will re-enable the tests disabled by the linked issues (in this example, #55555 and #62359).  Including a key phrase in the PR body only works for tests triggered by pull request and does not work for push-triggered CI.  Including a key phrase in the commit message will work for both pull and  push triggered CI.  The test will also be run if ANY of the commit messages in the PR contains a key phrase. 
+After #62851 and #74981, PRs with key phrases like “fixes #55555” or “Close https://github.com/pytorch/pytorch/issues/62359” in their PR bodies or commit messages will re-enable the tests disabled by the linked issues (in this example, #55555 and #62359).  Including a key phrase in the PR body only works for tests triggered by pull request and does not work for push-triggered CI.  Including a key phrase in the commit message will work for both pull and  push triggered CI.  The test will also be run if ANY of the commit messages in the PR contains a key phrase.
 
 <img width="830" alt="Screen Shot 2022-04-04 at 11 20 55 AM" src="https://user-images.githubusercontent.com/44682903/161607690-429e9df3-5f6d-4fed-9e60-b31a65373bec.png">
 
