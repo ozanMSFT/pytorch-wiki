@@ -45,7 +45,7 @@ optional arguments:
 ```
 ## Revert
 ```
-usage: @pytorchbot revert -m MESSAGE [-c {nosignal,ignoredsignal,landrace,weird,ghfirst}]
+usage: @pytorchbot revert -m MESSAGE -c {nosignal,ignoredsignal,landrace,weird,ghfirst}
 
 Revert a merged PR. This requires that you are a Meta employee.
 
