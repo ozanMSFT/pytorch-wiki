@@ -4,7 +4,7 @@
  
 The PyTorch Dev Infra team is hosting office hours every [Friday at 10AM PST (zoom link)](https://fb.zoom.us/j/95506875334?pwd=cnRzTU00Wk05dkEzL3ZqVnFRVzVhZz09#success).
 
-If those hours don't work for you, you can [file an issue](https://fb.workplace.com/groups/pytorch.oss.dev) instead
+If those hours don't work for you, you can [file an issue](https://fb.workplace.com/groups/pytorch.oss.dev) instead.
 
 ## Who are we? 
 
