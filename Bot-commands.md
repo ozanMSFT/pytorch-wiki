@@ -77,9 +77,17 @@ You can also add multiple labels using comments with pytorchbot.
 @pytorchbot label label1,label2,etc
 ```
 
-## Other
+# Other
 
-Upon calling `@pytorchbot merge`, we add the `ciflow/trunk` label to your PR which triggers trunk workflows to run more tests.  This is our v2 of landchecks.  
+Upon calling `@pytorchbot merge`, we add the `ciflow/trunk` label to your PR which triggers trunk workflows to run more tests.  This is v2 of our landchecks.
+
+List of common labels that trigger more jobs:
+* `ciflow/trunk`: triggers trunk workflow
+* `ciflow/periodic`: triggers periodic workflows
+* `ciflow/mps`: triggers mps build and test
+* `ciflow/inductor`: triggers inductor workflow
+
+Run `grep -r 'ciflow/' .github/workflows --no-filename` to find more labels.
 
 You can add the `accept2run` label to your PR to run land check signals when your PR gets approved so that the land process doesn't take as long. You can also add `accept2ship` if you want to land your PR as soon as your PR gets approved.
 
@@ -101,7 +109,7 @@ We are currently rolling out land checks to all of the users in this [list](http
 If you find rough edges with the land validation:
 - Please file an issue to call it out to us!
 - You can revert back to the old behavior by invoking `@pytorchmergebot merge -g`, which will only for checks on the PR to pass (which is usually just pull and lint workflows).
-- If you believe there's some infra flakiness preventing you from landing, you can also use `-f` and supply a message. 
+- If you believe there's some infra flakiness preventing you from landing, you can also use `-f` and supply a message.
 
 If you have any feedback or complaints, please reach out to the Pytorch OSS CI team or visit our [Office Hours](https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours).
 <details>
