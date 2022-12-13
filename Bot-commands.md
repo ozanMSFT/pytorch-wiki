@@ -63,7 +63,7 @@ optional arguments:
 usage: @pytorchbot rebase [-s | -b BRANCH]
 
 Rebase a PR. Rebasing defaults to the stable viable/strict branch of pytorch.
-You, along with any member of the pytorch organization, can rebase your PR.
+You must have write permissions to the repo to rebase a PR.
 
 optional arguments:
   -s, --stable          [DEPRECATED] Rebase onto viable/strict
