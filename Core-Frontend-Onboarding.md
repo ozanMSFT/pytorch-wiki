@@ -30,3 +30,7 @@ New to developing PyTorch? We've got you covered.
 ### Unit 7: Data (Optional)
 - [[Data|Data-Basics]]
 - [Data Lab (internal-only)](https://github.com/pytorch/pytorch/wiki/Data-Basics#lab-for-dataloader-and-datapipe)
+
+### Unit 8: function transforms (Optional)
+- [[vmap-basics]]
+- [[vmap-onboarding-lab]]
