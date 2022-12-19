@@ -15,4 +15,4 @@ Read through https://github.com/pytorch/pytorch/blob/master/functorch/writing_ba
 
 ## Try out the vmap Onboarding Lab
 
-TODO(rzou)
+[[vmap-onboarding-lab]]
