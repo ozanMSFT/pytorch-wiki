@@ -25,4 +25,4 @@ You can assume that `f` accepts multiple Tensor arguments and returns a single T
 
 ## Understand how PyTorch implements composable function transforms
 
-TODO(rzou)
+Read through this [gdoc](https://docs.google.com/document/d/14qyaa3xIjmVxYiMLlIlQErunYgR_uR1WupsKMZlnGY4/edit#).
