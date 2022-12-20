@@ -34,3 +34,4 @@ New to developing PyTorch? We've got you covered.
 ### Unit 8: function transforms (Optional)
 - [[vmap-basics]]
 - [[vmap-onboarding-lab]]
+- [[function-transforms-(aka-torch.func,-functorch)]]
