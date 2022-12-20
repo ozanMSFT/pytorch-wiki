@@ -32,6 +32,6 @@ New to developing PyTorch? We've got you covered.
 - [Data Lab (internal-only)](https://github.com/pytorch/pytorch/wiki/Data-Basics#lab-for-dataloader-and-datapipe)
 
 ### Unit 8: function transforms (Optional)
-- [[vmap-basics]]
-- [[vmap-onboarding-lab]]
-- [[function-transforms-(aka-torch.func,-functorch)]]
+- [[vmap|vmap-basics]]
+- [[vmap Lab|vmap-onboarding-lab]]
+- [[composable function transforms (aka torch.func, functorch)| function-transforms-(aka-torch.func,-functorch)]]
