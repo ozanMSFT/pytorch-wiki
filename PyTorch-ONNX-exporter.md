@@ -93,8 +93,8 @@ lintrunner init
 Read more about:
 1. [[lintrunner|lintrunner]] (required): Run all the linters, and ensures consistency between the CI and local development environments.
 2. [ghstack](https://github.com/ezyang/ghstack) (optional): Conveniently submit stacks of diffs to GitHub as separate pull requests.
-NOTE: [GitLens](https://gitlens.amod.io/) comes in handy with ghstack
-3. Recover your branch from ghstack: ghstack checkout github_link_to_pr
+NOTE: [GitLens](https://gitlens.amod.io/)'s interactive rebase feature comes in handy with ghstack.
+3. To recover your branch from ghstack: `ghstack checkout github_link_to_pr`
 
 
 #### ONNX and ONNX Runtime
