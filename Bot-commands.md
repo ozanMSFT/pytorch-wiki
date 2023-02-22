@@ -90,7 +90,7 @@ List of common labels that trigger more jobs:
 Run `grep -r 'ciflow/' .github/workflows --no-filename` to find more labels.
 
 
-You can add the `accept2run` label to your PR to run land check signals when your PR gets approved so that the land process doesn't take as long. You can also add `accept2ship` if you want to land your PR as soon as your PR gets approved.
+You can add the `accept2run` label to your PR to add `ciflow/trunk` when your PR gets approved so that the land process doesn't take as long. You can also add `accept2ship` if you want to a bot to comment `@pytorchbot merge` as soon as your PR gets approved.
 
 # Deprecated
 <details><summary>Expand to see old features</summary>
