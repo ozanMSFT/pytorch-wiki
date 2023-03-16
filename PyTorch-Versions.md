@@ -5,7 +5,7 @@ libraries.
 
 |[PyTorch Version](https://pypi.org/project/torch/)	|[torchvision](https://pypi.org/project/torchvision/)	|[torchtext](https://pypi.org/project/torchtext/)	|[torchaudio](https://pypi.org/project/torchaudio/)	|PyTorch Release Date	|
 |---	|---	|---	|---	|---
-|2.0.0. |0.15.1 |0.15.1 |2.0.1. |03/15/2023     |  
+|2.0.0  |0.15.1 |0.15.1 |2.0.1 |03/15/2023      |  
 |1.13.0	|0.14.0	|0.14.0	|0.13.0	|10/28/2022	|
 |1.12.0	|0.13.0	|0.13.0	|0.12.0	|06/28/2022	|
 |1.11.0	|0.12.0	|0.12.0	|0.11.0	|02/10/2022	|
