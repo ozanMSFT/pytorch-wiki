@@ -6,11 +6,11 @@ Please report any buggy instances to @pytorch/pytorch-dev-infra asynchronously o
 
 # PyTorchBot Help
 ```
-usage: @pytorchbot [-h] {merge,revert,rebase} ...
+usage: @pytorchbot [-h] {merge,revert,rebase,label,drci} ...
 
 In order to invoke the bot on your PR, include a line that starts with
 @pytorchbot anywhere in a comment. That line will form the command; no
-multi-line commands are allowed.
+multi-line commands are allowed. 
 
 Example:
     Some extra context, blah blah, wow this PR looks awesome
@@ -21,31 +21,33 @@ optional arguments:
   -h, --help            Show this help message and exit.
 
 command:
-  {merge,revert,rebase}
+  {merge,revert,rebase,label,drci}
     merge               Merge a PR
     revert              Revert a PR
     rebase              Rebase a PR
+    label               Add label to a PR
+    drci                Update Dr. CI
 ```
 ## Merge
 ```
-usage: @pytorchbot merge [-g | -f MESSAGE ] [-r [{viable/strict,master}]]
+usage: @pytorchbot merge [-f MESSAGE | -ic] [-r [{viable/strict,master}]]
 
 Merge an accepted PR, subject to the rules in .github/merge_rules.json.
-By default, this will wait for all required checks (lint, pull, etc) to succeed before merging.
-
-If you initiate a merge but then change your mind, if the merge hasn't completed yet you can cancel the operation by deleting your merge comment.
+By default, this will wait for all required checks (lint, pull) to succeed before merging.
 
 optional arguments:
-  -g, --green           Merge when all status checks running on the PR pass. To add status checks, use labels like `ciflow/trunk`.
   -f MESSAGE, --force MESSAGE
                         Merge without checking anything. This requires a reason for auditting purpose, for example:
                         @pytorchbot merge -f 'Minor update to fix lint. Expecting all PR tests to pass'
+  -ic, --ignore-current
+                        Merge while ignore the currently failing jobs.  If there are no pending checks, use -f/--force since this will fail.
   -r [{viable/strict,master}], --rebase [{viable/strict,master}]
                         Rebase the PR to re run checks before merging.  Accepts viable/strict or master as branch options and will default to viable/strict if not specified.
 ```
 ## Revert
 ```
-usage: @pytorchbot revert -m MESSAGE -c {nosignal,ignoredsignal,landrace,weird,ghfirst}
+usage: @pytorchbot revert -m MESSAGE -c
+                          {nosignal,ignoredsignal,landrace,weird,ghfirst}
 
 Revert a merged PR. This requires that you are a Meta employee.
 
@@ -54,7 +56,7 @@ Example:
 
 optional arguments:
   -m MESSAGE, --message MESSAGE
-                        The reason you are reverting, will be put in the commit message.
+                        The reason you are reverting, will be put in the commit message. Must be longer than 3 words.
   -c {nosignal,ignoredsignal,landrace,weird,ghfirst}, --classification {nosignal,ignoredsignal,landrace,weird,ghfirst}
                         A machine-friendly classification of the revert reason.
 ```
@@ -72,16 +74,22 @@ optional arguments:
 ```
 ## Labeling
 You can also add multiple labels using comments with pytorchbot.
-
 ```
-@pytorchbot label label1,label2,etc
+usage: @pytorchbot label labels [labels ...]
+
+Adds label to a PR
+
+positional arguments:
+  labels  Labels to add to given Pull Request
 ```
 ## Refresh Dr. CI comment
 The Dr. CI comment (the first comment left at the top of your PR) refreshes ~every 15 minutes by default. If you ever want it to refresh immediately, you can run the following command to trigger the refresh
+```
+usage: @pytorchbot drci
 
+Update Dr. CI. Updates the Dr. CI comment on the PR in case it's gotten out of sync with actual CI results.
 ```
-@pytorchbot drci
-```
+
 
 # Other
 
