@@ -76,6 +76,12 @@ You can also add multiple labels using comments with pytorchbot.
 ```
 @pytorchbot label label1,label2,etc
 ```
+## Refresh Dr. CI comment
+The Dr. CI comment (the first comment left at the top of your PR) refreshes ~every 15 minutes by default. If you ever want it to refresh immediately, you can run the following command to trigger the refresh
+
+```
+@pytorchbot drci
+```
 
 # Other
 
