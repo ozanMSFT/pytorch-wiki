@@ -39,46 +39,38 @@ Going beyond conda and pip, we could also put frequently used ML models into the
 ### Windows dependencies
 At the moment, there is no Docker support on Windows, so preparing Windows dependencies is still a cumbersome process.  Please reach out to PyTorch Dev Infra team if you need support during the process.
 
-1. Windows AMI definition is in [test-infra](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/windows.pkr.hcl) repo using [Packer](https://developer.hashicorp.com/packer).  So, the first step is to install [Packer](https://developer.hashicorp.com/packer/downloads) on your dev box.
-1. Get familiar with PowerShell on Windows.  You can also take a look at some [existing scripts](https://github.com/pytorch/test-infra/tree/main/aws/ami/windows/scripts/Installers).
-1. Follow [the instruction](https://github.com/pytorch/test-infra/tree/main/aws/ami/windows) to build and publish a new AMI `packer build -var 'skip_create_ami=false' .`.
+1. Windows AMI definition is in [test-infra](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/windows.pkr.hcl) repo and it's written using [Packer](https://developer.hashicorp.com/packer).  So, the first step is to install [it](https://developer.hashicorp.com/packer/downloads) in your dev box.
+1. Get familiar with PowerShell on Windows.  You can also take a look at some [existing scripts](https://github.com/pytorch/test-infra/tree/main/aws/ami/windows/scripts/Installers) that we use.
+1. Follow [the instruction](https://github.com/pytorch/test-infra/tree/main/aws/ami/windows) to build and publish a new AMI by running `packer build -var 'skip_create_ami=false' .`.  There are some caveats:
     1. Only PyTorch Dev Infra team with access to our AWS account could publish a new AMI
     1. There is only one Windows AMI shared between CPU and CUDA jobs.  This is a known pain point that has yet been addressed.
 1. Depending on the types of dependencies, there are:
     1. [Install-Conda-Dependencies.ps1](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-Conda-Dependencies.ps1) to install all Conda dependencies.  Again, pin the version whenever you can.  Questions would be asked otherwise.
     1. [Install-Pip-Dependencies.ps1](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-Pip-Dependencies.ps1) to install all pip dependencies.
-    1. Other dependencies are covered in their own PowerShells scripts, i.e. [Windows CUDA](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-CUDA-Tools.ps1)
+    1. Other dependencies are covered in their own PowerShells scripts, i.e. [Windows CUDA](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-CUDA-Tools.ps1).  Create a new script if you need to setup a new dependency.
 
-Once the build successes and a new AMI is published.  It's time to test it before rolling it out to production.  This is done on [pytorch-canary](https://github.com/pytorch/pytorch-canary)
+Once the build successes and a new AMI is published.  It's time to test it before rolling it out to production.  This is done on [pytorch-canary](https://github.com/pytorch/pytorch-canary):
 
 1. Update the Windows AMI used by `pytorch-canary` [here](https://github.com/fairinternal/pytorch-gha-infra/blob/main/runners/canary.tf#L78)
 1. Once merged, submit a pull request to `pytorch-canary`, i.e. [#158](https://github.com/pytorch/pytorch-canary/pull/158), to run Windows build and test jobs.
-    1. The first thing is to confirm that the new AMI is used. This information could be found in the `Setup Windows` step in PyTorch CI where it shows the AMI ID.
-    1. Ensure that all Windows jobs including binaries jobs pass.
+    1. The first thing is to confirm that the new AMI is used. This information could be found in the `Setup Windows` step where the AMI ID is shown.
+    1. Ensure that all Windows jobs including binaries ones pass.
 1. Finally, update the Windows AMI used by `pytorch` [here](https://github.com/fairinternal/pytorch-gha-infra/blob/main/runners/main.tf#L89)
 
 ### MacOS dependencies
-Both Docker and AMI options are not available for MacOS at the moment, so its dependencies couldn't be setup beforehand and they are still downloaded when the CI jobs run.  Nevertheless, we use [GitHub cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) to cache all Conda and pip dependencies.  Adding a new dependency could then be done in a straightforward way by putting it into:
+Both Docker and AMI options are not available for MacOS at the moment, so its dependencies couldn't be setup beforehand and they are still downloaded when the CI jobs run.  Nevertheless, we use [GitHub cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) to cache all Conda and pip dependencies to minimize the flakiness.  Adding a new dependency could then be done in a straightforward way by putting it into:
 
-1. Pinned Conda dependencies are in `.github/requirements/conda-env-OS-ARCH.txt` Conda environment files.  They are:
+1. Pinned Conda dependencies are in `.github/requirements/conda-env-OS-ARCH.txt` environment files.  They are:
     1. [conda-env-macOS-ARM64.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/conda-env-macOS-ARM64) (MacOS M1)
     1. [conda-env-macOS-X64.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/conda-env-macOS-X64) (MacOS x86_64)
     1. [conda-env-iOS.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/conda-env-iOS) (iOS)
-1. Pinned pip dependencies are in `.github/requirements/pip-requirements-OS.txt` pip requirements files.  They are:
+1. Pinned pip dependencies are in `.github/requirements/pip-requirements-OS.txt` requirements files.  They are:
     1. [pip-requirements-macOS.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/pip-requirements-macOS.txt) (MacOS M1 and x86_64)
     1. [pip-requirements-iOS.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/pip-requirements-iOS.txt) (iOS)
 
 Similarly, a new Conda env or pip requirements file could be added for other platforms.  The recommended way is to pass the file to [setup-miniconda](https://github.com/pytorch/test-infra/tree/main/.github/actions/setup-miniconda) and let the action download, install, and cache all the dependencies automatically, i.e. [_mac-test.yml](https://github.com/pytorch/pytorch/blob/master/.github/workflows/_mac-test.yml#L109-L123) workflow:
 
 ```
-- name: Setup miniconda (x86, py3.8)
-  if: ${{ runner.arch == 'X64' }}
-  uses: pytorch/test-infra/.github/actions/setup-miniconda@main
-  with:
-    python-version: 3.8
-    environment-file: .github/requirements/conda-env-${{ runner.os }}-${{ runner.arch }}
-    pip-requirements-file: .github/requirements/pip-requirements-${{ runner.os }}.txt
-
 - name: Setup miniconda (arm64, py3.9)
   if: ${{ runner.arch == 'ARM64' }}
   uses: pytorch/test-infra/.github/actions/setup-miniconda@main
