@@ -1,12 +1,12 @@
 ### Context
 With the high volume of pull requests to PyTorch and the extensive scope of PyTorch test suite, PyTorch CI runs thousand of build and test jobs daily across multiple platforms including Linux (CPU, CUDA, ROCm), Windows (CPU, CUDA), MacOS (x86_64, M1), Android, and iOS.  This makes stability the most important of the CI.  Because stability includes many areas and means many things, we will focus only on CI dependencies in this wiki.  Specifically, this is about how to add and cache dependencies safely and reliably.
 
-Most softwares are built on top of others and requires their dependencies to be in place to work.  PyTorch CI is no difference.  Over the years, some of the most common issues about them are:
+Most softwares are built on top of others and requires their dependencies to be in place to work.  PyTorch CI is no difference.  Over the years, some of the most common issues about setting up dependencies are:
 
 * A dependency is not pinned.  It's updated upstream and unexpectedly break stuffs.
 * A dependency is not cached and is setup from scratch every time a job requiring it is run.  This usually means downloading and installing something, i.e. a Conda package, from somewhere, i.e. the Internet.  Doing this multiple time and it's bound to fail flakily in some cases.
 
-Like doing a science experiment, their solutions would be 1) to run the CI jobs in a control manner with fixed parameters and reproducible results and 2) to have all the dependencies ready.  These are achieved by:
+Like doing a science experiment, the solutions would be 1) to run the CI jobs in a control manner with fixed parameters and reproducible results and 2) to have all the dependencies close at hand.  They are achieved by:
 
 1. Pin all CI dependencies to specific versions and update them explicitly.
 1. Put all Linux dependencies into Docker images.
