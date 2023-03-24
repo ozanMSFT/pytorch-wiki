@@ -45,7 +45,7 @@ At the moment, there is no Docker support on Windows, so getting Windows depende
     1. Only PyTorch Dev Infra team with access to our AWS account could publish a new AMI
     1. There is only one Windows AMI shared between CPU and CUDA jobs.  This is a known pain point that has yet been addressed.
 1. Depending on the types of dependencies, there are:
-    1. [Install-Conda-Dependencies.ps1](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-Conda-Dependencies.ps1) to install all Conda dependencies.
+    1. [Install-Conda-Dependencies.ps1](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-Conda-Dependencies.ps1) to install all Conda dependencies.  Again, pin the version whenever you can.  Questions would be asked otherwise.
     1. [Install-Pip-Dependencies.ps1](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-Pip-Dependencies.ps1) to install all pip dependencies.
     1. Other dependencies are covered in their own PowerShells scripts, i.e. [Windows CUDA](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/scripts/Installers/Install-CUDA-Tools.ps1)
 
@@ -60,11 +60,11 @@ Once the build successes and a new AMI is published.  It's time to test it befor
 ### MacOS dependencies
 Both Docker and AMI options are not available for MacOS at the moment, so its dependencies couldn't be setup beforehand and they are still downloaded when the CI jobs run.  Nevertheless, we use [GitHub cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) to cache all Conda and pip dependencies.  Adding a new dependency could then be done in a straightforward way by putting it into:
 
-1. Conda dependencies are in `.github/requirements/conda-env-OS-ARCH.txt` Conda environment files.  They are:
+1. Pinned Conda dependencies are in `.github/requirements/conda-env-OS-ARCH.txt` Conda environment files.  They are:
     1. [conda-env-macOS-ARM64.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/conda-env-macOS-ARM64) (MacOS M1)
     1. [conda-env-macOS-X64.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/conda-env-macOS-X64) (MacOS x86_64)
     1. [conda-env-iOS.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/conda-env-iOS) (iOS)
-1. Pip dependencies are in `.github/requirements/pip-requirements-OS.txt` pip requirements files.  They are:
+1. Pinned pip dependencies are in `.github/requirements/pip-requirements-OS.txt` pip requirements files.  They are:
     1. [pip-requirements-macOS.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/pip-requirements-macOS.txt) (MacOS M1 and x86_64)
     1. [pip-requirements-iOS.txt](https://github.com/pytorch/pytorch/blob/master/.github/requirements/pip-requirements-iOS.txt) (iOS)
 
