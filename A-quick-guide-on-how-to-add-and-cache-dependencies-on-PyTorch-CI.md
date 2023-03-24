@@ -10,22 +10,22 @@ Like doing a science experiment, the solutions would be 1) to run the CI jobs in
 
 1. Pin all CI dependencies to specific versions and update them explicitly.
 1. Put all Linux dependencies into Docker images.
-1. Put all Windows dependencies into [Windows AMI](https://github.com/pytorch/test-infra/tree/main/aws/ami/windows) used to launch Windows runners.
-1. Put all MacOS dependencies into [GitHub cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows).
+1. Put all Windows dependencies into the [Windows AMI](https://github.com/pytorch/test-infra/tree/main/aws/ami/windows) used to launch Windows runners.
+1. Cache all MacOS dependencies with [GitHub cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows).
 
-Adding a new CI dependency would most likely be done in both Linux, Windows, and MacOS.  So, let's go over the details for each platform.
+Adding a new CI dependency would most likely be done across all major platforms Linux, Windows, and MacOS.  So, let's go over the details for each platform.
 
 ### Linux dependencies
-Common Linux CI pip dependencies are specify in Docker [requirements-ci.txt](https://github.com/pytorch/pytorch/blob/master/.ci/docker/requirements-ci.txt) and are installed for selected Python in [install_conda.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/common/install_conda.sh#L90).  Pinning the version is recommended, i.e. `lintrunner==0.10.7`, unless there is a compelling reason to not do so.  Adding a dependency here will make it available to all Linux build and test jobs (easy peasy).
+Common Linux CI pip dependencies are specify in Docker [requirements-ci.txt](https://github.com/pytorch/pytorch/blob/master/.ci/docker/requirements-ci.txt) and are installed for the selected Python version in [install_conda.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/common/install_conda.sh#L90).  Pinning the version is recommended, i.e. `lintrunner==0.10.7`, unless there is a compelling reason to not do so.  Adding a dependency here will make it available to all Linux build and test jobs (easy peasy).
 
-For specific cases, it's also ok to install conda and pip dependencies as part of Docker build script.  For example, ONNX dependencies are install in [install_onnx.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/common/install_onnx.sh) script, which are available only in `pytorch-linux-focal-py3-clang10-onnx` Docker image to run ONNX tests.  The list of Docker images and what they have could be found in Docker [build.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/build.sh) script.  [#96590](https://github.com/pytorch/pytorch/pull/96590) is a good example on how this could be done.  The process is roughly as follows:
+For specific cases, it's also ok to install conda and pip dependencies as part of the Docker build script.  For example, ONNX dependencies are install in [install_onnx.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/common/install_onnx.sh), which are available only in `pytorch-linux-focal-py3-clang10-onnx` Docker image.  The list of Docker images and what they have could be found in Docker [build.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/build.sh).  [#96590](https://github.com/pytorch/pytorch/pull/96590) is a good example on how this could be done.  The process is roughly as follows:
 
-1. Prepare what dependencies need to setup, i.e. [install_onnx.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/common/install_onnx.sh)
-1. Identify the Dockerfile to update.  There are currently three flavors:
-    1. [Ubuntu](https://github.com/pytorch/pytorch/blob/master/.ci/docker/ubuntu/Dockerfile)
-    1. [Ubuntu with CUDA](https://github.com/pytorch/pytorch/blob/master/.ci/docker/ubuntu-cuda/Dockerfile)
-    1. [Ubuntu with ROCm](https://github.com/pytorch/pytorch/blob/master/.ci/docker/ubuntu-rocm/Dockerfile)
-1. Add the script to the Dockerfile(s).  When it runs, it will be built as a new Docker layer, i.e.
+1. Prepare the list of required dependencies, i.e. [install_onnx.sh](https://github.com/pytorch/pytorch/blob/master/.ci/docker/common/install_onnx.sh)
+1. Identify the Dockerfile(s) to update.  There are currently three flavors:
+    1. [Ubuntu](https://github.com/pytorch/pytorch/blob/master/.ci/docker/ubuntu/Dockerfile), for generic Linux CPU jobs
+    1. [Ubuntu with CUDA](https://github.com/pytorch/pytorch/blob/master/.ci/docker/ubuntu-cuda/Dockerfile), for Linux CUDA jobs of course
+    1. [Ubuntu with ROCm](https://github.com/pytorch/pytorch/blob/master/.ci/docker/ubuntu-rocm/Dockerfile), for Linux ROCm
+1. Add the script to the Dockerfile(s) to be built as a new Docker layer, for example:
 ```
 ARG ONNX
 # Install ONNX dependencies
@@ -34,10 +34,10 @@ RUN if [ -n "${ONNX}" ]; then bash ./install_onnx.sh; fi
 RUN rm install_onnx.sh common_utils.sh
 ```
 
-Going beyond conda and pip dependencies, we could also put models frequently used by PyTorch CI in the Docker image to avoid hitting external hosts like https://huggingface.co excessively.  To go a bit into the details here, we host Docker images used by the CI on [AWS ECR](https://aws.amazon.com/ecr/) where the majority of our EC2 runners reside.  So getting Docker images with cached models from ECR is both cheaper, faster, and more reliable than getting them from external sources.  Fortunately, it's relatively easy to cache all these models by just getting them once when building the image, i.e. [#96793](https://github.com/pytorch/pytorch/pull/96793).  They will be readily available in the cache directory for later use.
+Going beyond conda and pip, we could also put frequently used ML models into the Docker image to avoid hitting external hosts like https://huggingface.co excessively.  To go a bit into the details here, we host Docker images used by the CI on [AWS ECR](https://aws.amazon.com/ecr/) where the majority of our EC2 runners reside.  So getting Docker images with cached models from ECR is both cheaper, faster, and more reliable than getting them from external sources.  Fortunately, it's relatively easy to cache all these models by just getting them once when building the image, i.e. [#96793](https://github.com/pytorch/pytorch/pull/96793).  They will be readily available in the runner's cache directory for later use.
 
 ### Windows dependencies
-At the moment, there is no Docker support on Windows, so getting Windows dependencies ready is still a cumbersome process.  The exact steps of the current process is documented here.  Please reach out to PyTorch Dev Infra team if you need support during the process.
+At the moment, there is no Docker support on Windows, so preparing Windows dependencies is still a cumbersome process.  Please reach out to PyTorch Dev Infra team if you need support during the process.
 
 1. Windows AMI definition is in [test-infra](https://github.com/pytorch/test-infra/blob/main/aws/ami/windows/windows.pkr.hcl) repo using [Packer](https://developer.hashicorp.com/packer).  So, the first step is to install [Packer](https://developer.hashicorp.com/packer/downloads) on your dev box.
 1. Get familiar with PowerShell on Windows.  You can also take a look at some [existing scripts](https://github.com/pytorch/test-infra/tree/main/aws/ami/windows/scripts/Installers).
