@@ -10,7 +10,7 @@ usage: @pytorchbot [-h] {merge,revert,rebase,label,drci} ...
 
 In order to invoke the bot on your PR, include a line that starts with
 @pytorchbot anywhere in a comment. That line will form the command; no
-multi-line commands are allowed. 
+multi-line commands are allowed.
 
 Example:
     Some extra context, blah blah, wow this PR looks awesome
@@ -95,13 +95,7 @@ Update Dr. CI. Updates the Dr. CI comment on the PR in case it's gotten out of s
 
 Upon calling `@pytorchbot merge`, we add the `ciflow/trunk` label to your PR which triggers trunk workflows to run more tests.  This is v2 of our landchecks.
 
-List of common labels that trigger more jobs:
-* `ciflow/trunk`: triggers trunk workflow
-* `ciflow/periodic`: triggers periodic workflows
-* `ciflow/mps`: triggers mps build and test
-* `ciflow/inductor`: triggers inductor workflow
-
-Run `grep -r 'ciflow/' .github/workflows --no-filename` to find more labels.
+See [Using Github label to control CI behavior on PR](https://github.com/pytorch/pytorch/wiki/Running-and-writing-tests#using-github-label-to-control-ci-behavior-on-pr) for more information about ciflow labels.
 
 # Deprecated
 <details><summary>Expand to see old features</summary>
