@@ -99,8 +99,9 @@ In order to control the behavior of CI jobs on PR. The most commonly used labels
 - `ciflow/trunk`: automatically added when `@pytorchbot merge` is invoked.  These tests are run on every commit in master.
 - `ciflow/periodic`: runs every 4 hours on master.  Includes jobs that are either expensive or slow to run, such as mac x86-64 tests, slow gradcheck, and multigpu.
 - `ciflow/inductor`: runs inductor builds and tests.  This label may be automatically added by our autolabeler if your PR touches certain files.  These jobs are run on every commit in master.
+- `ciflow/mps`: a subset of `ciflow/trunk` that runs mps related builds and tests
 
-For a complete definition of every job that is triggered by these labels, as well as other labels that are not listed here, [search for `ciflow` in the `.github` folder](https://github.com/search?q=repo%3Apytorch%2Fpytorch+ciflow+path%3A.github%2F**%2F*.yml&type=code).
+For a complete definition of every job that is triggered by these labels, as well as other labels that are not listed here, [search for `ciflow/` in the `.github/workflows` folder](https://github.com/search?q=repo%3Apytorch%2Fpytorch+ciflow%2F+path%3A.github%2Fworkflows%2F*.yml&type=code) or run `grep -r 'ciflow/' .github/workflows`.
 
 # Common test utilities
 
