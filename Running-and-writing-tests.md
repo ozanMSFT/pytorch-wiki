@@ -15,29 +15,39 @@ Code for generating tests and testing helper functions are located under [pytorc
 
 # Running PyTorch's tests
 
-## Directly running python test files
+## Directly running python test files (preferred)
 
-Most PyTorch test files can be run using unittest (the default) or pytest. 
+Most PyTorch test files can be run using unittest or pytest (used in CI).  Both options can use `-k <filter>` to filter tests by string and `-v` for verbose.
 
-To run a test suite, like test_torch.py, using unittest:
+### Unittest
+
+To run test_torch.py, use:
 
 ```
 python test_torch.py
 ```
 
-Unittest-specific arguments can be appended to this command. For example, to run only a specific test:
+Additional unittest-specific arguments can be appended to this command. For example, to run only a specific test:
 
 ```
 python test_torch.py <TestClass>.<TestName>
 ```
 
-Other commonly useful options are `-k`, which specifies a string to filter the tests, and `-v`, which runs the test suite in "verbose" mode. For example,
+### Pytest
 
+To run test_torch.py, use:
 ```
-pytest test_torch.py -k cpu
+pytest test_torch.py
+```
+or
+```
+python -m pytest test_torch.py
 ```
 
-Will run all the tests in test_torch.py with "cpu" in their name.
+Other useful options include:
+* `-x` to stop after first failure
+* `-s` to show output of stdout/stderr
+* `--lf` to run only the failed tests from the last pytest invocation
 
 ## Running via `test/run_test.py`
 
@@ -59,6 +69,7 @@ Alternatively you can pass in additional arguments to run specific test(s), use 
 ```
 python test/run_test.py -h
 ```
+Using `test/run_test.py` will usually require some extra dependencies, like pytest-rerunfailures and pytest-shard.
 
 ## Using environment variables:
 
@@ -67,7 +78,7 @@ In addition to unittest and pytest options, PyTorch's test suite also understand
 - PYTORCH_TEST_WITH_SLOW, if set to 1 this will run tests marked with the @slowTest decorator (default=0)
 - PYTORCH_TEST_SKIP_FAST, if set to 1 this will skip tests NOT marked with the @slowtest decorator (default=0)
 - PYTORCH_TEST_WITH_SLOW_GRADCHECK, if set to ON this use PyTorch's slower (but more accurate) gradcheck mode (default=OFF)
-- PYTORCH_TESTING_DEVICE_ONLY_FOR, run tests for ONLY the device types listed here (like 'cpu' and 'cuda') 
+- PYTORCH_TESTING_DEVICE_ONLY_FOR, run tests for ONLY the device types listed here (like 'cpu' and 'cuda')
 - PYTORCH_TESTING_DEVICE_EXCEPT_FOR, run tests for all device types EXCEPT FOR the device types listed here
 - PYTORCH_TEST_SKIP_NOARCH, if set to 1 this will all noarch tests (default=0)
 
@@ -80,20 +91,16 @@ will run the tests in test_torch.py, including those decorated with `@slowTest`.
 
 ## Using Github label to control CI behavior on PR
 
-_(last updated 2021-08-13)_
+_(last updated 2023-03-30)_
 
 PyTorch runs different sets of jobs on PR vs. on master commits.
 
-In order to control the behavior of CI jobs on PR. We support Github Labels to control what to test on CI on PRs:
-- `ci/master`: runs sets of CI jobs that normally only run on master
-- `ci/binaries`: runs sets of CI jobs that builds additional binaries (normally only run on nightly)
-- `ci/slow-gradcheck`: runs the [slow gradcheck build](https://github.com/pytorch/pytorch/pull/59020)
+In order to control the behavior of CI jobs on PR. The most commonly used labels are:
+- `ciflow/trunk`: automatically added when `@pytorchbot merge` is invoked.  These tests are run on every commit in master.
+- `ciflow/periodic`: runs every 4 hours on master.  Includes jobs that are either expensive or slow to run, such as mac x86-64 tests, slow gradcheck, and multigpu.
+- `ciflow/inductor`: runs inductor builds and tests.  This label may be automatically added by our autolabeler if your PR touches certain files.  These jobs are run on every commit in master.
 
-If this list becomes out of date, the current definitions should be able to be found in [`.github/pytorch-circleci-labels.yml`](https://github.com/pytorch/pytorch/blob/72bc6dc8c31f977036195536292170ac9132751d/.github/pytorch-circleci-labels.yml).
-
-Note that `ci/master` and `ci/binaries` only work for jobs running in CircleCI. We're migrating CI jobs to GitHub Actions,
-the new proposal of how to dynamically trigger workflows in GitHub Actions can be tracked [here](https://github.com/pytorch/pytorch/issues/61888).
-
+For a complete definition of every job that is triggered by these labels, as well as other labels that are not listed here, [search for `ciflow` in the `.github` folder](https://github.com/search?q=repo%3Apytorch%2Fpytorch+ciflow+path%3A.github%2F**%2F*.yml&type=code).
 
 # Common test utilities
 
@@ -120,11 +127,3 @@ To use the selection syntax to run only a single test class or test, be it with 
 See the "OpInfos" note in torch/testing/_internal/opinfo/core.py for details on adding an OpInfo and how they work.
 
 OpInfos are used to automatically generate a variety of operator tests from metadata. If you're adding a new operator to the torch, torch.nn, torch.special, torch.fft, or torch.linalg namespaces you should write an OpInfo for it so it's tested properly.
-
-
-
-
-
-
-
-
