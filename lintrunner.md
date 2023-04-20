@@ -17,9 +17,9 @@ lintrunner f
 ```
 to format locally changed files.
 ### How do I run lint on my entire PR/branch?
-If, say, your PR is targeting `master`, run:
+If, say, your PR is targeting `main`, run:
 ```
-lintrunner -m master
+lintrunner -m main
 ```
 ### How do I run lint on specific files?
 ```
