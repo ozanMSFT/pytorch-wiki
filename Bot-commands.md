@@ -30,7 +30,7 @@ command:
 ```
 ## Merge
 ```
-usage: @pytorchbot merge [-f MESSAGE | -ic] [-r [{viable/strict,master}]]
+usage: @pytorchbot merge [-f MESSAGE | -ic] [-r [{viable/strict,main}]]
 
 Merge an accepted PR, subject to the rules in .github/merge_rules.json.
 By default, this will wait for all required checks (lint, pull) to succeed before merging.
