@@ -19,6 +19,7 @@ New to PyTorch? Don't know where to start?
 * [How to propose feature changes to PyTorch](How-to-propose-feature-changes-to-PyTorch)
 * [Troubleshooting](Troubleshooting)
 * [Getting Help](getting-help-as-a-contributor)
+* [SEVs](What-is-considered-a-SEV%3F)
 
 ## Developer docs
 
