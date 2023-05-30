@@ -199,3 +199,48 @@ a_mps[:, 0]  = a_mps[:, 0] + b_mps[:, 0]
 y = torch.ones(2,1, device='mps')
 y_pad = torch.nn.functional.pad(y, (1, 1, 1, 1), 'constant', 0)
 ```
+
+# PyTorch performance profiling using MPS profiler
+
+This section describes the usage of MPS Profiler tool for the PyTorch MPS backend to enable profiling the performance of PyTorch operations. This can be done by capturing OS Signposts traces and utilizing Instruments to visualize them.
+
+## Advanced profiling using OS Signpost Traces
+
+In order to enable advanced performance profiling for PyTorch MPS backend, the [OS Signposts](https://developer.apple.com/documentation/os/logging/recording_performance_data?language=objc) feature is utilized. In brief, the Signposts could mark the beginning and ending of intervals of interest during the execution of a process (a.k.a, *signpost intervals*), or mark single interesting points in time (a.k.a, *signpost events*) to enable visualizing them directly in [XCode Instruments](https://developer.apple.com/documentation/xcode#instruments).
+
+## Using the MPS profiler
+
+The PyTorch MPS Profiler is capable of capturing both *interval-based* or *event-based* signpost traces.
+To start the profiler, use the ```torch.mps.profiler.start()``` function. To stop the profiler, use the ```torch.mps.profiler.stop()``` function. The generated OS Signposts could be recorded and viewed in XCode Instruments Logging tool.
+
+## Methods:
+```start(mode: str="interval", wait_until_complted: bool = False)```
+
+- Starts a profiler session.
+
+
+### Parameters
+
+
+
+```
+- mode(str)
+```
+
+- OS Signpost tracing mode could be *"interval"*, *"event"*, or both *"interval,event"*. The interval mode traces the duration of execution of the operations, whereas event mode marks the completion of executions.
+```
+- wait_until_completed(bool)
+```
+
+- Waits until the MPS Stream complete executing each encoded GPU operation. This helps generating single dispatches on the trace's timeline. Note that enabling this option would affect the performance negatively.
+
+---
+
+*```def stop()```*
+
+- Stops the current running profiler session.
+
+
+### Parameters
+
+- None
