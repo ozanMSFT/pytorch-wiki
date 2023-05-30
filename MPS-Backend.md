@@ -214,7 +214,7 @@ The PyTorch MPS Profiler is capable of capturing both *interval-based* or *event
 To start the profiler, use the ```torch.mps.profiler.start()``` function. To stop the profiler, use the ```torch.mps.profiler.stop()``` function. The generated OS Signposts could be recorded and viewed in XCode Instruments Logging tool.
 
 ## Methods:
-```start(mode: str="interval", wait_until_complted: bool = False)```
+*```start(mode: str="interval", wait_until_complted: bool = False)```*
 
 - Starts a profiler session.
 
