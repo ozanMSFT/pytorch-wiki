@@ -14,8 +14,8 @@ New to PyTorch? Don't know where to start?
 - [[Core Onboarding|Core Frontend Onboarding]]
 
 ## Contributing
-* [PyTorch Contribution Guide](https://github.com/pytorch/pytorch/blob/master/docs/source/community/contribution_guide.rst)
-* [Setting up you dev environment (contributing.md)](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
+* [PyTorch Contribution Guide](https://docs.google.com/document/d/1oNhUeGE-8ajsYaMpoV6ZQANQZVeKrdFanI9VMbFzOzc/edit)
+* [Setting up your dev environment (contributing.md)](https://github.com/pytorch/pytorch/blob/main/CONTRIBUTING.md)
 * [How to propose feature changes to PyTorch](How-to-propose-feature-changes-to-PyTorch)
 * [Troubleshooting](Troubleshooting)
 * [Getting Help](getting-help-as-a-contributor)
