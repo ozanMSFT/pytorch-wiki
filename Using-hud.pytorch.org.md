@@ -13,7 +13,7 @@ HUD is the PyTorch team's way of viewing results from CI runs. While Github prov
 * All jobs on all workflows on a particular commit can be found on one page
 * HUD log viewer loads the entire log withough truncating
 * Log classifier can highlight what we think is the probable cause of failure for the job
-* HUD main page shows all jobs on the master commit, making it easy to see consistent failures
+* HUD main page shows all jobs on the `main` branch, making it easy to see consistent failures
 
 While there are still limitations for HUD, we have more control over what and how things are displayed, so please feel free to submit feature requests [here](https://github.com/pytorch/test-infra/issues) for how we can make your PyTorch development easier.
 
