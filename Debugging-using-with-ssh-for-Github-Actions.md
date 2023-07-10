@@ -26,7 +26,7 @@
 
 1. Push a new commit / re-run completed workflows, see below for re-running jobs through the Github UI <br>
     <img height="100" alt="image" src="https://github.com/pytorch/pytorch/assets/44682903/f6b3a114-ae25-4466-b9c9-ac9aa0f7db9b"> or <img height="100" alt="image" src="https://github.com/pytorch/pytorch/assets/44682903/6addb042-93a3-4462-a3bb-858196938bfa"> <br> Unfortunately, jobs can only be rerun after all jobs in the workflow are finished.
-2. Traverse to logs for a `build` or `test` job that runs the `add-github-ssh-key` step added (currently all of our linux workflows have this enabled)
+2. Traverse to logs for a `build` or `test` job that runs the `Setup SSH` step added (currently all of our linux workflows have this enabled)
    <br> <img width="622" alt="image" src="https://github.com/pytorch/pytorch/assets/44682903/8cfbe3fe-305b-4676-a6bb-a2d5e57ead71">
 3. Use the SSH command provided to log into the node (do this immediately, as the job will start cleaning up if it reaches the end without any active SSH session):
    <br> <img width="948" alt="Screen Shot 2021-08-04 at 11 49 25 AM" src="https://user-images.githubusercontent.com/1700823/130687653-b74ce62e-0e7b-40b0-9957-5d157a6b0c62.png">
