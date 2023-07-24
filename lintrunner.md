@@ -1,3 +1,12 @@
+<!-- TODO: Deprecate 
+- lint-as-you-type 
+- https://github.com/pytorch/pytorch/blob/main/CONTRIBUTING.md#running-clang-tidy 
+- https://github.com/pytorch/pytorch/blob/main/CONTRIBUTING.md#local-linting
+-->
+
+
+In PyTorch, we enforce lint rules on code in order to help us catch common mistakes and enforce a greater degree of uniformity in our codebase than human reviewers can normally enforce. 
+
 PyTorch uses `lintrunner` to execute lints locally and in CI. This provides developers with a single command to run all the linters, and ensures consistency between the CI and local development environments. See [the `lintrunner` repo](https://github.com/suo/lintrunner) for more info.
 
 To get started, run the following to install `lintrunner`. Make sure you are at the root of the PyTorch repo:

@@ -1,12 +1,12 @@
 ## Development Setup
 
-Please see https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#developing-pytorch
+Please see [[Developer Environment Setup]]
 
 For fb employees, please read through [this](https://www.internalfb.com/intern/wiki/PyTorch/PyTorchDev/Workflow/PyTorch_environment_setup/) as well.
 
 ## Learn about how to use PyTorch
 
-Run through the [PyTorch 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
+Run through the [PyTorch Basics tutorial](https://pytorch.org/tutorials/beginner/basics/intro.html)
 
 If you're not familiar with machine learning, [here](https://www.youtube.com/playlist?list=PLC1qU-LWwrF64f4QKQT-Vg5Wr4qEE1Zxk) is a nice lecture series.
 
