@@ -4,6 +4,21 @@
 
 PyTorch maintainers use GitHub labeling for several organizational purposes, such as triaging issues to the right module owners, assigning priority to certain tasks, and categorizing pull requests (PRs). Labeling has much potential! Thus, this is a technical guide for how it works and how you can join in and improve our labeling.
 
+Apart from [Github's default labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels#about-default-labels), here are some we use at PyTorch:
+
+- **actionable**: A solution has been identified but needs implementation
+- **triaged**: The issue has been reviewed for validity, feasibilty and priority
+- **needs reproduction**: This label calls for a reproduction of the issue by someone other than the author.
+- **oncall: <module>**: Includes this issue on the specified oncall's triage queue
+- **module: <module>**: Denotes which PyTorch module or surface relates to this issue
+- **release notes: <module>**: Denotes a change that should be added to the release notes for the given module ([more details](#why-categorize-for-release-notes-and-how-does-it-work)).
+- **feature** : Request for a new feature
+- **function** : Request for a new function, or modifying an existing function
+- **enhancement** : Not as big of a feature, but technically not a bug
+- **bug**
+- **topic: not user facing**: used on PRs for release note prep
+- **triage review**: Queued for discussion
+
 ## Why categorize (for release notes)? And how does it work?
 **Why categorize?** The purpose of categorizing is so that during the release notes process, commits/PRs are routed to the right module owner whose job is to clean up the commit message and include additional information regarding bc-breaking changes or deprecations. 
 
