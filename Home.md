@@ -2,24 +2,21 @@ Welcome to the PyTorch developer's wiki!
 
 *Please read our [[best practices|Where or how should I add documentation]] if you're interested in adding a page or making edits*
 
-## User docs
+## Community
+* [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
+* [PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
 
+## User docs
 * [Release notes](https://github.com/pytorch/pytorch/releases)
 * [PyTorch Versions](PyTorch-Versions)
 * [Public API definition and documentation](Public-API-definition-and-documentation)
 
-## Onboarding
+## Contributing
+* [[The Ultimate Guide to PyTorch Contributions]]
 
+## Onboarding
 New to PyTorch? Don't know where to start?
 - [[Core Onboarding|Core Frontend Onboarding]]
-
-## Contributing
-* [PyTorch Contribution Guide](https://docs.google.com/document/d/1oNhUeGE-8ajsYaMpoV6ZQANQZVeKrdFanI9VMbFzOzc/edit)
-* [Setting up your dev environment (contributing.md)](https://github.com/pytorch/pytorch/blob/main/CONTRIBUTING.md)
-* [How to propose feature changes to PyTorch](How-to-propose-feature-changes-to-PyTorch)
-* [Troubleshooting](Troubleshooting)
-* [Getting Help](getting-help-as-a-contributor)
-* [SEVs](What-is-considered-a-SEV%3F)
 
 ## Developer docs
 
@@ -128,16 +125,11 @@ New to PyTorch? Don't know where to start?
 * [DataPipe test requirements](https://github.com/pytorch/pytorch/wiki/DataPipes-testing-requirements)
 
 ## Workflow docs
-
 * [Continuous Integration](Continuous-Integration)
-* [Bot commands](Bot-commands)
+* [PyTorchBot commands](Bot-commands)
 * [PyTorch AutoLabel Bot](https://github.com/pytorch/pytorch/wiki/PyTorch-AutoLabel-Bot)
 * [Code review values](Code-review-values)
-* [Lint as you type](Lint-as-you-type)
+* [[Linting|lintrunner]]
 * [Pull request review etiquette](Pull-request-review-etiquette)
 * [Debugging with SSH on Github Actions](Debugging-using-with-ssh-for-Github-Actions)
 * [Using hud.pytorch.org](Using-hud.pytorch.org)
-
-## Community
-* [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
-* [PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
