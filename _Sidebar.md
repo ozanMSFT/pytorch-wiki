@@ -16,7 +16,7 @@
 
 ### Submitting a change
 - [[Overview of the Pull Request Lifecycle]]
-- [[Finding Or Creating Issues]]
+- [[Finding Or Reporting Issues]]
   - [[How to propose feature changes to PyTorch]]
 - [[Pre Commit Checks]]
 - [[Create a Pull Request]]

@@ -8,7 +8,7 @@ You should have
 
 ## Making your code change
 
-1. [Find or create](Finding-Or-Creating-Issues) a new issue to work on. If your change is minor (like fixing a typo) feel free to skip this step. 
+1. [Find or report](Finding-Or-Reporting-Issues) a new issue to work on. If your change is minor (like fixing a typo) feel free to skip this step. 
 
 1. Create a new branch with `git fetch && git checkout -b <my-branch-name> 'viable/strict'` ([more details on 'viable/strict'](https://github.com/pytorch/pytorch/wiki/PyTorch-Basics#use-viablestrict)).
 

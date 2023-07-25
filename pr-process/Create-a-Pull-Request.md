@@ -1,7 +1,7 @@
 Once you have conducted all the [pre-commit checks](Pre-Commit-Checks) and pushed your changes to your fork, you are ready to submit it to the PyTorch codebase as a pull request.
 
 ## New PR Checklist
-- [ ] If your change is non-trivial, please ensure there is an open issue to link your PR to or [[create a new issue|Finding-Or-Creating-Issues]].
+- [ ] If your change is non-trivial, please ensure there is an open issue to link your PR to or [[create a new issue|Finding-Or-Reporting-Issues]].
 
 - [ ] Create a [new PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) on Github.
 

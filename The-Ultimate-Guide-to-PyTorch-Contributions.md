@@ -36,7 +36,7 @@ We aim to produce high-quality documentation, but typos or other inaccuracies ma
 
 <details>
 <summary><h3><b>Reporting Issues</b></h3></summary>
-If you happen to run into some unexpected behavior, you can help by creating an issue (if a similar one doesn't already exist on the tracker). Use the Bug Report template and supply as much information as you can, and any additional insights/guesses you might have. See <a href="Finding-or-Creating-Issues">Finding or Creating Issues</a> to get started.
+If you happen to run into some unexpected behavior, you can help by creating an issue (if a similar one doesn't already exist on the tracker). Use the Bug Report template and supply as much information as you can, and any additional insights/guesses you might have. See <a href="Finding-or-Reporting-Issues">Finding or Reporting Issues</a> to get started.
 
 </details>
 
@@ -99,7 +99,7 @@ Here are some resources that can help you contribute pull requests:
 
 ### Submitting a change
 - [[Overview of the Pull Request Lifecycle]]
-- [[Finding Or Creating Issues]]
+- [[Finding Or Reporting Issues]]
   - [[How to propose feature changes to PyTorch]]
 - [[Pre Commit Checks]]
 - [[Create a Pull Request]]
