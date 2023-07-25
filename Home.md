@@ -6,13 +6,13 @@ Welcome to the PyTorch developer's wiki!
 * [Code of Conduct](https://github.com/pytorch/pytorch/blob/master/CODE_OF_CONDUCT.md)
 * [PyTorch Governance](https://github.com/pytorch/pytorch/blob/master/docs/source/community/governance.rst)
 
+## Contributing
+* [[The Ultimate Guide to PyTorch Contributions]]
+
 ## User docs
 * [Release notes](https://github.com/pytorch/pytorch/releases)
 * [PyTorch Versions](PyTorch-Versions)
 * [Public API definition and documentation](Public-API-definition-and-documentation)
-
-## Contributing
-* [[The Ultimate Guide to PyTorch Contributions]]
 
 ## Onboarding
 New to PyTorch? Don't know where to start?
