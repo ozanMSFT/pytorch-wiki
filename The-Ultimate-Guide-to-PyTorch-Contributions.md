@@ -12,7 +12,7 @@ Thank you for considering contributing to PyTorch. The contribution process for 
 ----
 
 ## All the ways to contribute
-There are many ways to contribute to the PyTorch project, and we value them all. Most open source contributors start with small improvements, and ramp up the scale of their work as they become more familiar with the project and the community. 
+There are many ways to contribute to the PyTorch project, and we value them all. Most open source contributors start with small improvements, and ramp up the scale of their work as they become more familiar with the project and the community. Here are some pathways to becoming a PyTorch contributor, listed in no particular order:
 
 <details>
 <summary><h3><b>Community Discussions</b></h3></summary>
@@ -36,13 +36,13 @@ We aim to produce high-quality documentation, but typos or other inaccuracies ma
 
 <details>
 <summary><h3><b>Reporting Issues</b></h3></summary>
-If you happen to run into some unexpected behavior, you can help by creating an issue (if a similar one doesn't already exist on the tracker). Use the Bug Report template and supply as much information as you can, and any additional insights/guesses you might have. See <a href="Finding-or-Reporting-Issues">Finding or Reporting Issues</a> to get started.
+If you happen to run into some unexpected behavior, you can help by creating an issue (if a similar one doesn't already exist on the <a href="https://github.com/pytorch/pytorch/issues">issue list</a>). Use the Bug Report template and supply as much information as you can, and any additional insights/guesses you might have. When reporting an issue, it's helpful to narrow down the problematic behavior to a minimal reproducible example. See <a href="Finding-or-Reporting-Issues">Finding or Reporting Issues</a> to get started.
 
 </details>
 
 <details>
-<summary><h3><b>Reproducing Issues</b></h3></summary>
-Another valuable way to contribute is by <a href="https://github.com/pytorch/pytorch/labels/needs%20reproduction">reproducing open issues</a>. Sometimes the problematic behavior may be isolated to specific environments, repro'ing it helps developers identify the cause and troubleshoot faster.
+<summary><h3><b>Reproducing and Investigating Issues</b></h3></summary>
+Another valuable way to contribute is by <a href="https://github.com/pytorch/pytorch/labels/needs%20reproduction">reproducing open issues</a>. Sometimes the problematic behavior may be isolated to specific environments, or the reported issue is too broad. By repro'ing, you can add details about the problematic behavior, perhaps even further narrow it down towards a root cause, and offer your insights that can help developers to troubleshoot the problem.
 
 </details>
 
@@ -54,7 +54,7 @@ We welcome ideas for new features in PyTorch! A great way to share it with the c
 
 <details>
 <summary><h3><b>Submitting Pull Requests</b></h3></summary>
-Fixing existing issues or implementing new features require changes to the codebase. We manage merging changes via Github Pull Requests. You will need to set up your developer environment, find an issue to work upon, and submit your changes for review. The <a href="#getting-started-with-pull-requests">PR guide</a> below contains resources for you to start submitting your changes to PyTorch.
+Fixing existing issues or implementing new features require changes to the codebase. We accept new code contributions via Github Pull Requests. We can't accept any changes unless you sign the <a href="https://github.com/pytorch/pytorch/issues/85559">PyTorch Contributors License Agreement</a>. You will need to set up your developer environment, find an issue to work upon, and submit your changes for review. The <a href="#getting-started-with-pull-requests">PR guide</a> below contains resources for you to start submitting your changes to PyTorch.
 
 </details>
 
@@ -90,8 +90,9 @@ Here are some resources that can help you contribute pull requests:
 - [Workflow docs and notes](https://github.com/pytorch/pytorch/wiki#workflow-docs)
 
 ### Setup the developer environment
-- [[Install Prerequisites and Dependencies|Developer Environment Setup]]
+- [[Install Prerequisites|Developer Environment Prerequisites]]
 - [[Fork, clone, and checkout the PyTorch source|Fork Clone and Checkout]]
+- [[Install Dependencies]]
 - [[Build PyTorch from source|Build-PyTorch]]
     - [[Debugging your PyTorch build|Debugging PyTorch Build]]
 - [[Tips for developing PyTorch|Development Tips]]

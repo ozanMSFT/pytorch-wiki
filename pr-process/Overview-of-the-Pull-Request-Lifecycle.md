@@ -10,21 +10,23 @@ You should have
 
 1. [Find or report](Finding-Or-Reporting-Issues) a new issue to work on. If your change is minor (like fixing a typo) feel free to skip this step. 
 
-1. Create a new branch with `git fetch && git checkout -b <my-branch-name> 'viable/strict'` ([more details on 'viable/strict'](https://github.com/pytorch/pytorch/wiki/PyTorch-Basics#use-viablestrict)).
+2. Create a new branch with `git fetch && git checkout -b <my-branch-name>` to start working on your change. 
+   
+3. Make changes locally to the code. Whether you're working on a new feature or a bug fix, always consider adding tests for your changes (using the `unittest` framework).
 
-1. Make changes locally to the code.
+4. Test your changes locally with `python ./test/test_torch.py` ([more details](Running-and-writing-tests)).
+   
+5. Review other [pre-commit checks](Pre-Commit-Checks).
 
-1. Test your changes locally with `python ./test/test_torch.py` ([more details](Running-and-writing-tests)) and review other [pre-commit checks](Pre-Commit-Checks).
-
-1. Push changes to your fork `git push`
+6. Push changes to your fork `git push`
     - If your changes are tracking an older version of PyTorch, rebase and push
      ```
      git pull --rebase upstream viable/strict 
      git push -f
      ```
 
-1. [Create a new Github PR](Create-a-Pull-Request) to propose changes from your fork into the official PyTorch repo.
+7. [Create a new Github PR](Create-a-Pull-Request) to propose changes from your fork into the official PyTorch repo.
 
-1. Review, address comments on your PR, and initiate merge along the [[pull request workflow|Typical Pull Request Workflow]].
+8. Review, address comments on your PR, and initiate merge along the [[pull request workflow|Typical Pull Request Workflow]].
 
-1. Celebrate your contributions and welcome to the PyTorch Developer community :)
+9.  Celebrate your contributions and welcome to the PyTorch Developer community :)

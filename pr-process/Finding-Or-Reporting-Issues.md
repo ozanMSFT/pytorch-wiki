@@ -24,7 +24,9 @@ Once an issue is raised, someone from the PyTorch Triaging team will take a look
 
 <!-- Source: https://github.com/pytorch/pytorch/wiki/%5BDraft%5D-The-PyTorch-Contribution-Process#contributing-faq -->
 
-Absolutely not. Nor do we "lock" issues and only allow a single person to work 
+No, but please leave a note on the issue when working on it so others are aware. 
+
+We don't "lock" issues and only allow a single person to work 
 on them. Even if an issue is assigned you are free to work on it and submit a 
 pull request for it. If there are multiple pull requests addressing the same 
 issue then the one that is the highest quality (or that came first, if multiple 

@@ -22,7 +22,7 @@ Fork the PyTorch repository to your Github account and create a local clone.
 Remember to always push changes to `origin` (your fork)!
 
 ---
-## Nightly Checkout & Pull for Python-only development
+## (optional) Nightly Checkout & Pull for Python-only development
 The `tools/nightly.py` script is provided to allow Python-only development of
 PyTorch. Choose this if you aren't changing or compiling C++ code. 
 This uses `conda` and `git` to check out the nightly development
@@ -57,4 +57,4 @@ into the repo directory.
 ----
 
 ## Next Steps
-* [[Build PyTorch from source|Build-PyTorch]]
+* [[Install-Dependencies]]

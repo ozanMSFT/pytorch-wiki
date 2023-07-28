@@ -1,7 +1,7 @@
-Source: https://github.com/pytorch/pytorch#from-source
-
-
+<!-- Source: https://github.com/pytorch/pytorch#from-source -->
 <!-- TODO: When should we use build/install instead of develop? -->
+
+Pull requests for simple fixes DO NOT require a local build of PyTorch. You will likely need to build from source (the steps below) for more involved contributions, for example changes that touch native code (C++, CUDA, ObjectiveC, Vulkan, etc.)
 
 ## Install from Source
 Now that you have the source code, you can build PyTorch on your development machine. Note that the steps might be different depending on your machine's platform.
