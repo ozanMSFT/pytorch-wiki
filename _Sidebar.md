@@ -7,8 +7,9 @@
 * [[The Ultimate Guide to PyTorch Contributions]]
 
 ### Setup the developer environment
-- [[Install Prerequisites and Dependencies|Developer Environment Setup]]
+- [[Install Prerequisites|Developer Environment Prerequisites]]
 - [[Fork, clone, and checkout the PyTorch source|Fork Clone and Checkout]]
+- [[Install Dependencies]]
 - [[Build PyTorch from source|Build-PyTorch]]
     - [[Debugging your PyTorch build|Debugging PyTorch Build]]
 - [[Tips for developing PyTorch|Development Tips]]
