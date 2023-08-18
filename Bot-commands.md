@@ -39,7 +39,7 @@ optional arguments:
   -f MESSAGE, --force MESSAGE
                         Merge without checking anything. This requires a reason for auditting purpose, for example:
                         @pytorchbot merge -f 'Minor update to fix lint. Expecting all PR tests to pass'
-  -ic, --ignore-current
+  -i, --ignore-current
                         Merge while ignore the currently failing jobs.  If there are no pending checks, use -f/--force since this will fail.
   -r [{viable/strict,master}], --rebase [{viable/strict,master}]
                         Rebase the PR to re run checks before merging.  Accepts viable/strict or master as branch options and will default to viable/strict if not specified.
