@@ -13,6 +13,7 @@ Welcome to the PyTorch developer's wiki!
 * [Release notes](https://github.com/pytorch/pytorch/releases)
 * [PyTorch Versions](PyTorch-Versions)
 * [Public API definition and documentation](Public-API-definition-and-documentation)
+* [Frontend Backward and Forward Compatibility Policy]PyTorch's-Python-Frontend-Backward-and-Forward-Compatibility-Policy)
 
 ## Onboarding
 New to PyTorch? Don't know where to start?
