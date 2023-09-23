@@ -6,7 +6,7 @@ Pull requests for simple fixes DO NOT require a local build of PyTorch. You will
 ## Install from Source
 Now that you have the source code, you can build PyTorch on your development machine. Note that the steps might be different depending on your machine's platform.
 
-The `setup.py` script is configurable via build flags and environment variables; take a look at [Development-Tips] for details.
+The `setup.py` script is configurable via build flags and environment variables; take a look at [[Development-Tips]] for details.
 
 ### MacOS
 
