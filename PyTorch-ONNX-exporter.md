@@ -324,6 +324,12 @@ You can use `pytest` to run tests in parallel and generate a coverage report.
 python -m pytest -n auto --cov --cov-report "xml:test/coverage.xml" test/onnx/test_pytorch_onnx_onnxruntime.py
 ```
 
+# Dynamo exporter
+
+## Show diagnostics
+
+Set the environment variable `TORCH_LOGS="onnx_diagnostics"` to capture detailed diagnostics.
+
 # Links
 
 * [User-facing docs](https://pytorch.org/docs/master/onnx.html).
