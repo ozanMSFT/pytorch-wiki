@@ -1,0 +1,62 @@
+PyTorch uses ops that are registered to corresponding Math Kernel Library (MKL) functions in oneDNN. The available implementations are defined in this YAML file [`native_functions.yaml`](https://github.com/pytorch/pytorch/blob/main/aten/src/ATen/native/native_functions.yaml) in the aten library of PyTorch. By doing a search for the keyword “mkldnn”, all the mappings can be found.
+
+This is summarized in the following table:
+
+| PyTorch | Op oneDNN Function |
+| :---: | :---: |
+| `add.Tensor` | `mkldnn_add` |
+| `add_.Tensor` | `mkldnn_add_` |
+| `add.out` | `mkldnn_add_out` |
+| `copy_` | `copy_mkldnn_` |
+| `empty.memory_format` | `empty_mkldnn` |
+| `mkldnn_linear` | `mkldnn_linear` |
+| `mkldnn_linear_backward_input` | `mkldnn_linear_backward_input` |
+| `mkldnn_linear_backward_weights` | `mkldnn_linear_backward_weights` |
+| `mkldnn_linear_backward` | `mkldnn_linear_backward` |
+| `mkldnn_max_pool2d` | `mkldnn_max_pool2d` |
+| `mkldnn_max_pool2d_backward` | `mkldnn_max_pool2d_backward` |
+| `mkldnn_max_pool3d` | `mkldnn_max_pool3d` |
+| `mkldnn_max_pool3d_backward` | `mkldnn_max_pool3d_backward` |
+| `mkldnn_convolution` | `mkldnn_convolution` |
+| `mkldnn_rnn_layer` | `mkldnn_rnn_layer` |
+| `mkldnn_rnn_layer_backward` | `mkldnn_rnn_layer_backward` |
+| `mul.Tensor` | `mkldnn_mul` |
+| `mul_.Tensor` | `mkldnn_mul_` |
+| `mul.out` | `mkldnn_mul_out` |
+| `native_batch_norm` | `mkldnn_batch_norm` |
+| `_native_batch_norm_legit` | `_mkldnn_batch_norm_legit` |
+| `_native_batch_norm_legit.no_stats` | `_mkldnn_batch_norm_legit_no_stats` |
+| `native_batch_norm_backward` | `mkldnn_batch_norm_backward` |
+| `_mkldnn_reshape` | `mkldnn_reshape` |
+| `relu` | `mkldnn_relu` |
+| `relu_` | `mkldnn_relu_` |
+| `_prelu_kernel` | `mkldnn_prelu_backward` |
+| `gelu` | `mkldnn_gelu` |
+| `gelu_backward` | `mkldnn_gelu_backward` |
+| `sigmoid` | `mkldnn_sigmoid` |
+| `sigmoid_` | `mkldnn_sigmoid_` |
+| `_softmax` | `mkldnn_softmax` |
+| `tanh` | `mkldnn_tanh` |
+| `tanh_` | `mkldnn_tanh_` |
+| `threshold_backward` | `mkldnn_relu_backward` |
+| `_mkldnn_transpose` | `mkldnn_transpose` |
+| `_mkldnn_transpose_` | `mkldnn_transpose_` |
+| `clone` | `mkldnn_clone` |
+| `zero_` | `mkldnn_zero_` |
+| `_to_dense` | `mkldnn_to_dense` |
+| `to_mkldnn` | `dense_to_mkldnn` |
+| `mkldnn_reorder_conv2d_weight` | `mkldnn_reorder_conv2d_weight` |
+| `mkldnn_reorder_conv3d_weight` | `mkldnn_reorder_conv3d_weight` |
+| `view` | `mkldnn_view` |
+| `adaptive_avg_pool2d.out` | `mkldnn_adaptive_avg_pool2d_out_stub` |
+| `mkldnn_adaptive_avg_pool2d` | `mkldnn_adaptive_avg_pool2d` |
+| `mkldnn_adaptive_avg_pool2d.out` | `mkldnn_adaptive_avg_pool2d_out` |
+| `mkldnn_adaptive_avg_pool2d_backward` | `mkldnn_adaptive_avg_pool2d_backward` |
+| `avg_pool2d.out` | `mkldnn_avg_pool2d_out` |
+| `avg_pool2d` | `mkldnn_avg_pool2d` |
+| `avg_pool2d_backward.grad_input` | `mkldnn_avg_pool2d_backward_out` |
+| `avg_pool2d_backward` | `mkldnn_avg_pool2d_backward` |
+| `avg_pool3d.out` | `mkldnn_avg_pool3d_out` |
+| `avg_pool3d` | `mkldnn_avg_pool3d` |
+| `avg_pool3d_backward.grad_input` | `mkldnn_avg_pool3d_backward_out` |
+| `avg_pool3d_backward` | `mkldnn_avg_pool3d_backward` |
