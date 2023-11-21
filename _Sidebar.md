@@ -4,7 +4,7 @@
 * [[Forums for discussion|Sharing Design Documents for Discussion]]
 
 ## Contributing to PyTorch
-* [[The Ultimate Guide to PyTorch Contributions]]
+* [[The Ultimate Guide to PyTorch Contributions 2.0]]
 
 ### Setup the developer environment
 - [[Install Prerequisites|Developer Environment Prerequisites]]
